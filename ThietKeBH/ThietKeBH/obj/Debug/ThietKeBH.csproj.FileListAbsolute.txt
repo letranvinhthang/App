@@ -1,0 +1,23 @@
+<<<<<<< HEAD
+D:\btvenha\App\ThietKeBH\ThietKeBH\bin\Debug\ThietKeBH.exe.config
+D:\btvenha\App\ThietKeBH\ThietKeBH\bin\Debug\ThietKeBH.exe
+D:\btvenha\App\ThietKeBH\ThietKeBH\bin\Debug\ThietKeBH.pdb
+D:\btvenha\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.csprojAssemblyReference.cache
+D:\btvenha\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.frmDangNhap.resources
+D:\btvenha\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.Properties.Resources.resources
+D:\btvenha\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.csproj.GenerateResource.cache
+D:\btvenha\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.csproj.CoreCompileInputs.cache
+D:\btvenha\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.exe
+D:\btvenha\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.pdb
+=======
+D:\Trung\App\ThietKeBH\ThietKeBH\bin\Debug\ThietKeBH.exe.config
+D:\Trung\App\ThietKeBH\ThietKeBH\bin\Debug\ThietKeBH.exe
+D:\Trung\App\ThietKeBH\ThietKeBH\bin\Debug\ThietKeBH.pdb
+D:\Trung\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.csprojAssemblyReference.cache
+D:\Trung\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.frmDangNhap.resources
+D:\Trung\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.Properties.Resources.resources
+D:\Trung\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.csproj.GenerateResource.cache
+D:\Trung\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.csproj.CoreCompileInputs.cache
+D:\Trung\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.exe
+D:\Trung\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.pdb
+>>>>>>> 67235e81980e12002c9ecaa5f78e3aeeffc2b42f
