@@ -16,5 +16,18 @@ namespace ThietKe.Forms
         {
             InitializeComponent();
         }
+
+        private void btnDangNhap_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Đăng nhập thành công!", "Thống báo");
+        }
+
+        private void BamEnter(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnDangNhap.PerformClick();
+            }
+        }
     }
 }
