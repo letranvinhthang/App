@@ -54,8 +54,12 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.label1.Location = new System.Drawing.Point(277, 22);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+=======
+            this.label1.Location = new System.Drawing.Point(184, 12);
+>>>>>>> 67235e81980e12002c9ecaa5f78e3aeeffc2b42f
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(175, 37);
             this.label1.TabIndex = 0;
@@ -88,16 +92,26 @@
             this.txtId.Location = new System.Drawing.Point(294, 295);
             this.txtId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtId.Name = "txtId";
+<<<<<<< HEAD
             this.txtId.Size = new System.Drawing.Size(208, 26);
             this.txtId.TabIndex = 3;
+=======
+            this.txtId.Size = new System.Drawing.Size(140, 20);
+            this.txtId.TabIndex = 1;
+>>>>>>> 67235e81980e12002c9ecaa5f78e3aeeffc2b42f
             // 
             // txtPass
             // 
             this.txtPass.Location = new System.Drawing.Point(294, 363);
             this.txtPass.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPass.Name = "txtPass";
+<<<<<<< HEAD
             this.txtPass.Size = new System.Drawing.Size(208, 26);
             this.txtPass.TabIndex = 4;
+=======
+            this.txtPass.Size = new System.Drawing.Size(140, 20);
+            this.txtPass.TabIndex = 2;
+>>>>>>> 67235e81980e12002c9ecaa5f78e3aeeffc2b42f
             // 
             // btnDangNhap
             // 
@@ -108,8 +122,13 @@
             this.btnDangNhap.Location = new System.Drawing.Point(244, 423);
             this.btnDangNhap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDangNhap.Name = "btnDangNhap";
+<<<<<<< HEAD
             this.btnDangNhap.Size = new System.Drawing.Size(265, 60);
             this.btnDangNhap.TabIndex = 5;
+=======
+            this.btnDangNhap.Size = new System.Drawing.Size(100, 40);
+            this.btnDangNhap.TabIndex = 3;
+>>>>>>> 67235e81980e12002c9ecaa5f78e3aeeffc2b42f
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDangNhap.UseVisualStyleBackColor = true;
@@ -126,6 +145,11 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
+<<<<<<< HEAD
+=======
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+>>>>>>> 67235e81980e12002c9ecaa5f78e3aeeffc2b42f
             this.Name = "frmDangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel1.ResumeLayout(false);
