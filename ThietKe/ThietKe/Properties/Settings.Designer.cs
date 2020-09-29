@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ThietKeBH.Properties
+namespace ThietKe.Properties
 {
 
 
