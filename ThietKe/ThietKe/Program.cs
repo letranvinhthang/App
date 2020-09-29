@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ThietKe.Forms;
 
-namespace ThietKeBH
+namespace ThietKe
 {
     static class Program
     {

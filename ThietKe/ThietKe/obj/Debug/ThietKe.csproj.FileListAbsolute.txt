@@ -1,0 +1,10 @@
+D:\Trung\App\ThietKe\ThietKe\obj\Debug\ThietKe.csprojAssemblyReference.cache
+D:\Trung\App\ThietKe\ThietKe\obj\Debug\ThietKe.Forms.frmDangNhap.resources
+D:\Trung\App\ThietKe\ThietKe\obj\Debug\ThietKe.Properties.Resources.resources
+D:\Trung\App\ThietKe\ThietKe\obj\Debug\ThietKe.csproj.GenerateResource.cache
+D:\Trung\App\ThietKe\ThietKe\obj\Debug\ThietKe.csproj.CoreCompileInputs.cache
+D:\Trung\App\ThietKe\ThietKe\bin\Debug\ThietKe.exe.config
+D:\Trung\App\ThietKe\ThietKe\bin\Debug\ThietKe.exe
+D:\Trung\App\ThietKe\ThietKe\bin\Debug\ThietKe.pdb
+D:\Trung\App\ThietKe\ThietKe\obj\Debug\ThietKe.exe
+D:\Trung\App\ThietKe\ThietKe\obj\Debug\ThietKe.pdb
