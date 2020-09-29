@@ -16,5 +16,23 @@ namespace ThietKe.Forms
         {
             InitializeComponent();
         }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            frmOrder frm = new frmOrder();
+            frm.TopLevel = false;
+            panel3.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
+        }
+
+        private void btnQuanLyTaiKhoan_Click(object sender, EventArgs e)
+        {
+            frmQuanLyTaiKhoan frm = new frmQuanLyTaiKhoan();
+            frm.TopLevel = false;
+            panel3.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
+        }
     }
 }

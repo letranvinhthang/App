@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace ThietKe.Forms
 {
-    public partial class frmQuanLyTaiKhoan : Form
+    public partial class frmThemNhanVien : Form
     {
-        public frmQuanLyTaiKhoan()
+        public frmThemNhanVien()
         {
             InitializeComponent();
-        }
-
-        private void btnDangNhap_Click(object sender, EventArgs e)
-        {
-            frmThemNhanVien frm = new frmThemNhanVien();
-            frm.ShowDialog();
         }
     }
 }
