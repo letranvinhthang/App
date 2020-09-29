@@ -52,7 +52,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(179, 11);
+            this.label1.Location = new System.Drawing.Point(184, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 25);
             this.label1.TabIndex = 0;
@@ -83,21 +83,21 @@
             this.txtId.Location = new System.Drawing.Point(196, 192);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(140, 20);
-            this.txtId.TabIndex = 3;
+            this.txtId.TabIndex = 1;
             // 
             // txtPass
             // 
             this.txtPass.Location = new System.Drawing.Point(196, 236);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(140, 20);
-            this.txtPass.TabIndex = 4;
+            this.txtPass.TabIndex = 2;
             // 
             // btnDangNhap
             // 
             this.btnDangNhap.Location = new System.Drawing.Point(196, 302);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(100, 40);
-            this.btnDangNhap.TabIndex = 5;
+            this.btnDangNhap.TabIndex = 3;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.UseVisualStyleBackColor = true;
             // 
@@ -113,6 +113,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmDangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

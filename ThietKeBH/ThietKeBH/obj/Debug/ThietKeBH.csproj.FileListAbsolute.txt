@@ -1,0 +1,10 @@
+D:\Trung\App\ThietKeBH\ThietKeBH\bin\Debug\ThietKeBH.exe.config
+D:\Trung\App\ThietKeBH\ThietKeBH\bin\Debug\ThietKeBH.exe
+D:\Trung\App\ThietKeBH\ThietKeBH\bin\Debug\ThietKeBH.pdb
+D:\Trung\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.csprojAssemblyReference.cache
+D:\Trung\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.frmDangNhap.resources
+D:\Trung\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.Properties.Resources.resources
+D:\Trung\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.csproj.GenerateResource.cache
+D:\Trung\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.csproj.CoreCompileInputs.cache
+D:\Trung\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.exe
+D:\Trung\App\ThietKeBH\ThietKeBH\obj\Debug\ThietKeBH.pdb
