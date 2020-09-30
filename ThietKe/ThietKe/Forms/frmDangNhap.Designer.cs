@@ -51,8 +51,12 @@
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 =======
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.label1.Location = new System.Drawing.Point(117, 218);
 >>>>>>> 2d81d0589b123768aa82d3e0179e126f1d7f609c:ThietKe/ThietKe/Forms/frmDangNhap.Designer.cs
+=======
+            this.label1.Location = new System.Drawing.Point(117, 219);
+>>>>>>> e13f062c913727c6c09032c554ce0d4ba8ab34b5
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 24);
             this.label1.TabIndex = 0;
@@ -62,7 +66,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(140, 259);
+            this.label2.Location = new System.Drawing.Point(140, 260);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 24);
             this.label2.TabIndex = 0;
