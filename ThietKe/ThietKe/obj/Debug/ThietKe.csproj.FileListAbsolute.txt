@@ -23,3 +23,8 @@ D:\App\ThietKe\ThietKe\obj\Debug\ThietKe.csproj.CoreCompileInputs.cache
 D:\App\ThietKe\ThietKe\obj\Debug\ThietKe.exe
 D:\App\ThietKe\ThietKe\obj\Debug\ThietKe.pdb
 D:\App\ThietKe\ThietKe\obj\Debug\ThietKe.Forms.frmThemNhanVien.resources
+D:\Trung\App\ThietKe\ThietKe\obj\Debug\ThietKe.Forms.frmDoiMatKhau.resources
+D:\Trung\App\ThietKe\ThietKe\obj\Debug\ThietKe.Forms.frmMain.resources
+D:\Trung\App\ThietKe\ThietKe\obj\Debug\ThietKe.Forms.frmOrder.resources
+D:\Trung\App\ThietKe\ThietKe\obj\Debug\ThietKe.Forms.frmQuanLyTaiKhoan.resources
+D:\Trung\App\ThietKe\ThietKe\obj\Debug\ThietKe.Forms.frmThemNhanVien.resources
