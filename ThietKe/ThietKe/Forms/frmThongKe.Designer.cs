@@ -1,6 +1,6 @@
 ﻿namespace ThietKe.Forms
 {
-    partial class frmQuanLyTaiKhoan
+    partial class frmThongKe
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuanLyTaiKhoan));
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,38 +37,8 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColSua = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColXoa = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnDangNhap = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(63, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "label1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(63, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "label1";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(63, 43);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "label1";
             // 
             // dataGridView1
             // 
@@ -95,18 +61,15 @@
             this.Column4,
             this.Column5,
             this.Column6,
-            this.Column7,
-            this.ColSua,
-            this.ColXoa});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Column7});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 59);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(876, 617);
-            this.dataGridView1.TabIndex = 10;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(876, 676);
+            this.dataGridView1.TabIndex = 13;
             // 
             // Column3
             // 
@@ -118,99 +81,55 @@
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column1.HeaderText = "ID nhân viên";
+            this.Column1.HeaderText = "Barcode";
             this.Column1.Name = "Column1";
             this.Column1.Width = 70;
             // 
             // Column2
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column2.HeaderText = "Tên nhân viên";
+            this.Column2.HeaderText = "Tên sản phẩm";
             this.Column2.Name = "Column2";
             this.Column2.Width = 150;
             // 
             // Column4
             // 
-            this.Column4.HeaderText = "Số điện thoại";
+            this.Column4.HeaderText = "Số lượng";
             this.Column4.Name = "Column4";
             // 
             // Column5
             // 
-            this.Column5.HeaderText = "Ngày sinh";
+            this.Column5.HeaderText = "Ngày";
             this.Column5.Name = "Column5";
             // 
             // Column6
             // 
             this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.HeaderText = "Địa chỉ";
+            this.Column6.HeaderText = "Ghi chú";
             this.Column6.Name = "Column6";
             // 
             // Column7
             // 
-            this.Column7.HeaderText = "Chức vụ";
+            this.Column7.HeaderText = "Tên nhân viên";
             this.Column7.Name = "Column7";
             // 
-            // ColSua
-            // 
-            this.ColSua.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColSua.HeaderText = "";
-            this.ColSua.Image = ((System.Drawing.Image)(resources.GetObject("ColSua.Image")));
-            this.ColSua.Name = "ColSua";
-            this.ColSua.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColSua.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColSua.Width = 21;
-            // 
-            // ColXoa
-            // 
-            this.ColXoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColXoa.HeaderText = "";
-            this.ColXoa.Image = ((System.Drawing.Image)(resources.GetObject("ColXoa.Image")));
-            this.ColXoa.Name = "ColXoa";
-            this.ColXoa.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColXoa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColXoa.Width = 21;
-            // 
-            // btnDangNhap
-            // 
-            this.btnDangNhap.BackColor = System.Drawing.Color.Teal;
-            this.btnDangNhap.FlatAppearance.BorderSize = 0;
-            this.btnDangNhap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangNhap.ForeColor = System.Drawing.Color.White;
-            this.btnDangNhap.Location = new System.Drawing.Point(553, 17);
-            this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(127, 25);
-            this.btnDangNhap.TabIndex = 11;
-            this.btnDangNhap.Text = "Thêm nhân viên";
-            this.btnDangNhap.UseVisualStyleBackColor = false;
-            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
-            // 
-            // frmQuanLyTaiKhoan
+            // frmThongKe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(876, 676);
             this.ControlBox = false;
-            this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "frmQuanLyTaiKhoan";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Name = "frmThongKe";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
+
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnDangNhap;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -218,7 +137,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewImageColumn ColSua;
-        private System.Windows.Forms.DataGridViewImageColumn ColXoa;
     }
 }

@@ -15,6 +15,16 @@ namespace ThietKe.Forms
         public frmOrder()
         {
             InitializeComponent();
+            for (int i = 1; i <= 10; ++i)
+            {
+                dataGridView1.Rows.Add(i, "1", "Tên sản phẩm");
+            }
+        }
+
+        private void btnThanhToan_Click(object sender, EventArgs e)
+        {
+            frmXacNhanThanhToan frm = new frmXacNhanThanhToan();
+            frm.ShowDialog();
         }
     }
 }
