@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="WPF_BanHang.UserControl_BanHang.UserControl_Menu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_BanHang.UserControl_BanHang"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1280"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+             
+             >
+    <Grid>
+        <materialDesign:Card VerticalAlignment="Center" HorizontalAlignment="Left" Height="700" Width="200" Margin="10,0,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                    <Grid 
+  Width="150">
+                        <Button
+    Style="{StaticResource MaterialDesignRaisedLightButton}"
+    Height="50"
+    materialDesign:ButtonAssist.CornerRadius="5"
+    ToolTip="MaterialDesignRaisedLightButton with Round Corners" Margin="0,28,0,39">
+                            <TextBlock
+      Text="ORDER" />
+                        </Button>
+                    </Grid>
+                </Grid>
+
+
+                <Grid Grid.Row="2">
+                    <Grid 
+  Width="150">
+                        <Button
+    Style="{StaticResource MaterialDesignRaisedLightButton}"
+    Height="50"
+    materialDesign:ButtonAssist.CornerRadius="5"
+    ToolTip="MaterialDesignRaisedLightButton with Round Corners">
+                            <TextBlock
+      Text="TÀI KHOẢN" />
+                        </Button>
+                    </Grid>
+                </Grid>
+
+
+                <Grid Grid.Row="3">
+                    <Grid 
+  Width="150">
+                        <Button
+    Style="{StaticResource MaterialDesignRaisedLightButton}"
+    Height="50"
+    materialDesign:ButtonAssist.CornerRadius="5"
+    ToolTip="MaterialDesignRaisedLightButton with Round Corners" Margin="0,30,0,37">
+                            <TextBlock
+      Text="THỐNG KÊ" />
+                        </Button>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="4">
+                    
+                    <Grid 
+  Width="150" >
+                        <Button
+    Style="{StaticResource MaterialDesignRaisedLightButton}"
+    Height="50"
+    materialDesign:ButtonAssist.CornerRadius="5"
+    ToolTip="MaterialDesignRaisedLightButton with Round Corners" Margin="0,33,0,34">
+                            <TextBlock
+      Text="NHẬP KHO" />
+                        </Button>
+                    </Grid>
+                </Grid>
+
+
+                <Grid Grid.Row="5">
+                    <Grid 
+  Width="150">
+                        <Button
+    Style="{StaticResource MaterialDesignRaisedLightButton}"
+    Height="50"
+    materialDesign:ButtonAssist.CornerRadius="5"
+    ToolTip="MaterialDesignRaisedLightButton with Round Corners">
+                            <TextBlock
+      Text="ĐĂNG XUẤT" />
+                        </Button>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="0">
+                    <materialDesign:PackIcon Kind="Halloween" Height="72" VerticalAlignment="Center" Width="70" Margin="6,0,0,0" />
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="50 0 0 20">TÊN NHÂN VIÊN</TextBlock>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="50 25 0 0">CHỨC VỤ</TextBlock>
+                </Grid>
+
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>
