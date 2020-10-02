@@ -16,5 +16,15 @@ namespace ThietKe.Forms
         {
             InitializeComponent();
         }
+        private void frmThongKe_Load(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            DatabaseConnection db = new DatabaseConnection();
+            db.OpenConnection();
+            dataGridView2.DataSource = dt;
+            
+            
+            db.CloseConnection();
+        }
     }
 }

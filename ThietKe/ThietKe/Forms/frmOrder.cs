@@ -25,6 +25,7 @@ namespace ThietKe.Forms
         {
             frmXacNhanThanhToan frm = new frmXacNhanThanhToan();
             frm.ShowDialog();
+           
         }
     }
 }
