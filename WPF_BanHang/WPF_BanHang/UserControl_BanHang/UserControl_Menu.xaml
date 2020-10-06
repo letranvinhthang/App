@@ -47,18 +47,31 @@
         Height="24" />
                             ORDER</TextBlock>
                     </TabItem.Header>
-                    <TextBlock
-      Padding="5"
-      TextWrapping="Wrap">
-      <Run
-        Text="tab 1 content. Default look and behaviors. " />
-      <LineBreak />
-      <LineBreak />
-      <Run
-        FontStyle="Italic">
-      Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
-    </Run>
-                    </TextBlock>
+                    <ListView>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn>
+                                <GridViewColumn.Header>
+                                    <CheckBox/>
+                                </GridViewColumn.Header>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Margin="7" Tag="{Binding Number}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn >
+                            <GridViewColumn Header="STT" Width="60" DisplayMemberBinding="{Binding Number}" />
+                            <GridViewColumn Header="Tiêu đề" Width="500" DisplayMemberBinding="{Binding Title}" />
+                            <GridViewColumn Header="Thống kê" Width="150">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Margin="7" Text="{Binding Summary}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                    </ListView>
                 </TabItem>
                 <TabItem
     Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="200">
