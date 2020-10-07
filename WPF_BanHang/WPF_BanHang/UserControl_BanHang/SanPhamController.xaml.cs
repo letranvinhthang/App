@@ -10,23 +10,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPF_BanHang.DB_BanHang;
 
 namespace WPF_BanHang.UserControl_BanHang
 {
     /// <summary>
-    /// Interaction logic for UserControl_Menu.xaml
+    /// Interaction logic for SanPhamController.xaml
     /// </summary>
-    public partial class UserControl_Menu : UserControl
+    public partial class SanPhamController : UserControl
     {
-        public UserControl_Menu()
+        public SanPhamController()
         {
             InitializeComponent();
-        }
-
-        private void TextBlock_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
-
         }
     }
 }
