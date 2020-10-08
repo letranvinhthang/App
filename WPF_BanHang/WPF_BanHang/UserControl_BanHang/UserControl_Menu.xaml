@@ -4,110 +4,124 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF_BanHang.UserControl_BanHang"
+             xmlns:uc="clr-namespace:WPF_BanHang.UserControl_BanHang"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280"
+             Name="uccontrolmenu"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
      TextElement.FontSize="13"
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
-     Background="{DynamicResource MaterialDesignPaper}"
-     FontFamily="{DynamicResource MaterialDesignFont}"
-             
-             >
+     Background="{DynamicResource MaterialDesignCardBackground}"
+     FontFamily="{DynamicResource MaterialDesignFont}" >
     <Grid>
-        <materialDesign:Card VerticalAlignment="Center" HorizontalAlignment="Left" Height="700" Width="200" Margin="10,0,0,0">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="1">
-                    <Grid 
-  Width="150">
-                        <Button
-    Style="{StaticResource MaterialDesignRaisedLightButton}"
-    Height="50"
-    materialDesign:ButtonAssist.CornerRadius="5"
-    ToolTip="MaterialDesignRaisedLightButton with Round Corners" Margin="0,28,0,39">
-                            <TextBlock
-      Text="ORDER" />
-                        </Button>
-                    </Grid>
-                </Grid>
-
-
-                <Grid Grid.Row="2">
-                    <Grid 
-  Width="150">
-                        <Button
-    Style="{StaticResource MaterialDesignRaisedLightButton}"
-    Height="50"
-    materialDesign:ButtonAssist.CornerRadius="5"
-    ToolTip="MaterialDesignRaisedLightButton with Round Corners">
-                            <TextBlock
-      Text="TÀI KHOẢN" />
-                        </Button>
-                    </Grid>
-                </Grid>
-
-
-                <Grid Grid.Row="3">
-                    <Grid 
-  Width="150">
-                        <Button
-    Style="{StaticResource MaterialDesignRaisedLightButton}"
-    Height="50"
-    materialDesign:ButtonAssist.CornerRadius="5"
-    ToolTip="MaterialDesignRaisedLightButton with Round Corners" Margin="0,30,0,37">
-                            <TextBlock
-      Text="THỐNG KÊ" />
-                        </Button>
-                    </Grid>
-                </Grid>
-
-                <Grid Grid.Row="4">
-                    
-                    <Grid 
-  Width="150" >
-                        <Button
-    Style="{StaticResource MaterialDesignRaisedLightButton}"
-    Height="50"
-    materialDesign:ButtonAssist.CornerRadius="5"
-    ToolTip="MaterialDesignRaisedLightButton with Round Corners" Margin="0,33,0,34">
-                            <TextBlock
-      Text="NHẬP KHO" />
-                        </Button>
-                    </Grid>
-                </Grid>
-
-
-                <Grid Grid.Row="5">
-                    <Grid 
-  Width="150">
-                        <Button
-    Style="{StaticResource MaterialDesignRaisedLightButton}"
-    Height="50"
-    materialDesign:ButtonAssist.CornerRadius="5"
-    ToolTip="MaterialDesignRaisedLightButton with Round Corners">
-                            <TextBlock
-      Text="ĐĂNG XUẤT" />
-                        </Button>
-                    </Grid>
-                </Grid>
-
-                <Grid Grid.Row="0">
-                    <materialDesign:PackIcon Kind="Halloween" Height="72" VerticalAlignment="Center" Width="70" Margin="6,0,0,0" />
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="50 0 0 20">TÊN NHÂN VIÊN</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="50 25 0 0">CHỨC VỤ</TextBlock>
-                </Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="17*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="0,0,39,0">
+                <materialDesign:PackIcon Kind="Halloween" Width="116" Height="100" />
+                
             </Grid>
-        </materialDesign:Card>
+            <Grid Grid.ColumnSpan="2" Margin="111,0,0,0">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="34" Text="{Binding Tag, ElementName=uccontrolmenu}" ></TextBlock>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <TabControl
+  Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
+  materialDesign:ColorZoneAssist.Mode="PrimaryMid" Foreground="#DDFFFFFF">
+                <TabItem
+    Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="200">
+                    <TabItem.Header>
+
+                        <TextBlock FontSize="24" HorizontalAlignment="Left">
+                            <materialDesign:PackIcon
+        Kind="Heart"
+        Width="24"
+        Height="24" />
+                            ORDER</TextBlock>
+                    </TabItem.Header>
+
+                    <uc:SanPhamController></uc:SanPhamController>
+                    
+                    <!--<DataGrid>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="BARCODE"/>
+                            <DataGridTextColumn Header="Tên sản phẩm" Width="200"/>
+                            <DataGridTextColumn Header="Đơn giá"/>
+                            <DataGridTextColumn Header="Số lượng"/>
+                        </DataGrid.Columns>
+                    </DataGrid>-->
+                </TabItem>
+                <TabItem
+    Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="200">
+                    <TabItem.Header>
+                        <TextBlock FontSize="24" HorizontalAlignment="Left">
+                            <materialDesign:PackIcon
+        Kind="Spade"
+        Width="24"
+        Height="24"
+             />
+                   
+                        THỐNG KÊ</TextBlock>
+                    </TabItem.Header>
+                    <TextBlock
+      Padding="5"
+      TextWrapping="Wrap">
+      <Run
+        Text="tab 2 content. Default look and behaviors. " />
+      <LineBreak />
+      <LineBreak />
+      <Run
+        FontStyle="Italic">
+      Praesent sed dui arcu. Vivamus porta auctor sagittis
+    </Run>
+                    </TextBlock>
+                </TabItem>
+                <TabItem
+    Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="200">
+                    <TabItem.Header>
+                        <TextBlock FontSize="24" HorizontalAlignment="Left">
+                            <materialDesign:PackIcon
+        Kind="Tree"
+        Width="24"
+        Height="24" />
+                      NHẬP KHO</TextBlock>
+                    </TabItem.Header>
+                    <TextBlock
+      Padding="5"
+      TextWrapping="Wrap">
+      <Run
+        Text="tab 3 content. Default look and right aligned. " />
+      <LineBreak />
+      <LineBreak />
+      <Run
+        FontStyle="Italic">
+      Praesent sed dui arcu. Vivamus porta auctor sagittis
+    </Run>
+                    </TextBlock>
+                </TabItem>
+
+            </TabControl>
+            <Button
+    Style="{StaticResource MaterialDesignRaisedAccentButton}"
+    Width="200" Height="70" VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                
+    ToolTip="Resource name: MaterialDesignRaisedAccentButton" Background="{x:Null}" Foreground="#DDFFFFFF" BorderBrush="{x:Null}" OpacityMask="Black" FontSize="24">
+                ĐĂNG XUẤT
+            </Button>
+        </Grid>
     </Grid>
+
+
+
 </UserControl>

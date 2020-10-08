@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_BanHang.DB_BanHang;
 
 namespace WPF_BanHang.UserControl_BanHang
 {
@@ -21,6 +22,11 @@ namespace WPF_BanHang.UserControl_BanHang
         public UserControl_Menu()
         {
             InitializeComponent();
+        }
+
+        private void TextBlock_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+
         }
     }
 }
