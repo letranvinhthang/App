@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
+=======
+    <Compile Remove="Model\**" />
+    <EmbeddedResource Remove="Model\**" />
+    <None Remove="Model\**" />
+    <Page Remove="Model\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+>>>>>>> e8af81df5810ad2c9e7d0a21b4675a37ddf7c75e
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="MaterialDesignThemes" Version="3.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
@@ -21,6 +31,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.8" />
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.8" />
     <PackageReference Include="MySql.Data" Version="8.0.21" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.2" />
@@ -29,6 +40,11 @@
 
   <ItemGroup>
     <Folder Include="view\" />
+=======
+    <PackageReference Include="MySql.Data" Version="8.0.21" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.21" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.2" />
+>>>>>>> e8af81df5810ad2c9e7d0a21b4675a37ddf7c75e
   </ItemGroup>
 
 </Project>

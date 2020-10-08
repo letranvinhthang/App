@@ -32,8 +32,13 @@
     </i:Interaction.Triggers>
     <Grid>
 
+<<<<<<< HEAD
         <uc:UserControl_Menu Tag="{Binding  Title , ElementName=window}"></uc:UserControl_Menu>
 
+=======
+        <uc:UserControl_Menu></uc:UserControl_Menu>
+      
+>>>>>>> e8af81df5810ad2c9e7d0a21b4675a37ddf7c75e
 
 
 
