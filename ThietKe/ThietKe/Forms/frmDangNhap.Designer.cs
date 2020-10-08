@@ -28,10 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< HEAD
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDangNhap));
+=======
 <<<<<<< HEAD:ThietKeBH/ThietKeBH/Form/frmDangNhap.Designer.cs
             this.panel1 = new System.Windows.Forms.Panel();
 =======
 >>>>>>> 2d81d0589b123768aa82d3e0179e126f1d7f609c:ThietKe/ThietKe/Forms/frmDangNhap.Designer.cs
+>>>>>>> f9522b03fc6795b8dc4c1b3a7d30eb17347d4340
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -128,12 +132,14 @@
 =======
             this.btnDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangNhap.ForeColor = System.Drawing.Color.White;
-            this.btnDangNhap.Location = new System.Drawing.Point(195, 323);
+            this.btnDangNhap.Image = ((System.Drawing.Image)(resources.GetObject("btnDangNhap.Image")));
+            this.btnDangNhap.Location = new System.Drawing.Point(182, 328);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(100, 35);
+            this.btnDangNhap.Size = new System.Drawing.Size(125, 55);
             this.btnDangNhap.TabIndex = 2;
 >>>>>>> 2d81d0589b123768aa82d3e0179e126f1d7f609c:ThietKe/ThietKe/Forms/frmDangNhap.Designer.cs
             this.btnDangNhap.Text = "Đăng nhập";
+            this.btnDangNhap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDangNhap.UseVisualStyleBackColor = false;
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             this.btnDangNhap.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BamEnter);
