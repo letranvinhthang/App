@@ -50,17 +50,8 @@
         Height="24" />
                             ORDER</TextBlock>
                     </TabItem.Header>
-<<<<<<< HEAD
-                    <TextBlock
-      Padding="5"
-      TextWrapping="Wrap">
-      <Run>
-    
-    </Run>
-                    </TextBlock>
-=======
-                    
-                        <uc:SanPhamController></uc:SanPhamController>
+
+                    <uc:SanPhamController></uc:SanPhamController>
                     
                     <!--<DataGrid>
                         <DataGrid.Columns>
@@ -70,7 +61,6 @@
                             <DataGridTextColumn Header="Số lượng"/>
                         </DataGrid.Columns>
                     </DataGrid>-->
->>>>>>> e8af81df5810ad2c9e7d0a21b4675a37ddf7c75e
                 </TabItem>
                 <TabItem
     Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="200">
