@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:WPF_BanHang.UserControl_BanHang"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280"
+             Name="uccontrolmenu"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
@@ -26,9 +27,10 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" Margin="0,0,39,0">
                 <materialDesign:PackIcon Kind="Halloween" Width="116" Height="100" />
+                
             </Grid>
             <Grid Grid.ColumnSpan="2" Margin="111,0,0,0">
-                <TextBlock Margin="10,28,-10,44">TÊN NHÂN VIÊN</TextBlock>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="34" Text="{Binding Tag, ElementName=uccontrolmenu}" ></TextBlock>
             </Grid>
         </Grid>
 
@@ -50,13 +52,8 @@
                     <TextBlock
       Padding="5"
       TextWrapping="Wrap">
-      <Run
-        Text="tab 1 content. Default look and behaviors. " />
-      <LineBreak />
-      <LineBreak />
-      <Run
-        FontStyle="Italic">
-      Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+      <Run>
+    
     </Run>
                     </TextBlock>
                 </TabItem>
@@ -67,7 +64,9 @@
                             <materialDesign:PackIcon
         Kind="Spade"
         Width="24"
-        Height="24" />
+        Height="24"
+             />
+                   
                         THỐNG KÊ</TextBlock>
                     </TabItem.Header>
                     <TextBlock

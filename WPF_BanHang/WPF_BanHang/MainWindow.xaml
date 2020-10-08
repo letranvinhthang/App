@@ -4,7 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_BanHang"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
+        Name="window"
         Title="MainWindow" Height="720" Width="1280"
         
         xmlns:uc="clr-namespace:WPF_BanHang.UserControl_BanHang"
@@ -21,9 +23,16 @@
         
         
         DataContext="{StaticResource mainVM}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction 
+                Command="{Binding loadedwindowcommand}" 
+                CommandParameter="{Binding ElementName=window}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
 
-        <uc:UserControl_Menu></uc:UserControl_Menu>
+        <uc:UserControl_Menu Tag="{Binding  Title , ElementName=window}"></uc:UserControl_Menu>
 
 
 

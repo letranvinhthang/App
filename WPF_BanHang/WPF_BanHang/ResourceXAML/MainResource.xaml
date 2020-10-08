@@ -3,4 +3,5 @@
                     xmlns:viewmodel="clr-namespace:WPF_BanHang.Viewmodel"
                     xmlns:local="clr-namespace:WPF_BanHang.ResourceXAML">
     <viewmodel:MainViewModel x:Key="mainVM"></viewmodel:MainViewModel>
+    <viewmodel:LoginViewModel x:Key="loginVM"></viewmodel:LoginViewModel>
 </ResourceDictionary>
