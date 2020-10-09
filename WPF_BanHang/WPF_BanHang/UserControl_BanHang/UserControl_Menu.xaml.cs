@@ -13,9 +13,6 @@ namespace WPF_BanHang.UserControl_BanHang
             InitializeComponent();
         }
 
-        private void TextBlock_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
-
-        }
+        
     }
 }
