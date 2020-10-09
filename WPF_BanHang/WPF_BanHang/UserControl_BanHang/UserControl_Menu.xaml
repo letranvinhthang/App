@@ -32,7 +32,7 @@
             </Grid>
             <Grid Grid.Column="1" Margin="40,0,0,0">
                 <Grid.Background>
-                    <SolidColorBrush Color="Azure"/>
+                    <ImageBrush ImageSource="Icons/Banner.jpg"/>
                 </Grid.Background>
 
 
@@ -44,10 +44,8 @@
             <TabControl
   Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
   materialDesign:ColorZoneAssist.Mode="Custom" materialDesign:ColorZoneAssist.Background="#FF39CAFA">
-                <TabItem
-    Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="200">
+                <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="200">
                     <TabItem.Header>
-
                         <StackPanel Orientation="Horizontal">
                             <Image Source="Icons/ThemSP.png" Width="30" Height="30" Margin="0 0 10 0"/>
                             <TextBlock Text="ORDER" FontSize="24" Foreground="White"/>
@@ -65,8 +63,7 @@
                         </DataGrid.Columns>
                     </DataGrid>-->
                 </TabItem>
-                <TabItem
-    Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="200">
+                <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="200">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="Icons/Thongke.png" Width="30" Height="30" Margin="0 0 10 0"/>
@@ -86,8 +83,7 @@
     </Run>
                     </TextBlock>
                 </TabItem>
-                <TabItem
-    Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="200">
+                <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="200">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="Icons/Kho.png" Width="30" Height="30" Margin="0 0 10 0"/>
@@ -106,6 +102,15 @@
       Praesent sed dui arcu. Vivamus porta auctor sagittis
     </Run>
                     </TextBlock>
+                </TabItem>
+                
+                <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="200">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Icons/Nhanvien.png" Width="30" Height="30" Margin="0 0 10 0"/>
+                            <TextBlock Text="NHÂN VIÊN" FontSize="24" Foreground="White"/>
+                        </StackPanel>
+                    </TabItem.Header>
                 </TabItem>
 
             </TabControl>

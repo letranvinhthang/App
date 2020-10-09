@@ -15,7 +15,7 @@
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
-        <materialDesign:Card>
+        <materialDesign:Card Margin="25,25,25,25">
             <!--<DataGrid AutoGenerateColumns="False" IsReadOnly="True" Name="SanPhamDG" CanUserResizeColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="BARCODE"  />

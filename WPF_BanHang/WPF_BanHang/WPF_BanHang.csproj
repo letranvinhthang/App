@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="Hinh\Background.jpg" />
+    <None Remove="Hinh\Banner.jpg" />
     <None Remove="Hinh\Login.jpg" />
     <None Remove="Hinh\Logo.png" />
     <None Remove="UserControl_BanHang\Icons\Kho.png" />
@@ -20,6 +21,7 @@
 
   <ItemGroup>
     <Resource Include="Hinh\Background.jpg" />
+    <Resource Include="UserControl_BanHang\Icons\Banner.jpg" />
     <Resource Include="Hinh\Login.jpg" />
     <Resource Include="Hinh\Logo.png" />
     <Resource Include="UserControl_BanHang\Icons\Kho.png" />
