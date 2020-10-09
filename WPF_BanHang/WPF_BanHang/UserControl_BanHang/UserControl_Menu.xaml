@@ -97,6 +97,7 @@
                                 <GridViewColumn Header="STT" DisplayMemberBinding="{Binding STT}"></GridViewColumn>
                                 <GridViewColumn Header="Tên vật tư" DisplayMemberBinding="{Binding ten }"></GridViewColumn>
                                 <GridViewColumn Header="Số lượng tồn" DisplayMemberBinding="{Binding soluong}"></GridViewColumn>
+                                
                             </GridView>
                         </ListView.View>
                     </ListView>
