@@ -5,7 +5,7 @@ using WPF_BanHang.Models;
 
 namespace WPF_BanHang.DB_BanHang
 {
-    public class DbBanHang
+    public class DbBanHangs
     {
         qlbhContext db = new qlbhContext();
         

@@ -13,6 +13,7 @@
      TextElement.FontWeight="Regular"
      TextElement.FontSize="13"
      TextOptions.TextFormattingMode="Ideal"
+          DataContext="{StaticResource mainVM}"
      TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource MaterialDesignCardBackground}"
      FontFamily="{DynamicResource MaterialDesignFont}" >
@@ -97,18 +98,15 @@
         Height="24" />
                       NHẬP KHO</TextBlock>
                     </TabItem.Header>
-                    <TextBlock
-      Padding="5"
-      TextWrapping="Wrap">
-      <Run
-        Text="tab 3 content. Default look and right aligned. " />
-      <LineBreak />
-      <LineBreak />
-      <Run
-        FontStyle="Italic">
-      Praesent sed dui arcu. Vivamus porta auctor sagittis
-    </Run>
-                    </TextBlock>
+                    <ListView ItemsSource="{Binding tonkhoxlist}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="STT" DisplayMemberBinding="{Binding STT}"></GridViewColumn>
+                                <GridViewColumn Header="Tên vật tư" DisplayMemberBinding="{Binding ten }"></GridViewColumn>
+                                <GridViewColumn Header="Số lượng tồn" DisplayMemberBinding="{Binding soluong}"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </TabItem>
 
             </TabControl>

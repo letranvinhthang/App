@@ -5,11 +5,17 @@ using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
+using System.Collections.ObjectModel;
+using WPF_BanHang.Models;
+using Google.Protobuf.WellKnownTypes;
+using System.Linq;
 
 namespace WPF_BanHang.Viewmodel
 {
     public class MainViewModel : BaseViewModel
     {
+        private ObservableCollection<tonkhoxl> _tonkhoxlist;
+        public ObservableCollection<tonkhoxl> tonkhoxlist { get=> _tonkhoxlist; set { _tonkhoxlist = value;OnPropertyChanged(); } }
         //xử lý
         public ICommand loadedwindowcommand { get; set; }
         public ICommand unitcommand { get; set; }
@@ -30,6 +36,7 @@ namespace WPF_BanHang.Viewmodel
                 if (loginnVM.IsLogin)
                 {
                     p.Show();
+                    loadtonkho();
                 }
                 else
                 {
@@ -41,6 +48,32 @@ namespace WPF_BanHang.Viewmodel
                 Unitwindow wd = new Unitwindow();
                 wd.ShowDialog();
             });*/
+        }
+        void loadtonkho()
+        {
+            var db = new qlbhContext();
+            tonkhoxlist = new ObservableCollection<tonkhoxl>();
+            var tk = db.TonKho;
+            var sp = db.SanPham;
+            var cthd = db.HoaDonChitiet;
+            int i = 1;
+            foreach(var item in sp.ToList())
+            {
+               var nhap= cthd.Where(p => p.IdSanpham == item.IdSanpham && p.IdNhacc != null);
+               var xuat = cthd.Where(p => p.IdSanpham == item.IdSanpham && p.IdNhacc == null);
+                int sumnhap = 0;
+                int sumxuat = 0;
+                if (nhap != null)
+                    sumnhap = nhap.Sum(p => p.SoLuong);
+                if (xuat != null) ;
+                sumxuat = xuat.Sum(p => p.SoLuong);
+                tonkhoxl tonKho = new tonkhoxl();
+                tonKho.STT = i;
+                tonKho.ten = item.TenSanpham;
+                tonKho.soluong =sumnhap - sumxuat;
+                tonkhoxlist.Add(tonKho);
+                i++;
+            }
         }
     }
 }

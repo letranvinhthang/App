@@ -33,8 +33,7 @@ namespace WPF_BanHang.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseMySql("server=192.168.10.225;database=qlbh;user=root", x => x.ServerVersion("10.4.14-mariadb"));
             }
         }
@@ -217,6 +216,12 @@ namespace WPF_BanHang.Models
                 entity.HasIndex(e => e.IdHoadon)
                     .HasName("ID_hoadon");
 
+                entity.HasIndex(e => e.IdKhachhang)
+                    .HasName("ID_Khachhang");
+
+                entity.HasIndex(e => e.IdNhacc)
+                    .HasName("ID_nhacc");
+
                 entity.HasIndex(e => e.IdSanpham)
                     .HasName("ID_sanpham");
 
@@ -224,6 +229,14 @@ namespace WPF_BanHang.Models
 
                 entity.Property(e => e.IdHoadon)
                     .HasColumnName("ID_hoadon")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.IdKhachhang)
+                    .HasColumnName("ID_Khachhang")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.IdNhacc)
+                    .HasColumnName("ID_nhacc")
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.IdSanpham)
@@ -239,6 +252,16 @@ namespace WPF_BanHang.Models
                     .HasForeignKey(d => d.IdHoadon)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("hoa_don_chitiet_ibfk_1");
+
+                entity.HasOne(d => d.IdKhachhangNavigation)
+                    .WithMany()
+                    .HasForeignKey(d => d.IdKhachhang)
+                    .HasConstraintName("hoa_don_chitiet_ibfk_2");
+
+                entity.HasOne(d => d.IdNhaccNavigation)
+                    .WithMany()
+                    .HasForeignKey(d => d.IdNhacc)
+                    .HasConstraintName("ID_nhacc");
             });
 
             modelBuilder.Entity<KhachHang>(entity =>
