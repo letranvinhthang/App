@@ -5,6 +5,31 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Hinh\Background.jpg" />
+    <None Remove="Hinh\Banner.jpg" />
+    <None Remove="Hinh\Login.jpg" />
+    <None Remove="Hinh\Logo.png" />
+    <None Remove="UserControl_BanHang\Icons\Kho.png" />
+    <None Remove="UserControl_BanHang\Icons\Logo.png" />
+    <None Remove="UserControl_BanHang\Icons\Logout.png" />
+    <None Remove="UserControl_BanHang\Icons\ThemSP.png" />
+    <None Remove="UserControl_BanHang\Icons\Thongke.png" />
+    <None Remove="UserControl_BanHang\Logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Hinh\Background.jpg" />
+    <Resource Include="UserControl_BanHang\Icons\Banner.jpg" />
+    <Resource Include="Hinh\Login.jpg" />
+    <Resource Include="Hinh\Logo.png" />
+    <Resource Include="UserControl_BanHang\Icons\Kho.png" />
+    <Resource Include="UserControl_BanHang\Icons\Logo.png" />
+    <Resource Include="UserControl_BanHang\Icons\Logout.png" />
+    <Resource Include="UserControl_BanHang\Icons\ThemSP.png" />
+    <Resource Include="UserControl_BanHang\Icons\Thongke.png" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="MaterialDesignThemes" Version="3.2.0" />

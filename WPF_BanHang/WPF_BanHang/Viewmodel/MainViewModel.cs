@@ -1,14 +1,13 @@
-﻿using WPF_BanHang;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
+<<<<<<< HEAD
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using System.Collections.ObjectModel;
 using WPF_BanHang.Models;
 using Google.Protobuf.WellKnownTypes;
 using System.Linq;
+=======
+>>>>>>> trung
 
 namespace WPF_BanHang.Viewmodel
 {

@@ -1,18 +1,15 @@
 ﻿using System.Windows.Controls;
-using System.Windows.Data;
 
 namespace WPF_BanHang.UserControl_BanHang
 {
     /// <summary>
-    /// Interaction logic for UserControl_Menu.xaml
+    /// Interaction logic for SanPhamController.xaml
     /// </summary>
-    public partial class UserControl_Menu : UserControl
+    public partial class SanPhamController : UserControl
     {
-        public UserControl_Menu()
+        public SanPhamController()
         {
             InitializeComponent();
         }
-
-        
     }
 }

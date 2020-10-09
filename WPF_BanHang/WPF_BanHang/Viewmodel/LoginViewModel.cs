@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using WPF_BanHang.Model;
 using WPF_BanHang.Models;
 
 namespace WPF_BanHang.Viewmodel
 {
-   
+
     class LoginViewModel : BaseViewModel
     {
         public bool IsLogin { get; set; }
