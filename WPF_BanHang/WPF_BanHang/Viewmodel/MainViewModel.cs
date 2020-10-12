@@ -104,9 +104,10 @@ namespace WPF_BanHang.Viewmodel
                 if (xuat != null) ;
                 sumxuat = xuat.Sum(p => p.SoLuong);
                 tonkhoxl tonKho = new tonkhoxl();
-                tonKho.STT = i;
+                tonKho.barcode = item.IdSanpham;
                 tonKho.ten = item.TenSanpham;
                 tonKho.soluong =sumnhap - sumxuat;
+                tonKho.STT = i;
                 tonkhoxlist.Add(tonKho);
                 i++;
             }
