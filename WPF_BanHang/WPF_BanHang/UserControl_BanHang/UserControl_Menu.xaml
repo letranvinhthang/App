@@ -17,7 +17,7 @@
      TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource MaterialDesignCardBackground}"
      FontFamily="{DynamicResource MaterialDesignFont}" >
-    <Grid>
+    <Grid Background="Azure">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"></RowDefinition>
             <RowDefinition Height="17*"></RowDefinition>
@@ -29,22 +29,21 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" Margin="25,0,0,0">
                 <Image Source="Icons/Logo.png"/>
-
             </Grid>
-            <Grid Grid.Column="1" Margin="40,0,0,0">
+            <Grid Grid.Column="1" Margin="40,0,0,-127">
                 <Grid.Background>
                     <ImageBrush ImageSource="Icons/Banner.jpg"/>
                 </Grid.Background>
-
 
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="34" Text="{Binding Tag, ElementName=uccontrolmenu}" ></TextBlock>
             </Grid>
         </Grid>
 
-        <Grid Grid.Row="1">
-            <TabControl
+
+        <Grid Grid.Row="1" Margin="0,0,0,0">
+            <TabControl Background="WhiteSmoke"
   Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
-  materialDesign:ColorZoneAssist.Mode="Custom" materialDesign:ColorZoneAssist.Background="#FF39CAFA">
+  materialDesign:ColorZoneAssist.Mode="Custom" materialDesign:ColorZoneAssist.Background="#FF39CAFA" Margin="0,129,0,0">
                 <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="200">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
@@ -52,9 +51,52 @@
                             <TextBlock Text="ORDER" FontSize="24" Foreground="White"/>
                         </StackPanel>
                     </TabItem.Header>
+                    <ListView Margin="0,0,0,115">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
 
-                    
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="STT" DisplayMemberBinding="{Binding STT }">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                            <Setter Property="Background" Value="Aquamarine"/>
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Barcode" Width="150" DisplayMemberBinding="{Binding barcode }">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                            <Setter Property="Background" Value="Aquamarine"/>
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Tên vật tư" DisplayMemberBinding="{Binding ten }">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                                            <Setter Property="Background" Value="Aquamarine"/>
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Số lượng tồn" DisplayMemberBinding="{Binding soluong}">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                                            <Setter Property="Background" Value="Aquamarine"/>
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
 
+
+                    </ListView>
                     <!--<DataGrid>
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="BARCODE"/>
@@ -71,18 +113,49 @@
                             <TextBlock Text="THỐNG KÊ" FontSize="24" Foreground="White"/>
                         </StackPanel>
                     </TabItem.Header>
-                    <TextBlock
-      Padding="5"
-      TextWrapping="Wrap">
-      <Run
-        Text="tab 2 content. Default look and behaviors. " />
-      <LineBreak />
-      <LineBreak />
-      <Run
-        FontStyle="Italic">
-      Praesent sed dui arcu. Vivamus porta auctor sagittis
-    </Run>
-                    </TextBlock>
+                    <ListView ItemsSource="{Binding tonkhoxlist}" Margin="0,0,0,169">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="STT" DisplayMemberBinding="{Binding STT }">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                            <Setter Property="Background" Value="Aquamarine"/>
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Barcode" Width="150" DisplayMemberBinding="{Binding barcode }">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                            <Setter Property="Background" Value="Aquamarine"/>
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Tên vật tư" DisplayMemberBinding="{Binding ten }">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                                            <Setter Property="Background" Value="Aquamarine"/>
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Số lượng tồn" DisplayMemberBinding="{Binding soluong}">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                                            <Setter Property="Background" Value="Aquamarine"/>
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </TabItem>
                 <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="200">
                     <TabItem.Header>
@@ -99,15 +172,43 @@
                         </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="STT" DisplayMemberBinding="{Binding STT }"/>
-                                <GridViewColumn Header="Tên vật tư" DisplayMemberBinding="{Binding ten }"/>
-                                <GridViewColumn Header="Số lượng tồn" DisplayMemberBinding="{Binding soluong}"/>
-
+                                <GridViewColumn Header="STT" DisplayMemberBinding="{Binding STT }">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                            <Setter Property="Background" Value="Aquamarine"/>
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Barcode" Width="150" DisplayMemberBinding="{Binding barcode }">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                            <Setter Property="Background" Value="Aquamarine"/>
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Tên vật tư" DisplayMemberBinding="{Binding ten }">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                                            <Setter Property="Background" Value="Aquamarine"/>
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Số lượng tồn" DisplayMemberBinding="{Binding soluong}">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                                            <Setter Property="Background" Value="Aquamarine"/>
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
                 </TabItem>
-                
+                <!--Nút nhân viên-->
                 <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="200">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
@@ -115,6 +216,65 @@
                             <TextBlock Text="NHÂN VIÊN" FontSize="24" Foreground="White"/>
                         </StackPanel>
                     </TabItem.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <ListView ItemsSource="{Binding tonkhoxlist}">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="STT" DisplayMemberBinding="{Binding STT }">
+                                            <GridViewColumn.HeaderContainerStyle>
+                                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                    <Setter Property="Background" Value="Aquamarine"/>
+                                                </Style>
+                                            </GridViewColumn.HeaderContainerStyle>
+                                        </GridViewColumn>
+                                        <GridViewColumn Header="Barcode" Width="150" DisplayMemberBinding="{Binding }">
+                                            <GridViewColumn.HeaderContainerStyle>
+                                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                    <Setter Property="Background" Value="Aquamarine"/>
+                                                </Style>
+                                            </GridViewColumn.HeaderContainerStyle>
+                                        </GridViewColumn>
+                                        <GridViewColumn Header="Tên nhân viên" DisplayMemberBinding="{Binding ten }">
+                                            <GridViewColumn.HeaderContainerStyle>
+                                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                    <Setter Property="Background" Value="Aquamarine"/>
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                </Style>
+                                            </GridViewColumn.HeaderContainerStyle>
+                                        </GridViewColumn>
+                                        <GridViewColumn Header="Liên hệ" DisplayMemberBinding="{Binding soluong}">
+                                            <GridViewColumn.HeaderContainerStyle>
+                                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                    <Setter Property="Background" Value="Aquamarine"/>
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                </Style>
+                                            </GridViewColumn.HeaderContainerStyle>
+                                        </GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </Grid>
+                        <!--Listview-->
+                        <Grid Grid.Row="1">
+                            <TextBox HorizontalAlignment="Left" Margin="110,34,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox HorizontalAlignment="Left" Margin="110,96,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox HorizontalAlignment="Left" Margin="110,165,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Button Content="Button" HorizontalAlignment="Left" Margin="348,121,0,0" VerticalAlignment="Top"/>
+
+                        </Grid>
+                    </Grid>
                 </TabItem>
 
             </TabControl>
@@ -127,9 +287,10 @@
                     <TextBlock Text="ĐĂNG XUẤT" FontSize="24" Foreground="White"/>
                 </StackPanel>
             </Button>
+            <!--Nút đăng xuất-->
         </Grid>
+
+        <TextBlock HorizontalAlignment="Left" Margin="60,10,0,0" Grid.Row="1" Text="Hello!" FontSize="30" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,56,0,0" Grid.Row="1" Text="Tên nhân viên" FontSize="30" TextWrapping="Wrap" VerticalAlignment="Top"/>
     </Grid>
-
-
-
 </UserControl>
