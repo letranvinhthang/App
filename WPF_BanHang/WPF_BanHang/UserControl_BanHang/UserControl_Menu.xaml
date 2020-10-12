@@ -115,7 +115,7 @@
                             <TextBlock Text="NHÂN VIÊN" FontSize="24" Foreground="White"/>
                         </StackPanel>
                     </TabItem.Header>
-                    <ListView ItemsSource="{Binding nhanvienlist}">
+                    <ListView ItemsSource="{Binding nhanvienlist}" SelectedItem="{Binding SelectedItem,Mode=OneWayToSource}">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>

@@ -5,18 +5,52 @@ using System.Collections.ObjectModel;
 using WPF_BanHang.Models;
 using Google.Protobuf.WellKnownTypes;
 using System.Linq;
-
+using System;
 
 namespace WPF_BanHang.Viewmodel
 {
     public class MainViewModel : BaseViewModel
     {
+        //xử lý bên tồn kho
         private ObservableCollection<tonkhoxl> _tonkhoxlist;
         public ObservableCollection<tonkhoxl> tonkhoxlist { get=> _tonkhoxlist; set { _tonkhoxlist = value;OnPropertyChanged(); } }
-        //xử lý
+       //xử lý bên nhân viên
         public ObservableCollection<nvxl> _nhanvienlist;
 
-        public ObservableCollection<nvxl> nhanvienlist { get => _nhanvienlist; set { _nhanvienlist = value; OnPropertyChanged(); } }
+        public ObservableCollection<nvxl> nhanvienlist { get => _nhanvienlist;set { _nhanvienlist = value; OnPropertyChanged(); } }
+        public nvxl _SelectedItem;
+
+        public nvxl SelectedItem 
+        { 
+            get => _SelectedItem; 
+            set
+            {
+                _SelectedItem = value; OnPropertyChanged(); 
+                if(SelectedItem!=null)
+                {
+                    ten = SelectedItem.ten;
+                    pass = SelectedItem.Pass;
+                    ngaysinh = SelectedItem.ngaysinh;
+                    diachi = SelectedItem.diachi;
+                    chuvu = SelectedItem.chucvu;
+                }    
+            }
+        }
+        public string _ten;
+
+        public string ten { get => _ten; set { _ten = value; OnPropertyChanged(); } }
+        public string _pass;
+
+        public string pass { get => _pass; set { _pass = value; OnPropertyChanged(); } }
+        public DateTime _ngaysinh;
+
+        public DateTime ngaysinh { get => _ngaysinh; set { _ngaysinh = value; OnPropertyChanged(); } }
+        public string _diachi;
+
+        public string diachi { get => _diachi; set { _diachi = value; OnPropertyChanged(); } }
+        public string _chuvu;
+
+        public string chuvu { get => _chuvu; set { _chuvu = value; OnPropertyChanged(); } }
 
         public ICommand loadedwindowcommand { get; set; }
         public ICommand unitcommand { get; set; }
