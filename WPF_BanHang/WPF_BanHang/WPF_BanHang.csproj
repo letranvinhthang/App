@@ -14,6 +14,7 @@
     <None Remove="UserControl_BanHang\Icons\Kho.png" />
     <None Remove="UserControl_BanHang\Icons\Logo.png" />
     <None Remove="UserControl_BanHang\Icons\Logout.png" />
+    <None Remove="UserControl_BanHang\Icons\Nhanvien.png" />
     <None Remove="UserControl_BanHang\Icons\ThemSP.png" />
     <None Remove="UserControl_BanHang\Icons\Thongke.png" />
     <None Remove="UserControl_BanHang\Logo.png" />
@@ -27,6 +28,7 @@
     <Resource Include="UserControl_BanHang\Icons\Kho.png" />
     <Resource Include="UserControl_BanHang\Icons\Logo.png" />
     <Resource Include="UserControl_BanHang\Icons\Logout.png" />
+    <Resource Include="UserControl_BanHang\Icons\Nhanvien.png" />
     <Resource Include="UserControl_BanHang\Icons\ThemSP.png" />
     <Resource Include="UserControl_BanHang\Icons\Thongke.png" />
   </ItemGroup>

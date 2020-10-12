@@ -53,7 +53,7 @@
                         </StackPanel>
                     </TabItem.Header>
 
-                    <uc:SanPhamController></uc:SanPhamController>
+                    
 
                     <!--<DataGrid>
                         <DataGrid.Columns>
@@ -92,12 +92,17 @@
                         </StackPanel>
                     </TabItem.Header>
                     <ListView ItemsSource="{Binding tonkhoxlist}">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="STT" DisplayMemberBinding="{Binding STT}"></GridViewColumn>
-                                <GridViewColumn Header="Tên vật tư" DisplayMemberBinding="{Binding ten }"></GridViewColumn>
-                                <GridViewColumn Header="Số lượng tồn" DisplayMemberBinding="{Binding soluong}"></GridViewColumn>
-                                
+                                <GridViewColumn Header="STT" DisplayMemberBinding="{Binding STT }"/>
+                                <GridViewColumn Header="Tên vật tư" DisplayMemberBinding="{Binding ten }"/>
+                                <GridViewColumn Header="Số lượng tồn" DisplayMemberBinding="{Binding soluong}"/>
+
                             </GridView>
                         </ListView.View>
                     </ListView>
