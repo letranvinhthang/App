@@ -14,6 +14,10 @@ namespace WPF_BanHang.Viewmodel
         private ObservableCollection<tonkhoxl> _tonkhoxlist;
         public ObservableCollection<tonkhoxl> tonkhoxlist { get=> _tonkhoxlist; set { _tonkhoxlist = value;OnPropertyChanged(); } }
         //xử lý
+        public ObservableCollection<nvxl> _nhanvienlist;
+
+        public ObservableCollection<nvxl> nhanvienlist { get => _nhanvienlist; set { _nhanvienlist = value; OnPropertyChanged(); } }
+
         public ICommand loadedwindowcommand { get; set; }
         public ICommand unitcommand { get; set; }
         public bool isloaded = false;
@@ -34,6 +38,7 @@ namespace WPF_BanHang.Viewmodel
                 {
                     p.Show();
                     loadtonkho();
+                    loadnhanvien();
                 }
                 else
                 {
@@ -71,6 +76,26 @@ namespace WPF_BanHang.Viewmodel
                 tonKho.STT = i;
                 tonkhoxlist.Add(tonKho);
                 i++;
+            }
+        }
+        void loadnhanvien()
+        {
+            var db = new qlbhContext();
+            nhanvienlist = new ObservableCollection<nvxl>();
+            var nv = db.NhanVien;
+            var qh = db.QuyenHan;
+
+            foreach (var item in nv.ToList())
+            {
+                var tencv = qh.Where(p => p.IdChucvu == item.IdChucvu).FirstOrDefault();
+                nvxl nvl = new nvxl();
+                nvl.Manv = item.IdNhanvien;
+                nvl.ten = item.TenNhanvien;
+                nvl.Pass = item.PassNhanvien;
+                nvl.ngaysinh = item.NgaySinh;
+                nvl.diachi = item.DiachiNhanvien;
+                nvl.chucvu = tencv.TenChucvu;
+                nhanvienlist.Add(nvl);
             }
         }
     }

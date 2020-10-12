@@ -208,7 +208,11 @@
                         </ListView.View>
                     </ListView>
                 </TabItem>
+<<<<<<< HEAD
                 <!--Nút nhân viên-->
+=======
+
+>>>>>>> d73245b3698b55c9cfa8149e01b22c5ce1b4d4dc
                 <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="200">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
@@ -216,6 +220,7 @@
                             <TextBlock Text="NHÂN VIÊN" FontSize="24" Foreground="White"/>
                         </StackPanel>
                     </TabItem.Header>
+<<<<<<< HEAD
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
@@ -276,7 +281,28 @@
                         </Grid>
                     </Grid>
                 </TabItem>
+=======
+                    <ListView ItemsSource="{Binding nhanvienlist}">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Mã số nhân viên" DisplayMemberBinding="{Binding Manv }"/>
+                                <GridViewColumn Header="Tên Nhân viên" DisplayMemberBinding="{Binding ten }"/>
+                                <GridViewColumn Header="Password" DisplayMemberBinding="{Binding Pass}"/>
+                                <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding ngaysinh}"/>
+                                <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding diachi}"/>
+                                <GridViewColumn Header="Chức vụ" DisplayMemberBinding="{Binding chucvu}"/>
+>>>>>>> d73245b3698b55c9cfa8149e01b22c5ce1b4d4dc
 
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </TabItem>
             </TabControl>
             <Button
          Style="{StaticResource MaterialDesignRaisedAccentButton}"
