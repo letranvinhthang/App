@@ -18,14 +18,14 @@ namespace WPF_BanHang.Viewmodel
         public ICommand exitcommand { get; set; }
         public ICommand PasswordChangedcommand { get; set; }
         //public ICommand unitcommand { get; set; }
-        private string _username;
-        public string usename { get => _username; set { _username= value;OnPropertyChanged(); } }
+        private int? _username;
+        public int? usename { get => _username; set { _username= value;OnPropertyChanged(); } }
         private string _password;
         public string password { get => _password; set { _password = value; OnPropertyChanged(); } }
         public LoginViewModel()
         {
             //usename = "";
-            password = "";
+            //password = "";
             IsLogin = false;
             logincommand = new RelayCommand<Window>((p) => { return true; }, (p) => { login(p); });
             PasswordChangedcommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { password = p.Password; });
@@ -37,27 +37,23 @@ namespace WPF_BanHang.Viewmodel
             var db = new qlbhContext();
             if (p == null)
                 return;
-            if (usename == null)
+            if(usename != null && password != null)                 
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
-                return;
-            }
-            else 
-            {
-                int id = Int32.Parse(usename);
+                int? id = usename;
                 string pass = MD5Hash(Base64Encode(password));
                 var account = db.NhanVien.Where(x => x.IdNhanvien == id && x.PassNhanvien == pass).Count();
                 if (account > 0)
                 {
                     IsLogin = true;
                     p.Close();
-                }
-                else
-                {
-                    IsLogin = false;
-                    MessageBox.Show("sai tài khoản mật khẩu");
-                }
-            }           
+                }              
+            }
+            else
+            {
+                IsLogin = false;
+                MessageBox.Show("Sai tài khoản mật khẩu");
+            }
+
         }
 
         void exit(Window e)

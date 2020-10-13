@@ -5,7 +5,9 @@ using System.Collections.ObjectModel;
 using WPF_BanHang.Models;
 using Google.Protobuf.WellKnownTypes;
 using System.Linq;
-
+using Org.BouncyCastle.Asn1.Mozilla;
+using System;
+using MaterialDesignThemes.Wpf;
 
 namespace WPF_BanHang.Viewmodel
 {
@@ -20,9 +22,13 @@ namespace WPF_BanHang.Viewmodel
 
         public ICommand loadedwindowcommand { get; set; }
         public ICommand unitcommand { get; set; }
+        public ICommand thanhtoancommand { get; set; }
+        public ICommand themnhanviencommand { get; set; }
         public bool isloaded = false;
         public MainViewModel()
         {
+            themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { themnhanvien(a); });
+            thanhtoancommand = new RelayCommand<HoaDonWindow>((w) => { return true; }, (w) => { Thanhtoan(w); });
             loadedwindowcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 if (p == null)
@@ -51,6 +57,7 @@ namespace WPF_BanHang.Viewmodel
                 wd.ShowDialog();
             });*/
         }
+
         void loadtonkho()
         {
             var db = new qlbhContext();
@@ -97,6 +104,16 @@ namespace WPF_BanHang.Viewmodel
                 nvl.chucvu = tencv.TenChucvu;
                 nhanvienlist.Add(nvl);
             }
+        }
+        void Thanhtoan(HoaDonWindow w)
+        {
+            HoaDonWindow window = new HoaDonWindow();
+            window.ShowDialog();
+        }
+        void themnhanvien(ChinhSuaWindow a)
+        {
+            ChinhSuaWindow window1 = new ChinhSuaWindow();
+            window1.ShowDialog();
         }
     }
 }

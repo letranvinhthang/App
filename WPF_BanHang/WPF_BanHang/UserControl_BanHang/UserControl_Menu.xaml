@@ -107,7 +107,9 @@
                                         <TextBox HorizontalAlignment="Center" Margin="0 0 -150 0" materialDesign:HintAssist.Hint="Số lượng" TextWrapping="Wrap" Width="120" Height="25" VerticalAlignment="Center"/>
                                     </Grid>
                                     <Grid Grid.Row="1">
-                                        <Button Height="60" Width="120" Content="Thanh toán" HorizontalAlignment="Center" Margin="0,0,200,0" VerticalAlignment="Center"/>
+                                        <Button Height="60" Width="120" Content="Thanh toán" HorizontalAlignment="Center" Margin="0,0,200,0" VerticalAlignment="Center"
+                                                Command="{Binding thanhtoancommand}"/>
+
                                         <Button Height="60" Width="120" Content="Xóa" HorizontalAlignment="Center" Margin="0,0,-200,0" VerticalAlignment="Center"/>
                                         
                                     </Grid>
@@ -137,12 +139,13 @@
                             <TabControl.Resources>
                                 <Style TargetType="TabItem">
                                     <Setter Property="Background" Value="AntiqueWhite"/>
+                                    <Setter Property="Foreground" Value="CornflowerBlue"/>
                                     <Setter Property="FontSize" Value="20"/>
                                 </Style>
                             </TabControl.Resources>
                             <!--HÓA ĐƠN-->
                             <TabItem Header="HÓA ĐƠN" Height="50" Width="200">
-                                <Grid Background="AliceBlue">
+                                <Grid Background="White">
                                     <materialDesign:Card Margin="10">
                                         <ListView ItemsSource="{Binding nhanvienlist}">
                                             <!--ĐỊNH DẠNG NỘI DUNG-->
@@ -177,15 +180,15 @@
                             </TabItem>
                             <!--SẢN PHẨM-->
                             <TabItem Header="SẢN PHẨM" Height="50" Width="200">
-                                <Grid Background="#FFE5E5E5"/>
+                                <Grid Background="White"/>
                             </TabItem>
                             <!--LỊCH SỬ-->
                             <TabItem Header="LỊCH SỬ" Height="50" Width="200">
-                                <Grid Background="#FFE5E5E5"/>
+                                <Grid Background="White"/>
                             </TabItem>
                             <!--DOANH THU-->
                             <TabItem Header="DOANH THU" Height="50" Width="200">
-                                <Grid Background="#FFE5E5E5"/>
+                                <Grid Background="White"/>
                             </TabItem>
                         </TabControl>
                     </Grid>
@@ -327,7 +330,7 @@
                                         <DatePicker Margin="200,0,0,0" HorizontalAlignment="Center" Width="120"/>
                                     </Grid>
                                     <Grid Grid.Row="1">
-                                        <Button Height="60" Width="120" Content="Thêm" HorizontalAlignment="Center" Margin="0,0,300,0" VerticalAlignment="Center"/>
+                                        <Button Command="{Binding themnhanviencommand}" Height="60" Width="120" Content="Thêm" HorizontalAlignment="Center" Margin="0,0,300,0" VerticalAlignment="Center"/>
                                         <Button Height="60" Width="120" Content="Sửa" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         <Button Height="60" Width="120" Content="Xóa" HorizontalAlignment="Center" Margin="0,0,-300,0" VerticalAlignment="Center"/>
 
