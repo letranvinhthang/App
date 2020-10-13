@@ -18,6 +18,9 @@ namespace WPF_BanHang.Viewmodel
         public ObservableCollection<nvxl> _nhanvienlist;
 
         public ObservableCollection<nvxl> nhanvienlist { get => _nhanvienlist;set { _nhanvienlist = value; OnPropertyChanged(); } }
+        public ObservableCollection<QuyenHan> _cvlist;
+
+        public ObservableCollection<QuyenHan> cvlist { get => _cvlist; set { _cvlist = value; OnPropertyChanged(); } }
         public nvxl _SelectedItem;
 
         public nvxl SelectedItem 
@@ -32,31 +35,35 @@ namespace WPF_BanHang.Viewmodel
                     pass = SelectedItem.Pass;
                     ngaysinh = SelectedItem.ngaysinh;
                     diachi = SelectedItem.diachi;
-                    chuvu = SelectedItem.chucvu;
+                    chuvuseleted = SelectedItem.chucvu;
+                    manv = SelectedItem.Manv;
                 }    
             }
         }
-        public string _ten;
+        private string _ten;
 
         public string ten { get => _ten; set { _ten = value; OnPropertyChanged(); } }
-        public string _pass;
+        private int _manv;
+
+        public int manv { get => _manv; set { _manv = value; OnPropertyChanged(); } }
+        private string _pass;
 
         public string pass { get => _pass; set { _pass = value; OnPropertyChanged(); } }
-        public DateTime _ngaysinh;
+        private DateTime _ngaysinh;
 
         public DateTime ngaysinh { get => _ngaysinh; set { _ngaysinh = value; OnPropertyChanged(); } }
-        public string _diachi;
+        private string _diachi;
 
         public string diachi { get => _diachi; set { _diachi = value; OnPropertyChanged(); } }
-        public string _chuvu;
+        private string _chuvuseleted;
 
-        public string chuvu { get => _chuvu; set { _chuvu = value; OnPropertyChanged(); } }
+        public string chuvuseleted { get => _chuvuseleted; set { _chuvuseleted = value; OnPropertyChanged(); } }
 
         public ICommand loadedwindowcommand { get; set; }
-        public ICommand unitcommand { get; set; }
         public bool isloaded = false;
         public MainViewModel()
         {
+            var db = new qlbhContext();
             loadedwindowcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 if (p == null)
@@ -79,11 +86,7 @@ namespace WPF_BanHang.Viewmodel
                     p.Close();
                 }
             });
-           /* unitcommand = new RelayCommand<object>((p) => { return true; }, (p) =>
-            {
-                Unitwindow wd = new Unitwindow();
-                wd.ShowDialog();
-            });*/
+          
         }
         void loadtonkho()
         {
@@ -112,10 +115,12 @@ namespace WPF_BanHang.Viewmodel
                 i++;
             }
         }
+  
         void loadnhanvien()
         {
             var db = new qlbhContext();
             nhanvienlist = new ObservableCollection<nvxl>();
+            cvlist = new ObservableCollection<QuyenHan>(db.QuyenHan);
             var nv = db.NhanVien;
             var qh = db.QuyenHan;
 

@@ -4,4 +4,5 @@
                     xmlns:local="clr-namespace:WPF_BanHang.ResourceXAML">
     <viewmodel:MainViewModel x:Key="mainVM"></viewmodel:MainViewModel>
     <viewmodel:LoginViewModel x:Key="loginVM"></viewmodel:LoginViewModel>
+    <viewmodel:addviewmodel x:Key="addVM"></viewmodel:addviewmodel>
 </ResourceDictionary>

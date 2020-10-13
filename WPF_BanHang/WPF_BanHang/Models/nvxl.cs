@@ -12,6 +12,7 @@ namespace WPF_BanHang.Models
         public DateTime ngaysinh { get; set; }
         public string diachi { get; set; }
         public string chucvu { get; set; }
+        public int IdChucvu { get; set; }
         public NhanVien cuahang { get; set; }
     }
 }
