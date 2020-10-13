@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-
+        WindowStartupLocation="CenterScreen"
         xmlns:local="clr-namespace:WPF_BanHang"
         mc:Ignorable="d"
             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -18,11 +18,10 @@
        DataContext="{StaticResource loginVM}"
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="LOGINWINDOW" Height="650" Width="400"
-        
-
-       >
-    
+        Title="LOGINWINDOW" Height="650" Width="400" >
+    <Window.InputBindings>
+        <KeyBinding Key="LeftCtrl" Command="{Binding logincommand}"/>
+    </Window.InputBindings>
         <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Hinh/Login.jpg" Stretch="UniformToFill" />
@@ -42,8 +41,7 @@
                     <TextBox Background="White" Margin="15"
                 materialDesign:HintAssist.Hint="Tên đăng nhập"
                 Text="{Binding usename}"
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                VerticalAlignment="Center" TextChanged="TextBox_TextChanged" />
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                     <PasswordBox
                         x:Name="FloatingPasswordBox" Background="White" Margin="15"
                 materialDesign:HintAssist.Hint=" Mật khẩu"
@@ -59,19 +57,21 @@
                     </PasswordBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 -10 0 0">
-                    <Button Grid.Column="0" Margin="15 50"
+                    <Button Grid.Column="0" Margin="15 50" 
     Style="{StaticResource MaterialDesignRaisedButton}"
     
     Command="{Binding logincommand}"
     CommandParameter="{Binding ElementName=window}"
-    ToolTip="Resource name: MaterialDesignRaisedButton" Content="ĐĂNG NHẬP">
+    ToolTip="BẤM ĐI BẠN EI~" Content="ĐĂNG NHẬP">
 
                     </Button>
                     <Button Grid.Column="1" Margin="15 50"
-    Style="{StaticResource MaterialDesignRaisedButton}"
-    Width="100"
-    Background="Red"
-    ToolTip="Resource name: MaterialDesignRaisedButton" Content="Exit">
+                        Command="{Binding exitcommand}"
+                        CommandParameter="{Binding ElementName=window}"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Width="100"
+                        Background="Red"
+                        ToolTip="THOÁT CHƯƠNG TRÌNH" Content="Exit">
                     </Button>
                 </StackPanel> 
             </StackPanel>
