@@ -41,8 +41,7 @@
                     <TextBox Background="White" Margin="15"
                 materialDesign:HintAssist.Hint="Tên đăng nhập"
                 Text="{Binding usename}"
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                VerticalAlignment="Center" TextChanged="TextBox_TextChanged" />
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                     <PasswordBox
                         x:Name="FloatingPasswordBox" Background="White" Margin="15"
                 materialDesign:HintAssist.Hint=" Mật khẩu"
@@ -67,10 +66,12 @@
 
                     </Button>
                     <Button Grid.Column="1" Margin="15 50"
-    Style="{StaticResource MaterialDesignRaisedButton}"
-    Width="100"
-    Background="Red"
-    ToolTip="THOÁT CHƯƠNG TRÌNH" Content="Exit">
+                        Command="{Binding exitcommand}"
+                        CommandParameter="{Binding ElementName=window}"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Width="100"
+                        Background="Red"
+                        ToolTip="THOÁT CHƯƠNG TRÌNH" Content="Exit">
                     </Button>
                 </StackPanel> 
             </StackPanel>
