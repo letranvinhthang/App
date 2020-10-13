@@ -20,7 +20,8 @@
      FontFamily="{DynamicResource MaterialDesignFont}"
         Title="LOGINWINDOW" Height="650" Width="400" >
     <Window.InputBindings>
-        <KeyBinding Key="LeftCtrl" Command="{Binding logincommand}"/>
+        <KeyBinding Key="Enter" Command="{Binding logincommand}"
+                    CommandParameter="{Binding ElementName=window}"/>
     </Window.InputBindings>
         <Grid>
         <Grid.Background>
@@ -38,8 +39,8 @@
                     <Image Source="UserControl_BanHang/Icons/Logo.png" Width="100" Height="100"/>
                 </StackPanel>
                 <StackPanel>
-                    <TextBox Background="White" Margin="15"
-                materialDesign:HintAssist.Hint="Tên đăng nhập"
+                    <TextBox Background="White" Margin="15" PreviewTextInput="TextBox_PreviewTextInput"
+                materialDesign:HintAssist.Hint="ID nhân viên"
                 Text="{Binding usename}"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                     <PasswordBox

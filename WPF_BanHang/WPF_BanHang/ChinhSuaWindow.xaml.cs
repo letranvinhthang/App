@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,19 +13,13 @@ using System.Windows.Shapes;
 namespace WPF_BanHang
 {
     /// <summary>
-    /// Interaction logic for loginwindow.xaml
+    /// Interaction logic for ChinhSuaWindow.xaml
     /// </summary>
-    public partial class loginwindow : Window
+    public partial class ChinhSuaWindow : Window
     {
-        public loginwindow()
+        public ChinhSuaWindow()
         {
             InitializeComponent();
-        }
-
-        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {            
-                Regex regex = new Regex("[^0-9]+");
-                e.Handled = regex.IsMatch(e.Text);          
         }
     }
 }
