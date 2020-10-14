@@ -71,6 +71,7 @@ namespace WPF_BanHang.Viewmodel
         public MainViewModel()
         {
             themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { themnhanvien(a); });
+            suanhanviencommand = new RelayCommand<Window>((a) => { return true; }, (a) => { suahanvien(a); });
             thanhtoancommand = new RelayCommand<HoaDonWindow>((w) => { return true; }, (w) => { Thanhtoan(w); });
             loadedwindowcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -157,6 +158,11 @@ namespace WPF_BanHang.Viewmodel
             window1.ShowDialog();
             loadnhanvien();
         }
-        
+        void suahanvien(Window a)
+        {
+            SuaNvWindow window = new SuaNvWindow();
+            window.ShowDialog();
+            loadnhanvien();
+        }
     }
 }
