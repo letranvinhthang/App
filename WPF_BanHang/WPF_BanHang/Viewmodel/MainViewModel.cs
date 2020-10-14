@@ -66,6 +66,7 @@ namespace WPF_BanHang.Viewmodel
         public ICommand unitcommand { get; set; }
         public ICommand thanhtoancommand { get; set; }
         public ICommand themnhanviencommand { get; set; }
+        public ICommand suanhanviencommand { get; set; }
         public bool isloaded = false;
         public MainViewModel()
         {
@@ -155,5 +156,6 @@ namespace WPF_BanHang.Viewmodel
             ChinhSuaWindow window1 = new ChinhSuaWindow();
             window1.ShowDialog();
         }
+        
     }
 }
