@@ -66,9 +66,17 @@ namespace WPF_BanHang.Viewmodel
         public ICommand unitcommand { get; set; }
         public ICommand thanhtoancommand { get; set; }
         public ICommand themnhanviencommand { get; set; }
+        public ICommand suanhanviencommand { get; set; }
+        public ICommand themsanphamcommand { get; set; }
+        public ICommand suasanphamcommand { get; set; }
         public bool isloaded = false;
         public MainViewModel()
         {
+            themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
+            suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
+
+
+            suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => { return true; }, (c) => { suanhanvien(c); });
             themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { themnhanvien(a); });
             thanhtoancommand = new RelayCommand<HoaDonWindow>((w) => { return true; }, (w) => { Thanhtoan(w); });
             loadedwindowcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
@@ -117,8 +125,9 @@ namespace WPF_BanHang.Viewmodel
                 tonkhoxl tonKho = new tonkhoxl();
                 tonKho.barcode = item.IdSanpham;
                 tonKho.ten = item.TenSanpham;
-                tonKho.soluong =sumnhap - sumxuat;
+                tonKho.soluong = sumnhap - sumxuat;
                 tonKho.STT = i;
+                
                 tonkhoxlist.Add(tonKho);
                 i++;
             }
@@ -155,6 +164,23 @@ namespace WPF_BanHang.Viewmodel
             ChinhSuaWindow window1 = new ChinhSuaWindow();
             window1.ShowDialog();
             loadnhanvien();
+        }
+        void suanhanvien(SuaNhanVienWindow c)
+        {
+            SuaNhanVienWindow window2 = new SuaNhanVienWindow();
+            window2.ShowDialog();
+        }
+
+        void themsanpham(ThemSanPhamWindow k)
+        {
+            ThemSanPhamWindow window3 = new ThemSanPhamWindow();
+            window3.ShowDialog();
+        }
+
+        void suasanpham(SuaSanPhamWindow l)
+        {
+            SuaSanPhamWindow window4 = new SuaSanPhamWindow();
+            window4.ShowDialog();
         }
     }
 }
