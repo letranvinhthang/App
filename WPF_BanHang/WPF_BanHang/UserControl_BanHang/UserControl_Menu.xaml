@@ -214,7 +214,60 @@
                             </TabItem>
                             <!--SẢN PHẨM-->
                             <TabItem Header="SẢN PHẨM" Height="50" Width="200">
-                                <Grid Background="White"/>
+                               
+                                <Grid Background="White">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <ComboBox
+  materialDesign:HintAssist.Hint="Theo số lượng" Width="200" HorizontalAlignment="Left" Margin="10">
+                                            <ComboBoxItem>
+                                                Mặc định
+                                            </ComboBoxItem>
+                                            <ComboBoxItem>
+                                                Ít đến nhiều
+                                            </ComboBoxItem>
+                                            <ComboBoxItem>
+                                                Nhiều đến ít
+                                            </ComboBoxItem>
+                                            
+                                            
+                                        </ComboBox>
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                    <ListView ItemsSource="{Binding nhanvienlist}">
+                                        <!--ĐỊNH DẠNG NỘI DUNG-->
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="ListViewItem">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                                <Setter Property="FontSize" Value="15"/>
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
+                                        <ListView.View>
+                                            <GridView>
+                                                <!--ĐỊNH DẠNG HEADER-->
+                                                <GridView.ColumnHeaderContainerStyle>
+                                                    <Style TargetType="GridViewColumnHeader">
+                                                        <Setter Property="FontSize" Value="20"/>
+                                                        <Setter Property="Margin" Value="10"/>
+                                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                                        <Setter Property="IsEnabled" Value="False"/>
+                                                    </Style>
+                                                </GridView.ColumnHeaderContainerStyle>
+                                                <GridViewColumn Width="200" Header="Barcode" DisplayMemberBinding="{Binding Manv }"/>
+                                                <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
+                                                <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding Pass}"/>
+                                                <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding ngaysinh}"/>
+                                                <GridViewColumn Width="400" Header="Tổng tiền" DisplayMemberBinding="{Binding diachi}"/>
+                                                <GridViewColumn Width="195" Header="Nhân viên" DisplayMemberBinding="{Binding chucvu}"/>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                    </Grid>
+                                </Grid>
+                                
                             </TabItem>
                             <!--LỊCH SỬ-->
                             <TabItem Header="LỊCH SỬ" Height="50" Width="200">
