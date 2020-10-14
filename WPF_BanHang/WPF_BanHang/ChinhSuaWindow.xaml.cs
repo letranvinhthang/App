@@ -8,17 +8,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPF_BanHang.UserControl_BanHang
+namespace WPF_BanHang
 {
     /// <summary>
-    /// Interaction logic for SanPhamController.xaml
+    /// Interaction logic for ChinhSuaWindow.xaml
     /// </summary>
-    public partial class SanPhamController : UserControl
+    public partial class ChinhSuaWindow : Window
     {
-        public SanPhamController()
+        public ChinhSuaWindow()
         {
             InitializeComponent();
         }

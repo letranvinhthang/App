@@ -1,14 +1,13 @@
-﻿using WPF_BanHang;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using System.Collections.ObjectModel;
 using WPF_BanHang.Models;
 using Google.Protobuf.WellKnownTypes;
 using System.Linq;
+using Org.BouncyCastle.Asn1.Mozilla;
+using System;
+using MaterialDesignThemes.Wpf;
 
 namespace WPF_BanHang.Viewmodel
 {
@@ -17,11 +16,19 @@ namespace WPF_BanHang.Viewmodel
         private ObservableCollection<tonkhoxl> _tonkhoxlist;
         public ObservableCollection<tonkhoxl> tonkhoxlist { get=> _tonkhoxlist; set { _tonkhoxlist = value;OnPropertyChanged(); } }
         //xử lý
+        public ObservableCollection<nvxl> _nhanvienlist;
+
+        public ObservableCollection<nvxl> nhanvienlist { get => _nhanvienlist; set { _nhanvienlist = value; OnPropertyChanged(); } }
+
         public ICommand loadedwindowcommand { get; set; }
         public ICommand unitcommand { get; set; }
+        public ICommand thanhtoancommand { get; set; }
+        public ICommand themnhanviencommand { get; set; }
         public bool isloaded = false;
         public MainViewModel()
         {
+            themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { themnhanvien(a); });
+            thanhtoancommand = new RelayCommand<HoaDonWindow>((w) => { return true; }, (w) => { Thanhtoan(w); });
             loadedwindowcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 if (p == null)
@@ -37,6 +44,7 @@ namespace WPF_BanHang.Viewmodel
                 {
                     p.Show();
                     loadtonkho();
+                    loadnhanvien();
                 }
                 else
                 {
@@ -49,6 +57,7 @@ namespace WPF_BanHang.Viewmodel
                 wd.ShowDialog();
             });*/
         }
+
         void loadtonkho()
         {
             var db = new qlbhContext();
@@ -68,12 +77,43 @@ namespace WPF_BanHang.Viewmodel
                 if (xuat != null) ;
                 sumxuat = xuat.Sum(p => p.SoLuong);
                 tonkhoxl tonKho = new tonkhoxl();
-                tonKho.STT = i;
+                tonKho.barcode = item.IdSanpham;
                 tonKho.ten = item.TenSanpham;
                 tonKho.soluong =sumnhap - sumxuat;
+                tonKho.STT = i;
                 tonkhoxlist.Add(tonKho);
                 i++;
             }
+        }
+        void loadnhanvien()
+        {
+            var db = new qlbhContext();
+            nhanvienlist = new ObservableCollection<nvxl>();
+            var nv = db.NhanVien;
+            var qh = db.QuyenHan;
+
+            foreach (var item in nv.ToList())
+            {
+                var tencv = qh.Where(p => p.IdChucvu == item.IdChucvu).FirstOrDefault();
+                nvxl nvl = new nvxl();
+                nvl.Manv = item.IdNhanvien;
+                nvl.ten = item.TenNhanvien;
+                nvl.Pass = item.PassNhanvien;
+                nvl.ngaysinh = item.NgaySinh;
+                nvl.diachi = item.DiachiNhanvien;
+                nvl.chucvu = tencv.TenChucvu;
+                nhanvienlist.Add(nvl);
+            }
+        }
+        void Thanhtoan(HoaDonWindow w)
+        {
+            HoaDonWindow window = new HoaDonWindow();
+            window.ShowDialog();
+        }
+        void themnhanvien(ChinhSuaWindow a)
+        {
+            ChinhSuaWindow window1 = new ChinhSuaWindow();
+            window1.ShowDialog();
         }
     }
 }

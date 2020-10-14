@@ -21,7 +21,7 @@
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
         
-        
+        WindowState="Maximized"
         DataContext="{StaticResource mainVM}">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
@@ -32,5 +32,6 @@
     </i:Interaction.Triggers>
     <Grid>
         <uc:UserControl_Menu Tag="{Binding  Title , ElementName=window}"></uc:UserControl_Menu>
+        
     </Grid>
 </Window>
