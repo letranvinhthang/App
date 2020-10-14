@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewmodel="clr-namespace:WPF_BanHang.Viewmodel"
+                    xmlns:local="clr-namespace:WPF_BanHang.ResourceXAML">
+    <viewmodel:MainViewModel x:Key="mainVM"></viewmodel:MainViewModel>
+    <viewmodel:LoginViewModel x:Key="loginVM"></viewmodel:LoginViewModel>
+    <viewmodel:addviewmodel x:Key="addVM"></viewmodel:addviewmodel>
+</ResourceDictionary>
