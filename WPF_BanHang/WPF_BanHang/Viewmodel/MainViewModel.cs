@@ -70,6 +70,8 @@ namespace WPF_BanHang.Viewmodel
         public bool isloaded = false;
         public MainViewModel()
         {
+            suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => { return true; }, (c) => { suanhanvien(c); });
+
             themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { themnhanvien(a); });
             suanhanviencommand = new RelayCommand<Window>((a) => { return true; }, (a) => { suahanvien(a); });
             thanhtoancommand = new RelayCommand<HoaDonWindow>((w) => { return true; }, (w) => { Thanhtoan(w); });
@@ -119,8 +121,9 @@ namespace WPF_BanHang.Viewmodel
                 tonkhoxl tonKho = new tonkhoxl();
                 tonKho.barcode = item.IdSanpham;
                 tonKho.ten = item.TenSanpham;
-                tonKho.soluong =sumnhap - sumxuat;
+                tonKho.soluong = sumnhap - sumxuat;
                 tonKho.STT = i;
+                
                 tonkhoxlist.Add(tonKho);
                 i++;
             }
@@ -164,5 +167,13 @@ namespace WPF_BanHang.Viewmodel
             window.ShowDialog();
             loadnhanvien();
         }
+<<<<<<< HEAD
+=======
+        void suanhanvien(SuaNhanVienWindow c)
+        {
+            SuaNhanVienWindow window2 = new SuaNhanVienWindow();
+            window2.ShowDialog();
+        }
+>>>>>>> f6d264f1e55424f993c7c284d528a9bad14c11db
     }
 }
