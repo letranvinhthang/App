@@ -16,6 +16,8 @@ namespace WPF_BanHang.Models
         public DateTime NgaySinh { get; set; }
         public int IdChucvu { get; set; }
         public string DiachiNhanvien { get; set; }
+        public string Sdt { get; set; }
+        public bool Disable { get; set; }
 
         public virtual QuyenHan IdChucvuNavigation { get; set; }
         public virtual ICollection<HoaDon> HoaDon { get; set; }

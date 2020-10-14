@@ -319,7 +319,7 @@
                                     <Grid Grid.Row="0">
                                         <TextBox Text="{Binding ten}" HorizontalAlignment="Center" Margin="0 0 800 0" materialDesign:HintAssist.Hint="Tên nhân viên" TextWrapping="Wrap" Height="25" Width="116"/>
                                         <TextBox Text="{Binding manv}" IsReadOnly="True" HorizontalAlignment="Center" Margin="0 50 800 0" materialDesign:HintAssist.Hint="Ma nhan vien" TextWrapping="Wrap" Height="25" Width="116"/>
-                                        <TextBox Text="{Binding pass}" HorizontalAlignment="Center" Margin="0 0 500 0" materialDesign:HintAssist.Hint="Mật khẩu" TextWrapping="Wrap"  Height="25" Width="114" />
+                                        <TextBox  HorizontalAlignment="Center" Margin="0 0 500 0" materialDesign:HintAssist.Hint="Mật khẩu" TextWrapping="Wrap"  Height="25" Width="114" />
                                         <ComboBox ItemsSource="{Binding cvlist}" DisplayMemberPath="TenChucvu" SelectedValuePath="IdChucvu" SelectedIndex="{Binding chuvuseleted}" HorizontalAlignment="Center" Margin="0 0 200 0" materialDesign:HintAssist.Hint="Chức vụ" Height="25" Width="85" />
                                         <TextBox Text="{Binding diachi}" TextWrapping="Wrap" Width="250" Height="40" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" materialDesign:HintAssist.Hint="Địa chỉ" Margin="800 0 0 0" HorizontalAlignment="Center"/>
                                         <!--ĐỊA CHỈ-->

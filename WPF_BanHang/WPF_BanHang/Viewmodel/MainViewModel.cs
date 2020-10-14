@@ -154,6 +154,7 @@ namespace WPF_BanHang.Viewmodel
         {
             ChinhSuaWindow window1 = new ChinhSuaWindow();
             window1.ShowDialog();
+            loadnhanvien();
         }
     }
 }

@@ -7,9 +7,9 @@ namespace WPF_BanHang.Models
     {
         public int IdHoadon { get; set; }
         public DateTime NgayTao { get; set; }
-        public int IdNhacc { get; set; }
+        public int? IdNhacc { get; set; }
         public double ThanhTien { get; set; }
-        public int IdKhachhang { get; set; }
+        public int? IdKhachhang { get; set; }
         public int IdCuahang { get; set; }
         public int IdNhanvien { get; set; }
         public string IdChuongtrinh { get; set; }
