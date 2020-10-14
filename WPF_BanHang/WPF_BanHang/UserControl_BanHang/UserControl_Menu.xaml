@@ -297,11 +297,11 @@
                                                     <Setter Property="IsEnabled" Value="False"/>
                                                 </Style>
                                             </GridView.ColumnHeaderContainerStyle>
-                                            <GridViewColumn Width="200" Header="Barcode" DisplayMemberBinding="{Binding Manv }"/>
-                                            <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                            <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding ngaysinh}"/>
-                                            <GridViewColumn Width="400" Header="Tổng tiền" DisplayMemberBinding="{Binding diachi}"/>
-                                            <GridViewColumn Width="195" Header="Nhân viên" DisplayMemberBinding="{Binding chucvu}"/>
+                                            <GridViewColumn Width="200" Header="ID" DisplayMemberBinding="{Binding Manv }"/>
+                                            <GridViewColumn Width="430" Header="Tên nhân viên" DisplayMemberBinding="{Binding ten }"/>
+                                            <GridViewColumn Header="Ngày tạo" DisplayMemberBinding="{Binding ngaysinh}"/>
+                                            <GridViewColumn Width="400" Header="Địa chỉ" DisplayMemberBinding="{Binding diachi}"/>
+                                            <GridViewColumn Width="195" Header="Chức vụ" DisplayMemberBinding="{Binding chucvu}"/>
 
                                         </GridView>
                                     </ListView.View>
