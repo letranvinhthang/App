@@ -9,16 +9,58 @@ using Org.BouncyCastle.Asn1.Mozilla;
 using System;
 using MaterialDesignThemes.Wpf;
 
+
 namespace WPF_BanHang.Viewmodel
 {
     public class MainViewModel : BaseViewModel
     {
+        //xử lý bên tồn kho
         private ObservableCollection<tonkhoxl> _tonkhoxlist;
         public ObservableCollection<tonkhoxl> tonkhoxlist { get=> _tonkhoxlist; set { _tonkhoxlist = value;OnPropertyChanged(); } }
-        //xử lý
+       //xử lý bên nhân viên
         public ObservableCollection<nvxl> _nhanvienlist;
 
-        public ObservableCollection<nvxl> nhanvienlist { get => _nhanvienlist; set { _nhanvienlist = value; OnPropertyChanged(); } }
+        public ObservableCollection<nvxl> nhanvienlist { get => _nhanvienlist;set { _nhanvienlist = value; OnPropertyChanged(); } }
+        public ObservableCollection<QuyenHan> _cvlist;
+
+        public ObservableCollection<QuyenHan> cvlist { get => _cvlist; set { _cvlist = value; OnPropertyChanged(); } }
+        public nvxl _SelectedItem;
+
+        public nvxl SelectedItem 
+        { 
+            get => _SelectedItem; 
+            set
+            {
+                _SelectedItem = value; OnPropertyChanged(); 
+                if(SelectedItem!=null)
+                {
+                    ten = SelectedItem.ten;
+                    pass = SelectedItem.Pass;
+                    ngaysinh = SelectedItem.ngaysinh;
+                    diachi = SelectedItem.diachi;
+                    chuvuseleted = SelectedItem.chucvu;
+                    manv = SelectedItem.Manv;
+                }    
+            }
+        }
+        private string _ten;
+
+        public string ten { get => _ten; set { _ten = value; OnPropertyChanged(); } }
+        private int _manv;
+
+        public int manv { get => _manv; set { _manv = value; OnPropertyChanged(); } }
+        private string _pass;
+
+        public string pass { get => _pass; set { _pass = value; OnPropertyChanged(); } }
+        private DateTime _ngaysinh;
+
+        public DateTime ngaysinh { get => _ngaysinh; set { _ngaysinh = value; OnPropertyChanged(); } }
+        private string _diachi;
+
+        public string diachi { get => _diachi; set { _diachi = value; OnPropertyChanged(); } }
+        private string _chuvuseleted;
+
+        public string chuvuseleted { get => _chuvuseleted; set { _chuvuseleted = value; OnPropertyChanged(); } }
 
         public ICommand loadedwindowcommand { get; set; }
         public ICommand unitcommand { get; set; }
@@ -51,11 +93,7 @@ namespace WPF_BanHang.Viewmodel
                     p.Close();
                 }
             });
-           /* unitcommand = new RelayCommand<object>((p) => { return true; }, (p) =>
-            {
-                Unitwindow wd = new Unitwindow();
-                wd.ShowDialog();
-            });*/
+          
         }
 
         void loadtonkho()
@@ -85,10 +123,12 @@ namespace WPF_BanHang.Viewmodel
                 i++;
             }
         }
+  
         void loadnhanvien()
         {
             var db = new qlbhContext();
             nhanvienlist = new ObservableCollection<nvxl>();
+            cvlist = new ObservableCollection<QuyenHan>(db.QuyenHan);
             var nv = db.NhanVien;
             var qh = db.QuyenHan;
 
@@ -114,6 +154,7 @@ namespace WPF_BanHang.Viewmodel
         {
             ChinhSuaWindow window1 = new ChinhSuaWindow();
             window1.ShowDialog();
+            loadnhanvien();
         }
     }
 }

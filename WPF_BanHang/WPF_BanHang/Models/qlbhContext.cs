@@ -147,7 +147,6 @@ namespace WPF_BanHang.Models
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.IdChuongtrinh)
-                    .IsRequired()
                     .HasColumnName("ID_Chuongtrinh")
                     .HasColumnType("varchar(50)")
                     .HasCharSet("utf8mb4")
@@ -179,7 +178,6 @@ namespace WPF_BanHang.Models
                 entity.HasOne(d => d.IdChuongtrinhNavigation)
                     .WithMany(p => p.HoaDon)
                     .HasForeignKey(d => d.IdChuongtrinh)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("hoa_don_ibfk_5");
 
                 entity.HasOne(d => d.IdCuahangNavigation)
@@ -191,13 +189,11 @@ namespace WPF_BanHang.Models
                 entity.HasOne(d => d.IdKhachhangNavigation)
                     .WithMany(p => p.HoaDon)
                     .HasForeignKey(d => d.IdKhachhang)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("hoa_don_ibfk_3");
 
                 entity.HasOne(d => d.IdNhaccNavigation)
                     .WithMany(p => p.HoaDon)
                     .HasForeignKey(d => d.IdNhacc)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("hoa_don_ibfk_4");
 
                 entity.HasOne(d => d.IdNhanvienNavigation)
@@ -241,7 +237,7 @@ namespace WPF_BanHang.Models
 
                 entity.Property(e => e.IdSanpham)
                     .HasColumnName("ID_sanpham")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("bigint(11)");
 
                 entity.Property(e => e.SoLuong)
                     .HasColumnName("So_luong")
@@ -318,8 +314,11 @@ namespace WPF_BanHang.Models
                     .HasCollation("utf8mb4_general_ci");
 
                 entity.Property(e => e.TenKhachhang)
+                    .IsRequired()
                     .HasColumnName("Ten_khachhang")
-                    .HasColumnType("int(100)");
+                    .HasColumnType("varchar(100)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
 
                 entity.HasOne(d => d.IdChucvuNavigation)
                     .WithMany(p => p.KhachHang)
@@ -389,6 +388,13 @@ namespace WPF_BanHang.Models
                     .IsRequired()
                     .HasColumnName("Pass_Nhanvien")
                     .HasColumnType("varchar(100)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.Sdt)
+                    .IsRequired()
+                    .HasColumnName("sdt")
+                    .HasColumnType("char(10)")
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_general_ci");
 

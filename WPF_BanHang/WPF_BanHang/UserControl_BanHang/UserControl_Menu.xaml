@@ -268,6 +268,7 @@
                             <TextBlock Text="NHÂN VIÊN" FontSize="24" Foreground="White"/>
                         </StackPanel>
                     </TabItem.Header>
+
                     <!--Listview NHÂN VIÊN-->
                     <Grid>
                         <Grid.RowDefinitions>
@@ -277,7 +278,7 @@
                         <!--HIỂN THỊ-->
                         <Grid Grid.Row="0">
                             <materialDesign:Card Margin="20">
-                                <ListView ItemsSource="{Binding nhanvienlist}">
+                                <ListView ItemsSource="{Binding nhanvienlist}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
                                     <!--ĐỊNH DẠNG NỘI DUNG-->
                                     <ListView.ItemContainerStyle>
                                         <Style TargetType="ListViewItem">
@@ -298,7 +299,6 @@
                                             </GridView.ColumnHeaderContainerStyle>
                                             <GridViewColumn Width="200" Header="Barcode" DisplayMemberBinding="{Binding Manv }"/>
                                             <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                            <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding Pass}"/>
                                             <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding ngaysinh}"/>
                                             <GridViewColumn Width="400" Header="Tổng tiền" DisplayMemberBinding="{Binding diachi}"/>
                                             <GridViewColumn Width="195" Header="Nhân viên" DisplayMemberBinding="{Binding chucvu}"/>
@@ -317,23 +317,18 @@
                                         <RowDefinition></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Grid Grid.Row="0">
-                                        <TextBox HorizontalAlignment="Center" Margin="0 0 800 0" materialDesign:HintAssist.Hint="Tên nhân viên" TextWrapping="Wrap" Height="25" Width="116"/>
-                                        <TextBox HorizontalAlignment="Center" Margin="0 0 500 0" materialDesign:HintAssist.Hint="Mật khẩu" TextWrapping="Wrap"  Height="25" Width="114" />
-                                        <ComboBox HorizontalAlignment="Center" Margin="0 0 200 0" materialDesign:HintAssist.Hint="Chức vụ" Height="25" Width="85" />
-                                        <TextBox
-    TextWrapping="Wrap" Width="250" Height="40"
-    AcceptsReturn="True"
-    VerticalScrollBarVisibility="Auto"
-    SpellCheck.IsEnabled="True"
-    materialDesign:HintAssist.Hint="Địa chỉ" Margin="800 0 0 0" HorizontalAlignment="Center"/>
+                                        <TextBox Text="{Binding ten}" HorizontalAlignment="Center" Margin="0 0 800 0" materialDesign:HintAssist.Hint="Tên nhân viên" TextWrapping="Wrap" Height="25" Width="116"/>
+                                        <TextBox Text="{Binding manv}" IsReadOnly="True" HorizontalAlignment="Center" Margin="0 50 800 0" materialDesign:HintAssist.Hint="Ma nhan vien" TextWrapping="Wrap" Height="25" Width="116"/>
+                                        <TextBox  HorizontalAlignment="Center" Margin="0 0 500 0" materialDesign:HintAssist.Hint="Mật khẩu" TextWrapping="Wrap"  Height="25" Width="114" />
+                                        <ComboBox ItemsSource="{Binding cvlist}" DisplayMemberPath="TenChucvu" SelectedValuePath="IdChucvu" SelectedIndex="{Binding chuvuseleted}" HorizontalAlignment="Center" Margin="0 0 200 0" materialDesign:HintAssist.Hint="Chức vụ" Height="25" Width="85" />
+                                        <TextBox Text="{Binding diachi}" TextWrapping="Wrap" Width="250" Height="40" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" materialDesign:HintAssist.Hint="Địa chỉ" Margin="800 0 0 0" HorizontalAlignment="Center"/>
                                         <!--ĐỊA CHỈ-->
-                                        <DatePicker Margin="200,0,0,0" HorizontalAlignment="Center" Width="120"/>
+                                        <DatePicker SelectedDate="{Binding ngaysinh}" Margin="200,0,0,0" HorizontalAlignment="Center" Width="120"/>
                                     </Grid>
                                     <Grid Grid.Row="1">
-                                        <Button Command="{Binding themnhanviencommand}" Height="60" Width="120" Content="Thêm" HorizontalAlignment="Center" Margin="0,0,300,0" VerticalAlignment="Center"/>
+                       <Button Command="{Binding themnhanviencommand}" Height="60" Width="120" Content="Thêm" HorizontalAlignment="Center" Margin="0,0,300,0" VerticalAlignment="Center"/>
                                         <Button Height="60" Width="120" Content="Sửa" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         <Button Height="60" Width="120" Content="Xóa" HorizontalAlignment="Center" Margin="0,0,-300,0" VerticalAlignment="Center"/>
-
                                     </Grid>
                                 </Grid>
                             </materialDesign:Card>
