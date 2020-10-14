@@ -5,13 +5,10 @@ using System.Collections.ObjectModel;
 using WPF_BanHang.Models;
 using Google.Protobuf.WellKnownTypes;
 using System.Linq;
-<<<<<<< HEAD
-using System;
-=======
 using Org.BouncyCastle.Asn1.Mozilla;
 using System;
 using MaterialDesignThemes.Wpf;
->>>>>>> 55fcaaa45584a97422351625c42891981c537179
+
 
 namespace WPF_BanHang.Viewmodel
 {
@@ -66,12 +63,6 @@ namespace WPF_BanHang.Viewmodel
         public string chuvuseleted { get => _chuvuseleted; set { _chuvuseleted = value; OnPropertyChanged(); } }
 
         public ICommand loadedwindowcommand { get; set; }
-<<<<<<< HEAD
-        public bool isloaded = false;
-        public MainViewModel()
-        {
-            var db = new qlbhContext();
-=======
         public ICommand unitcommand { get; set; }
         public ICommand thanhtoancommand { get; set; }
         public ICommand themnhanviencommand { get; set; }
@@ -80,7 +71,6 @@ namespace WPF_BanHang.Viewmodel
         {
             themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { themnhanvien(a); });
             thanhtoancommand = new RelayCommand<HoaDonWindow>((w) => { return true; }, (w) => { Thanhtoan(w); });
->>>>>>> 55fcaaa45584a97422351625c42891981c537179
             loadedwindowcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 if (p == null)
