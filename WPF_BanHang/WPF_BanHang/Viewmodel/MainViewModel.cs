@@ -67,11 +67,16 @@ namespace WPF_BanHang.Viewmodel
         public ICommand thanhtoancommand { get; set; }
         public ICommand themnhanviencommand { get; set; }
         public ICommand suanhanviencommand { get; set; }
+        public ICommand themsanphamcommand { get; set; }
+        public ICommand suasanphamcommand { get; set; }
         public bool isloaded = false;
         public MainViewModel()
         {
-            suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => { return true; }, (c) => { suanhanvien(c); });
+            themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
+            suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
 
+
+            suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => { return true; }, (c) => { suanhanvien(c); });
             themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { themnhanvien(a); });
             thanhtoancommand = new RelayCommand<HoaDonWindow>((w) => { return true; }, (w) => { Thanhtoan(w); });
             loadedwindowcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
@@ -163,6 +168,18 @@ namespace WPF_BanHang.Viewmodel
         {
             SuaNhanVienWindow window2 = new SuaNhanVienWindow();
             window2.ShowDialog();
+        }
+
+        void themsanpham(ThemSanPhamWindow k)
+        {
+            ThemSanPhamWindow window3 = new ThemSanPhamWindow();
+            window3.ShowDialog();
+        }
+
+        void suasanpham(SuaSanPhamWindow l)
+        {
+            SuaSanPhamWindow window4 = new SuaSanPhamWindow();
+            window4.ShowDialog();
         }
     }
 }

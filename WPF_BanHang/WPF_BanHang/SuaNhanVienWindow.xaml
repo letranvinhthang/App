@@ -7,7 +7,7 @@
         mc:Ignorable="d"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 
-        Title="SuaNhanVienWindow" Height="450" Width="800">
+        Title="SuaNhanVienWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid>
 
