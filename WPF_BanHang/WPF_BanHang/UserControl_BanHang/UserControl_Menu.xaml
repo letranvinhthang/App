@@ -60,34 +60,6 @@
                             <RowDefinition Height="2*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-<<<<<<< HEAD
-                            <materialDesign:Card Margin="20">
-                                <ListView ItemsSource="{Binding nhanvienlist}" Margin="0,0,0,-96">
-                                    <!--ĐỊNH DẠNG NỘI DUNG-->
-                                    <ListView.ItemContainerStyle>
-                                        <Style TargetType="ListViewItem">
-                                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                            <Setter Property="FontSize" Value="15"/>
-                                        </Style>
-                                    </ListView.ItemContainerStyle>
-                                    <ListView.View>
-                                        <GridView>
-                                            <!--ĐỊNH DẠNG HEADER-->
-                                            <GridView.ColumnHeaderContainerStyle>
-                                                <Style TargetType="GridViewColumnHeader">
-                                                    <Setter Property="FontSize" Value="20"/>
-                                                    <Setter Property="Margin" Value="10"/>
-                                                    <Setter Property="VerticalAlignment" Value="Center"/>
-                                                    <Setter Property="IsEnabled" Value="False"/>
-                                                </Style>
-                                            </GridView.ColumnHeaderContainerStyle>
-                                            <GridViewColumn Width="200" Header="Barcode" DisplayMemberBinding="{Binding Manv}"/>
-                                            <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                            <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding Pass}"/>
-                                            <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding ngaysinh}"/>
-                                            <GridViewColumn Width="400" Header="Tổng tiền" DisplayMemberBinding="{Binding diachi}"/>
-                                            <GridViewColumn Width="195" Header="Nhân viên" DisplayMemberBinding="{Binding chucvu}"/>
-=======
                             <Rectangle Margin="3" RadiusY="10" RadiusX="10" Fill="White">
                                 <Rectangle.Effect>
                                     <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
@@ -124,8 +96,6 @@
                                     </GridView>
                                 </ListView.View>
                             </ListView>
->>>>>>> 6b1c2b609dabe594f68b7568a50b77e0f95b59d4
-
                         </Grid>
                         <!--Listview-->
                         <Grid Grid.Row="1">
@@ -397,38 +367,6 @@
                         </Grid.RowDefinitions>
                         <!--HIỂN THỊ-->
                         <Grid Grid.Row="0">
-<<<<<<< HEAD
-                            <materialDesign:Card Margin="20">
-                                <ListView ItemsSource="{Binding nhanvienlist}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
-                                    <!--ĐỊNH DẠNG NỘI DUNG-->
-                                    <ListView.ItemContainerStyle>
-                                        <Style TargetType="ListViewItem">
-                                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                            <Setter Property="FontSize" Value="15"/>
-                                        </Style>
-                                    </ListView.ItemContainerStyle>
-                                    <ListView.View>
-                                        <GridView>
-                                            <!--ĐỊNH DẠNG HEADER-->
-                                            <GridView.ColumnHeaderContainerStyle>
-                                                <Style TargetType="GridViewColumnHeader">
-                                                    <Setter Property="FontSize" Value="20"/>
-                                                    <Setter Property="Margin" Value="10"/>
-                                                    <Setter Property="VerticalAlignment" Value="Center"/>
-                                                    <Setter Property="IsEnabled" Value="False"/>
-                                                </Style>
-                                            </GridView.ColumnHeaderContainerStyle>
-                                            <GridViewColumn Width="200" Header="ID" DisplayMemberBinding="{Binding Manv }"/>
-                                            <GridViewColumn Width="430" Header="Tên nhân viên" DisplayMemberBinding="{Binding ten }"/>
-                                            <GridViewColumn Header="Ngày bắt đầu làm" DisplayMemberBinding="{Binding ngaysinh}"/>
-                                            <GridViewColumn Width="400" Header="Địa chỉ" DisplayMemberBinding="{Binding diachi}"/>
-                                            <GridViewColumn Width="400" Header="Số điện thoại" DisplayMemberBinding="{Binding sdt}"/>
-                                            <GridViewColumn Width="195" Header="Chức vụ" DisplayMemberBinding="{Binding chucvu}"/>
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
-                            </materialDesign:Card>
-=======
                             <Rectangle Margin="3" RadiusY="10" RadiusX="10" Fill="White">
                                 <Rectangle.Effect>
                                     <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
@@ -461,7 +399,6 @@
                                     </GridView>
                                 </ListView.View>
                             </ListView>
->>>>>>> 6b1c2b609dabe594f68b7568a50b77e0f95b59d4
                         </Grid>
                         <!--CHỈNH SỬA-->
                         <Grid Grid.Row="1">
@@ -471,29 +408,11 @@
                                         <RowDefinition></RowDefinition>
 
                                     </Grid.RowDefinitions>
-<<<<<<< HEAD
                                     <Grid>
                                         <Button Command="{Binding themnhanviencommand}" Height="60" Width="120" Content="Thêm" HorizontalAlignment="Center" Margin="0,0,300,0" VerticalAlignment="Center"/>
                                         <Button Command="{Binding suanhanviencommand}" Height="60" Width="120" Content="Sửa" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         <Button Height="60" Width="120" Content="Disable" HorizontalAlignment="Center" Margin="0,0,-300,0" VerticalAlignment="Center"/>
-=======
-                                    <Grid Grid.Row="0">
-                                        <TextBox Text="{Binding ten}" HorizontalAlignment="Center" Margin="0 0 800 0" materialDesign:HintAssist.Hint="Tên nhân viên" TextWrapping="Wrap" Height="25" Width="116"/>
-                                        <TextBox Text="{Binding manv}" IsReadOnly="True" HorizontalAlignment="Center" Margin="0 50 800 0" materialDesign:HintAssist.Hint="Ma nhan vien" TextWrapping="Wrap" Height="25" Width="116"/>
-                                        <TextBox  HorizontalAlignment="Center" Margin="0 0 500 0" materialDesign:HintAssist.Hint="Mật khẩu" TextWrapping="Wrap"  Height="25" Width="114" />
-                                        <ComboBox ItemsSource="{Binding cvlist}" DisplayMemberPath="TenChucvu" SelectedValuePath="IdChucvu" SelectedIndex="{Binding chuvuseleted}" HorizontalAlignment="Center" Margin="0 0 200 0" materialDesign:HintAssist.Hint="Chức vụ" Height="25" Width="85" />
-                                        <TextBox Text="{Binding diachi}" TextWrapping="Wrap" Width="250" Height="40" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" materialDesign:HintAssist.Hint="Địa chỉ" Margin="800 0 0 0" HorizontalAlignment="Center"/>
-                                        <!--ĐỊA CHỈ-->
-                                        <DatePicker SelectedDate="{Binding ngaysinh}" Margin="200,0,0,0" HorizontalAlignment="Center" Width="120"/>
-                                    </Grid>
-                                    <Grid Grid.Row="1">
-                                        <Grid >
-                                            <Button Command="{Binding themnhanviencommand}" Height="60" Width="120" Content="Thêm" HorizontalAlignment="Center" Margin="0,0,300,0" VerticalAlignment="Center"/>
-                                            <Button Command="{Binding suanhanviencommand}" Height="60" Width="120" Content="Sửa" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            <Button Height="60" Width="120" Content="Disable" HorizontalAlignment="Center" Margin="0,0,-300,0" VerticalAlignment="Center"/>
-                                        </Grid>
->>>>>>> 6b1c2b609dabe594f68b7568a50b77e0f95b59d4
-                                    </Grid>
+                                </Grid>
                                 </Grid>
                             </materialDesign:Card>
                         </Grid>

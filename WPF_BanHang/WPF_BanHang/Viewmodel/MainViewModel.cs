@@ -18,34 +18,34 @@ namespace WPF_BanHang.Viewmodel
     {
         //đổ dữ liệu bên tồn kho
         private ObservableCollection<tonkhoxl> _tonkhoxlist;
-        public ObservableCollection<tonkhoxl> tonkhoxlist { get=> _tonkhoxlist; set { _tonkhoxlist = value;OnPropertyChanged(); } }
-       //đổ dữ liệu bên nhân viên
+        public ObservableCollection<tonkhoxl> tonkhoxlist { get => _tonkhoxlist; set { _tonkhoxlist = value; OnPropertyChanged(); } }
+        //đổ dữ liệu bên nhân viên
         public ObservableCollection<nvxl> _nhanvienlist;
 
-        public ObservableCollection<nvxl> nhanvienlist { get => _nhanvienlist;set { _nhanvienlist = value; OnPropertyChanged(); } }
+        public ObservableCollection<nvxl> nhanvienlist { get => _nhanvienlist; set { _nhanvienlist = value; OnPropertyChanged(); } }
         //đổ dữ liệu qh vô combobox
         public ObservableCollection<QuyenHan> _cvlist;
 
         public ObservableCollection<QuyenHan> cvlist { get => _cvlist; set { _cvlist = value; OnPropertyChanged(); } }
-       //lấy dữ liệu đc selected
+        //lấy dữ liệu đc selected
         public nvxl _SelectedItem;
 
-        public nvxl SelectedItem 
-        { 
-            get => _SelectedItem; 
+        public nvxl SelectedItem
+        {
+            get => _SelectedItem;
             set
             {
-                _SelectedItem = value; OnPropertyChanged(); 
-                if(SelectedItem!=null)
+                _SelectedItem = value; OnPropertyChanged();
+                if (SelectedItem != null)
                 {
                     ten = SelectedItem.ten;
                     pass = SelectedItem.Pass;
                     ngaysinh = SelectedItem.ngaysinh;
                     diachi = SelectedItem.diachi;
                     sdt = SelectedItem.sdt;
-                    chuvuseleted = SelectedItem.IdChucvu-1;
+                    chuvuseleted = SelectedItem.IdChucvu - 1;
                     manv = SelectedItem.Manv;
-                }    
+                }
             }
         }
         //binding du lieu
@@ -83,26 +83,25 @@ namespace WPF_BanHang.Viewmodel
         public ICommand thanhtoancommand { get; set; }
         public ICommand themnhanviencommand { get; set; }
         public ICommand suanhanviencommand { get; set; }
-<<<<<<< HEAD
         public ICommand editcommand { get; set; }
         public ICommand PasswordChangedcommand { get; set; }
         public ICommand TextChangedcommand { get; set; }
         public bool isloaded = false;
+        public ICommand themsanphamcommand { get; set; }
+        public ICommand suasanphamcommand { get; set; }
         public MainViewModel()
         {
             var db = new qlbhContext();
-=======
-        public ICommand themsanphamcommand { get; set; }
-        public ICommand suasanphamcommand { get; set; }
-        public bool isloaded = false;
-        public MainViewModel()
-        {
+
             themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
             suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
-
-
->>>>>>> 6b1c2b609dabe594f68b7568a50b77e0f95b59d4
-            suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => { return true; }, (c) => { suanhanvien(c); });
+            suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => { 
+               if( SelectedItem==null)
+                {
+                    return false;
+                }
+                return true; 
+            }, (c) => { suanhanvien(c); });
             themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { themnhanvien(a); });
             thanhtoancommand = new RelayCommand<HoaDonWindow>((w) => { return true; }, (w) => { Thanhtoan(w); });
             loadedwindowcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
@@ -132,25 +131,46 @@ namespace WPF_BanHang.Viewmodel
             TextChangedcommand = new RelayCommand<TextBox>((p) => { return true; }, (p) => { sodt = p.Text; });
             editcommand = new RelayCommand<object>((p) =>
             {
-                if (string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(diachi) || string.IsNullOrEmpty(sdt))
-                    return false;
-                pass = MD5Hash(Base64Encode(password));
-                return true;
+                if (string.IsNullOrEmpty(password))
+                {
+                    if (string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(diachi) || string.IsNullOrEmpty(sdt))
+                        return false;
+                    return true;
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(diachi) || string.IsNullOrEmpty(sdt))
+                        return false;
+                    pass = MD5Hash(Base64Encode(password));
+                    return true;
+                }
             },
                     (p) =>
                     {
-                        var edit = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
-                        edit.TenNhanvien = ten;
-                        edit.PassNhanvien = pass;
-                        edit.Sdt = sodt;
-                        edit.DiachiNhanvien = diachi;
-                        edit.IdChucvu = chuvuseleted + 1;
-                        db.SaveChanges();
-                        MessageBox.Show("sua thanh cong");
-                        ten = "";
-                        pass = "";
-                        diachi = "";
-                        sdt = "";
+                        if (string.IsNullOrEmpty(password))
+                        {
+                            var editnp = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
+                            editnp.TenNhanvien = ten;
+                            editnp.Sdt = sodt;
+                            editnp.DiachiNhanvien = diachi;
+                            editnp.IdChucvu = chuvuseleted + 1;
+                            db.SaveChanges();
+                            MessageBox.Show("sua thanh cong");
+                            ten = "";
+                            diachi = "";
+                            sdt = "";
+                        }
+                        else
+                        {
+                            var edit = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
+                            edit.TenNhanvien = ten;
+                            edit.PassNhanvien = pass;
+                            edit.Sdt = sodt;
+                            edit.DiachiNhanvien = diachi;
+                            edit.IdChucvu = chuvuseleted + 1;
+                            db.SaveChanges();
+                            MessageBox.Show("sua thanh cong");
+                        }
                     });
 
         }
@@ -163,10 +183,10 @@ namespace WPF_BanHang.Viewmodel
             var sp = db.SanPham;
             var cthd = db.HoaDonChitiet;
             int i = 1;
-            foreach(var item in sp.ToList())
+            foreach (var item in sp.ToList())
             {
-               var nhap= cthd.Where(p => p.IdSanpham == item.IdSanpham && p.IdNhacc != null);
-               var xuat = cthd.Where(p => p.IdSanpham == item.IdSanpham && p.IdNhacc == null);
+                var nhap = cthd.Where(p => p.IdSanpham == item.IdSanpham && p.IdNhacc != null);
+                var xuat = cthd.Where(p => p.IdSanpham == item.IdSanpham && p.IdNhacc == null);
                 int sumnhap = 0;
                 int sumxuat = 0;
                 if (nhap != null)
@@ -178,13 +198,13 @@ namespace WPF_BanHang.Viewmodel
                 tonKho.ten = item.TenSanpham;
                 tonKho.soluong = sumnhap - sumxuat;
                 tonKho.STT = i;
-                
+
                 tonkhoxlist.Add(tonKho);
                 i++;
             }
         }
-  //
-  //nhân viên
+        //
+        //nhân viên
         void loadnhanvien()
         {
             var db = new qlbhContext();
@@ -221,14 +241,13 @@ namespace WPF_BanHang.Viewmodel
             window1.ShowDialog();
             loadnhanvien();
         }
-  
+
         //mo win sua nv
         void suanhanvien(SuaNhanVienWindow c)
         {
             SuaNhanVienWindow window2 = new SuaNhanVienWindow();
             window2.ShowDialog();
         }
-<<<<<<< HEAD
         //mã hóa base 64
         public static string Base64Encode(string plainText)
         {
@@ -247,19 +266,18 @@ namespace WPF_BanHang.Viewmodel
                 hash.Append(bytes[i].ToString("x2"));
             }
             return hash.ToString();
-=======
-
+        }
         void themsanpham(ThemSanPhamWindow k)
         {
-            ThemSanPhamWindow window3 = new ThemSanPhamWindow();
-            window3.ShowDialog();
+                ThemSanPhamWindow window3 = new ThemSanPhamWindow();
+                window3.ShowDialog();
         }
 
         void suasanpham(SuaSanPhamWindow l)
         {
-            SuaSanPhamWindow window4 = new SuaSanPhamWindow();
-            window4.ShowDialog();
->>>>>>> 6b1c2b609dabe594f68b7568a50b77e0f95b59d4
+                SuaSanPhamWindow window4 = new SuaSanPhamWindow();
+                window4.ShowDialog();
         }
+        
     }
 }
