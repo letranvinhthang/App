@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Asn1.Crmf;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -20,6 +21,11 @@ namespace WPF_BanHang
         public SuaNhanVienWindow()
         {
             InitializeComponent();
+        }
+
+        private void chec(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

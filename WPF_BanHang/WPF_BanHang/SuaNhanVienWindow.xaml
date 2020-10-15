@@ -13,7 +13,7 @@
 
             <materialDesign:Card Margin="20" UniformCornerRadius="10">
 
-                <StackPanel Margin="15">
+                <StackPanel Margin="15" Name="SuaNV">
 
                     <Label FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="UltraBold" Content="SỬA NHÂN VIÊN"></Label>
 
@@ -38,11 +38,12 @@
   VerticalAlignment="Center" />
 
                     <StackPanel Margin="10">
-                        <CheckBox Width="400"
+                        <CheckBox Width="400" 
+                                  
     x:Name="MaterialDesignFilledPasswordFieldPasswordBoxEnabledComboBox">
                             Enabled
                         </CheckBox>
-                        <PasswordBox Width="400"
+                        <PasswordBox x:Name="pass" Width="400" 
     Style="{StaticResource MaterialDesignFilledPasswordFieldPasswordBox}"
     VerticalAlignment="Top"
     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledPasswordFieldPasswordBoxEnabledComboBox}"
