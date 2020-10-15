@@ -93,6 +93,10 @@ namespace WPF_BanHang.Viewmodel
                         });
                         db.SaveChanges();
                         MessageBox.Show("them thanh cong");
+                        ten = "";
+                        pass = "";
+                        diachi = "";
+                        sdt="";
                     });
                 exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
         }

@@ -13,6 +13,7 @@ namespace WPF_BanHang.Models
         public string diachi { get; set; }
         public string chucvu { get; set; }
         public int IdChucvu { get; set; }
+        public string sdt { get; set; }
         public NhanVien cuahang { get; set; }
     }
 }
