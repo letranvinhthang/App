@@ -232,6 +232,7 @@
 
 
                                         </ComboBox>
+                                        
                                     </Grid>
                                     <Grid Grid.Row="1">
                                         <ListView ItemsSource="{Binding nhanvienlist}">
@@ -408,11 +409,22 @@
                                         <RowDefinition></RowDefinition>
 
                                     </Grid.RowDefinitions>
+<<<<<<< HEAD
                                     <Grid>
                                         <Button Command="{Binding themnhanviencommand}" Height="60" Width="120" Content="Thêm" HorizontalAlignment="Center" Margin="0,0,300,0" VerticalAlignment="Center"/>
                                         <Button Command="{Binding suanhanviencommand}" Height="60" Width="120" Content="Sửa" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         <Button Height="60" Width="120" Content="Disable" HorizontalAlignment="Center" Margin="0,0,-300,0" VerticalAlignment="Center"/>
                                 </Grid>
+=======
+                                    
+                                    <Grid >
+                                        <Grid >
+                                            <Button Command="{Binding themnhanviencommand}" Height="60" Width="120" Content="Thêm" HorizontalAlignment="Center" Margin="0,0,300,0" VerticalAlignment="Center"/>
+                                            <Button Command="{Binding suanhanviencommand}" Height="60" Width="120" Content="Sửa" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <Button Height="60" Width="120" Content="Disable" HorizontalAlignment="Center" Margin="0,0,-300,0" VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </Grid>
+>>>>>>> bb1f4431ae87ef5cb582efaf63c8dbe86a6d61ea
                                 </Grid>
                             </materialDesign:Card>
                         </Grid>
