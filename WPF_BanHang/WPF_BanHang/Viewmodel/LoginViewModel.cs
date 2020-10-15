@@ -24,8 +24,8 @@ namespace WPF_BanHang.Viewmodel
         public string password { get => _password; set { _password = value; OnPropertyChanged(); } }
         public LoginViewModel()
         {
-            //usename = "";
-            //password = "";
+            usename = null;
+            password = "";
             IsLogin = false;
             logincommand = new RelayCommand<Window>((p) => { return true; }, (p) => { login(p); });
             PasswordChangedcommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { password = p.Password; });
@@ -46,14 +46,12 @@ namespace WPF_BanHang.Viewmodel
                 {
                     IsLogin = true;
                     p.Close();
-                }              
+                }
+                else
+                {
+                    MessageBox.Show("Sai thông tin!", "Thông báo");                   
+                }
             }
-            else
-            {
-                IsLogin = false;
-                MessageBox.Show("Sai tài khoản mật khẩu");
-            }
-
         }
 
         void exit(Window e)

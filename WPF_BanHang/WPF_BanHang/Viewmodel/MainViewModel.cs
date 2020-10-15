@@ -8,9 +8,13 @@ using System.Linq;
 using Org.BouncyCastle.Asn1.Mozilla;
 using System;
 using MaterialDesignThemes.Wpf;
+<<<<<<< HEAD
 using System.Windows.Controls;
 using System.Security.Cryptography;
 using System.Text;
+=======
+using System.IO;
+>>>>>>> 15fb648b80f47682f85dc8d1146589f2f33a1e72
 
 namespace WPF_BanHang.Viewmodel
 {
@@ -183,6 +187,10 @@ namespace WPF_BanHang.Viewmodel
             var sp = db.SanPham;
             var cthd = db.HoaDonChitiet;
             int i = 1;
+<<<<<<< HEAD
+=======
+            
+>>>>>>> 15fb648b80f47682f85dc8d1146589f2f33a1e72
             foreach (var item in sp.ToList())
             {
                 var nhap = cthd.Where(p => p.IdSanpham == item.IdSanpham && p.IdNhacc != null);
@@ -194,7 +202,7 @@ namespace WPF_BanHang.Viewmodel
                 if (xuat != null) ;
                 sumxuat = xuat.Sum(p => p.SoLuong);
                 tonkhoxl tonKho = new tonkhoxl();
-                tonKho.barcode = item.IdSanpham;
+                tonKho.hinh = item.HinhSanpham;
                 tonKho.ten = item.TenSanpham;
                 tonKho.soluong = sumnhap - sumxuat;
                 tonKho.STT = i;
