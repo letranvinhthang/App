@@ -86,11 +86,12 @@ namespace WPF_BanHang.Viewmodel
         public ICommand themnhanviencommand { get; set; }
         public ICommand suanhanviencommand { get; set; }
         public ICommand editcommand { get; set; }
-        public ICommand PasswordChangedcommand { get; set; }
+        public ICommand PassChangedcommand { get; set; }
         public ICommand TextChangedcommand { get; set; }
         public bool isloaded = false;
         public ICommand themsanphamcommand { get; set; }
         public ICommand suasanphamcommand { get; set; }
+        public ICommand exitcommand { get; set; }
         public MainViewModel()
         {
             var db = new qlbhContext();
@@ -106,6 +107,7 @@ namespace WPF_BanHang.Viewmodel
             }, (c) => { suanhanvien(c); });
             themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { themnhanvien(a); });
             thanhtoancommand = new RelayCommand<HoaDonWindow>((w) => { return true; }, (w) => { Thanhtoan(w); });
+            exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
             loadedwindowcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 if (p == null)
@@ -129,7 +131,7 @@ namespace WPF_BanHang.Viewmodel
                 }
             });
             //xử lý sửa thông tin
-            PasswordChangedcommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { password = p.Password; });
+            PassChangedcommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => {password = p.Password;});
             TextChangedcommand = new RelayCommand<TextBox>((p) => { return true; }, (p) => { sodt = p.Text; });
             editcommand = new RelayCommand<object>((p) =>
             {
@@ -153,21 +155,18 @@ namespace WPF_BanHang.Viewmodel
                         {
                             var editnp = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
                             editnp.TenNhanvien = ten;
-                            editnp.Sdt = sodt;
+                            editnp.Sdt = sdt;
                             editnp.DiachiNhanvien = diachi;
                             editnp.IdChucvu = chuvuseleted + 1;
                             db.SaveChanges();
                             MessageBox.Show("sua thanh cong");
-                            ten = "";
-                            diachi = "";
-                            sdt = "";
                         }
                         else
                         {
                             var edit = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
                             edit.TenNhanvien = ten;
                             edit.PassNhanvien = pass;
-                            edit.Sdt = sodt;
+                            edit.Sdt = sdt;
                             edit.DiachiNhanvien = diachi;
                             edit.IdChucvu = chuvuseleted + 1;
                             db.SaveChanges();
@@ -249,6 +248,7 @@ namespace WPF_BanHang.Viewmodel
         {
             SuaNhanVienWindow window2 = new SuaNhanVienWindow();
             window2.ShowDialog();
+            loadnhanvien();
         }
         //mã hóa base 64
         public static string Base64Encode(string plainText)
