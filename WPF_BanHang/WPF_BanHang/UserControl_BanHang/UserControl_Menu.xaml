@@ -235,6 +235,7 @@
                                             
                                             
                                         </ComboBox>
+                                        
                                     </Grid>
                                     <Grid Grid.Row="1">
                                     <ListView ItemsSource="{Binding nhanvienlist}">
