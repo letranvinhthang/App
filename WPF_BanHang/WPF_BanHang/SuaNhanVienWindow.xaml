@@ -9,9 +9,13 @@
         mc:Ignorable="d"
                xmlns:uc="clr-namespace:WPF_BanHang.UserControl_BanHang"
 
+<<<<<<< HEAD
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
    DataContext="{StaticResource mainVM}"
         Title="SuaNhanVienWindow" Height="450" Width="800">
+=======
+        Title="SuaNhanVienWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+>>>>>>> 6b1c2b609dabe594f68b7568a50b77e0f95b59d4
     <Grid>
         <Grid>
             <materialDesign:Card Margin="20" UniformCornerRadius="10">
