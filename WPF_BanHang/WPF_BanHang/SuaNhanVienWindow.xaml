@@ -7,7 +7,7 @@
         mc:Ignorable="d"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 
-        Title="SuaNhanVienWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="SuaNhanVienWindow" Height="500" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid>
 
@@ -37,14 +37,17 @@
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
   VerticalAlignment="Center" />
 
-                    <PasswordBox
-                    
-                        x:Name="FloatingPasswordBox" Background="White" Width="400"
-                materialDesign:HintAssist.Hint=" Mật khẩu"
-                Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
-                VerticalAlignment="Center">
-
-                    </PasswordBox>
+                    <StackPanel Margin="10">
+                        <CheckBox Width="400"
+    x:Name="MaterialDesignFilledPasswordFieldPasswordBoxEnabledComboBox">
+                            Enabled
+                        </CheckBox>
+                        <PasswordBox Width="400"
+    Style="{StaticResource MaterialDesignFilledPasswordFieldPasswordBox}"
+    VerticalAlignment="Top"
+    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledPasswordFieldPasswordBoxEnabledComboBox}"
+    materialDesign:HintAssist.Hint="Mật khẩu" />
+                    </StackPanel>
 
                     <ComboBox ItemsSource="{Binding cvlist}" DisplayMemberPath="TenChucvu" SelectedValuePath="IdChuvu" Width="400" Height="30" Margin="0 15 0 0"
   materialDesign:HintAssist.Hint="CHỨC VỤ"
