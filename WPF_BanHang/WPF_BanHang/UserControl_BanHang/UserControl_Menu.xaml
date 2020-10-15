@@ -232,7 +232,24 @@
 
 
                                         </ComboBox>
-                                        
+                                        <DatePicker
+                                            Margin="0 0 300 0"
+  Width="150"
+  materialDesign:HintAssist.Hint="Từ ngày"
+  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                        <DatePicker
+                                            Margin="100 0 0 0"
+  Width="150"
+  materialDesign:HintAssist.Hint="Đến ngày"
+  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                        <Button
+                                             Margin="500 10 0 0"
+    Style="{StaticResource MaterialDesignRaisedButton}"
+    Width="100"
+                                            Content="Tìm"
+    ToolTip="Resource name: MaterialDesignRaisedButton">
+                                           
+                                        </Button>
                                     </Grid>
                                     <Grid Grid.Row="1">
                                         <ListView ItemsSource="{Binding nhanvienlist}">
@@ -413,7 +430,9 @@
                                         <Grid >
                                             <Button Command="{Binding themnhanviencommand}" Height="60" Width="120" Content="Thêm" HorizontalAlignment="Center" Margin="0,0,300,0" VerticalAlignment="Center"/>
                                             <Button Command="{Binding suanhanviencommand}" Height="60" Width="120" Content="Sửa" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            <Button Height="60" Width="120" Content="Disable" HorizontalAlignment="Center" Margin="0,0,-300,0" VerticalAlignment="Center"/>
+                                            <Button Height="60" Width="120" Content="Enable" HorizontalAlignment="Center" Margin="0,0,-300,0" VerticalAlignment="Center"/>
+                                            <Button Height="60" Width="120" Content="Disable" HorizontalAlignment="Center" Margin="0,0,-600,0" VerticalAlignment="Center"/>
+
                                         </Grid>
                                     </Grid>
 

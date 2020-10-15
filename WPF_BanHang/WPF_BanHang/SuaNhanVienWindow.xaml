@@ -18,7 +18,7 @@ x:Name="window"
         <Grid>
             <materialDesign:Card Margin="20" UniformCornerRadius="10">
 
-                <StackPanel Margin="15">
+                <StackPanel Margin="15" Name="SuaNV">
 
                     <Label FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="UltraBold" Content="SỬA NHÂN VIÊN"></Label>
 
@@ -53,10 +53,13 @@ x:Name="window"
 
 
                     <StackPanel Margin="10">
+
+                        
                   
                         <PasswordBox Width="400"
                                     x:Name="FloatingPasswordBox"
     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+
     VerticalAlignment="Top"
     materialDesign:HintAssist.Hint="Mật khẩu" >
                             <i:Interaction.Triggers>
