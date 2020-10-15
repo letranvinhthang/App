@@ -11,7 +11,7 @@ namespace WPF_BanHang.Models
         }
 
         public int IdKhachhang { get; set; }
-        public int TenKhachhang { get; set; }
+        public string TenKhachhang { get; set; }
         public string EmailKhachhang { get; set; }
         public string PassKhachhang { get; set; }
         public bool GioitinhKhachhang { get; set; }

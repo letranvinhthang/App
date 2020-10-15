@@ -20,7 +20,10 @@
      FontFamily="{DynamicResource MaterialDesignFont}" >
 
 
-    <Grid Background="Azure">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Icons/BG.jpg"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"></RowDefinition>
             <RowDefinition Height="17*"></RowDefinition>
@@ -34,17 +37,13 @@
                 <Image Source="Icons/Logo.png"/>
             </Grid>
             <Grid Grid.Column="1" Margin="40,0,0,-127">
-                <Grid.Background>
-                    <ImageBrush ImageSource="Icons/Banner.jpg"/>
-                </Grid.Background>
-
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="34" Text="{Binding Tag, ElementName=uccontrolmenu}" ></TextBlock>
             </Grid>
         </Grid>
 
 
-        <Grid Grid.Row="1" Margin="0,0,0,0">
-            <TabControl Background="WhiteSmoke"
+        <Grid Grid.Row="1">
+            <TabControl Background="{Binding}"
   Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
   materialDesign:ColorZoneAssist.Mode="Custom" materialDesign:ColorZoneAssist.Background="#1565c0" Margin="0,129,0,0">
                 <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Width="200">
@@ -57,41 +56,47 @@
                     <!--Listview ORDER-->
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="4*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <materialDesign:Card Margin="20">
-                                <ListView ItemsSource="{Binding nhanvienlist}">
-                                    <!--ĐỊNH DẠNG NỘI DUNG-->
-                                    <ListView.ItemContainerStyle>
-                                        <Style TargetType="ListViewItem">
-                                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                            <Setter Property="FontSize" Value="15"/>
-                                        </Style>
-                                    </ListView.ItemContainerStyle>
-                                    <ListView.View>
-                                        <GridView>
-                                            <!--ĐỊNH DẠNG HEADER-->
-                                            <GridView.ColumnHeaderContainerStyle>
-                                                <Style TargetType="GridViewColumnHeader">
-                                                    <Setter Property="FontSize" Value="20"/>
-                                                    <Setter Property="Margin" Value="10"/>
-                                                    <Setter Property="VerticalAlignment" Value="Center"/>
-                                                    <Setter Property="IsEnabled" Value="False"/>
-                                                </Style>
-                                            </GridView.ColumnHeaderContainerStyle>
-                                            <GridViewColumn Width="200" Header="Barcode" DisplayMemberBinding="{Binding Manv}"/>
-                                            <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                            <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding Pass}"/>
-                                            <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding ngaysinh}"/>
-                                            <GridViewColumn Width="400" Header="Tổng tiền" DisplayMemberBinding="{Binding diachi}"/>
-                                            <GridViewColumn Width="195" Header="Nhân viên" DisplayMemberBinding="{Binding chucvu}"/>
+                            <Rectangle Margin="3" RadiusY="10" RadiusX="10" Fill="White">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
+                                </Rectangle.Effect>
 
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
-                            </materialDesign:Card>
+                            </Rectangle>
+
+                            <ListView ItemsSource="{Binding nhanvienlist}">
+                                <!--ĐỊNH DẠNG NỘI DUNG-->
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                        <Setter Property="FontSize" Value="15"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.View>
+                                    <GridView>
+                                        <!--ĐỊNH DẠNG HEADER-->
+                                        <GridView.ColumnHeaderContainerStyle>
+                                            <Style TargetType="GridViewColumnHeader">
+                                                <Setter Property="FontSize" Value="20"/>
+                                                <Setter Property="Margin" Value="10"/>
+                                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                            </Style>
+                                        </GridView.ColumnHeaderContainerStyle>
+                                        <GridViewColumn Width="200" Header="Barcode" DisplayMemberBinding="{Binding Manv}"/>
+                                        <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
+                                        <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding Pass}"/>
+                                        <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding ngaysinh}"/>
+                                        <GridViewColumn Width="400" Header="Tổng tiền" DisplayMemberBinding="{Binding diachi}"/>
+                                        <GridViewColumn Width="195" Header="Nhân viên" DisplayMemberBinding="{Binding chucvu}"/>
+
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+
                         </Grid>
                         <!--Listview-->
                         <Grid Grid.Row="1">
@@ -111,7 +116,7 @@
                                                 Command="{Binding thanhtoancommand}"/>
 
                                         <Button Height="60" Width="120" Content="Xóa" HorizontalAlignment="Center" Margin="0,0,-200,0" VerticalAlignment="Center"/>
-                                        
+
                                     </Grid>
                                 </Grid>
                             </materialDesign:Card>
@@ -135,7 +140,7 @@
                     </TabItem.Header>
                     <!--Listview THỐNG KÊ-->
                     <Grid>
-                        <TabControl>
+                        <TabControl Background="{Binding}">
                             <TabControl.Resources>
                                 <Style TargetType="TabItem">
                                     <Setter Property="Background" Value="AntiqueWhite"/>
@@ -145,8 +150,8 @@
                             </TabControl.Resources>
                             <!--HÓA ĐƠN-->
                             <TabItem Header="HÓA ĐƠN" Height="50" Width="200">
-                                <Grid Background="White">
-                                    <materialDesign:Card Margin="10">
+                                <Grid>
+                                    
                                         <TabControl Width="auto">
                                             <TabItem Header="Khách hàng" Height="50">
                                                 <ListView ItemsSource="{Binding nhanvienlist}">
@@ -168,10 +173,8 @@
                                                                     <Setter Property="IsEnabled" Value="False"/>
                                                                 </Style>
                                                             </GridView.ColumnHeaderContainerStyle>
-                                                            <GridViewColumn Width="200" Header="Barcode" DisplayMemberBinding="{Binding Manv }"/>
-                                                            <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                                            <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding Pass}"/>
-                                                            <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding ngaysinh}"/>
+                                                            <GridViewColumn Width="200" Header="Mã hóa đơn" DisplayMemberBinding="{Binding Manv }"/>
+                                                            <GridViewColumn Width="430" Header="Tên khách hàng" DisplayMemberBinding="{Binding ten }"/>
                                                             <GridViewColumn Width="400" Header="Tổng tiền" DisplayMemberBinding="{Binding diachi}"/>
                                                             <GridViewColumn Width="195" Header="Nhân viên" DisplayMemberBinding="{Binding chucvu}"/>
                                                         </GridView>
@@ -198,23 +201,23 @@
                                                                     <Setter Property="IsEnabled" Value="False"/>
                                                                 </Style>
                                                             </GridView.ColumnHeaderContainerStyle>
-                                                            <GridViewColumn Width="200" Header="Barcode" DisplayMemberBinding="{Binding Manv }"/>
+                                                            <GridViewColumn Width="200" Header="Mã nhà phân phối" DisplayMemberBinding="{Binding Manv }"/>
                                                             <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
                                                             <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding Pass}"/>
                                                             <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding ngaysinh}"/>
                                                             <GridViewColumn Width="400" Header="Tổng tiền" DisplayMemberBinding="{Binding diachi}"/>
-                                                            <GridViewColumn Width="195" Header="Nhân viên" DisplayMemberBinding="{Binding chucvu}"/>
+                                                            <GridViewColumn Width="195" Header="Ngày giao" DisplayMemberBinding="{Binding chucvu}"/>
                                                         </GridView>
                                                     </ListView.View>
                                                 </ListView>
                                             </TabItem>
                                         </TabControl>
-                                    </materialDesign:Card>
+                                   
                                 </Grid>
                             </TabItem>
                             <!--SẢN PHẨM-->
                             <TabItem Header="SẢN PHẨM" Height="50" Width="200">
-                               
+
                                 <Grid Background="White">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto"></RowDefinition>
@@ -232,43 +235,43 @@
                                             <ComboBoxItem>
                                                 Nhiều đến ít
                                             </ComboBoxItem>
-                                            
-                                            
+
+
                                         </ComboBox>
                                         
                                     </Grid>
                                     <Grid Grid.Row="1">
-                                    <ListView ItemsSource="{Binding nhanvienlist}">
-                                        <!--ĐỊNH DẠNG NỘI DUNG-->
-                                        <ListView.ItemContainerStyle>
-                                            <Style TargetType="ListViewItem">
-                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                                <Setter Property="FontSize" Value="15"/>
-                                            </Style>
-                                        </ListView.ItemContainerStyle>
-                                        <ListView.View>
-                                            <GridView>
-                                                <!--ĐỊNH DẠNG HEADER-->
-                                                <GridView.ColumnHeaderContainerStyle>
-                                                    <Style TargetType="GridViewColumnHeader">
-                                                        <Setter Property="FontSize" Value="20"/>
-                                                        <Setter Property="Margin" Value="10"/>
-                                                        <Setter Property="VerticalAlignment" Value="Center"/>
-                                                        <Setter Property="IsEnabled" Value="False"/>
-                                                    </Style>
-                                                </GridView.ColumnHeaderContainerStyle>
-                                                <GridViewColumn Width="200" Header="Barcode" DisplayMemberBinding="{Binding Manv }"/>
-                                                <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                                <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding Pass}"/>
-                                                <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding ngaysinh}"/>
-                                                <GridViewColumn Width="400" Header="Tổng tiền" DisplayMemberBinding="{Binding diachi}"/>
-                                                <GridViewColumn Width="195" Header="Nhân viên" DisplayMemberBinding="{Binding chucvu}"/>
-                                            </GridView>
-                                        </ListView.View>
-                                    </ListView>
+                                        <ListView ItemsSource="{Binding nhanvienlist}">
+                                            <!--ĐỊNH DẠNG NỘI DUNG-->
+                                            <ListView.ItemContainerStyle>
+                                                <Style TargetType="ListViewItem">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                                    <Setter Property="FontSize" Value="15"/>
+                                                </Style>
+                                            </ListView.ItemContainerStyle>
+                                            <ListView.View>
+                                                <GridView>
+                                                    <!--ĐỊNH DẠNG HEADER-->
+                                                    <GridView.ColumnHeaderContainerStyle>
+                                                        <Style TargetType="GridViewColumnHeader">
+                                                            <Setter Property="FontSize" Value="20"/>
+                                                            <Setter Property="Margin" Value="10"/>
+                                                            <Setter Property="VerticalAlignment" Value="Center"/>
+                                                            <Setter Property="IsEnabled" Value="False"/>
+                                                        </Style>
+                                                    </GridView.ColumnHeaderContainerStyle>
+                                                    <GridViewColumn Width="200" Header="Barcode" DisplayMemberBinding="{Binding Manv }"/>
+                                                    <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
+                                                    <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding Pass}"/>
+                                                    <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding ngaysinh}"/>
+                                                    <GridViewColumn Width="400" Header="Tổng tiền" DisplayMemberBinding="{Binding diachi}"/>
+                                                    <GridViewColumn Width="195" Header="Nhân viên" DisplayMemberBinding="{Binding chucvu}"/>
+                                                </GridView>
+                                            </ListView.View>
+                                        </ListView>
                                     </Grid>
                                 </Grid>
-                                
+
                             </TabItem>
                             <!--LỊCH SỬ-->
                             <TabItem Header="LỊCH SỬ" Height="50" Width="200">
@@ -295,38 +298,41 @@
                             <RowDefinition Height="2*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <materialDesign:Card Margin="15">
-                                <ListView ItemsSource="{Binding tonkhoxlist}">
-                                    <!--ĐỊNH DẠNG NỘI DUNG-->
-                                    <ListView.ItemContainerStyle>
-                                        <Style TargetType="ListViewItem">
-                                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                            <Setter Property="FontSize" Value="15"/>
-                                        </Style>
-                                    </ListView.ItemContainerStyle>
-                                    <ListView.View>
-                                        <GridView>
-                                            <!--ĐỊNH DẠNG HEADER-->
-                                            <GridView.ColumnHeaderContainerStyle>
-                                                <Style TargetType="GridViewColumnHeader">
-                                                    <Setter Property="FontSize" Value="20"/>
-                                                    <Setter Property="Margin" Value="10"/>
-                                                    <Setter Property="VerticalAlignment" Value="Center"/>
-                                                    <Setter Property="IsEnabled" Value="False"/>
-                                                </Style>
-                                            </GridView.ColumnHeaderContainerStyle>
-                                            <GridViewColumn Width="70" Header="STT" DisplayMemberBinding="{Binding STT}"/>
+                            <Rectangle Margin="3" RadiusY="10" RadiusX="10" Fill="White">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+                            <ListView ItemsSource="{Binding tonkhoxlist}">
+                                <!--ĐỊNH DẠNG NỘI DUNG-->
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                        <Setter Property="FontSize" Value="15"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.View>
+                                    <GridView>
+                                        <!--ĐỊNH DẠNG HEADER-->
+                                        <GridView.ColumnHeaderContainerStyle>
+                                            <Style TargetType="GridViewColumnHeader">
+                                                <Setter Property="FontSize" Value="20"/>
+                                                <Setter Property="Margin" Value="10"/>
+                                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                            </Style>
+                                        </GridView.ColumnHeaderContainerStyle>
+                                        <GridViewColumn Width="70" Header="STT" DisplayMemberBinding="{Binding STT}"/>
 
-                                            <GridViewColumn Width="200" Header="Barcode" DisplayMemberBinding="{Binding barcode }"/>
-                                            
-                                            <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                            
-                                            <GridViewColumn Width="120" Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
+                                        <GridViewColumn Width="200" Header="Barcode" DisplayMemberBinding="{Binding barcode }"/>
 
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
-                            </materialDesign:Card>
+                                        <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
+
+                                        <GridViewColumn Width="120" Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
+
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
                         </Grid>
                         <!--Listview NHẬP KHO-->
                         <Grid Grid.Row="1">
@@ -368,36 +374,38 @@
                         </Grid.RowDefinitions>
                         <!--HIỂN THỊ-->
                         <Grid Grid.Row="0">
-                            <materialDesign:Card Margin="20">
-                                <ListView ItemsSource="{Binding nhanvienlist}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
-                                    <!--ĐỊNH DẠNG NỘI DUNG-->
-                                    <ListView.ItemContainerStyle>
-                                        <Style TargetType="ListViewItem">
-                                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                            <Setter Property="FontSize" Value="15"/>
-                                        </Style>
-                                    </ListView.ItemContainerStyle>
-                                    <ListView.View>
-                                        <GridView>
-                                            <!--ĐỊNH DẠNG HEADER-->
-                                            <GridView.ColumnHeaderContainerStyle>
-                                                <Style TargetType="GridViewColumnHeader">
-                                                    <Setter Property="FontSize" Value="20"/>
-                                                    <Setter Property="Margin" Value="10"/>
-                                                    <Setter Property="VerticalAlignment" Value="Center"/>
-                                                    <Setter Property="IsEnabled" Value="False"/>
-                                                </Style>
-                                            </GridView.ColumnHeaderContainerStyle>
-                                            <GridViewColumn Width="200" Header="ID" DisplayMemberBinding="{Binding Manv }"/>
-                                            <GridViewColumn Width="430" Header="Tên nhân viên" DisplayMemberBinding="{Binding ten }"/>
-                                            <GridViewColumn Header="Ngày bắt đầu làm" DisplayMemberBinding="{Binding ngaysinh}"/>
-                                            <GridViewColumn Width="400" Header="Địa chỉ" DisplayMemberBinding="{Binding diachi}"/>
-                                            <GridViewColumn Width="195" Header="Chức vụ" DisplayMemberBinding="{Binding chucvu}"/>
-
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
-                            </materialDesign:Card>
+                            <Rectangle Margin="3" RadiusY="10" RadiusX="10" Fill="White">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+                            <ListView ItemsSource="{Binding nhanvienlist}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                                <!--ĐỊNH DẠNG NỘI DUNG-->
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                        <Setter Property="FontSize" Value="15"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.View>
+                                    <GridView>
+                                        <!--ĐỊNH DẠNG HEADER-->
+                                        <GridView.ColumnHeaderContainerStyle>
+                                            <Style TargetType="GridViewColumnHeader">
+                                                <Setter Property="FontSize" Value="20"/>
+                                                <Setter Property="Margin" Value="10"/>
+                                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                            </Style>
+                                        </GridView.ColumnHeaderContainerStyle>
+                                        <GridViewColumn Width="200" Header="ID" DisplayMemberBinding="{Binding Manv }"/>
+                                        <GridViewColumn Width="430" Header="Tên nhân viên" DisplayMemberBinding="{Binding ten }"/>
+                                        <GridViewColumn Header="Ngày bắt đầu làm" DisplayMemberBinding="{Binding ngaysinh}"/>
+                                        <GridViewColumn Width="400" Header="Địa chỉ" DisplayMemberBinding="{Binding diachi}"/>
+                                        <GridViewColumn Width="195" Header="Chức vụ" DisplayMemberBinding="{Binding chucvu}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
                         </Grid>
                         <!--CHỈNH SỬA-->
                         <Grid Grid.Row="1">
@@ -405,13 +413,23 @@
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition></RowDefinition>
-                                       
+
                                     </Grid.RowDefinitions>
-                                    
-                                    <Grid >
-                       <Button Command="{Binding themnhanviencommand}" Height="60" Width="120" Content="Thêm" HorizontalAlignment="Center" Margin="0,0,300,0" VerticalAlignment="Center"/>
-                                        <Button Command="{Binding suanhanviencommand}" Height="60" Width="120" Content="Sửa" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        <Button Height="60" Width="120" Content="Disable" HorizontalAlignment="Center" Margin="0,0,-300,0" VerticalAlignment="Center"/>
+                                    <Grid Grid.Row="0">
+                                        <TextBox Text="{Binding ten}" HorizontalAlignment="Center" Margin="0 0 800 0" materialDesign:HintAssist.Hint="Tên nhân viên" TextWrapping="Wrap" Height="25" Width="116"/>
+                                        <TextBox Text="{Binding manv}" IsReadOnly="True" HorizontalAlignment="Center" Margin="0 50 800 0" materialDesign:HintAssist.Hint="Ma nhan vien" TextWrapping="Wrap" Height="25" Width="116"/>
+                                        <TextBox  HorizontalAlignment="Center" Margin="0 0 500 0" materialDesign:HintAssist.Hint="Mật khẩu" TextWrapping="Wrap"  Height="25" Width="114" />
+                                        <ComboBox ItemsSource="{Binding cvlist}" DisplayMemberPath="TenChucvu" SelectedValuePath="IdChucvu" SelectedIndex="{Binding chuvuseleted}" HorizontalAlignment="Center" Margin="0 0 200 0" materialDesign:HintAssist.Hint="Chức vụ" Height="25" Width="85" />
+                                        <TextBox Text="{Binding diachi}" TextWrapping="Wrap" Width="250" Height="40" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" materialDesign:HintAssist.Hint="Địa chỉ" Margin="800 0 0 0" HorizontalAlignment="Center"/>
+                                        <!--ĐỊA CHỈ-->
+                                        <DatePicker SelectedDate="{Binding ngaysinh}" Margin="200,0,0,0" HorizontalAlignment="Center" Width="120"/>
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <Grid >
+                                            <Button Command="{Binding themnhanviencommand}" Height="60" Width="120" Content="Thêm" HorizontalAlignment="Center" Margin="0,0,300,0" VerticalAlignment="Center"/>
+                                            <Button Command="{Binding suanhanviencommand}" Height="60" Width="120" Content="Sửa" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <Button Height="60" Width="120" Content="Disable" HorizontalAlignment="Center" Margin="0,0,-300,0" VerticalAlignment="Center"/>
+                                        </Grid>
                                     </Grid>
                                 </Grid>
                             </materialDesign:Card>
