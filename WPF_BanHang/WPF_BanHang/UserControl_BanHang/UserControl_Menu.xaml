@@ -413,7 +413,9 @@
                                         <Grid >
                                             <Button Command="{Binding themnhanviencommand}" Height="60" Width="120" Content="Thêm" HorizontalAlignment="Center" Margin="0,0,300,0" VerticalAlignment="Center"/>
                                             <Button Command="{Binding suanhanviencommand}" Height="60" Width="120" Content="Sửa" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            <Button Height="60" Width="120" Content="Disable" HorizontalAlignment="Center" Margin="0,0,-300,0" VerticalAlignment="Center"/>
+                                            <Button Height="60" Width="120" Content="Enable" HorizontalAlignment="Center" Margin="0,0,-300,0" VerticalAlignment="Center"/>
+                                            <Button Height="60" Width="120" Content="Disable" HorizontalAlignment="Center" Margin="0,0,-600,0" VerticalAlignment="Center"/>
+
                                         </Grid>
                                     </Grid>
 

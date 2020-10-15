@@ -53,20 +53,13 @@ x:Name="window"
 
 
                     <StackPanel Margin="10">
-<<<<<<< HEAD
-                        <CheckBox Width="400" 
-                                  
-    x:Name="MaterialDesignFilledPasswordFieldPasswordBoxEnabledComboBox">
-                            Enabled
-                        </CheckBox>
-                        <PasswordBox x:Name="pass" Width="400" 
-    Style="{StaticResource MaterialDesignFilledPasswordFieldPasswordBox}"
-=======
+
+                        
                   
                         <PasswordBox Width="400"
                                     x:Name="FloatingPasswordBox"
     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
->>>>>>> 7c50dc0d40a16d698a2a022fe2d0b18dbe72f7c6
+
     VerticalAlignment="Top"
     materialDesign:HintAssist.Hint="Mật khẩu" >
                             <i:Interaction.Triggers>
