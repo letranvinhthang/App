@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Linq;
+﻿using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
@@ -45,10 +43,6 @@ namespace WPF_BanHang.Viewmodel
                 var account = tk.Count();
                 if (account > 0)
                 {
-<<<<<<< HEAD
-                    IsLogin = true;
-                    p.Hide();
-=======
                     if (tk.FirstOrDefault().Disable == true)
                     {
                         MessageBox.Show("tài khoản đã bị vô hiệu");
@@ -58,17 +52,12 @@ namespace WPF_BanHang.Viewmodel
                         IsLogin = true;
                         p.Close();
                     }
->>>>>>> origin/hao1
                 }
                 else
                 {
                     MessageBox.Show("Sai thông tin!", "Thông báo");                   
                 }
                 
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo");
             }
             else
             {

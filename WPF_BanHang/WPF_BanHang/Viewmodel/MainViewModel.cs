@@ -3,17 +3,11 @@ using System.Windows.Input;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using System.Collections.ObjectModel;
 using WPF_BanHang.Models;
-using Google.Protobuf.WellKnownTypes;
 using System.Linq;
-using Org.BouncyCastle.Asn1.Mozilla;
 using System;
-using MaterialDesignThemes.Wpf;
 using System.Windows.Controls;
 using System.Security.Cryptography;
 using System.Text;
-using System.IO;
-using System.Windows.Controls;
-using System.Reflection;
 
 
 namespace WPF_BanHang.Viewmodel
@@ -22,7 +16,6 @@ namespace WPF_BanHang.Viewmodel
     {
         //đổ dữ liệu bên tồn kho
         private ObservableCollection<tonkhoxl> _tonkhoxlist;
-<<<<<<< HEAD
         public ObservableCollection<tonkhoxl> tonkhoxlist { get=> _tonkhoxlist; set { _tonkhoxlist = value;OnPropertyChanged(); } }
         //xử lý order
         private ObservableCollection<tonkhoxl> _orderlist;
@@ -30,14 +23,6 @@ namespace WPF_BanHang.Viewmodel
         //xử lý bên nhân viên
         public ObservableCollection<nvxl> _nhanvienlist;
         public ObservableCollection<nvxl> nhanvienlist { get => _nhanvienlist;set { _nhanvienlist = value; OnPropertyChanged(); } }
-=======
-        public ObservableCollection<tonkhoxl> tonkhoxlist { get => _tonkhoxlist; set { _tonkhoxlist = value; OnPropertyChanged(); } }
-        //đổ dữ liệu bên nhân viên
-        public ObservableCollection<nvxl> _nhanvienlist;
-
-        public ObservableCollection<nvxl> nhanvienlist { get => _nhanvienlist; set { _nhanvienlist = value; OnPropertyChanged(); } }
-        //đổ dữ liệu qh vô combobox
->>>>>>> origin/hao1
         public ObservableCollection<QuyenHan> _cvlist;
 
         public ObservableCollection<QuyenHan> cvlist { get => _cvlist; set { _cvlist = value; OnPropertyChanged(); } }
@@ -103,15 +88,12 @@ namespace WPF_BanHang.Viewmodel
         public bool isloaded = false;
         public ICommand themsanphamcommand { get; set; }
         public ICommand suasanphamcommand { get; set; }
-<<<<<<< HEAD
-        public ICommand dangxuatcommand { get; set; }
-        public bool isloaded = false;
-=======
+
         public ICommand exitcommand { get; set; }
         public ICommand disablecommand { get; set; }
         public ICommand enablecommand { get; set; }
         public ICommand closecommand { get; set; }
->>>>>>> origin/hao1
+
         public MainViewModel()
         {
             var db = new qlbhContext();
@@ -126,6 +108,7 @@ namespace WPF_BanHang.Viewmodel
                     lg.Show();
                 }
             });
+            // đăng xuất
             FrameworkElement getwindowparent(UserControl p)
             {
                 FrameworkElement parent = p;
@@ -138,11 +121,7 @@ namespace WPF_BanHang.Viewmodel
             }
             themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
             suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
-<<<<<<< HEAD
-            dangxuatcommand = new RelayCommand<Window>((p) => { return true; }, (p) => { exit(p); });
 
-            suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => { return true; }, (c) => { suanhanvien(c); });
-=======
             suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => { 
                if( SelectedItem==null)
                 {
@@ -150,7 +129,6 @@ namespace WPF_BanHang.Viewmodel
                 }
                 return true; 
             }, (c) => { suanhanvien(c); });
->>>>>>> origin/hao1
             themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { themnhanvien(a); });
             thanhtoancommand = new RelayCommand<HoaDonWindow>((w) => { return true; }, (w) => { Thanhtoan(w); });
             disablecommand= new RelayCommand<object>((p) => {
@@ -200,17 +178,6 @@ namespace WPF_BanHang.Viewmodel
                     p.Close();
                 }
             });
-<<<<<<< HEAD
-          
-        }
-        void exit(Window p)
-        {
-
-            loginwindow login = new loginwindow();
-            login.Show();
-            p.Close();
-        }
-=======
             //xử lý sửa thông tin
             PassChangedcommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => {password = p.Password;});
             TextChangedcommand = new RelayCommand<TextBox>((p) => { return true; }, (p) => { sodt = p.Text; });
@@ -262,39 +229,12 @@ namespace WPF_BanHang.Viewmodel
                             SelectedItem.IdChucvu = chuvuseleted + 1;
                         }
                     });
->>>>>>> origin/hao1
+
 
         }
         //thống kê
         void loadtonkho()
         {
-<<<<<<< HEAD
-            var db = new qlbhContext();         
-                tonkhoxlist = new ObservableCollection<tonkhoxl>();
-                var tk = db.TonKho;
-                var sp = db.SanPham;
-                var cthd = db.HoaDonChitiet;
-                int i = 1;
-
-                foreach (var item in sp.ToList())
-                {
-                    var nhap = cthd.Where(p => p.IdSanpham == item.IdSanpham && p.IdNhacc != null);
-                    var xuat = cthd.Where(p => p.IdSanpham == item.IdSanpham && p.IdNhacc == null);
-                    int sumnhap = 0;
-                    int sumxuat = 0;
-                    if (nhap != null)
-                        sumnhap = nhap.Sum(p => p.SoLuong);
-                    if (xuat != null) ;
-                    sumxuat = xuat.Sum(p => p.SoLuong);
-                    tonkhoxl tonKho = new tonkhoxl();
-                    tonKho.hinh = item.HinhSanpham;
-                    tonKho.ten = item.TenSanpham;
-                    tonKho.soluong = sumnhap - sumxuat;
-                    tonKho.STT = i;
-                    tonkhoxlist.Add(tonKho);
-                    i++;
-                }                         
-=======
             var db = new qlbhContext();
             tonkhoxlist = new ObservableCollection<tonkhoxl>();
             var tk = db.TonKho;
@@ -320,7 +260,6 @@ namespace WPF_BanHang.Viewmodel
                 tonkhoxlist.Add(tonKho);
                 i++;
             }
->>>>>>> origin/hao1
         }
         //
         //nhân viên
@@ -396,15 +335,6 @@ namespace WPF_BanHang.Viewmodel
         {
                 SuaSanPhamWindow window4 = new SuaSanPhamWindow();
                 window4.ShowDialog();
-        }
-<<<<<<< HEAD
-
-        void order()
-        {
-         
-        }
-=======
-        
->>>>>>> origin/hao1
+        }     
     }
 }

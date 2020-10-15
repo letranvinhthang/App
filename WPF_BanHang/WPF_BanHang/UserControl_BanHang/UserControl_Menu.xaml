@@ -447,8 +447,7 @@
 
 
             </TabControl>
-            <Button Command="{Binding dangxuatcommand}"
-                    CommandParameter="{Binding ElementName=window}"
+            <Button 
          Style="{StaticResource MaterialDesignRaisedAccentButton}"
                 Command="{Binding closecommand}"
                 CommandParameter="{Binding ElementName=uccontrolmenu}"
