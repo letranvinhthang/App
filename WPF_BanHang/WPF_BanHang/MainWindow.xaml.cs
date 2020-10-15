@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace WPF_BanHang
 {
@@ -10,6 +12,21 @@ namespace WPF_BanHang
         public MainWindow()
         {
             InitializeComponent();
+            Startlock();
+        }
+
+        private void Startlock()
+        {
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += tickevent;
+            timer.Start();
+        }
+
+        private void tickevent(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            dongho.Text = DateTime.Now.ToString();
         }
     }
 }

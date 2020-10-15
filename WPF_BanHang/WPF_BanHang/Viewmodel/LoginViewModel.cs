@@ -45,12 +45,17 @@ namespace WPF_BanHang.Viewmodel
                 if (account > 0)
                 {
                     IsLogin = true;
-                    p.Close();
+                    p.Hide();
                 }
                 else
                 {
                     MessageBox.Show("Sai thông tin!", "Thông báo");                   
                 }
+                
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo");
             }
         }
 

@@ -9,6 +9,8 @@ using Org.BouncyCastle.Asn1.Mozilla;
 using System;
 using MaterialDesignThemes.Wpf;
 using System.IO;
+using System.Windows.Controls;
+using System.Reflection;
 
 namespace WPF_BanHang.Viewmodel
 {
@@ -17,9 +19,11 @@ namespace WPF_BanHang.Viewmodel
         //xử lý bên tồn kho
         private ObservableCollection<tonkhoxl> _tonkhoxlist;
         public ObservableCollection<tonkhoxl> tonkhoxlist { get=> _tonkhoxlist; set { _tonkhoxlist = value;OnPropertyChanged(); } }
-       //xử lý bên nhân viên
+        //xử lý order
+        private ObservableCollection<tonkhoxl> _orderlist;
+        public ObservableCollection<tonkhoxl> orderlist { get => _orderlist; set { _orderlist = value; OnPropertyChanged(); } }
+        //xử lý bên nhân viên
         public ObservableCollection<nvxl> _nhanvienlist;
-
         public ObservableCollection<nvxl> nhanvienlist { get => _nhanvienlist;set { _nhanvienlist = value; OnPropertyChanged(); } }
         public ObservableCollection<QuyenHan> _cvlist;
 
@@ -69,12 +73,13 @@ namespace WPF_BanHang.Viewmodel
         public ICommand suanhanviencommand { get; set; }
         public ICommand themsanphamcommand { get; set; }
         public ICommand suasanphamcommand { get; set; }
+        public ICommand dangxuatcommand { get; set; }
         public bool isloaded = false;
         public MainViewModel()
         {
             themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
             suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
-
+            dangxuatcommand = new RelayCommand<Window>((p) => { return true; }, (p) => { exit(p); });
 
             suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => { return true; }, (c) => { suanhanvien(c); });
             themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { themnhanvien(a); });
@@ -103,35 +108,41 @@ namespace WPF_BanHang.Viewmodel
             });
           
         }
+        void exit(Window p)
+        {
+
+            loginwindow login = new loginwindow();
+            login.Show();
+            p.Close();
+        }
 
         void loadtonkho()
         {
-            var db = new qlbhContext();
-            tonkhoxlist = new ObservableCollection<tonkhoxl>();
-            var tk = db.TonKho;
-            var sp = db.SanPham;
-            var cthd = db.HoaDonChitiet;
-            int i = 1;
-            
-            foreach (var item in sp.ToList())
-            {
-               var nhap= cthd.Where(p => p.IdSanpham == item.IdSanpham && p.IdNhacc != null);
-               var xuat = cthd.Where(p => p.IdSanpham == item.IdSanpham && p.IdNhacc == null);
-                int sumnhap = 0;
-                int sumxuat = 0;
-                if (nhap != null)
-                    sumnhap = nhap.Sum(p => p.SoLuong);
-                if (xuat != null) ;
-                sumxuat = xuat.Sum(p => p.SoLuong);
-                tonkhoxl tonKho = new tonkhoxl();
-                tonKho.hinh = item.HinhSanpham;
-                tonKho.ten = item.TenSanpham;
-                tonKho.soluong = sumnhap - sumxuat;
-                tonKho.STT = i;
-                
-                tonkhoxlist.Add(tonKho);
-                i++;
-            }
+            var db = new qlbhContext();         
+                tonkhoxlist = new ObservableCollection<tonkhoxl>();
+                var tk = db.TonKho;
+                var sp = db.SanPham;
+                var cthd = db.HoaDonChitiet;
+                int i = 1;
+
+                foreach (var item in sp.ToList())
+                {
+                    var nhap = cthd.Where(p => p.IdSanpham == item.IdSanpham && p.IdNhacc != null);
+                    var xuat = cthd.Where(p => p.IdSanpham == item.IdSanpham && p.IdNhacc == null);
+                    int sumnhap = 0;
+                    int sumxuat = 0;
+                    if (nhap != null)
+                        sumnhap = nhap.Sum(p => p.SoLuong);
+                    if (xuat != null) ;
+                    sumxuat = xuat.Sum(p => p.SoLuong);
+                    tonkhoxl tonKho = new tonkhoxl();
+                    tonKho.hinh = item.HinhSanpham;
+                    tonKho.ten = item.TenSanpham;
+                    tonKho.soluong = sumnhap - sumxuat;
+                    tonKho.STT = i;
+                    tonkhoxlist.Add(tonKho);
+                    i++;
+                }                         
         }
   
         void loadnhanvien()
@@ -182,6 +193,11 @@ namespace WPF_BanHang.Viewmodel
         {
             SuaSanPhamWindow window4 = new SuaSanPhamWindow();
             window4.ShowDialog();
+        }
+
+        void order()
+        {
+         
         }
     }
 }

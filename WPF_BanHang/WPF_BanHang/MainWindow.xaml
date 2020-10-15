@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPF_BanHang"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Name="window"
+        x:Name="window"
         Title="MainWindow" Height="720" Width="1280"
         
         xmlns:uc="clr-namespace:WPF_BanHang.UserControl_BanHang"
@@ -31,7 +31,8 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
-        <uc:UserControl_Menu Tag="{Binding  Title , ElementName=window}"></uc:UserControl_Menu>
         
+        <uc:UserControl_Menu Tag="{Binding  Title , ElementName=window}"></uc:UserControl_Menu>
+        <TextBlock x:Name="dongho" Text="" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Top" Background="GhostWhite" Width="auto" Height="auto"/>
     </Grid>
 </Window>
