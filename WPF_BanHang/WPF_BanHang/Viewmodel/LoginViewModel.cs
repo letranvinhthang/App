@@ -52,6 +52,10 @@ namespace WPF_BanHang.Viewmodel
                     MessageBox.Show("Sai thông tin!", "Thông báo");                   
                 }
             }
+            else
+            {
+                MessageBox.Show("nhập đủ thông tin !", "Thông báo");
+            }
         }
 
         void exit(Window e)
