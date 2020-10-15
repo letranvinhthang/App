@@ -92,6 +92,8 @@ namespace WPF_BanHang.Viewmodel
         public ICommand themsanphamcommand { get; set; }
         public ICommand suasanphamcommand { get; set; }
         public ICommand exitcommand { get; set; }
+        public ICommand disablecommand { get; set; }
+        public ICommand enablecommand { get; set; }
         public MainViewModel()
         {
             var db = new qlbhContext();
@@ -107,6 +109,30 @@ namespace WPF_BanHang.Viewmodel
             }, (c) => { suanhanvien(c); });
             themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { themnhanvien(a); });
             thanhtoancommand = new RelayCommand<HoaDonWindow>((w) => { return true; }, (w) => { Thanhtoan(w); });
+            disablecommand= new RelayCommand<object>((p) => {
+                bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
+                if (a == true)
+                    return false;
+                return true;
+            }, (p) =>
+            {
+                var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
+                dis.Disable = true;
+                db.SaveChanges();
+                loadnhanvien();
+            });
+            enablecommand = new RelayCommand<object>((p) => {
+                bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
+                if (a != true)
+                    return false;
+                return true;
+            }, (p) =>
+            {
+                var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
+                dis.Disable = false;
+                db.SaveChanges();
+                loadnhanvien();
+            });
             exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
             loadedwindowcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {

@@ -41,11 +41,19 @@ namespace WPF_BanHang.Viewmodel
             {
                 int? id = usename;
                 string pass = MD5Hash(Base64Encode(password));
-                var account = db.NhanVien.Where(x => x.IdNhanvien == id && x.PassNhanvien == pass).Count();
+                var tk = db.NhanVien.Where(x => x.IdNhanvien == id && x.PassNhanvien == pass);
+                var account = tk.Count();
                 if (account > 0)
                 {
-                    IsLogin = true;
-                    p.Close();
+                    if (tk.FirstOrDefault().Disable == true)
+                    {
+                        MessageBox.Show("tài khoản đã bị vô hiệu");
+                    }
+                    else
+                    {
+                        IsLogin = true;
+                        p.Close();
+                    }
                 }
                 else
                 {
