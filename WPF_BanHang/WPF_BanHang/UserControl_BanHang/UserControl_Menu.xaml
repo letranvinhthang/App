@@ -430,8 +430,8 @@
                                         <Grid >
                                             <Button Command="{Binding themnhanviencommand}" Height="60" Width="120" Content="Thêm" HorizontalAlignment="Center" Margin="0,0,300,0" VerticalAlignment="Center"/>
                                             <Button Command="{Binding suanhanviencommand}" Height="60" Width="120" Content="Sửa" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            <Button Height="60" Width="120" Content="Enable" HorizontalAlignment="Center" Margin="0,0,-300,0" VerticalAlignment="Center"/>
-                                            <Button Height="60" Width="120" Content="Disable" HorizontalAlignment="Center" Margin="0,0,-600,0" VerticalAlignment="Center"/>
+                                            <Button Command="{Binding enablecommand}" Height="60" Width="120" Content="Enable" HorizontalAlignment="Center" Margin="0,0,-300,0" VerticalAlignment="Center"/>
+                                            <Button Command="{Binding disablecommand}" Height="60" Width="120" Content="Disable" HorizontalAlignment="Center" Margin="0,0,-600,0" VerticalAlignment="Center"/>
 
                                         </Grid>
                                     </Grid>
@@ -447,6 +447,8 @@
             </TabControl>
             <Button
          Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                Command="{Binding closecommand}"
+                CommandParameter="{Binding ElementName=uccontrolmenu}"
          Width="200" Height="70" VerticalAlignment="Bottom" HorizontalAlignment="Left"                
          ToolTip="Resource name: MaterialDesignRaisedAccentButton" Background="{x:Null}" Foreground="#DDFFFFFF" BorderBrush="{x:Null}" OpacityMask="Black" FontSize="24">
                 <StackPanel Orientation="Horizontal">
