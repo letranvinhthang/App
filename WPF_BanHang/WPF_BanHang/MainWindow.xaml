@@ -31,8 +31,99 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
-        
-        <uc:UserControl_Menu Tag="{Binding  Title , ElementName=window}"></uc:UserControl_Menu>
-        <TextBlock x:Name="dongho" Text="" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Top" Background="GhostWhite" Width="auto" Height="auto"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Background="DeepSkyBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" VerticalAlignment="Top">
+                <StackPanel>
+                    <Image Source="Hinh/Logo.png" Width="45"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <StackPanel>
+                    <Button Height="50" Content="ORDER" Margin="10 150 10 0">
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                                <Setter Property="FontWeight" Value="Normal"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding }" Value="1">
+                                        <Setter Property="FontWeight" Value="Bold"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Height="50" Content="THỐNG KÊ" Margin="10 15 10 0">
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                                <Setter Property="FontWeight" Value="Normal"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding }" Value="1">
+                                        <Setter Property="FontWeight" Value="Bold"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Height="50" Content="NHẬP KHO" Margin="10 15 10 0">
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                                <Setter Property="FontWeight" Value="Normal"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ChucNangNS}" Value="1">
+                                        <Setter Property="FontWeight" Value="Bold"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Height="50" Content="NHÂN VIÊN" Margin="10 15 10 0">
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                                <Setter Property="FontWeight" Value="Normal"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ChucNangNS}" Value="1">
+                                        <Setter Property="FontWeight" Value="Bold"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+                <Button Height="50" Content="ĐĂNG XUẤT" VerticalAlignment="Bottom">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                            <Setter Property="FontWeight" Value="Normal"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ChucNangNS}" Value="1">
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="DeepSkyBlue">
+                <TextBlock Foreground="White">Tên nhân viên</TextBlock>
+                <TextBlock x:Name="dongho" Text="Giờ" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Top" Background="GhostWhite" Width="auto" Height="auto"/>
+            </Grid>
+            <!--CONTENT-->
+            <Grid Grid.Row="1">
+                
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1"></Grid>
     </Grid>
 </Window>

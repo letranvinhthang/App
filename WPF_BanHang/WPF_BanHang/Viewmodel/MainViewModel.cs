@@ -133,8 +133,11 @@ namespace WPF_BanHang.Viewmodel
             thanhtoancommand = new RelayCommand<HoaDonWindow>((w) => { return true; }, (w) => { Thanhtoan(w); });
             disablecommand= new RelayCommand<object>((p) => {
                 bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
-                if (a == true)
-                    return false;
+                {
+                    if (a == true)
+                        return false;
+                }
+
                 return true;
             }, (p) =>
             {
