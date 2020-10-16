@@ -1,27 +1,18 @@
-﻿using System.Windows;
-using System.Windows.Input;
-using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using WPF_BanHang.Models;
-using Google.Protobuf.WellKnownTypes;
 using System.Linq;
-using Org.BouncyCastle.Asn1.Mozilla;
-using System;
-using MaterialDesignThemes.Wpf;
-using System.Windows.Controls;
 using System.Security.Cryptography;
 using System.Text;
-using System.IO;
-using System.Diagnostics;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using WPF_BanHang.Models;
 
 namespace WPF_BanHang.Viewmodel
 {
-    public class MainViewModel : BaseViewModel
+   public class nhanvien:BaseViewModel
     {
-        //đổ dữ liệu bên tồn kho
-        private ObservableCollection<tonkhoxl> _tonkhoxlist;
-        public ObservableCollection<tonkhoxl> tonkhoxlist { get => _tonkhoxlist; set { _tonkhoxlist = value; OnPropertyChanged(); } }
-        //đổ dữ liệu bên nhân viên
         public ObservableCollection<nvxl> _nhanvienlist;
 
         public ObservableCollection<nvxl> nhanvienlist { get => _nhanvienlist; set { _nhanvienlist = value; OnPropertyChanged(); } }
@@ -29,10 +20,6 @@ namespace WPF_BanHang.Viewmodel
         public ObservableCollection<QuyenHan> _cvlist;
 
         public ObservableCollection<QuyenHan> cvlist { get => _cvlist; set { _cvlist = value; OnPropertyChanged(); } }
-
-        public ObservableCollection<QuyenHan> _lsplist;
-
-        public ObservableCollection<QuyenHan> lsplist { get => _lsplist; set { _lsplist = value; OnPropertyChanged(); } }
         //lấy dữ liệu đc selected
         public nvxl _SelectedItem;
 
@@ -54,7 +41,6 @@ namespace WPF_BanHang.Viewmodel
                 }
             }
         }
-        //binding du lieu
         private string _ten;
 
         public string ten { get => _ten; set { _ten = value; OnPropertyChanged(); } }
@@ -86,48 +72,17 @@ namespace WPF_BanHang.Viewmodel
         private string _sodt;
 
         public string sodt { get => _sodt; set { _sodt = value; OnPropertyChanged(); } }
-        //bắt  command
-        public ICommand loadedwindowcommand { get; set; }
-        public ICommand unitcommand { get; set; }
-        public ICommand thanhtoancommand { get; set; }
         public ICommand themnhanviencommand { get; set; }
         public ICommand suanhanviencommand { get; set; }
         public ICommand editcommand { get; set; }
         public ICommand PassChangedcommand { get; set; }
         public ICommand TextChangedcommand { get; set; }
-        public bool isloaded = false;
-        public ICommand themsanphamcommand { get; set; }
-        public ICommand suasanphamcommand { get; set; }
         public ICommand exitcommand { get; set; }
         public ICommand disablecommand { get; set; }
         public ICommand enablecommand { get; set; }
-        public ICommand closecommand { get; set; }
-        public MainViewModel()
+        public nhanvien()
         {
             var db = new qlbhContext();
-            /* closecommand = new RelayCommand<UserControl>((p) => { return true; }, (p) =>
-              {
-                  FrameworkElement window = getwindowparent(p);
-                  var w = window as Window;
-                  if (w != null)
-                  {
-                      var lg = new MainWindow();
-                      w.Close();
-                      lg.Show();
-                  }
-              });
-             FrameworkElement getwindowparent(UserControl p)
-             {
-                 FrameworkElement parent = p;
-                 while (parent.Parent != null)
-                 {
-                     parent = parent.Parent as FrameworkElement;
-
-                 }
-                 return parent;
-             }*/
-            themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
-            suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
             suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => {
                 if (SelectedItem == null)
                 {
@@ -136,32 +91,27 @@ namespace WPF_BanHang.Viewmodel
                 return true;
             }, (c) => { suanhanvien(c); });
             themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { themnhanvien(a); });
-            thanhtoancommand = new RelayCommand<HoaDonWindow>((w) => { return true; }, (w) => { Thanhtoan(w); });
-            Stopwatch stop = new Stopwatch();
-            stop.Start();
             disablecommand = new RelayCommand<object>((p) =>
             {
                 bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
-            
-                       if (a == true)
-                return false;
-            return true;
-          
+
+                if (a == true)
+                    return false;
+                return true;
+
             }, (p) =>
             {
                 var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
                 dis.Disable = true;
                 db.SaveChanges();
                 disa = SelectedItem.Disable;
-  
+
             });
-            stop.Stop();
-            MessageBox.Show("Time elapsed: {0:hh\\:mm\\:ss}", stop.Elapsed.ToString());
             enablecommand = new RelayCommand<object>((p) =>
             {
-             /* bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
-                if (a != true)
-                    return false;*/
+                /* bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
+                   if (a != true)
+                       return false;*/
                 return true;
             }, (p) =>
             {
@@ -170,31 +120,8 @@ namespace WPF_BanHang.Viewmodel
                 db.SaveChanges();
                 disa = SelectedItem.Disable;
             });
-            exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
-            loadedwindowcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
-            {
-                if (p == null)
-                    return;
-                isloaded = true;
-                p.Hide();
-                loginwindow login = new loginwindow();
-                login.ShowDialog();
-                if (login.DataContext == null)
-                    return;
-                var loginnVM = login.DataContext as LoginViewModel;
-                if (loginnVM.IsLogin)
-                {
-                    p.Show();
-                    loadtonkho();
-                    loadnhanvien();
-                }
-                else
-                {
-                    p.Close();
-                }
-            });
             //xử lý sửa thông tin
-            PassChangedcommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => {password = p.Password;});
+            PassChangedcommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { password = p.Password; });
             TextChangedcommand = new RelayCommand<TextBox>((p) => { return true; }, (p) => { sodt = p.Text; });
             editcommand = new RelayCommand<object>((p) =>
             {
@@ -244,39 +171,46 @@ namespace WPF_BanHang.Viewmodel
                             SelectedItem.IdChucvu = chuvuseleted + 1;
                         }
                     });
-
-        }
-        //thống kê
-        void loadtonkho()
-        {
-            var db = new qlbhContext();
-            tonkhoxlist = new ObservableCollection<tonkhoxl>();
-            var tk = db.TonKho;
-            var sp = db.SanPham;
-            var cthd = db.HoaDonChitiet;
-            int i = 1;
-            foreach (var item in sp.ToList())
+            void themnhanvien(ChinhSuaWindow a)
             {
-                var nhap = cthd.Where(p => p.IdSanpham == item.IdSanpham && p.IdNhacc != null);
-                var xuat = cthd.Where(p => p.IdSanpham == item.IdSanpham && p.IdNhacc == null);
-                int sumnhap = 0;
-                int sumxuat = 0;
-                if (nhap != null)
-                    sumnhap = nhap.Sum(p => p.SoLuong);
-                if (xuat != null) ;
-                sumxuat = xuat.Sum(p => p.SoLuong);
-                tonkhoxl tonKho = new tonkhoxl();
-                tonKho.hinh = item.HinhSanpham;
-                tonKho.ten = item.TenSanpham;
-                tonKho.soluong = sumnhap - sumxuat;
-                tonKho.STT = i;
-
-                tonkhoxlist.Add(tonKho);
-                i++;
+                ChinhSuaWindow window1 = new ChinhSuaWindow();
+                window1.ShowDialog();
+                loadnhanvien();
             }
+
+            //mo win sua nv
+            void suanhanvien(SuaNhanVienWindow c)
+            {
+                SuaNhanVienWindow window2 = new SuaNhanVienWindow();
+                window2.ShowDialog();
+            }
+            //mã hóa base 64
+     
+
         }
-        //
-        //nhân viên
+        public static string Base64Encode(string plainText)
+        {
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+            return System.Convert.ToBase64String(plainTextBytes);
+        }
+        //mã hóa md5
+        public static string MD5Hash(string input)
+        {
+            StringBuilder hash = new StringBuilder();
+            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
+
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                hash.Append(bytes[i].ToString("x2"));
+            }
+            return hash.ToString();
+        }
+        void themsanpham(ThemSanPhamWindow k)
+        {
+            ThemSanPhamWindow window3 = new ThemSanPhamWindow();
+            window3.ShowDialog();
+        }
         void loadnhanvien()
         {
             var db = new qlbhContext();
@@ -300,56 +234,5 @@ namespace WPF_BanHang.Viewmodel
                 nhanvienlist.Add(nvl);
             }
         }
-        //
-        void Thanhtoan(HoaDonWindow w)
-        {
-            HoaDonWindow window = new HoaDonWindow();
-            window.ShowDialog();
-        }
-        //mơ win thêmnv
-        void themnhanvien(ChinhSuaWindow a)
-        {
-            ChinhSuaWindow window1 = new ChinhSuaWindow();
-            window1.ShowDialog();
-            loadnhanvien();
-        }
-
-        //mo win sua nv
-        void suanhanvien(SuaNhanVienWindow c)
-        {
-            SuaNhanVienWindow window2 = new SuaNhanVienWindow();
-            window2.ShowDialog();
-        }
-        //mã hóa base 64
-        public static string Base64Encode(string plainText)
-        {
-            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
-            return System.Convert.ToBase64String(plainTextBytes);
-        }
-        //mã hóa md5
-        public static string MD5Hash(string input)
-        {
-            StringBuilder hash = new StringBuilder();
-            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
-            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
-
-            for (int i = 0; i < bytes.Length; i++)
-            {
-                hash.Append(bytes[i].ToString("x2"));
-            }
-            return hash.ToString();
-        }
-        void themsanpham(ThemSanPhamWindow k)
-        {
-                ThemSanPhamWindow window3 = new ThemSanPhamWindow();
-                window3.ShowDialog();
-        }
-
-        void suasanpham(SuaSanPhamWindow l)
-        {
-                SuaSanPhamWindow window4 = new SuaSanPhamWindow();
-                window4.ShowDialog();
-        }
-        
     }
-}
+ }
