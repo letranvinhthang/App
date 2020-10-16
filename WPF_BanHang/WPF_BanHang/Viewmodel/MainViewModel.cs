@@ -8,17 +8,21 @@ using System;
 using System.Windows.Controls;
 using System.Security.Cryptography;
 using System.Text;
-<<<<<<< HEAD
-
-=======
-using System.IO;
-using System.Diagnostics;
->>>>>>> origin/hao1
 
 namespace WPF_BanHang.Viewmodel
 {
     public class MainViewModel : BaseViewModel
     {
+        public enum ChucNangQL
+        {
+            Order, ThongKe, NhapKho, NhanVien, DangXuat
+        };
+        private int _ChucNang;
+        public int ChucNang { get => _ChucNang; set { _ChucNang = value; OnPropertyChanged(); } }
+
+        static public nhanvien Nhanvien { get; set; }
+
+        #region Items Source
         //đổ dữ liệu bên tồn kho
         private ObservableCollection<tonkhoxl> _tonkhoxlist;
         public ObservableCollection<tonkhoxl> tonkhoxlist { get=> _tonkhoxlist; set { _tonkhoxlist = value;OnPropertyChanged(); } }
@@ -29,12 +33,12 @@ namespace WPF_BanHang.Viewmodel
         public ObservableCollection<nvxl> _nhanvienlist;
         public ObservableCollection<nvxl> nhanvienlist { get => _nhanvienlist;set { _nhanvienlist = value; OnPropertyChanged(); } }
         public ObservableCollection<QuyenHan> _cvlist;
-
         public ObservableCollection<QuyenHan> cvlist { get => _cvlist; set { _cvlist = value; OnPropertyChanged(); } }
 
         public ObservableCollection<QuyenHan> _lsplist;
-
         public ObservableCollection<QuyenHan> lsplist { get => _lsplist; set { _lsplist = value; OnPropertyChanged(); } }
+        #endregion
+
         //lấy dữ liệu đc selected
         public nvxl _SelectedItem;
 
@@ -57,6 +61,7 @@ namespace WPF_BanHang.Viewmodel
             }
         }
         //binding du lieu
+        #region Thuộc tính binding
         private string _ten;
 
         public string ten { get => _ten; set { _ten = value; OnPropertyChanged(); } }
@@ -88,7 +93,10 @@ namespace WPF_BanHang.Viewmodel
         private string _sodt;
 
         public string sodt { get => _sodt; set { _sodt = value; OnPropertyChanged(); } }
+        #endregion
+
         //bắt  command
+        #region Command ẩn hiện grid
         public ICommand loadedwindowcommand { get; set; }
         public ICommand unitcommand { get; set; }
         public ICommand thanhtoancommand { get; set; }
@@ -100,35 +108,17 @@ namespace WPF_BanHang.Viewmodel
         public bool isloaded = false;
         public ICommand themsanphamcommand { get; set; }
         public ICommand suasanphamcommand { get; set; }
-
+        public ICommand BtnNhanVienCommand { get; set; }
         public ICommand exitcommand { get; set; }
         public ICommand disablecommand { get; set; }
         public ICommand enablecommand { get; set; }
         public ICommand closecommand { get; set; }
+        #endregion
 
         public MainViewModel()
         {
             var db = new qlbhContext();
-<<<<<<< HEAD
-            closecommand= new RelayCommand<UserControl>((p) => { return true; }, (p) => 
-            {
-                FrameworkElement window =getwindowparent(p);
-                var w = window as Window;
-                if(w != null)
-                {
-                    var lg = new MainWindow();
-                    w.Close();
-                    lg.Show();
-                }
-            });
-            // đăng xuất
-            FrameworkElement getwindowparent(UserControl p)
-            {
-                FrameworkElement parent = p;
-                while(parent.Parent != null)
-                {
-                    parent = parent.Parent as FrameworkElement;
-=======
+
             /* closecommand = new RelayCommand<UserControl>((p) => { return true; }, (p) =>
               {
                   FrameworkElement window = getwindowparent(p);
@@ -146,21 +136,19 @@ namespace WPF_BanHang.Viewmodel
                  while (parent.Parent != null)
                  {
                      parent = parent.Parent as FrameworkElement;
->>>>>>> origin/hao1
 
                  }
                  return parent;
              }*/
+            BtnNhanVienCommand = new RelayCommand<Grid>((p) =>
+            { return true;}, (p) =>
+            {
+                ChucNang = (int)ChucNangQL.NhanVien;
+            });
             themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
             suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
-<<<<<<< HEAD
-
-            suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => { 
-               if( SelectedItem==null)
-=======
             suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => {
                 if (SelectedItem == null)
->>>>>>> origin/hao1
                 {
                     return false;
                 }
@@ -168,25 +156,14 @@ namespace WPF_BanHang.Viewmodel
             }, (c) => { suanhanvien(c); });
             themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { themnhanvien(a); });
             thanhtoancommand = new RelayCommand<HoaDonWindow>((w) => { return true; }, (w) => { Thanhtoan(w); });
-            Stopwatch stop = new Stopwatch();
-            stop.Start();
             disablecommand = new RelayCommand<object>((p) =>
             {
                 bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
-<<<<<<< HEAD
-                {
-                    if (a == true)
-                        return false;
-                }
-
-                return true;
-=======
             
                        if (a == true)
                 return false;
             return true;
           
->>>>>>> origin/hao1
             }, (p) =>
             {
                 var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
@@ -195,8 +172,6 @@ namespace WPF_BanHang.Viewmodel
                 disa = SelectedItem.Disable;
   
             });
-            stop.Stop();
-            MessageBox.Show("Time elapsed: {0:hh\\:mm\\:ss}", stop.Elapsed.ToString());
             enablecommand = new RelayCommand<object>((p) =>
             {
              /* bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;

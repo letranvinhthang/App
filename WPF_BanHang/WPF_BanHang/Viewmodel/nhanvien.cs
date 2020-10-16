@@ -8,21 +8,23 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WPF_BanHang.Models;
+using System.Linq;
 
 namespace WPF_BanHang.Viewmodel
 {
    public class nhanvien:BaseViewModel
     {
+        #region DataContext
         public ObservableCollection<nvxl> _nhanvienlist;
-
         public ObservableCollection<nvxl> nhanvienlist { get => _nhanvienlist; set { _nhanvienlist = value; OnPropertyChanged(); } }
         //đổ dữ liệu qh vô combobox
         public ObservableCollection<QuyenHan> _cvlist;
-
         public ObservableCollection<QuyenHan> cvlist { get => _cvlist; set { _cvlist = value; OnPropertyChanged(); } }
-        //lấy dữ liệu đc selected
-        public nvxl _SelectedItem;
+        #endregion
 
+        //lấy dữ liệu đc selected
+        #region Thuộc tính binding
+        public nvxl _SelectedItem;
         public nvxl SelectedItem
         {
             get => _SelectedItem;
@@ -72,6 +74,9 @@ namespace WPF_BanHang.Viewmodel
         private string _sodt;
 
         public string sodt { get => _sodt; set { _sodt = value; OnPropertyChanged(); } }
+        #endregion
+
+        #region Command
         public ICommand themnhanviencommand { get; set; }
         public ICommand suanhanviencommand { get; set; }
         public ICommand editcommand { get; set; }
@@ -80,6 +85,7 @@ namespace WPF_BanHang.Viewmodel
         public ICommand exitcommand { get; set; }
         public ICommand disablecommand { get; set; }
         public ICommand enablecommand { get; set; }
+        #endregion
         public nhanvien()
         {
             var db = new qlbhContext();
@@ -221,7 +227,7 @@ namespace WPF_BanHang.Viewmodel
 
             foreach (var item in nv.ToList())
             {
-                var tencv = qh.Where(p => p.IdChucvu == item.IdChucvu).FirstOrDefault();
+                var tencv = qh.Where(p => p.DisTaikhoan == true).FirstOrDefault();
                 nvxl nvl = new nvxl();
                 nvl.Manv = item.IdNhanvien;
                 nvl.ten = item.TenNhanvien;

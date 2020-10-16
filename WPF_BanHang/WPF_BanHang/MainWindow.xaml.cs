@@ -26,7 +26,7 @@ namespace WPF_BanHang
         private void tickevent(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            dongho.Text = DateTime.Now.ToString();
+            //dongho.Text = DateTime.Now.ToString();
         }
     }
 }
