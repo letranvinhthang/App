@@ -79,7 +79,7 @@ namespace Teszi
 
         private void NhapKho_MouseEnter(object sender, MouseEventArgs e)
         {
-            popup_uc.PlacementTarget = ThongKe;
+            popup_uc.PlacementTarget = NhapKho;
             popup_uc.Placement = PlacementMode.Right;
             popup_uc.IsOpen = true;
             Header.PopupText.Text = "Nhập kho";

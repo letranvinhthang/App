@@ -12,6 +12,10 @@
         
         WindowState="Maximized">
     <Window.Resources>
+        
+        
+        
+        <!--#region Order,NhanVien,ThongKe,NhapKho,Shutdown Button Style-->
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -30,9 +34,6 @@
         <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
         <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
         <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
-        
-        
-        <!--#region Order,NhanVien,ThongKe,NhapKho,Shutdown Button Style-->
         <Style x:Key="OrderBtnStyle" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
             <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
@@ -333,7 +334,7 @@
                         Margin="0 80 0 20" MouseEnter="Order_MouseEnter_1"
                         MouseLeave="Order_MouseLeave_1">
                     
-                    <Image Source="hinh/home.png"
+                    <Image Source="hinh/order.png"
                             Stretch="None"></Image>
                     
 
@@ -346,21 +347,12 @@
                         Margin="0 0 0 10" MouseEnter="NhanVien_MouseEnter"
                         MouseLeave="NhanVien_MouseLeave">
                     
-                    <Image Source="hinh/kho2.png"
+                    <Image Source="hinh/nhanvien.png"
                            Stretch="None"></Image>
                     
                 </Button>
 
-                <Button Style="{DynamicResource ThongKeButtonStyle}" Height="100"
-                        x:Name="ThongKe"
-                        Background="Transparent"
-                        BorderBrush="Transparent"
-                        Margin="0 0 0 10" MouseEnter="ThongKe_MouseEnter" MouseLeave="ThongKe_MouseLeave">
-                    
-                    <Image Source="hinh/thongke.png"
-                           Stretch="None"></Image>
-                    
-                </Button>
+               
 
                 <Button Style="{DynamicResource NhapKhoButtonStyle}" Height="100"
                         x:Name="NhapKho"
@@ -372,7 +364,17 @@
                            Stretch="None"></Image>
                     
                 </Button>
-                               
+                <Button Style="{DynamicResource ThongKeButtonStyle}" Height="100"
+                        x:Name="ThongKe"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Margin="0 0 0 10" MouseEnter="ThongKe_MouseEnter" MouseLeave="ThongKe_MouseLeave">
+
+                    <Image Source="hinh/thongke.png"
+                           Stretch="None"></Image>
+
+                </Button>
+
             </StackPanel>
 
             <Grid Height="80"
