@@ -291,6 +291,7 @@
                             <!--DOANH THU-->
                             <TabItem Header="DOANH THU" Height="50" Width="200">
                                 <Grid Background="White"/>
+                                
                             </TabItem>
                         </TabControl>
                     </Grid>
