@@ -64,11 +64,14 @@ namespace WPF_BanHang.Viewmodel
             {
                 MessageBox.Show("nhập đủ thông tin !", "Thông báo");
             }
+
+
         }
 
         void exit(Window e)
         {
             e.Close();
+            IsLogin = false;
         }
 
         public static string Base64Encode(string plainText)
