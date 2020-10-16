@@ -92,10 +92,33 @@ namespace WPF_BanHang.Viewmodel
         public ICommand themsanphamcommand { get; set; }
         public ICommand suasanphamcommand { get; set; }
         public ICommand exitcommand { get; set; }
+        public ICommand disablecommand { get; set; }
+        public ICommand enablecommand { get; set; }
+        public ICommand closecommand { get; set; }
         public MainViewModel()
         {
             var db = new qlbhContext();
+            closecommand= new RelayCommand<UserControl>((p) => { return true; }, (p) => 
+            {
+                FrameworkElement window =getwindowparent(p);
+                var w = window as Window;
+                if(w != null)
+                {
+                    var lg = new MainWindow();
+                    w.Close();
+                    lg.Show();
+                }
+            });
+            FrameworkElement getwindowparent(UserControl p)
+            {
+                FrameworkElement parent = p;
+                while(parent.Parent != null)
+                {
+                    parent = parent.Parent as FrameworkElement;
 
+                }
+                return parent;
+            }
             themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
             suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
             suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => { 
@@ -107,6 +130,30 @@ namespace WPF_BanHang.Viewmodel
             }, (c) => { suanhanvien(c); });
             themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { themnhanvien(a); });
             thanhtoancommand = new RelayCommand<HoaDonWindow>((w) => { return true; }, (w) => { Thanhtoan(w); });
+            disablecommand= new RelayCommand<object>((p) => {
+                bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
+                if (a == true)
+                    return false;
+                return true;
+            }, (p) =>
+            {
+                var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
+                dis.Disable = true;
+                db.SaveChanges();
+                loadnhanvien();
+            });
+            enablecommand = new RelayCommand<object>((p) => {
+                bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
+                if (a != true)
+                    return false;
+                return true;
+            }, (p) =>
+            {
+                var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
+                dis.Disable = false;
+                db.SaveChanges();
+                loadnhanvien();
+            });
             exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
             loadedwindowcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -160,6 +207,10 @@ namespace WPF_BanHang.Viewmodel
                             editnp.IdChucvu = chuvuseleted + 1;
                             db.SaveChanges();
                             MessageBox.Show("sua thanh cong");
+                            SelectedItem.ten = ten;
+                            SelectedItem.sdt = sdt;
+                            SelectedItem.diachi = diachi;
+                            SelectedItem.IdChucvu = chuvuseleted + 1;
                         }
                         else
                         {
@@ -171,6 +222,10 @@ namespace WPF_BanHang.Viewmodel
                             edit.IdChucvu = chuvuseleted + 1;
                             db.SaveChanges();
                             MessageBox.Show("sua thanh cong");
+                            SelectedItem.ten = ten;
+                            SelectedItem.sdt = sdt;
+                            SelectedItem.diachi = diachi;
+                            SelectedItem.IdChucvu = chuvuseleted + 1;
                         }
                     });
 
@@ -248,7 +303,6 @@ namespace WPF_BanHang.Viewmodel
         {
             SuaNhanVienWindow window2 = new SuaNhanVienWindow();
             window2.ShowDialog();
-            loadnhanvien();
         }
         //mã hóa base 64
         public static string Base64Encode(string plainText)
