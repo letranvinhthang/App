@@ -8,7 +8,12 @@ using System;
 using System.Windows.Controls;
 using System.Security.Cryptography;
 using System.Text;
+<<<<<<< HEAD
 
+=======
+using System.IO;
+using System.Diagnostics;
+>>>>>>> origin/hao1
 
 namespace WPF_BanHang.Viewmodel
 {
@@ -26,6 +31,10 @@ namespace WPF_BanHang.Viewmodel
         public ObservableCollection<QuyenHan> _cvlist;
 
         public ObservableCollection<QuyenHan> cvlist { get => _cvlist; set { _cvlist = value; OnPropertyChanged(); } }
+
+        public ObservableCollection<QuyenHan> _lsplist;
+
+        public ObservableCollection<QuyenHan> lsplist { get => _lsplist; set { _lsplist = value; OnPropertyChanged(); } }
         //lấy dữ liệu đc selected
         public nvxl _SelectedItem;
 
@@ -69,6 +78,9 @@ namespace WPF_BanHang.Viewmodel
         private int _chuvuseleted;
 
         public int chuvuseleted { get => _chuvuseleted; set { _chuvuseleted = value; OnPropertyChanged(); } }
+        private bool _disa;
+
+        public bool disa { get => _disa; set { _disa = value; OnPropertyChanged(); } }
 
         private string _password;
 
@@ -97,6 +109,7 @@ namespace WPF_BanHang.Viewmodel
         public MainViewModel()
         {
             var db = new qlbhContext();
+<<<<<<< HEAD
             closecommand= new RelayCommand<UserControl>((p) => { return true; }, (p) => 
             {
                 FrameworkElement window =getwindowparent(p);
@@ -115,48 +128,87 @@ namespace WPF_BanHang.Viewmodel
                 while(parent.Parent != null)
                 {
                     parent = parent.Parent as FrameworkElement;
+=======
+            /* closecommand = new RelayCommand<UserControl>((p) => { return true; }, (p) =>
+              {
+                  FrameworkElement window = getwindowparent(p);
+                  var w = window as Window;
+                  if (w != null)
+                  {
+                      var lg = new MainWindow();
+                      w.Close();
+                      lg.Show();
+                  }
+              });
+             FrameworkElement getwindowparent(UserControl p)
+             {
+                 FrameworkElement parent = p;
+                 while (parent.Parent != null)
+                 {
+                     parent = parent.Parent as FrameworkElement;
+>>>>>>> origin/hao1
 
-                }
-                return parent;
-            }
+                 }
+                 return parent;
+             }*/
             themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
             suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
+<<<<<<< HEAD
 
             suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => { 
                if( SelectedItem==null)
+=======
+            suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => {
+                if (SelectedItem == null)
+>>>>>>> origin/hao1
                 {
                     return false;
                 }
-                return true; 
+                return true;
             }, (c) => { suanhanvien(c); });
             themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { themnhanvien(a); });
             thanhtoancommand = new RelayCommand<HoaDonWindow>((w) => { return true; }, (w) => { Thanhtoan(w); });
-            disablecommand= new RelayCommand<object>((p) => {
+            Stopwatch stop = new Stopwatch();
+            stop.Start();
+            disablecommand = new RelayCommand<object>((p) =>
+            {
                 bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
+<<<<<<< HEAD
                 {
                     if (a == true)
                         return false;
                 }
 
                 return true;
+=======
+            
+                       if (a == true)
+                return false;
+            return true;
+          
+>>>>>>> origin/hao1
             }, (p) =>
             {
                 var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
                 dis.Disable = true;
                 db.SaveChanges();
-                loadnhanvien();
+                disa = SelectedItem.Disable;
+  
             });
-            enablecommand = new RelayCommand<object>((p) => {
-                bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
+            stop.Stop();
+            MessageBox.Show("Time elapsed: {0:hh\\:mm\\:ss}", stop.Elapsed.ToString());
+            enablecommand = new RelayCommand<object>((p) =>
+            {
+             /* bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
                 if (a != true)
-                    return false;
+                    return false;*/
                 return true;
             }, (p) =>
             {
                 var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
                 dis.Disable = false;
                 db.SaveChanges();
-                loadnhanvien();
+                disa = SelectedItem.Disable;
             });
             exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
             loadedwindowcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
