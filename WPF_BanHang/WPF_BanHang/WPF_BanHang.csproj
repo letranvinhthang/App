@@ -31,7 +31,7 @@
     <Resource Include="UserControl_BanHang\Icons\Kho.png" />
     <Resource Include="UserControl_BanHang\Icons\Logo.png" />
     <Resource Include="UserControl_BanHang\Icons\Logout.png" />
-    <Resource Include="UserControl_BanHang\Icons\Nhanvien.png" />
+    <Resource Include="Hinh\Nhanvien.png" />
     <Resource Include="UserControl_BanHang\Icons\ThemSP.png" />
     <Resource Include="UserControl_BanHang\Icons\Thongke.png" />
   </ItemGroup>
