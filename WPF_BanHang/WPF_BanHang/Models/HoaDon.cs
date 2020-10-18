@@ -13,6 +13,7 @@ namespace WPF_BanHang.Models
         public int IdCuahang { get; set; }
         public int IdNhanvien { get; set; }
         public string IdChuongtrinh { get; set; }
+        public bool HuyHoaDon { get; set; }
 
         public virtual QuangCao IdChuongtrinhNavigation { get; set; }
         public virtual CuaHang IdCuahangNavigation { get; set; }
