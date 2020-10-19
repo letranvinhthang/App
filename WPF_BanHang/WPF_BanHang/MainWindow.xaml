@@ -192,7 +192,7 @@
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="5.5*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="1" Background="#1C2F3E">
+            <Grid Grid.Column="1">
                 
             </Grid>
         </Grid>
