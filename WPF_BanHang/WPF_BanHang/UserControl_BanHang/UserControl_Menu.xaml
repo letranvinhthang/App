@@ -308,16 +308,45 @@
                     <!--NHẬP KHO-->
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="4*"></RowDefinition>
-                            <RowDefinition Height="2*"></RowDefinition>
+                            <RowDefinition ></RowDefinition>
+                            
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
+                        
+                        <Grid>
+                            
                             <Rectangle Margin="3" RadiusY="10" RadiusX="10" Fill="White">
                                 <Rectangle.Effect>
                                     <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
                                 </Rectangle.Effect>
                             </Rectangle>
-                            <ListView ItemsSource="{Binding tonkhoxlist}">
+                            <Grid Height="110" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <TextBox HorizontalAlignment="Center" Margin="10 0 50 0"  materialDesign:HintAssist.Hint="Mã sản phẩm" TextWrapping="Wrap" Width="120" Height="25" VerticalAlignment="Center"/>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <TextBox HorizontalAlignment="Center" Margin="10 0 50 0"  materialDesign:HintAssist.Hint="Số lượng" TextWrapping="Wrap" Width="120" Height="25" VerticalAlignment="Center"/>
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Button Command="{Binding themsanphamcommand}" Margin="10 0 50 0" Height="60" Width="120" Content="Thêm" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                                </Grid>
+                                <Grid Grid.Column="3">
+                                    <Button Command="{Binding suasanphamcommand}" Margin="10 0 50 0" Height="60" Width="120" Content="Sửa" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                                </Grid>
+                                <Grid Grid.Column="4">
+                                    <Button Height="60" Width="120" Content="Xóa" Margin="10 0 50 0" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+
+                                </Grid>
+                            </Grid>
+                            <ListView Margin="0 130 0 0" ItemsSource="{Binding tonkhoxlist}">
                                 <!--ĐỊNH DẠNG NỘI DUNG-->
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
@@ -349,26 +378,7 @@
                             </ListView>
                         </Grid>
                         <!--Listview NHẬP KHO-->
-                        <Grid Grid.Row="1">
-                            <materialDesign:Card Margin="10">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <Grid Grid.Row="0">
-                                        <TextBox HorizontalAlignment="Center" Margin="0 0 150 0" materialDesign:HintAssist.Hint="Mã sản phẩm" TextWrapping="Wrap" Width="120" Height="25" VerticalAlignment="Center"/>
-                                        <TextBox HorizontalAlignment="Center" Margin="0 0 -150 0" materialDesign:HintAssist.Hint="Số lượng" TextWrapping="Wrap" Width="120" Height="25" VerticalAlignment="Center"/>
-                                    </Grid>
-                                    <Grid Grid.Row="1">
-                                        <Button Command="{Binding themsanphamcommand}" Height="60" Width="120" Content="Thêm" HorizontalAlignment="Center" Margin="0,0,300,0" VerticalAlignment="Center"/>
-                                        <Button Command="{Binding suasanphamcommand}" Height="60" Width="120" Content="Sửa" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        <Button Height="60" Width="120" Content="Xóa" HorizontalAlignment="Center" Margin="0,0,-300,0" VerticalAlignment="Center"/>
-
-                                    </Grid>
-                                </Grid>
-                            </materialDesign:Card>
-                        </Grid>
+                       
                     </Grid>
                 </TabItem>
 
@@ -393,7 +403,7 @@
                                     <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
                                 </Rectangle.Effect>
                             </Rectangle>
-                            <ListView ItemsSource="{Binding nhanvienlist}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                            <ListView Margin="0 100 0 0" ItemsSource="{Binding nhanvienlist}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
                                 <!--ĐỊNH DẠNG NỘI DUNG-->
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
@@ -422,9 +432,9 @@
                             </ListView>
                         </Grid>
                         <!--CHỈNH SỬA-->
-                        <Grid Grid.Row="1">
-                            <materialDesign:Card Margin="20" Height="100" VerticalAlignment="Bottom">
-                                <Grid>
+                        <Grid Grid.Row="0">
+                            
+                                <Grid VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10">
                                     <Grid.RowDefinitions>
                                         <RowDefinition></RowDefinition>
 
@@ -440,7 +450,7 @@
                                     </Grid>
 
                                 </Grid>
-                            </materialDesign:Card>
+                            
                         </Grid>
                     </Grid>
                 </TabItem>
