@@ -146,14 +146,14 @@
                             <Style TargetType="Grid">
                                 <Setter Property="Visibility" Value="Hidden"></Setter>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ChucNang}" Value="0">
+                                    <DataTrigger Binding="{Binding ChucNang}" Value="1">
                                         <Setter Property="Visibility" Value="Visible"></Setter>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </Grid.Style>
-                        <Grid>
-                            <ListView >
+                        <Grid DataContext="{StaticResource nkVM}">
+                            <ListView ItemsSource="{Binding tonkhoxlist}" >
                                 <!--ĐỊNH DẠNG NỘI DUNG-->
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
