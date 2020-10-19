@@ -88,6 +88,7 @@ namespace WPF_BanHang.Viewmodel
         public nhanvien()
         {
             var db = new qlbhContext();
+            loadnhanvien();
             suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => {
                 if (SelectedItem == null)
                 {
