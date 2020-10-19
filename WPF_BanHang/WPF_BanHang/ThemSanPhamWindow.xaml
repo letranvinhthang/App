@@ -5,12 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_BanHang"
         mc:Ignorable="d"
-                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Background="#1C2F3E"
 
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        WindowStyle="None"
         Title="ThemSanPhamWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid>
+    <Grid >
 
-        <materialDesign:Card Margin="20" UniformCornerRadius="10">
+        
+            <materialDesign:Card Margin="20" UniformCornerRadius="10">
 
             <StackPanel Margin="15">
 
