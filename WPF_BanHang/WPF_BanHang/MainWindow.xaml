@@ -57,7 +57,7 @@
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                     <Setter Property="FontWeight" Value="Normal"></Setter>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding}" Value="1">
+                                        <DataTrigger Binding="{Binding ChucNang}" Value="0">
                                             <Setter Property="FontWeight" Value="Bold"></Setter>
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -65,7 +65,7 @@
                             </Button.Style>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
-                                    <i:InvokeCommandAction Command="{Binding loadedwindowcommand}">
+                                    <i:InvokeCommandAction Command="{Binding BtnOrderCommand}">
                                     </i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
@@ -75,18 +75,24 @@
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                     <Setter Property="FontWeight" Value="Normal"></Setter>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding }" Value="1">
+                                        <DataTrigger Binding="{Binding ChucNang }" Value="1">
                                             <Setter Property="FontWeight" Value="Bold"></Setter>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Button.Style>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding BtnThongkeCommand}">
+                                    </i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                         </Button>
                         <Button Height="50" Content="NHẬP KHO" Margin="10 15 10 0">
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ChucNang}" Value="1">
+                                        <DataTrigger Binding="{Binding ChucNang}" Value="2">
                                             <Setter Property="FontWeight" Value="Bold"></Setter>
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -103,7 +109,7 @@
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ChucNang}" Value="1">
+                                        <DataTrigger Binding="{Binding ChucNang}" Value="3">
                                             <Setter Property="FontWeight" Value="Bold"></Setter>
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -135,6 +141,51 @@
             <Grid Grid.Column="1">
                 <!--CONTENT-->
                 <Grid>
+                    <Grid x:Name="order">
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Setter Property="Visibility" Value="Hidden"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ChucNang}" Value="0">
+                                        <Setter Property="Visibility" Value="Visible"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                        <Grid>
+                            <ListView >
+                                <!--ĐỊNH DẠNG NỘI DUNG-->
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                        <Setter Property="FontSize" Value="15"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.View>
+                                    <GridView>
+                                        <!--ĐỊNH DẠNG HEADER-->
+                                        <GridView.ColumnHeaderContainerStyle>
+                                            <Style TargetType="GridViewColumnHeader">
+                                                <Setter Property="FontSize" Value="20"/>
+                                                <Setter Property="Margin" Value="10"/>
+                                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                            </Style>
+                                        </GridView.ColumnHeaderContainerStyle>
+                                        <GridViewColumn Width="200" Header="Hình ảnh" DisplayMemberBinding="{Binding hinh}">
+
+                                        </GridViewColumn>
+                                        <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
+
+                                        <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding ngaysinh}"/>
+                                        <GridViewColumn Width="400" Header="Tổng tiền" DisplayMemberBinding="{Binding diachi}"/>
+                                        <GridViewColumn Width="195" Header="Nhân viên" DisplayMemberBinding="{Binding chucvu}"/>
+
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </Grid>
+                    </Grid>
                     <Grid x:Name="nhanvien">
                         <Grid.Style>
                             <Style TargetType="Grid">
@@ -146,37 +197,39 @@
                                 </Style.Triggers>
                             </Style>
                         </Grid.Style>
-                        <ListView ItemsSource="{Binding tonkhoxlist}">
-                            <!--ĐỊNH DẠNG NỘI DUNG-->
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                    <Setter Property="FontSize" Value="15"/>
-                                </Style>
-                            </ListView.ItemContainerStyle>
-                            <ListView.View>
-                                <GridView>
-                                    <!--ĐỊNH DẠNG HEADER-->
-                                    <GridView.ColumnHeaderContainerStyle>
-                                        <Style TargetType="GridViewColumnHeader">
-                                            <Setter Property="FontSize" Value="20"/>
-                                            <Setter Property="Margin" Value="10"/>
-                                            <Setter Property="VerticalAlignment" Value="Center"/>
-                                            <Setter Property="IsEnabled" Value="False"/>
-                                        </Style>
-                                    </GridView.ColumnHeaderContainerStyle>
-                                    <GridViewColumn Width="200" Header="Hình ảnh" DisplayMemberBinding="{Binding hinh}">
+                        <Grid DataContext="{StaticResource nvVM}">
+                            <ListView ItemsSource="{Binding nhanvienlist}">
+                                <!--ĐỊNH DẠNG NỘI DUNG-->
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                        <Setter Property="FontSize" Value="15"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.View>
+                                    <GridView>
+                                        <!--ĐỊNH DẠNG HEADER-->
+                                        <GridView.ColumnHeaderContainerStyle>
+                                            <Style TargetType="GridViewColumnHeader">
+                                                <Setter Property="FontSize" Value="20"/>
+                                                <Setter Property="Margin" Value="10"/>
+                                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                            </Style>
+                                        </GridView.ColumnHeaderContainerStyle>
+                                        <GridViewColumn Width="200" Header="Hình ảnh" DisplayMemberBinding="{Binding hinh}">
 
-                                    </GridViewColumn>
-                                    <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                    <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding soluong}"/>
-                                    <!--<GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding ngaysinh}"/>
+                                        </GridViewColumn>
+                                        <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
+                                     
+                                        <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding ngaysinh}"/>
                                         <GridViewColumn Width="400" Header="Tổng tiền" DisplayMemberBinding="{Binding diachi}"/>
-                                        <GridViewColumn Width="195" Header="Nhân viên" DisplayMemberBinding="{Binding chucvu}"/>-->
+                                        <GridViewColumn Width="195" Header="Nhân viên" DisplayMemberBinding="{Binding chucvu}"/>
 
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>

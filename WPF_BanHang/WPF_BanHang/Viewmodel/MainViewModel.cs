@@ -109,6 +109,9 @@ namespace WPF_BanHang.Viewmodel
         public ICommand themsanphamcommand { get; set; }
         public ICommand suasanphamcommand { get; set; }
         public ICommand BtnNhanVienCommand { get; set; }
+        public ICommand BtnOrderCommand { get; set; }
+        public ICommand BtnNhapkhoCommand { get; set; }
+        public ICommand BtnThongkeCommand { get; set; }
         public ICommand exitcommand { get; set; }
         public ICommand disablecommand { get; set; }
         public ICommand enablecommand { get; set; }
@@ -144,6 +147,21 @@ namespace WPF_BanHang.Viewmodel
             { return true;}, (p) =>
             {
                 ChucNang = (int)ChucNangQL.NhanVien;
+            });
+            BtnOrderCommand = new RelayCommand<Grid>((p) =>
+            { return true; }, (p) =>
+            {
+                ChucNang = (int)ChucNangQL.Order;
+            });
+            BtnNhapkhoCommand = new RelayCommand<Grid>((p) =>
+            { return true; }, (p) =>
+            {
+                ChucNang = (int)ChucNangQL.NhapKho;
+            });
+            BtnThongkeCommand = new RelayCommand<Grid>((p) =>
+            { return true; }, (p) =>
+            {
+                ChucNang = (int)ChucNangQL.ThongKe;
             });
             themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
             suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });

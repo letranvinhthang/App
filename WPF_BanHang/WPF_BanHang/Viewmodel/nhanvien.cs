@@ -8,7 +8,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WPF_BanHang.Models;
-using System.Linq;
 
 namespace WPF_BanHang.Viewmodel
 {
@@ -89,6 +88,7 @@ namespace WPF_BanHang.Viewmodel
         public nhanvien()
         {
             var db = new qlbhContext();
+            loadnhanvien();
             suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => {
                 if (SelectedItem == null)
                 {
