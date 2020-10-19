@@ -19,6 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="3.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="hinh\home.png" />
     <Resource Include="hinh\kho1.png" />
     <Resource Include="hinh\kho2.png" />
