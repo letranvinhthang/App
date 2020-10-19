@@ -52,7 +52,7 @@
                 </Grid>
                 <Grid Grid.Row="1">
                     <StackPanel>
-                        <Button Height="50" Content="ORDER" Margin="10 20 10 0">
+                        <Button Height="50" Content="ORDER" Margin="10 20 10 0" BorderBrush="Transparent" Background="Transparent">
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                     <Setter Property="FontWeight" Value="Normal"></Setter>
@@ -75,11 +75,7 @@
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                     <Setter Property="FontWeight" Value="Normal"></Setter>
                                     <Style.Triggers>
-<<<<<<< HEAD
                                         <DataTrigger Binding="{Binding ChucNang}" Value="1">
-=======
-                                        <DataTrigger Binding="{Binding ChucNang }" Value="1">
->>>>>>> e9d23f73f1278d59f65630613dd1ea244893e898
                                             <Setter Property="FontWeight" Value="Bold"></Setter>
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -87,11 +83,7 @@
                             </Button.Style>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
-<<<<<<< HEAD
-                                    <i:InvokeCommandAction Command="{Binding BtnNhanVienCommand}">
-=======
                                     <i:InvokeCommandAction Command="{Binding BtnThongkeCommand}">
->>>>>>> e9d23f73f1278d59f65630613dd1ea244893e898
                                     </i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>

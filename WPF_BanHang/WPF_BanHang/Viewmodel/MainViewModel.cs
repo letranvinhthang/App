@@ -105,13 +105,8 @@ namespace WPF_BanHang.Viewmodel
         public ICommand suasanphamcommand { get; set; }
         public ICommand BtnNhanVienCommand { get; set; }
         public ICommand BtnOrderCommand { get; set; }
-<<<<<<< HEAD
         public ICommand BtnThongKeCommand { get; set; }
         public ICommand BtnNhapKhoCommand { get; set; }
-=======
-        public ICommand BtnNhapkhoCommand { get; set; }
-        public ICommand BtnThongkeCommand { get; set; }
->>>>>>> e9d23f73f1278d59f65630613dd1ea244893e898
         public ICommand exitcommand { get; set; }
         public ICommand closecommand { get; set; }
         #endregion
@@ -151,46 +146,25 @@ namespace WPF_BanHang.Viewmodel
             {
                 ChucNang = (int)ChucNangQL.Order;
             });
-<<<<<<< HEAD
-            BtnThongKeCommand = new RelayCommand<Grid>((p) =>
-            { return true; }, (p) =>
-=======
             BtnOrderCommand = new RelayCommand<Grid>((p) =>
             { return true; }, (p) =>
             {
                 ChucNang = (int)ChucNangQL.Order;
-            });
-            BtnNhapkhoCommand = new RelayCommand<Grid>((p) =>
-            { return true; }, (p) =>
-            {
-                ChucNang = (int)ChucNangQL.NhapKho;
-            });
-            BtnThongkeCommand = new RelayCommand<Grid>((p) =>
-            { return true; }, (p) =>
-            {
-                ChucNang = (int)ChucNangQL.ThongKe;
-            });
-            themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
-            suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
-            suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => {
-                if (SelectedItem == null)
-                {
-                    return false;
-                }
-                return true;
-            }, (c) => { suanhanvien(c); });
-            themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { themnhanvien(a); });
-            thanhtoancommand = new RelayCommand<HoaDonWindow>((w) => { return true; }, (w) => { Thanhtoan(w); });
-            disablecommand = new RelayCommand<object>((p) =>
->>>>>>> e9d23f73f1278d59f65630613dd1ea244893e898
-            {
-                ChucNang = (int)ChucNangQL.ThongKe;
             });
             BtnNhapKhoCommand = new RelayCommand<Grid>((p) =>
             { return true; }, (p) =>
             {
                 ChucNang = (int)ChucNangQL.NhapKho;
             });
+            BtnThongKeCommand = new RelayCommand<Grid>((p) =>
+            { return true; }, (p) =>
+            {
+                ChucNang = (int)ChucNangQL.ThongKe;
+            });
+            themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
+            suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
+           
+      
             themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
             suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
             exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
