@@ -405,6 +405,8 @@ namespace WPF_BanHang.Models
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_general_ci");
 
+                entity.Property(e => e.XoaNhanVien).HasColumnName("Xoa_NhanVien");
+
                 entity.HasOne(d => d.IdChucvuNavigation)
                     .WithMany(p => p.NhanVien)
                     .HasForeignKey(d => d.IdChucvu)
@@ -498,7 +500,7 @@ namespace WPF_BanHang.Models
                 entity.Property(e => e.HinhSanpham)
                     .IsRequired()
                     .HasColumnName("Hinh_sanpham")
-                    .HasColumnType("text")
+                    .HasColumnType("varchar(50)")
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_general_ci");
 
@@ -520,6 +522,8 @@ namespace WPF_BanHang.Models
                     .HasColumnType("varchar(200)")
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.XoaSanPham).HasColumnName("Xoa_SanPham");
 
                 entity.HasOne(d => d.IdLoaispNavigation)
                     .WithMany(p => p.SanPham)

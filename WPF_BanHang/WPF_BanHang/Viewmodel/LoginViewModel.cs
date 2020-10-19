@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Linq;
+﻿using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
@@ -59,6 +57,7 @@ namespace WPF_BanHang.Viewmodel
                 {
                     MessageBox.Show("Sai thông tin!", "Thông báo");                   
                 }
+                
             }
             else
             {
