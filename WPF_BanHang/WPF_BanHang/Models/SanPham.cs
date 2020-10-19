@@ -12,11 +12,7 @@ namespace WPF_BanHang.Models
         public bool SanphamHot { get; set; }
         public bool SanphamMoi { get; set; }
         public string HinhSanpham { get; set; }
-<<<<<<< HEAD
         public bool XoaSanPham { get; set; }
-=======
->>>>>>> 8ea80d40b17f1638b2148bb17efcd140e825c3df
-
         public virtual DanhmucSanpham IdLoaispNavigation { get; set; }
     }
 }

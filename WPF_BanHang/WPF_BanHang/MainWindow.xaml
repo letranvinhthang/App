@@ -57,7 +57,7 @@
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                     <Setter Property="FontWeight" Value="Normal"></Setter>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding}" Value="1">
+                                        <DataTrigger Binding="{Binding ChucNang}" Value="0">
                                             <Setter Property="FontWeight" Value="Bold"></Setter>
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -65,7 +65,7 @@
                             </Button.Style>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
-                                    <i:InvokeCommandAction Command="{Binding loadedwindowcommand}">
+                                    <i:InvokeCommandAction Command="{Binding BtnOrderCommand}">
                                     </i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
@@ -75,18 +75,24 @@
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                     <Setter Property="FontWeight" Value="Normal"></Setter>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding }" Value="1">
+                                        <DataTrigger Binding="{Binding ChucNang}" Value="1">
                                             <Setter Property="FontWeight" Value="Bold"></Setter>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Button.Style>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding BtnNhanVienCommand}">
+                                    </i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                         </Button>
                         <Button Height="50" Content="NHẬP KHO" Margin="10 15 10 0">
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ChucNang}" Value="1">
+                                        <DataTrigger Binding="{Binding ChucNang}" Value="2">
                                             <Setter Property="FontWeight" Value="Bold"></Setter>
                                         </DataTrigger>
                                     </Style.Triggers>
