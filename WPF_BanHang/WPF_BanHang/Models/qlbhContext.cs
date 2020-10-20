@@ -378,6 +378,8 @@ namespace WPF_BanHang.Models
                     .HasColumnName("ID_chucvu")
                     .HasColumnType("int(11)");
 
+                entity.Property(e => e.Idcuahang).HasColumnType("int(11)");
+
                 entity.Property(e => e.NgaySinh)
                     .HasColumnName("Ngay_sinh")
                     .HasColumnType("timestamp")

@@ -78,17 +78,23 @@ namespace WPF_BanHang.Viewmodel
         #region Command
         public ICommand themnhanviencommand { get; set; }
         public ICommand suanhanviencommand { get; set; }
+        public ICommand loadednvcommand { get; set; }
         public ICommand editcommand { get; set; }
         public ICommand PassChangedcommand { get; set; }
         public ICommand TextChangedcommand { get; set; }
         public ICommand exitcommand { get; set; }
         public ICommand disablecommand { get; set; }
         public ICommand enablecommand { get; set; }
+        public ICommand loadcommand { get; set; }
         #endregion
         public nhanvien()
         {
             var db = new qlbhContext();
-            loadnhanvien();
+            loadcommand = new RelayCommand<Object>((p) => { return true; }, (p) =>
+            {
+                loadnhanvien();
+            });
+         
             suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => {
                 if (SelectedItem == null)
                 {
@@ -97,6 +103,7 @@ namespace WPF_BanHang.Viewmodel
                 return true;
             }, (c) => { suanhanvien(c); });
             themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { themnhanvien(a); });
+                 loadednvcommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { loadnhanvien(); });
             disablecommand = new RelayCommand<object>((p) =>
             {
                 bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
@@ -225,6 +232,7 @@ namespace WPF_BanHang.Viewmodel
             var nv = db.NhanVien;
             var qh = db.QuyenHan;
 
+<<<<<<< HEAD
             foreach (var item in nv.ToList())
             {
                 var tencv = qh.Where(p => p.DisTaikhoan == true).FirstOrDefault();
@@ -240,6 +248,27 @@ namespace WPF_BanHang.Viewmodel
                 nvl.hinhnhanvien = item.HinhNhanVien;
                 nhanvienlist.Add(nvl);
             }
+=======
+            int? idch = MainViewModel.TaiKhoan.Idcuahang;
+
+
+                foreach (var item in nv.Where(p => p.Idcuahang == idch).ToList())
+                    {
+                        var tencv = qh.Where(p => p.IdChucvu== item.IdChucvu).FirstOrDefault();
+                        nvxl nvl = new nvxl();
+                        nvl.Manv = item.IdNhanvien;
+                        nvl.ten = item.TenNhanvien;
+                        nvl.Pass = item.PassNhanvien;
+                        nvl.ngaysinh = item.NgaySinh;
+                        nvl.diachi = item.DiachiNhanvien;
+                        nvl.chucvu = tencv.TenChucvu;
+                        nvl.IdChucvu = item.IdChucvu;
+                        nvl.sdt = item.Sdt;
+                        nhanvienlist.Add(nvl);
+                    }
+
+
+>>>>>>> origin/hao1
         }
     }
  }
