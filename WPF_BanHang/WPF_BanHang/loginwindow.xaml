@@ -196,10 +196,9 @@
                 </Border>
             </Grid>
             <Grid>
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 400">
+                <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" Margin="0 0 0 300">
 
-                    <Image Source="UserControl_BanHang/Icons/Logo.png" Width="100" Height="100" Margin="0 0 0 0"/>
-
+                    <Image Source="UserControl_BanHang/Icons/Logo.png" Width="100" Height="100" Margin="0 0 0 100"/>
                 </StackPanel>
             </Grid>
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 400 0 0">

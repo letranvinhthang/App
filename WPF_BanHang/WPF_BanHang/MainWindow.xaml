@@ -8,11 +8,11 @@
         mc:Ignorable="d"
         x:Name="window"
         Title="MainWindow" Height="720" Width="1280"
+ 
         
-        xmlns:uc="clr-namespace:WPF_BanHang.UserControl_BanHang"
-        
-        
+        xmlns:uc="clr-namespace:WPF_BanHang.UserControl_BanHang"               
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
      TextElement.FontSize="13"
@@ -158,13 +158,14 @@
                             <Style TargetType="Grid">
                                 <Setter Property="Visibility" Value="Hidden"></Setter>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ChucNang}" Value="1">
+                                    <DataTrigger Binding="{Binding ChucNang}" Value="0">
                                         <Setter Property="Visibility" Value="Visible"></Setter>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </Grid.Style>
-<<<<<<< HEAD
+                        
+
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="4*"></RowDefinition>
@@ -248,15 +249,8 @@
                                         <Setter Property="Background" Value="AntiqueWhite"/>
                                         <Setter Property="Foreground" Value="CornflowerBlue"/>
                                         <Setter Property="FontSize" Value="20"/>
-=======
-                        <Grid DataContext="{StaticResource nkVM}">
-                            <ListView ItemsSource="{Binding tonkhoxlist}" >
-                                <!--ĐỊNH DẠNG NỘI DUNG-->
-                                <ListView.ItemContainerStyle>
-                                    <Style TargetType="ListViewItem">
-                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                        <Setter Property="FontSize" Value="15"/>
->>>>>>> 73c4c4e68df92d76d5a29dc95814816f61d8d21c
+
+
                                     </Style>
                                 </TabControl.Resources>
                                 <!--HÓA ĐƠN-->

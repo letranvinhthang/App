@@ -9,6 +9,9 @@
   <ItemGroup>
     <None Remove="Hinh\Background.jpg" />
     <None Remove="Hinh\Banner.jpg" />
+    <None Remove="Hinh\Event\bat.png" />
+    <None Remove="Hinh\Event\headtone.png" />
+    <None Remove="Hinh\Event\spider-web.png" />
     <None Remove="Hinh\Login.jpg" />
     <None Remove="Hinh\Logo.png" />
     <None Remove="UserControl_BanHang\Icons\Banner.png" />
@@ -24,6 +27,9 @@
 
   <ItemGroup>
     <Resource Include="Hinh\Background.jpg" />
+    <Resource Include="Hinh\Event\bat.png" />
+    <Resource Include="Hinh\Event\headtone.png" />
+    <Resource Include="Hinh\Event\spider-web.png" />
     <Resource Include="Hinh\Login.jpg" />
     <Resource Include="Hinh\Logo.png" />
     <Resource Include="UserControl_BanHang\Icons\Banner.png" />
