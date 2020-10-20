@@ -14,6 +14,7 @@ namespace WPF_BanHang.Viewmodel
 
     public class addviewmodel : BaseViewModel
     {
+       
         public ICommand addcommand { get; set; }
         public ICommand exitcommand { get; set; }
         public ICommand PasswordChangedcommand { get; set; }
@@ -47,6 +48,7 @@ namespace WPF_BanHang.Viewmodel
         private int _chuvuseleted;
 
         public int chuvuseleted { get => _chuvuseleted; set { _chuvuseleted = value; OnPropertyChanged(); } }
+        #region ma hoa
         public static string Base64Encode(string plainText)
         {
             var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
@@ -64,9 +66,10 @@ namespace WPF_BanHang.Viewmodel
             }
             return hash.ToString();
         }
+        #endregion
         public addviewmodel()
         {
-            // 
+            #region nhan vien
             string pass = "";
             var db = new qlbhContext();
             cvlist = new ObservableCollection<QuyenHan>(db.QuyenHan);
@@ -102,8 +105,11 @@ namespace WPF_BanHang.Viewmodel
                         sdt="";
                     });
                 exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
+            #endregion
+
+
         }
-        
+
     }
 
 }
