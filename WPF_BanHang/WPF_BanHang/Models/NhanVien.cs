@@ -19,6 +19,7 @@ namespace WPF_BanHang.Models
         public string Sdt { get; set; }
         public bool Disable { get; set; }
         public bool XoaNhanVien { get; set; }
+        public int? Idcuahang { get; set; }
 
         public virtual QuyenHan IdChucvuNavigation { get; set; }
         public virtual ICollection<HoaDon> HoaDon { get; set; }

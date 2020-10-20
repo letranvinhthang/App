@@ -49,8 +49,10 @@ namespace WPF_BanHang.Viewmodel
                     }
                     else
                     {
+                        MainViewModel.TaiKhoan = tk.SingleOrDefault();
                         IsLogin = true;
                         p.Close();
+              
                     }
                 }
                 else

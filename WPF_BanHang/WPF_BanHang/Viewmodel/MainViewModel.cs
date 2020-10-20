@@ -17,6 +17,17 @@ namespace WPF_BanHang.Viewmodel
         {
             Order, ThongKe, NhapKho, NhanVien, DangXuat
         };
+        private NhanVien _TaiKhoanHienThi;
+        public NhanVien TaiKhoanHienThi { get => _TaiKhoanHienThi; set { _TaiKhoanHienThi = value; OnPropertyChanged(); } }
+        public enum QuyenTaiKhoan
+        {
+            NhanVien, Quanly
+        };
+        private int _QuyenTK;
+        public int QuyenTK { get => _QuyenTK; set { _QuyenTK = value; OnPropertyChanged(); } }
+        private int? _cuahang;
+        public int? cuahang { get => _cuahang; set { _cuahang = value; OnPropertyChanged(); } }
+        static public NhanVien TaiKhoan { get; set; }
         private int _ChucNang;
         public int ChucNang { get => _ChucNang; set { _ChucNang = value; OnPropertyChanged(); } }
 
@@ -105,6 +116,9 @@ namespace WPF_BanHang.Viewmodel
         public ICommand suasanphamcommand { get; set; }
         public ICommand BtnNhanVienCommand { get; set; }
         public ICommand BtnOrderCommand { get; set; }
+        #region Set quyền command
+        public ICommand SetupQuyenCommand { get; set; }
+        #endregion
         public ICommand BtnThongKeCommand { get; set; }
         public ICommand BtnNhapKhoCommand { get; set; }
         public ICommand exitcommand { get; set; }
@@ -114,33 +128,31 @@ namespace WPF_BanHang.Viewmodel
         public MainViewModel()
         {
             var db = new qlbhContext();
-
-            /* closecommand = new RelayCommand<UserControl>((p) => { return true; }, (p) =>
-              {
-                  FrameworkElement window = getwindowparent(p);
-                  var w = window as Window;
-                  if (w != null)
-                  {
-                      var lg = new MainWindow();
-                      w.Close();
-                      lg.Show();
-                  }
+            SetupQuyenCommand = new RelayCommand<Grid>((p) =>
+            {
+                return true;
+            }, (p) =>
+            {
+                SetupQuyenTaiKhoan();
+            });    
+              closecommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
+                  MainWindow lga = new MainWindow();
+                  p.Close();
+                  lga.Show();
               });
-             FrameworkElement getwindowparent(UserControl p)
-             {
-                 FrameworkElement parent = p;
-                 while (parent.Parent != null)
-                 {
-                     parent = parent.Parent as FrameworkElement;
-
-                 }
-                 return parent;
-             }*/
-            BtnNhanVienCommand = new RelayCommand<Grid>((p) =>
-            { return true; }, (p) =>
-             {
-                 ChucNang = (int)ChucNangQL.NhanVien;
-             });
+            BtnNhanVienCommand = new RelayCommand<Grid>((p) => 
+            { 
+             if (QuyenTK == (int)QuyenTaiKhoan.NhanVien)
+            {
+                MessageBoxResult result = MessageBox.Show("Bạn không đủ quyền truy cập vào chức năng này!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+                return true;
+            }, 
+            (p) =>
+            {
+                ChucNang = (int)ChucNangQL.NhanVien;
+            });
             BtnOrderCommand = new RelayCommand<Grid>((p) =>
             { return true; }, (p) =>
             {
@@ -184,6 +196,7 @@ namespace WPF_BanHang.Viewmodel
                     p.Show();
                     loadtonkho();
                     loadnhanvien();
+                    SetupQuyenTaiKhoan();
                 }
                 else
                 {
@@ -261,7 +274,7 @@ namespace WPF_BanHang.Viewmodel
                 var nv = db.NhanVien;
                 var qh = db.QuyenHan;
 
-                foreach (var item in nv.ToList())
+                foreach (var item in nv.Where(p => p.Idcuahang == TaiKhoan.Idcuahang).ToList())
                 {
                     var tencv = qh.Where(p => p.IdChucvu == item.IdChucvu).FirstOrDefault();
                     nvxl nvl = new nvxl();
@@ -277,6 +290,7 @@ namespace WPF_BanHang.Viewmodel
                 }
             }
             //
+
             void Thanhtoan(HoaDonWindow w)
             {
                 HoaDonWindow window = new HoaDonWindow();
@@ -293,6 +307,18 @@ namespace WPF_BanHang.Viewmodel
                 SuaSanPhamWindow window4 = new SuaSanPhamWindow();
                 window4.ShowDialog();
             }
+        }
+        public void SetupQuyenTaiKhoan()
+        {
+            if (TaiKhoan.IdChucvu== 2)
+            {
+                QuyenTK = (int)QuyenTaiKhoan.Quanly;
+            }
+            else if (TaiKhoan.IdChucvu == 1)
+            {
+                QuyenTK = (int)QuyenTaiKhoan.NhanVien;
+            }
+            cuahang = TaiKhoan.Idcuahang;
         }
     }
 }

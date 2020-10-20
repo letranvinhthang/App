@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Windows.Input;
 using WPF_BanHang.Models;
 
 namespace WPF_BanHang.Viewmodel
@@ -13,21 +14,22 @@ namespace WPF_BanHang.Viewmodel
         private string _ten;
 
         public string ten { get => _ten; set { _ten = value; OnPropertyChanged(); } }
-        private int _manv;
+        private int _STT;
 
-        public int manv { get => _manv; set { _manv = value; OnPropertyChanged(); } }
-        private string _pass;
+        public int STT { get => _STT; set { _STT = value; OnPropertyChanged(); } }
+        private int _soluong;
 
-        public string pass { get => _pass; set { _pass = value; OnPropertyChanged(); } }
-        private DateTime _ngaysinh;
-
-        public DateTime ngaysinh { get => _ngaysinh; set { _ngaysinh = value; OnPropertyChanged(); } }
-        private string _diachi;
+        public int soluong { get => _soluong; set { _soluong = value; OnPropertyChanged(); } }
         private ObservableCollection<tonkhoxl> _tonkhoxlist;
         public ObservableCollection<tonkhoxl> tonkhoxlist { get => _tonkhoxlist; set { _tonkhoxlist = value; OnPropertyChanged(); } }
+        public ICommand loadcommand { get; set; }
         public NhapkhoViewModel()
         {
-            loadtonkho();
+            loadcommand = new RelayCommand<Object>((p) => { return true; }, (p) =>
+            {
+                loadtonkho();
+            });
+
         }
 
         void loadtonkho()
@@ -37,11 +39,13 @@ namespace WPF_BanHang.Viewmodel
             var tk = db.TonKho;
             var sp = db.SanPham;
             var cthd = db.HoaDonChitiet;
+            var hd = db.HoaDon;
             int i = 1;
+            int? idch = MainViewModel.TaiKhoan.Idcuahang;
             foreach (var item in sp.ToList())
             {
-                var nhap = cthd.Where(p => p.IdSanpham == item.IdSanpham && p.IdNhacc != null);
-                var xuat = cthd.Where(p => p.IdSanpham == item.IdSanpham && p.IdNhacc == null);
+                var nhap = from p in cthd join b in hd on p.IdHoadon equals b.IdHoadon where(p.IdSanpham == item.IdSanpham && p.IdNhacc != null && b.IdCuahang == idch) select p;
+                var xuat = from p in cthd join b in hd on p.IdHoadon equals b.IdHoadon where(p.IdSanpham == item.IdSanpham && p.IdNhacc == null && b.IdCuahang == idch) select p;
                 int sumnhap = 0;
                 int sumxuat = 0;
                 if (nhap != null)
@@ -53,7 +57,6 @@ namespace WPF_BanHang.Viewmodel
                 tonKho.ten = item.TenSanpham;
                 tonKho.soluong = sumnhap - sumxuat;
                 tonKho.STT = i;
-
                 tonkhoxlist.Add(tonKho);
                 i++;
             }
