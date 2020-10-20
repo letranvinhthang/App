@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="hinh\home.png" />
+    <None Remove="hinh\kho1.png" />
+    <None Remove="hinh\kho2.png" />
+    <None Remove="hinh\kho4.png" />
+    <None Remove="hinh\nhanvien.png" />
+    <None Remove="hinh\order.png" />
+    <None Remove="hinh\power.png" />
+    <None Remove="hinh\shutdown.png" />
+    <None Remove="hinh\thongke.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="3.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="hinh\home.png" />
+    <Resource Include="hinh\kho1.png" />
+    <Resource Include="hinh\kho2.png" />
+    <Resource Include="hinh\kho4.png" />
+    <Resource Include="hinh\nhanvien.png" />
+    <Resource Include="hinh\order.png" />
+    <Resource Include="hinh\power.png" />
+    <Resource Include="hinh\shutdown.png" />
+    <Resource Include="hinh\thongke.png" />
+  </ItemGroup>
+
+</Project>

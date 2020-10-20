@@ -9,6 +9,9 @@
   <ItemGroup>
     <None Remove="Hinh\Background.jpg" />
     <None Remove="Hinh\Banner.jpg" />
+    <None Remove="Hinh\Event\bat.png" />
+    <None Remove="Hinh\Event\headtone.png" />
+    <None Remove="Hinh\Event\spider-web.png" />
     <None Remove="Hinh\Login.jpg" />
     <None Remove="Hinh\Logo.png" />
     <None Remove="UserControl_BanHang\Icons\Banner.png" />
@@ -24,6 +27,9 @@
 
   <ItemGroup>
     <Resource Include="Hinh\Background.jpg" />
+    <Resource Include="Hinh\Event\bat.png" />
+    <Resource Include="Hinh\Event\headtone.png" />
+    <Resource Include="Hinh\Event\spider-web.png" />
     <Resource Include="Hinh\Login.jpg" />
     <Resource Include="Hinh\Logo.png" />
     <Resource Include="UserControl_BanHang\Icons\Banner.png" />
@@ -51,6 +57,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.8" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.8" />
+    <PackageReference Include="ModernUICharts.WPF.Beta" Version="0.9.1" />
     <PackageReference Include="MySql.Data" Version="8.0.21" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.2" />
     <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
