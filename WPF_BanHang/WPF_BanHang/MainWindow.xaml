@@ -217,15 +217,18 @@
                                                 <Setter Property="IsEnabled" Value="False"/>
                                             </Style>
                                         </GridView.ColumnHeaderContainerStyle>
-                                        <GridViewColumn Width="200" Header="Hình ảnh" DisplayMemberBinding="{Binding hinh}">
-
+                                        <GridViewColumn Width="200" Header="Hình ảnh">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Image Source="{Binding hinhnhanvien}"/>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
                                         <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
                                      
                                         <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding ngaysinh}"/>
                                         <GridViewColumn Width="400" Header="Tổng tiền" DisplayMemberBinding="{Binding diachi}"/>
                                         <GridViewColumn Width="195" Header="Nhân viên" DisplayMemberBinding="{Binding chucvu}"/>
-
                                     </GridView>
                                 </ListView.View>
                             </ListView>

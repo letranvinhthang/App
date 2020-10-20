@@ -237,6 +237,7 @@ namespace WPF_BanHang.Viewmodel
                 nvl.chucvu = tencv.TenChucvu;
                 nvl.IdChucvu = item.IdChucvu;
                 nvl.sdt = item.Sdt;
+                nvl.hinhnhanvien = item.HinhNhanVien;
                 nhanvienlist.Add(nvl);
             }
         }
