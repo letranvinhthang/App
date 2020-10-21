@@ -232,23 +232,7 @@ namespace WPF_BanHang.Viewmodel
             var nv = db.NhanVien;
             var qh = db.QuyenHan;
 
-<<<<<<< HEAD
-            foreach (var item in nv.ToList())
-            {
-                var tencv = qh.Where(p => p.DisTaikhoan == true).FirstOrDefault();
-                nvxl nvl = new nvxl();
-                nvl.Manv = item.IdNhanvien;
-                nvl.ten = item.TenNhanvien;
-                nvl.Pass = item.PassNhanvien;
-                nvl.ngaysinh = item.NgaySinh;
-                nvl.diachi = item.DiachiNhanvien;
-                nvl.chucvu = tencv.TenChucvu;
-                nvl.IdChucvu = item.IdChucvu;
-                nvl.sdt = item.Sdt;
-                nvl.hinhnhanvien = item.HinhNhanVien;
-                nhanvienlist.Add(nvl);
-            }
-=======
+
             int? idch = MainViewModel.TaiKhoan.Idcuahang;
 
 
@@ -256,6 +240,7 @@ namespace WPF_BanHang.Viewmodel
                     {
                         var tencv = qh.Where(p => p.IdChucvu== item.IdChucvu).FirstOrDefault();
                         nvxl nvl = new nvxl();
+                        nvl.hinhnhanvien = item.HinhNhanVien;
                         nvl.Manv = item.IdNhanvien;
                         nvl.ten = item.TenNhanvien;
                         nvl.Pass = item.PassNhanvien;
@@ -266,9 +251,6 @@ namespace WPF_BanHang.Viewmodel
                         nvl.sdt = item.Sdt;
                         nhanvienlist.Add(nvl);
                     }
-
-
->>>>>>> origin/hao1
         }
     }
  }

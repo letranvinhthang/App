@@ -105,6 +105,10 @@ namespace WPF_BanHang.Viewmodel
         private string _sodt;
 
         public string sodt { get => _sodt; set { _sodt = value; OnPropertyChanged(); } }
+
+        private string _hinh;
+
+        public string hinh { get => _hinh; set { _hinh = value; OnPropertyChanged(); } }
         #endregion
 
         //bắt  command
@@ -225,7 +229,7 @@ namespace WPF_BanHang.Viewmodel
                     if (xuat != null)
                     sumxuat = xuat.Sum(p => p.SoLuong);
                     tonkhoxl tonKho = new tonkhoxl();
-                    tonKho.hinh = (long.Parse(item.HinhSanpham)).ToString();
+                    tonKho.hinh = item.HinhSanpham;
                     tonKho.ten = item.TenSanpham;
                     tonKho.soluong = sumnhap - sumxuat;
                     tonKho.STT = i;

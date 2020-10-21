@@ -33,8 +33,8 @@ namespace WPF_BanHang.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("server=192.168.0.5;database=qlbh;user=trung", x => x.ServerVersion("10.4.14-mariadb"));
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySql("server=192.168.0.5;user id=trung;database=qlbh", x => x.ServerVersion("10.4.11-mariadb"));
             }
         }
 
@@ -374,6 +374,8 @@ namespace WPF_BanHang.Models
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_general_ci");
 
+                entity.Property(e => e.HinhNhanVien).IsRequired();
+
                 entity.Property(e => e.IdChucvu)
                     .HasColumnName("ID_chucvu")
                     .HasColumnType("int(11)");
@@ -501,10 +503,7 @@ namespace WPF_BanHang.Models
 
                 entity.Property(e => e.HinhSanpham)
                     .IsRequired()
-                    .HasColumnName("Hinh_sanpham")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8mb4")
-                    .HasCollation("utf8mb4_general_ci");
+                    .HasColumnName("Hinh_sanpham");
 
                 entity.Property(e => e.IdLoaisp)
                     .HasColumnName("ID_loaisp")
