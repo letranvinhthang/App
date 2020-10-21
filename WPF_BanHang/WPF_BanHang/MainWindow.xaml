@@ -329,8 +329,13 @@
                             <TextBlock x:Name="dongho3" FontSize="36" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Margin="0 0 30 0"/>
                         </Grid>
                         <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
-                        <Grid Grid.Row="1">
-                            <ListView ItemsSource="{Binding orderlist}">
+                        <Grid Grid.Row="1" DataContext="{StaticResource nkVM}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction Command="{Binding loadcommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <ListView ItemsSource="{Binding tonkhoxlist}">
                                 <!--ĐỊNH DẠNG NỘI DUNG-->
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
@@ -349,17 +354,20 @@
                                                 <Setter Property="IsEnabled" Value="False"/>
                                             </Style>
                                         </GridView.ColumnHeaderContainerStyle>
+                                        <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding STT}"/>
                                         <GridViewColumn Width="200" Header="Hình ảnh">
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Image Source="{Binding hinhnhanvien}"/>
+                                                    <Image Source="{Binding hinh}"/>
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
+             
+                                        <GridViewColumn Width="430" Header="barcode" DisplayMemberBinding="{Binding IdSanpham }"/>
                                         <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                        <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding ngaysinh}"/>
-                                        <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding diachi}"/>
-                                        <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding chucvu}"/>
+                                        <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding }"/>
+                                        <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
+                                        
                                     </GridView>
                                 </ListView.View>
                             </ListView>
@@ -385,8 +393,13 @@
                             <TextBlock x:Name="dongho4" FontSize="36" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Margin="0 0 30 0"/>
                         </Grid>
                         <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
-                        <Grid Grid.Row="1">
-                            <ListView ItemsSource="{Binding orderlist}">
+                        <Grid Grid.Row="1" DataContext="{StaticResource nvVM}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction Command="{Binding loadcommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <ListView ItemsSource="{Binding nhanvienlist}">
                                 <!--ĐỊNH DẠNG NỘI DUNG-->
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">

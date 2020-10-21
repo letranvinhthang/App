@@ -62,6 +62,7 @@ namespace WPF_BanHang.Viewmodel
                     tonKho.ten = item.TenSanpham;
                     tonKho.soluong = sumnhap - sumxuat;
                     tonKho.STT = i;
+                    tonKho.IdSanpham = item.IdSanpham;
                     tonkhoxlist.Add(tonKho);
                     i++;
                 }
