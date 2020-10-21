@@ -19,7 +19,8 @@
        DataContext="{StaticResource loginVM}"
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="LOGINWINDOW" Height="1080" Width="1920" >
+        Icon="Hinh/Logo.png"
+        Title="Đăng nhập" Height="1080" Width="1920" >
     <Window.InputBindings>
         <KeyBinding Key="Enter" Command="{Binding logincommand}"
                     CommandParameter="{Binding ElementName=window}"/>
@@ -38,7 +39,7 @@
                 <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
             </Rectangle.Effect>
         </Rectangle>
-        <StackPanel Margin="25">
+        <StackPanel Margin="0,0,25,0" Height="1014" VerticalAlignment="Center" HorizontalAlignment="Center" Width="1870">
             <StackPanel Margin="0 270 0 0" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Image Source="UserControl_BanHang/Icons/Logo.png" Width="100" Height="100" Margin="0 30 0 0"/>
             </StackPanel>
