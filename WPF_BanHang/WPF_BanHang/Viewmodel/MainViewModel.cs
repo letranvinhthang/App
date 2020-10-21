@@ -173,12 +173,10 @@ namespace WPF_BanHang.Viewmodel
                 ChucNang = (int)ChucNangQL.ThongKe;
             });
             themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
-            suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
-           
-      
+            suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });               
             themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
             suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
-            exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
+            exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });         
             loadedwindowcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 if (p == null)
@@ -203,6 +201,7 @@ namespace WPF_BanHang.Viewmodel
                 }
             });
             //xử lý sửa thông tin
+
 
             //thống kê
             void loadsappham()
@@ -295,6 +294,7 @@ namespace WPF_BanHang.Viewmodel
                 HoaDonWindow window = new HoaDonWindow();
                 window.ShowDialog();
             }
+
             void themsanpham(ThemSanPhamWindow k)
             {
                 ThemSanPhamWindow window3 = new ThemSanPhamWindow();

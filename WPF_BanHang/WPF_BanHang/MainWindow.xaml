@@ -188,22 +188,37 @@
                                 </Style.Triggers>
                             </Style>
                         </Grid.Style>
+                        
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
+                        
                         <!--BARCODE-->
-                        <Grid Grid.Row="0" Margin="0 0 -20 10">
+                        <Grid Grid.Row="0" Margin="0 0 -20 10" DataContext="{StaticResource orderVM}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Nhập Barcode: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" />
                                 <TextBox x:Name="BARCODE" FontSize="20" Width="200" Height="30"/>
-                                <Button Content="Xác nhận" Margin="10 0 0 0"/>
+                                <Button Content="Nhập" Margin="10 0 0 0">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction Command="{Binding BtnMuaHangCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
                             </StackPanel>
                             <TextBlock x:Name="dongho1" FontSize="36" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Margin="0 0 30 0"/>
                         </Grid>
+                        
                         <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
-                        <Grid Grid.Row="1">
-                            <ListView ItemsSource="{Binding orderlist}">
+                        <Grid Grid.Row="1" DataContext="{StaticResource orderVM}">
+                            <ListView ItemsSource="{Binding orderlist}" SelectedItem="{Binding SelectedItem}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectionChanged">
+                                        <i:InvokeCommandAction Command="{Binding HienThiCommand}">
+                                        </i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                                 <!--ĐỊNH DẠNG NỘI DUNG-->
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
@@ -225,14 +240,14 @@
                                         <GridViewColumn Width="200" Header="Hình ảnh">
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Image Source="{Binding hinhnhanvien}"/>
+                                                    <Image Source="{Binding hinhsp}"/>
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-                                        <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                        <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding ngaysinh}"/>
+                                        <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding tensp}"/>
+                                        <!--<GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding ngaysinh}"/>
                                         <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding diachi}"/>
-                                        <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding chucvu}"/>
+                                        <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding chucvu}"/>-->
                                     </GridView>
                                 </ListView.View>
                             </ListView>

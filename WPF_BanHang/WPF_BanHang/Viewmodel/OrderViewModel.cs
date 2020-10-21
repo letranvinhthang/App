@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using WPF_BanHang.Models;
 
@@ -9,8 +13,29 @@ namespace WPF_BanHang.Viewmodel
 {
     class OrderViewModel : BaseViewModel
     {
-        private string _hinhsp;
-        public string hinhsp { get => _hinhsp; set { _hinhsp = value; OnPropertyChanged(); } }
+        //lấy dự liệu
+        public Orderxl _SelectedItem;
+        public Orderxl SelectedItem
+        {
+            get => _SelectedItem;
+            set
+            {
+                _SelectedItem = value; OnPropertyChanged();
+                if (SelectedItem != null)
+                {
+                    hinhsp = SelectedItem.hinhsp;
+                    barcode = SelectedItem.barcode;
+                    tensp = SelectedItem.tensp;                  
+                }
+            }
+        }
+
+
+        private string _barcode;
+        public string barcode { get => _barcode; set { _barcode = value; OnPropertyChanged(); } }
+
+        private byte[] _hinhsp;
+        public byte[] hinhsp { get => _hinhsp; set { _hinhsp = value; OnPropertyChanged(); } }
 
         private string _tensp;
         public string tensp { get => _tensp; set { _tensp = value; OnPropertyChanged(); } }
@@ -27,19 +52,50 @@ namespace WPF_BanHang.Viewmodel
         private ObservableCollection<Orderxl> _orderlist;
         public ObservableCollection<Orderxl> orderlist { get => _orderlist; set { _orderlist = value; OnPropertyChanged(); } }
 
-        public ICommand loadcommand { get; set; }
-
+        public ICommand BarcodeChangedCommand { get; set; }
+        public ICommand BtnMuaHangCommand { get; set; }
+        public ICommand HienThiCommand { get; set; }
         public OrderViewModel()
         {
-            loadcommand = new RelayCommand<Object>((p) => { return true; }, (p) =>
+            BarcodeChangedCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) => { barcode = p.Text; });
+            BtnMuaHangCommand = new RelayCommand<Grid>((p) => { return true; }, (p) =>
             {
                 loadorder();
             });
+            HienThiCommand = new RelayCommand<Object>((p) =>
+            {
+                return SelectedItem == null ? false : true;
+            }, (p) =>
+            {
+                loadorder();
+                tensp = SelectedItem.tensp;
+                hinhsp = SelectedItem.hinhsp;                           
+            });
         }
 
-        void loadorder()
+        public void loadorder()
         {
-            
+            var db = new qlbhContext();          
+            if (barcode != null)
+            {
+                string bc = barcode;
+                var sanpham = db.SanPham.Where(x => x.IdSanpham == Int32.Parse(bc));
+                if (sanpham.Count() > 0)
+                {
+                    foreach (var item in sanpham.ToList())
+                    {
+                        Orderxl order = new Orderxl();
+                        order.hinhsp = item.HinhSanpham;
+                        order.tensp = item.TenSanpham;
+                        orderlist.Add(order);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy sản phẩm", "Thông báo");
+                    return;
+                }
+            }
         }
     }
 }
