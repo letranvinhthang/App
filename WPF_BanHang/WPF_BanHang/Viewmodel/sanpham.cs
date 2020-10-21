@@ -13,44 +13,33 @@ namespace WPF_BanHang.Viewmodel
     public class sanpham : BaseViewModel
     {
 
-        public ObservableCollection<QuyenHan> _lsplist;
+        public ObservableCollection<DanhmucSanpham> _lsplist;
 
-        public ObservableCollection<QuyenHan> lsplist { get => _lsplist; set { _lsplist = value; OnPropertyChanged(); } }
+        public ObservableCollection<DanhmucSanpham> lsplist { get => _lsplist; set { _lsplist = value; OnPropertyChanged(); } }
+        public ObservableCollection<sanpham> _sanphamlist;
+        public ObservableCollection<sanpham> sanphamlist { get => _sanphamlist; set { _sanphamlist = value; OnPropertyChanged(); } }
         private string _ten;
 
         public string ten { get => _ten; set { _ten = value; OnPropertyChanged(); } }
-        private int _manv;
+        private long  _barcode;
 
-        public int manv { get => _manv; set { _manv = value; OnPropertyChanged(); } }
-        private string _pass;
+        public long barcode { get => _barcode; set { _barcode = value; OnPropertyChanged(); } }
+        private int _soluong;
 
-        public string pass { get => _pass; set { _pass = value; OnPropertyChanged(); } }
-        private DateTime _ngaysinh;
+        public int soluong { get => _soluong; set { _soluong = value; OnPropertyChanged(); } }
 
-        public DateTime ngaysinh { get => _ngaysinh; set { _ngaysinh = value; OnPropertyChanged(); } }
-        private string _diachi;
 
-        public string diachi { get => _diachi; set { _diachi = value; OnPropertyChanged(); } }
-        private string _sdt;
+        private bool _spmoi;
 
-        public string sdt { get => _sdt; set { _sdt = value; OnPropertyChanged(); } }
-        private int _chuvuseleted;
+        public bool spmoi { get => _spmoi; set { _spmoi = value; OnPropertyChanged(); } }
+        private bool _sphot;
 
-        public int chuvuseleted { get => _chuvuseleted; set { _chuvuseleted = value; OnPropertyChanged(); } }
-        private bool _disa;
+        public bool sphot { get => _sphot; set { _sphot = value; OnPropertyChanged(); } }
 
-        public bool disa { get => _disa; set { _disa = value; OnPropertyChanged(); } }
 
-        private string _password;
 
-        public string password { get => _password; set { _password = value; OnPropertyChanged(); } }
-        private string _sodt;
-
-        public string sodt { get => _sodt; set { _sodt = value; OnPropertyChanged(); } }
         public ICommand themsanphamcommand { get; set; }
         public ICommand suasanphamcommand { get; set; }
-        public ICommand PassChangedcommand { get; set; }
-        public ICommand TextChangedcommand { get; set; }
         public ICommand editcommand { get; set; }
 
         public sanpham()
@@ -58,8 +47,6 @@ namespace WPF_BanHang.Viewmodel
             var db = new qlbhContext();
             themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
             suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
-            PassChangedcommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { password = p.Password; });
-            TextChangedcommand = new RelayCommand<TextBox>((p) => { return true; }, (p) => { sodt = p.Text; });
             editcommand = new RelayCommand<object>((p) =>
             { return true;},
                     (p) =>
@@ -109,7 +96,34 @@ namespace WPF_BanHang.Viewmodel
             SuaSanPhamWindow window4 = new SuaSanPhamWindow();
             window4.ShowDialog();
         }
+        void loadnhanvien()
+        {
+            var db = new qlbhContext();
+            sanphamlist = new ObservableCollection<sanpham>();
+            lsplist = new ObservableCollection<DanhmucSanpham>(db.DanhmucSanpham);
+            var nv = db.NhanVien;
+            var qh = db.QuyenHan;
 
+            int? idch = MainViewModel.TaiKhoan.Idcuahang;
+
+
+            foreach (var item in nv.Where(p => p.Idcuahang == idch).ToList())
+            {
+                var tencv = qh.Where(p => p.IdChucvu == item.IdChucvu).FirstOrDefault();
+                nvxl nvl = new nvxl();
+                nvl.Manv = item.IdNhanvien;
+                nvl.ten = item.TenNhanvien;
+                nvl.Pass = item.PassNhanvien;
+                nvl.ngaysinh = item.NgaySinh;
+                nvl.diachi = item.DiachiNhanvien;
+                nvl.chucvu = tencv.TenChucvu;
+                nvl.IdChucvu = item.IdChucvu;
+                nvl.sdt = item.Sdt;
+                nhanvienlist.Add(nvl);
+            }
+
+
+        }
 
     }
 }

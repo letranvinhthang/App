@@ -18,9 +18,9 @@ namespace WPF_BanHang.Viewmodel
         private string _ten;
 
         public string ten { get => _ten; set { _ten = value; OnPropertyChanged(); } }
-        private int _masp;
+        private int _barcode;
 
-        public int masp { get => _masp; set { _masp = value; OnPropertyChanged(); } }
+        public int barcode { get => _barcode; set { _barcode = value; OnPropertyChanged(); } }
         private int _soluong;
 
         public int soluong { get => _soluong; set { _soluong = value; OnPropertyChanged(); } }
@@ -30,6 +30,7 @@ namespace WPF_BanHang.Viewmodel
         {
             var db = new qlbhContext();
             lsplist = new ObservableCollection<DanhmucSanpham>(db.DanhmucSanpham);
+
         }
     }
 }
