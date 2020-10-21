@@ -28,6 +28,5 @@ namespace WPF_BanHang
             //throw new NotImplementedException();
             //dongho.Text = DateTime.Now.ToString();
         }
-
     }
 }

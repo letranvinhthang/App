@@ -158,13 +158,13 @@
                         <Grid Grid.Row="0" Margin="0 0 -20 10">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Nhập Barcode: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" />
-                                <TextBox x:Name="BARCODE" Width="200" Height="30"/>
+                                <TextBox x:Name="BARCODE" FontSize="20" Width="200" Height="30"/>
                                 <Button Content="Xác nhận" Margin="10 0 0 0"/>
                             </StackPanel>
                         </Grid>
                         <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
                         <Grid Grid.Row="1">
-                            <ListView ItemsSource="{Binding nhanvienlist}">
+                            <ListView ItemsSource="{Binding orderlist}">
                                 <!--ĐỊNH DẠNG NỘI DUNG-->
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
