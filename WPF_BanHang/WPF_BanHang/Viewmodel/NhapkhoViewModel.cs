@@ -12,11 +12,14 @@ namespace WPF_BanHang.Viewmodel
 
     {
         private string _ten;
-
         public string ten { get => _ten; set { _ten = value; OnPropertyChanged(); } }
-        private int _STT;
 
+        private int _STT;
         public int STT { get => _STT; set { _STT = value; OnPropertyChanged(); } }
+
+        private int _barcode;
+
+        public int barcode { get => _barcode; set { _barcode = value; OnPropertyChanged(); } }
         private int _soluong;
 
         public int soluong { get => _soluong; set { _soluong = value; OnPropertyChanged(); } }
@@ -41,25 +44,35 @@ namespace WPF_BanHang.Viewmodel
             var cthd = db.HoaDonChitiet;
             var hd = db.HoaDon;
             int i = 1;
-            int? idch = MainViewModel.TaiKhoan.Idcuahang;
-            foreach (var item in sp.ToList())
+            if (MainViewModel.TaiKhoan != null)
             {
-                var nhap = from p in cthd join b in hd on p.IdHoadon equals b.IdHoadon where(p.IdSanpham == item.IdSanpham && p.IdNhacc != null && b.IdCuahang == idch) select p;
-                var xuat = from p in cthd join b in hd on p.IdHoadon equals b.IdHoadon where(p.IdSanpham == item.IdSanpham && p.IdNhacc == null && b.IdCuahang == idch) select p;
-                int sumnhap = 0;
-                int sumxuat = 0;
-                if (nhap != null)
-                    sumnhap = nhap.Sum(p => p.SoLuong);
-                if (xuat != null)
-                    sumxuat = xuat.Sum(p => p.SoLuong);
-                tonkhoxl tonKho = new tonkhoxl();
-                tonKho.hinh = item.HinhSanpham;
-                tonKho.ten = item.TenSanpham;
-                tonKho.soluong = sumnhap - sumxuat;
-                tonKho.STT = i;
-                tonkhoxlist.Add(tonKho);
-                i++;
+                int? idch = MainViewModel.TaiKhoan.Idcuahang;
+                foreach (var item in sp.ToList())
+                {
+                    var nhap = from p in cthd join b in hd on p.IdHoadon equals b.IdHoadon where (p.IdSanpham == item.IdSanpham && p.IdNhacc != null && b.IdCuahang == idch) select p;
+                    var xuat = from p in cthd join b in hd on p.IdHoadon equals b.IdHoadon where (p.IdSanpham == item.IdSanpham && p.IdNhacc == null && b.IdCuahang == idch) select p;
+                    int sumnhap = 0;
+                    int sumxuat = 0;
+                    if (nhap != null)
+                        sumnhap = nhap.Sum(p => p.SoLuong);
+                    if (xuat != null)
+                        sumxuat = xuat.Sum(p => p.SoLuong);
+                    tonkhoxl tonKho = new tonkhoxl();
+                    tonKho.hinh = item.HinhSanpham;
+                    tonKho.ten = item.TenSanpham;
+                    tonKho.soluong = sumnhap - sumxuat;
+                    tonKho.STT = i;
+                    tonKho.IdSanpham = item.IdSanpham;
+                    tonkhoxlist.Add(tonKho);
+                    i++;
+                }
             }
+            else
+            {
+
+                return;
+            }
+            
         }
 
     } 

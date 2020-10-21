@@ -24,6 +24,9 @@ namespace WPF_BanHang.Models
         public string sdt { get => _sdt; set { _sdt = value; OnPropertyChanged(); } }
         private bool _Disable;
         public bool Disable { get => _Disable; set { _Disable = value; OnPropertyChanged(); } }
+
+        private Byte[] _hinhnv;
+        public Byte[] hinhnhanvien { get => _hinhnv; set { _hinhnv = value; OnPropertyChanged(); } }
         public NhanVien cuahang { get; set; }
     }
 }

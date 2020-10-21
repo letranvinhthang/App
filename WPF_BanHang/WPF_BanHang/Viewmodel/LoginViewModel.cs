@@ -71,8 +71,8 @@ namespace WPF_BanHang.Viewmodel
 
         void exit(Window e)
         {
-            e.Close();
             IsLogin = false;
+            Application.Current.Shutdown();
         }
 
         public static string Base64Encode(string plainText)

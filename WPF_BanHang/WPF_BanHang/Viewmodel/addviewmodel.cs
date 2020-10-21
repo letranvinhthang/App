@@ -22,10 +22,6 @@ namespace WPF_BanHang.Viewmodel
         public ObservableCollection<QuyenHan> _cvlist;
 
         public ObservableCollection<QuyenHan> cvlist { get => _cvlist; set { _cvlist = value; OnPropertyChanged(); } }
-        public ObservableCollection<QuyenHan> _lsplist;
-
-        public ObservableCollection<QuyenHan> lsplist { get => _lsplist; set { _lsplist = value; OnPropertyChanged(); } }
-        public nvxl _SelectedItem;
 
         private string _ten;
 

@@ -8,9 +8,11 @@ namespace WPF_BanHang.Models
    public class tonkhoxl
     {
        public string ten { get; set; }
-       public string hinh { get; set; }
+        public long IdSanpham { get; set; }
+        public byte[] hinh { get; set; }
+
        public int soluong{ get; set; }
        public TonKho cuahang { get; set; }
-        public int STT { get; set; }
+       public int STT { get; set; }
     }
 }

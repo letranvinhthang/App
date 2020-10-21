@@ -231,25 +231,30 @@ namespace WPF_BanHang.Viewmodel
             var nv = db.NhanVien;
             var qh = db.QuyenHan;
 
-            int? idch = MainViewModel.TaiKhoan.Idcuahang;
-
-
+            if(MainViewModel.TaiKhoan != null)
+            {
+                int? idch = MainViewModel.TaiKhoan.Idcuahang;
                 foreach (var item in nv.Where(p => p.Idcuahang == idch).ToList())
-                    {
-                        var tencv = qh.Where(p => p.IdChucvu== item.IdChucvu).FirstOrDefault();
-                        nvxl nvl = new nvxl();
-                        nvl.Manv = item.IdNhanvien;
-                        nvl.ten = item.TenNhanvien;
-                        nvl.Pass = item.PassNhanvien;
-                        nvl.ngaysinh = item.NgaySinh;
-                        nvl.diachi = item.DiachiNhanvien;
-                        nvl.chucvu = tencv.TenChucvu;
-                        nvl.IdChucvu = item.IdChucvu;
-                        nvl.sdt = item.Sdt;
-                        nhanvienlist.Add(nvl);
-                    }
+                {
+                    var tencv = qh.Where(p => p.IdChucvu == item.IdChucvu).FirstOrDefault();
+                    nvxl nvl = new nvxl();
+                    nvl.hinhnhanvien = item.HinhNhanVien;
+                    nvl.Manv = item.IdNhanvien;
+                    nvl.ten = item.TenNhanvien;
+                    nvl.Pass = item.PassNhanvien;
+                    nvl.ngaysinh = item.NgaySinh;
+                    nvl.diachi = item.DiachiNhanvien;
+                    nvl.chucvu = tencv.TenChucvu;
+                    nvl.IdChucvu = item.IdChucvu;
+                    nvl.sdt = item.Sdt;
+                    nhanvienlist.Add(nvl);
+                }
 
-
+            }
+            else
+            {
+                return;
+            }
         }
     }
  }
