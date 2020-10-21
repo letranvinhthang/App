@@ -51,36 +51,7 @@ namespace WPF_BanHang.Viewmodel
             { return true;},
                     (p) =>
                     {
-                        if (string.IsNullOrEmpty(password))
-                        {
-                           /* var editnp = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
-                            editnp.TenNhanvien = ten;
-                            editnp.Sdt = sdt;
-                            editnp.DiachiNhanvien = diachi;
-                            editnp.IdChucvu = chuvuseleted + 1;
-                            db.SaveChanges();
-                            MessageBox.Show("sua thanh cong");
-                            SelectedItem.ten = ten;
-                            SelectedItem.sdt = sdt;
-                            SelectedItem.diachi = diachi;
-                            SelectedItem.IdChucvu = chuvuseleted + 1;*/
-                        }
-                        else
-                        {
-                           /* var edit = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
-                            edit.TenNhanvien = ten;
-                            edit.PassNhanvien = pass;
-                            edit.Sdt = sdt;
-                            edit.DiachiNhanvien = diachi;
-                            edit.IdChucvu = chuvuseleted + 1;
-                            db.SaveChanges();
-                            MessageBox.Show("sua thanh cong");
-                            SelectedItem.ten = ten;
-                            SelectedItem.sdt = sdt;
-                            SelectedItem.diachi = diachi;
-                            SelectedItem.IdChucvu = chuvuseleted + 1;*/
-                  
-                        }
+                        
                     });
 
         }
@@ -95,36 +66,7 @@ namespace WPF_BanHang.Viewmodel
         {
             SuaSanPhamWindow window4 = new SuaSanPhamWindow();
             window4.ShowDialog();
-        }
-        void loadnhanvien()
-        {
-            var db = new qlbhContext();
-            sanphamlist = new ObservableCollection<sanpham>();
-            lsplist = new ObservableCollection<DanhmucSanpham>(db.DanhmucSanpham);
-            var nv = db.NhanVien;
-            var qh = db.QuyenHan;
-
-            int? idch = MainViewModel.TaiKhoan.Idcuahang;
-
-
-            foreach (var item in nv.Where(p => p.Idcuahang == idch).ToList())
-            {
-                var tencv = qh.Where(p => p.IdChucvu == item.IdChucvu).FirstOrDefault();
-                nvxl nvl = new nvxl();
-                nvl.Manv = item.IdNhanvien;
-                nvl.ten = item.TenNhanvien;
-                nvl.Pass = item.PassNhanvien;
-                nvl.ngaysinh = item.NgaySinh;
-                nvl.diachi = item.DiachiNhanvien;
-                nvl.chucvu = tencv.TenChucvu;
-                nvl.IdChucvu = item.IdChucvu;
-                nvl.sdt = item.Sdt;
-                nhanvienlist.Add(nvl);
-            }
-
-
-        }
-
+        }      
     }
 }
 
