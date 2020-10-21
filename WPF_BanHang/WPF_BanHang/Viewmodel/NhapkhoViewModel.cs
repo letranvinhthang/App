@@ -17,6 +17,10 @@ namespace WPF_BanHang.Viewmodel
         private int _STT;
 
         public int STT { get => _STT; set { _STT = value; OnPropertyChanged(); } }
+
+        private int _barcode;
+
+        public int barcode { get => _barcode; set { _barcode = value; OnPropertyChanged(); } }
         private int _soluong;
 
         public int soluong { get => _soluong; set { _soluong = value; OnPropertyChanged(); } }
@@ -57,6 +61,7 @@ namespace WPF_BanHang.Viewmodel
                 tonKho.ten = item.TenSanpham;
                 tonKho.soluong = sumnhap - sumxuat;
                 tonKho.STT = i;
+                tonKho.barcode = item.IdSanpham;
                 tonkhoxlist.Add(tonKho);
                 i++;
             }
