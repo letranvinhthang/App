@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Threading;
 
 namespace WPF_BanHang
@@ -28,5 +29,7 @@ namespace WPF_BanHang
             //throw new NotImplementedException();
             //dongho.Text = DateTime.Now.ToString();
         }
+
+        
     }
 }
