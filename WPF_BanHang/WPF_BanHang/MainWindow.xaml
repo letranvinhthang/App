@@ -31,14 +31,23 @@
     </i:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"></RowDefinition>
-            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="15*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="#233C4F">
+        <Grid Grid.Row="0" Background="Black">
             <StackPanel VerticalAlignment="Center">
-                <Image Source="Hinh/Logo.png" Width="80"/>
+                
                 <TextBlock Foreground="White" HorizontalAlignment="Center" FontSize="20">CỬA HÀNG TIỆN LỢI</TextBlock>
             </StackPanel>
+            <!--ĐỒNG HỒ-->
+            <Grid  VerticalAlignment="Top" HorizontalAlignment="Right">
+                <StackPanel Orientation="Vertical">
+                <Image Source="Hinh/Logo.png" Width="40"/>
+                <TextBlock x:Name="dongho1" Foreground="White" FontSize="25"  />
+                </StackPanel>
+            </Grid>
+            
+            
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -102,7 +111,7 @@
                         <Button Height="50"  Margin="0 15 0 0" BorderBrush="Transparent" Background="Transparent">
                             <DockPanel>
                                 <Image Width="30" Source="UserControl_BanHang/Icons/Kho.png"/>
-                                <TextBlock Margin="0 7 0 0"> NHẬP KHO</TextBlock>
+                                <TextBlock Margin="0 7 0 0" Text="Sản phẩm"></TextBlock>
                             </DockPanel>
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
@@ -188,6 +197,7 @@
                                 </Style.Triggers>
                             </Style>
                         </Grid.Style>
+<<<<<<< HEAD
                         <Grid DataContext="{StaticResource nvVM}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="50"></RowDefinition>
@@ -240,6 +250,55 @@
                                     </ListView.View>
                                 </ListView>
                             </Grid>
+=======
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <!--BARCODE-->
+                        <Grid Grid.Row="0" Margin="0 0 -20 10">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Nhập Barcode: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" />
+                                <TextBox x:Name="BARCODE" FontSize="20" Width="200" Height="30"/>
+                                <Button Content="Xác nhận" Margin="10 0 0 0"/>
+                            </StackPanel>
+                        </Grid>
+                        <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
+                        <Grid Grid.Row="1">
+                            <ListView ItemsSource="{Binding orderlist}">
+                                <!--ĐỊNH DẠNG NỘI DUNG-->
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                        <Setter Property="FontSize" Value="15"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.View>
+                                    <GridView>
+                                        <!--ĐỊNH DẠNG HEADER-->
+                                        <GridView.ColumnHeaderContainerStyle>
+                                            <Style TargetType="GridViewColumnHeader">
+                                                <Setter Property="FontSize" Value="20"/>
+                                                <Setter Property="Margin" Value="10"/>
+                                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                            </Style>
+                                        </GridView.ColumnHeaderContainerStyle>
+                                        <GridViewColumn Width="200" Header="Hình ảnh">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Image Source="{Binding hinhnhanvien}"/>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
+                                        <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding ngaysinh}"/>
+                                        <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding diachi}"/>
+                                        <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding chucvu}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+>>>>>>> 79527ac931a925cb7cbdce6d77f87e8f5c25da24
                         </Grid>
                     </Grid>
                     <Grid x:Name="thongke">
@@ -257,10 +316,8 @@
                             <RowDefinition Height="50"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <!--ĐỒNG HỒ-->
-                        <Grid Grid.Row="0" Margin="0 0 -20 10">
-                            <TextBlock x:Name="dongho2" FontSize="36" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Margin="0 0 30 0"/>
-                        </Grid>
+                        
+
                         <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
                         <Grid Grid.Row="1">
                             <ListView ItemsSource="{Binding orderlist}">
@@ -299,6 +356,7 @@
                         </Grid>
                     </Grid>
                     <Grid x:Name="nhapkho">
+
                         <Grid.Style>
                             <Style TargetType="Grid">
                                 <Setter Property="Visibility" Value="Hidden"></Setter>
@@ -309,14 +367,12 @@
                                 </Style.Triggers>
                             </Style>
                         </Grid.Style>
+
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <!--ĐỒNG HỒ-->
-                        <Grid Grid.Row="0" Margin="0 0 -20 10">
-                            <TextBlock x:Name="dongho3" FontSize="36" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Margin="0 0 30 0"/>
-                        </Grid>
+                        
                         <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
                         <Grid Grid.Row="1" DataContext="{StaticResource nkVM}">
                             <i:Interaction.Triggers>
@@ -351,12 +407,12 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-             
+
                                         <GridViewColumn Width="430" Header="barcode" DisplayMemberBinding="{Binding IdSanpham }"/>
                                         <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
                                         <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding }"/>
                                         <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
-                                        
+
                                     </GridView>
                                 </ListView.View>
                             </ListView>
@@ -377,10 +433,7 @@
                             <RowDefinition Height="50"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <!--ĐỒNG HỒ-->
-                        <Grid Grid.Row="0" Margin="0 0 -20 10">
-                            <TextBlock x:Name="dongho4" FontSize="36" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Margin="0 0 30 0"/>
-                        </Grid>
+                       
                         <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
                         <Grid Grid.Row="1" DataContext="{StaticResource nvVM}">
                             <i:Interaction.Triggers>
@@ -427,4 +480,5 @@
             </Grid>
         </Grid>
     </Grid>
+
 </Window>
