@@ -162,11 +162,6 @@ namespace WPF_BanHang.Viewmodel
             {
                 ChucNang = (int)ChucNangQL.Order;
             });
-            BtnOrderCommand = new RelayCommand<Grid>((p) =>
-            { return true; }, (p) =>
-            {
-                ChucNang = (int)ChucNangQL.Order;
-            });
             BtnNhapKhoCommand = new RelayCommand<Grid>((p) =>
             { return true; }, (p) =>
             {

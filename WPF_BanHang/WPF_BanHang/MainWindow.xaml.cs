@@ -9,6 +9,7 @@ namespace WPF_BanHang
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
@@ -26,7 +27,10 @@ namespace WPF_BanHang
         private void tickevent(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            //dongho.Text = DateTime.Now.ToString();
+            dongho1.Text = DateTime.Now.ToString();
+            dongho2.Text = DateTime.Now.ToString();
+            dongho3.Text = DateTime.Now.ToString();
+            dongho4.Text = DateTime.Now.ToString();
         }
     }
 }
