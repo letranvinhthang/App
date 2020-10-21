@@ -67,7 +67,6 @@ namespace WPF_BanHang.Viewmodel
                 return SelectedItem == null ? false : true;
             }, (p) =>
             {
-                loadorder();
                 tensp = SelectedItem.tensp;
                 hinhsp = SelectedItem.hinhsp;                           
             });
