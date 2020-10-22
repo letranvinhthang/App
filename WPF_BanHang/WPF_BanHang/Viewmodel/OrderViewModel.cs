@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WPF_BanHang.Models;
@@ -11,6 +12,7 @@ namespace WPF_BanHang.Viewmodel
 {
     class OrderViewModel : BaseViewModel
     {
+
         private long _barcode;
         public long barcode { get => _barcode; set { _barcode = value; OnPropertyChanged(); } }
 
@@ -28,7 +30,6 @@ namespace WPF_BanHang.Viewmodel
 
         private ObservableCollection<Orderxl> _orderlist;
         public ObservableCollection<Orderxl> orderlist { get => _orderlist; set { _orderlist = value; OnPropertyChanged(); } }
-
         public ICommand loadcommand { get; set; }
         public ICommand BarcodeChangedcommand { get; set; }
 
@@ -68,7 +69,7 @@ namespace WPF_BanHang.Viewmodel
                 });
         }
 
-        void loadorder()
+        public void loadorder()
         {
             orderlist = null;
         }
