@@ -67,7 +67,7 @@ namespace WPF_BanHang.Viewmodel
             SuaSanPhamWindow window4 = new SuaSanPhamWindow();
             window4.ShowDialog();
         }
-        void loadnhanvien()
+        void loadsanpham()
         {
             var db = new qlbhContext();
             sanphamlist = new ObservableCollection<spxl>();

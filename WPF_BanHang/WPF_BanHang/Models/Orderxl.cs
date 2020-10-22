@@ -6,12 +6,11 @@ namespace WPF_BanHang.Models
 {
     class Orderxl
     {
-        public byte[] hinhsp { get; set; }
         public long barcode { get; set; }
         public string tensp { get; set; }
-        public int dongia { get; set; }
+        public double dongia { get; set; }
         public int soluong { get; set; }
-        public string khuyenmai { get; set; }
+        public double tongtien {get; set; }
 
     }
 }

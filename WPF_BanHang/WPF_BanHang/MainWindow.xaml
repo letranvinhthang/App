@@ -36,18 +36,19 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="Black">
             <StackPanel VerticalAlignment="Center">
-                
+
                 <TextBlock Foreground="White" HorizontalAlignment="Center" FontSize="20">CỬA HÀNG TIỆN LỢI</TextBlock>
             </StackPanel>
             <!--ĐỒNG HỒ-->
             <Grid  VerticalAlignment="Top" HorizontalAlignment="Right">
-                <StackPanel Orientation="Vertical">
-                <Image Source="Hinh/Logo.png" Width="40"/>
-                <TextBlock x:Name="dongho1" Foreground="White" FontSize="25"  />
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="dongho1" Foreground="White" FontSize="25"  />
+                    <Image Source="Hinh/Logo.png" Width="40"/>
                 </StackPanel>
             </Grid>
             
-            
+
+
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -197,8 +198,7 @@
                                 </Style.Triggers>
                             </Style>
                         </Grid.Style>
-<<<<<<< HEAD
-                        <Grid DataContext="{StaticResource nvVM}">
+                        <Grid DataContext="{StaticResource orderVM}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="50"></RowDefinition>
                                 <RowDefinition></RowDefinition>
@@ -208,15 +208,24 @@
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Nhập Barcode: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" />
                                     <TextBox x:Name="BARCODE" FontSize="20" Width="200" Height="30">
-
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction 
+                Command="{Binding BarcodeChangedcommand}" 
+                CommandParameter="{Binding ElementName=BARCODE}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
                                     </TextBox>
                                     <Button Content="Xác nhận" Margin="10 0 0 0"/>
                                 </StackPanel>
-                                <TextBlock x:Name="dongho1" FontSize="36" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Margin="0 0 30 0"/>
                             </Grid>
                             <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
                             <Grid Grid.Row="1">
-                                <ListView ItemsSource="{Binding nhanvienlist}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="125*"/>
+                                    <ColumnDefinition Width="91*"/>
+                                </Grid.ColumnDefinitions>
+                                <ListView ItemsSource="{Binding orderlist}" Grid.ColumnSpan="2">
                                     <!--ĐỊNH DẠNG NỘI DUNG-->
                                     <ListView.ItemContainerStyle>
                                         <Style TargetType="ListViewItem">
@@ -238,67 +247,20 @@
                                             <GridViewColumn Width="200" Header="Hình ảnh">
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
-                                                        <Image Source="{Binding hinhnhanvien}"/>
+                                                        <Image Source="{Binding}"/>
                                                     </DataTemplate>
                                                 </GridViewColumn.CellTemplate>
                                             </GridViewColumn>
-                                            <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                            <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding ngaysinh}"/>
-                                            <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding diachi}"/>
-                                            <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding chucvu}"/>
+                                            <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding barcode }"/>
+                                            <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding tensp}"/>
+                                            <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
+                                            <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding dongia}"/>
+                                            <GridViewColumn Width="150" Header="tongtien" DisplayMemberBinding="{Binding tongtien}"/>
+
                                         </GridView>
                                     </ListView.View>
                                 </ListView>
                             </Grid>
-=======
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <!--BARCODE-->
-                        <Grid Grid.Row="0" Margin="0 0 -20 10">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Nhập Barcode: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" />
-                                <TextBox x:Name="BARCODE" FontSize="20" Width="200" Height="30"/>
-                                <Button Content="Xác nhận" Margin="10 0 0 0"/>
-                            </StackPanel>
-                        </Grid>
-                        <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
-                        <Grid Grid.Row="1">
-                            <ListView ItemsSource="{Binding orderlist}">
-                                <!--ĐỊNH DẠNG NỘI DUNG-->
-                                <ListView.ItemContainerStyle>
-                                    <Style TargetType="ListViewItem">
-                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                        <Setter Property="FontSize" Value="15"/>
-                                    </Style>
-                                </ListView.ItemContainerStyle>
-                                <ListView.View>
-                                    <GridView>
-                                        <!--ĐỊNH DẠNG HEADER-->
-                                        <GridView.ColumnHeaderContainerStyle>
-                                            <Style TargetType="GridViewColumnHeader">
-                                                <Setter Property="FontSize" Value="20"/>
-                                                <Setter Property="Margin" Value="10"/>
-                                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                                <Setter Property="IsEnabled" Value="False"/>
-                                            </Style>
-                                        </GridView.ColumnHeaderContainerStyle>
-                                        <GridViewColumn Width="200" Header="Hình ảnh">
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <Image Source="{Binding hinhnhanvien}"/>
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
-                                        <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                        <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding ngaysinh}"/>
-                                        <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding diachi}"/>
-                                        <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding chucvu}"/>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
->>>>>>> 79527ac931a925cb7cbdce6d77f87e8f5c25da24
                         </Grid>
                     </Grid>
                     <Grid x:Name="thongke">
@@ -316,7 +278,7 @@
                             <RowDefinition Height="50"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        
+
 
                         <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
                         <Grid Grid.Row="1">
@@ -372,7 +334,7 @@
                             <RowDefinition Height="50"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        
+
                         <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
                         <Grid Grid.Row="1" DataContext="{StaticResource nkVM}">
                             <i:Interaction.Triggers>
@@ -433,7 +395,7 @@
                             <RowDefinition Height="50"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                       
+
                         <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
                         <Grid Grid.Row="1" DataContext="{StaticResource nvVM}">
                             <i:Interaction.Triggers>
