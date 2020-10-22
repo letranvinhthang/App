@@ -139,7 +139,7 @@
                             <Button Uid="3"  Height="40" Width="150" Content="Lịch sử" Background="Transparent" BorderBrush="Transparent" Foreground="#FF2196F3" Click="Button_Click"></Button>
 
                         </StackPanel>
-                        <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 45 0 0">
+                        <Grid  x:Name="GridCursor" Width="150" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10 45 0 0">
                         </Grid>
                         <Grid x:Name="GridMain" Height="400" Width="400" Background="Red">
                             <Button Content="heleo"></Button>

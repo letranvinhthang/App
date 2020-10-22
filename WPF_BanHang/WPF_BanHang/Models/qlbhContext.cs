@@ -374,7 +374,7 @@ namespace WPF_BanHang.Models
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_general_ci");
 
-                entity.Property(e => e.HinhNhanVien).IsRequired();
+                
 
                 entity.Property(e => e.IdChucvu)
                     .HasColumnName("ID_chucvu")
