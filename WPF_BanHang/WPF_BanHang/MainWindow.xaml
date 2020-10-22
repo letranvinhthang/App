@@ -506,14 +506,14 @@
                                                     <Setter Property="IsEnabled" Value="False"/>
                                                 </Style>
                                             </GridView.ColumnHeaderContainerStyle>
-                                            <GridViewColumn Width="200" Header="Hình ảnh">
+                                            <!--<GridViewColumn Width="200" Header="Hình ảnh">
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
                                                         <Image Source="{Binding hinhnhanvien}"/>
                                                     </DataTemplate>
                                                 </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
-                                            <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
+                                            </GridViewColumn>-->
+                                            <GridViewColumn Width="150" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
                                             <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding ngaysinh}"/>
                                             <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding diachi}"/>
                                             <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding chucvu}"/>
