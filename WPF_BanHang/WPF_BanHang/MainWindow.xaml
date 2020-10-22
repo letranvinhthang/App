@@ -187,7 +187,6 @@
                 <!--CONTENT-->
                 <Grid>
                     <Grid x:Name="order">
-                       
                         <Grid.Style>
                             <Style TargetType="Grid">
                                 <Setter Property="Visibility" Value="Hidden"></Setter>
@@ -202,7 +201,7 @@
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Unloaded">
                                     <i:InvokeCommandAction 
-                Command="{Binding unloadcommand}"/>
+                                        Command="{Binding unloadcommand}"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                             <Grid.RowDefinitions>
@@ -219,8 +218,8 @@
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="TextChanged">
                                                 <i:InvokeCommandAction 
-                Command="{Binding BarcodeChangedcommand}" 
-                CommandParameter="{Binding ElementName=BARCODE}"/>
+                                                    Command="{Binding BarcodeChangedcommand}" 
+                                                    CommandParameter="{Binding ElementName=BARCODE}"/>
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
                                     </TextBox>
@@ -318,12 +317,12 @@
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid>
+                    <Grid x:Name="thongke">
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0" x:Name="thongke">
+                        <Grid Grid.Row="0">
                             <Grid.Style>
                                 <Style TargetType="Grid">
                                     <Setter Property="Visibility" Value="Hidden"></Setter>
@@ -337,17 +336,26 @@
                             <Grid x:Name="chucnangthongke">
                                 <!--CHỨC NĂNG THÔNG KÊ-->
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
-                                    <Button Height="40" Width="150" Content="Doanh thu" Background="#FF0B4911" BorderBrush="{x:Null}">
+                                    <Button Height="40" Width="150" Background="#FF0B4911" BorderBrush="{x:Null}">
+                                        <DockPanel>
+                                            <Image Width="30" Height="30" Source="UserControl_BanHang/Icons/Thongke.png"/>
+                                            <TextBlock Margin="0 7 0 0">DOANH THU</TextBlock>
+                                        </DockPanel>
                                         <Button.Style>
                                             <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
-                                                <Setter Property="FontWeight" Value="Normal"></Setter>
                                                 <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding ChucNangTKe}" Value="5">
+                                                    <DataTrigger Binding="{Binding ChucNang}" Value="5">
                                                         <Setter Property="FontWeight" Value="Bold"></Setter>
                                                     </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Button.Style>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding BtnDoanhThuCommand}">
+                                                </i:InvokeCommandAction>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
                                     </Button>
                                     <Button Height="40" Width="150" Content="Sản phẩm" Background="#FF0B4911" BorderBrush="{x:Null}" Margin="15 0 0 0"/>
                                     <Button Height="40" Width="150" Content="Lịch sử đơn hàng" Background="#FF0B4911" BorderBrush="{x:Null}" Margin="15 0 0 0"/>
@@ -360,14 +368,14 @@
                                     <Style TargetType="Grid">
                                         <Setter Property="Visibility" Value="Hidden"></Setter>
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding ChucNangTKe}" Value="5">
+                                            <DataTrigger Binding="{Binding ChucNang}" Value="5">
                                                 <Setter Property="Visibility" Value="Visible"></Setter>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
                                 </Grid.Style>
                                 <!--THÔNG TIN THỐNG KÊ-->
-                                <ListView ItemsSource="{Binding orderlist}">
+                                <ListView>
                                     <!--ĐỊNH DẠNG NỘI DUNG-->
                                     <ListView.ItemContainerStyle>
                                         <Style TargetType="ListViewItem">
@@ -387,7 +395,6 @@
                                                 </Style>
                                             </GridView.ColumnHeaderContainerStyle>
                                             <GridViewColumn Width="200" Header="Mã sản phẩm" DisplayMemberBinding="{Binding bar}"/>
-
                                             <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
                                             <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding ngaysinh}"/>
                                             <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding diachi}"/>
@@ -415,7 +422,7 @@
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
+                        <!--THÔNG TIN SẢN PHẨM TẠI CỬA HÀNG-->
                         <Grid Grid.Row="1" DataContext="{StaticResource nkVM}">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Loaded">
@@ -505,7 +512,7 @@
                                     </Button>
                                 </StackPanel>
                             </Grid>
-                            <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
+                            <!--THÔNG TIN NHÂN VIÊN-->
                             <Grid Grid.Row="1">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Loaded">
