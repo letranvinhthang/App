@@ -253,7 +253,13 @@
                                                     <Setter Property="BorderBrush" Value="DeepSkyBlue"/>
                                                 </Style>
                                             </GridView.ColumnHeaderContainerStyle>
-                                            <GridViewColumn Header="Hình ảnh" DisplayMemberBinding="{Binding barcode}"/>
+                                            <GridViewColumn Header="Hình ảnh">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Image Source="{Binding hinhsp}" Width="100" Height="100"/>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
                                             <GridViewColumn Header="Tên sản phẩm" DisplayMemberBinding="{Binding tensp }"/>
                                             <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding dongia}"/>
                                             <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
