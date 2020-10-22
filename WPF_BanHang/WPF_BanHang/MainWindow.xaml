@@ -37,7 +37,7 @@
         <Grid Grid.Row="0" Background="Black">
             <!--TIÊU ĐỀ-->
             <StackPanel VerticalAlignment="Center">
-                <TextBlock Foreground="White" HorizontalAlignment="Center" FontSize="20">CỬA HÀNG TIỆN LỢI</TextBlock>
+                <TextBlock Foreground="White" HorizontalAlignment="Center" FontSize="30">CỬA HÀNG TIỆN LỢI</TextBlock>
             </StackPanel>
             <!--ĐỒNG HỒ-->
             <Grid  VerticalAlignment="Center" HorizontalAlignment="Right">
@@ -330,46 +330,64 @@
                                 </Style.Triggers>
                             </Style>
                         </Grid.Style>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-
-
-                        <!--THÔNG TIN THỐNG KÊ-->
-                        <Grid Grid.Row="1">
-                            <ListView ItemsSource="{Binding orderlist}">
-                                <!--ĐỊNH DẠNG NỘI DUNG-->
-                                <ListView.ItemContainerStyle>
-                                    <Style TargetType="ListViewItem">
-                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                        <Setter Property="FontSize" Value="15"/>
-                                    </Style>
-                                </ListView.ItemContainerStyle>
-                                <ListView.View>
-                                    <GridView>
-                                        <!--ĐỊNH DẠNG HEADER-->
-                                        <GridView.ColumnHeaderContainerStyle>
-                                            <Style TargetType="GridViewColumnHeader">
-                                                <Setter Property="FontSize" Value="20"/>
-                                                <Setter Property="Margin" Value="10"/>
-                                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                                <Setter Property="IsEnabled" Value="False"/>
-                                            </Style>
-                                        </GridView.ColumnHeaderContainerStyle>
-                                        <GridViewColumn Width="200" Header="Mã sản phẩm" DisplayMemberBinding="{Binding bar}"/>
-
-                                        <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                        <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding ngaysinh}"/>
-                                        <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding diachi}"/>
-                                        <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding chucvu}"/>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
+                        <Grid x:Name="chucnangthongke">
+                            <!--CHỨC NĂNG THÔNG KÊ-->
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Button Height="40" Width="150" Content="Doanh thu" Background="#FF0B4911" BorderBrush="{x:Null}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction Command="{Binding ChucNangThongKe}">
+                                            </i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                                <Button Height="40" Width="150" Content="Sản phẩm" Background="#FF0B4911" BorderBrush="{x:Null}" Margin="15 0 0 0"/>
+                                <Button Height="40" Width="150" Content="Lịch sử đơn hàng" Background="#FF0B4911" BorderBrush="{x:Null}" Margin="15 0 0 0"/>
+                            </StackPanel>
                         </Grid>
                     </Grid>
-                    <Grid x:Name="nhapkho">
+                    <Grid x:Name="noidungthongke">
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Setter Property="Visibility" Value="Hidden"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ChucNangthongKe}" Value="1">
+                                        <Setter Property="Visibility" Value="Visible"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                        <!--THÔNG TIN THỐNG KÊ-->
+                        <ListView ItemsSource="{Binding abc}">
+                            <!--ĐỊNH DẠNG NỘI DUNG-->
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    <Setter Property="FontSize" Value="15"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.View>
+                                <GridView>
+                                    <!--ĐỊNH DẠNG HEADER-->
+                                    <GridView.ColumnHeaderContainerStyle>
+                                        <Style TargetType="GridViewColumnHeader">
+                                            <Setter Property="FontSize" Value="20"/>
+                                            <Setter Property="Margin" Value="10"/>
+                                            <Setter Property="VerticalAlignment" Value="Center"/>
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </Style>
+                                    </GridView.ColumnHeaderContainerStyle>
+                                    <GridViewColumn Width="200" Header="Mã sản phẩm" DisplayMemberBinding="{Binding bar}"/>
 
+                                    <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
+                                    <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding ngaysinh}"/>
+                                    <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding diachi}"/>
+                                    <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding chucvu}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                    <Grid x:Name="nhapkho">
                         <Grid.Style>
                             <Style TargetType="Grid">
                                 <Setter Property="Visibility" Value="Hidden"></Setter>
@@ -465,6 +483,16 @@
                                     </Button>
                                     <!--NÚT XÓA NHÂN VIÊN-->
                                     <Button Content="Xóa" Margin="0 0 20 0">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction 
+                                                Command="{Binding BarcodeChangedcommand}" 
+                                                CommandParameter="{Binding ElementName=BARCODE}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                    <!--NÚT DISABLE NHÂN VIÊN-->
+                                    <Button Content="Disable" Margin="0 0 20 0">
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Click">
                                                 <i:InvokeCommandAction 
