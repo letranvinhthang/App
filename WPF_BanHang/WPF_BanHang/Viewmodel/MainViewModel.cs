@@ -15,7 +15,7 @@ namespace WPF_BanHang.Viewmodel
     {
         public enum ChucNangQL
         {
-            Order, ThongKe, NhapKho, NhanVien, DangXuat
+            Order, ThongKe, NhapKho, NhanVien, DangXuat, DoanhThu, SanPham, LichSuDonHang
         };
         private NhanVien _TaiKhoanHienThi;
         public NhanVien TaiKhoanHienThi { get => _TaiKhoanHienThi; set { _TaiKhoanHienThi = value; OnPropertyChanged(); } }
