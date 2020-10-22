@@ -103,7 +103,7 @@
                             </Button.Style>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
-                                    <i:InvokeCommandAction Command="{Binding BtnThongkeCommand}">
+                                    <i:InvokeCommandAction Command="{Binding BtnThongKeCommand}">
                                     </i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
@@ -403,7 +403,7 @@
                                     <i:InvokeCommandAction Command="{Binding loadcommand}"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
-                            <ListView ItemsSource="{Binding nhanvienlist}">
+                            <ListView ItemsSource="{Binding nhanvienlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                                 <!--ĐỊNH DẠNG NỘI DUNG-->
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">

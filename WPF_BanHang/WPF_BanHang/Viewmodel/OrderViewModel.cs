@@ -59,7 +59,6 @@ namespace WPF_BanHang.Viewmodel
                                 orderlist.Add(orderl);
                             }
                         }
-
                     }
                 }
                 catch
@@ -71,7 +70,7 @@ namespace WPF_BanHang.Viewmodel
 
         void loadorder()
         {
-            
+            orderlist = null;
         }
     }
 }

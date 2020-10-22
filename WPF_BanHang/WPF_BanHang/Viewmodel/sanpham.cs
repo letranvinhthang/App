@@ -18,6 +18,23 @@ namespace WPF_BanHang.Viewmodel
         public ObservableCollection<DanhmucSanpham> lsplist { get => _lsplist; set { _lsplist = value; OnPropertyChanged(); } }
         public ObservableCollection<spxl> _sanphamlist;
         public ObservableCollection<spxl> sanphamlist { get => _sanphamlist; set { _sanphamlist = value; OnPropertyChanged(); } }
+        public spxl _SelectedItem;
+        public spxl SelectedItem
+        {
+            get => _SelectedItem;
+            set
+            {
+                _SelectedItem = value; OnPropertyChanged();
+                if (SelectedItem != null)
+                {
+                    ten = SelectedItem.TenSanpham;
+                    barcode = SelectedItem.IdSanpham;
+                    loaispseleted = SelectedItem.IdLoaisp - 1;
+                    sphot = SelectedItem.SanphamHot;
+                    spmoi = SelectedItem.SanphamMoi;
+                }
+            }
+        }
         private string _ten;
 
         public string ten { get => _ten; set { _ten = value; OnPropertyChanged(); } }
@@ -32,6 +49,9 @@ namespace WPF_BanHang.Viewmodel
         private bool _spmoi;
 
         public bool spmoi { get => _spmoi; set { _spmoi = value; OnPropertyChanged(); } }
+        private int _loaispseleted;
+
+        public int loaispseleted { get => _loaispseleted; set { _loaispseleted = value; OnPropertyChanged(); } }
         private bool _sphot;
 
         public bool sphot { get => _sphot; set { _sphot = value; OnPropertyChanged(); } }
@@ -48,12 +68,42 @@ namespace WPF_BanHang.Viewmodel
             themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
             suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
             editcommand = new RelayCommand<object>((p) =>
-            { return true;},
+            {
+                
+                    return true;
+            },
                     (p) =>
                     {
-                        
+          /*              if (string.IsNullOrEmpty(password))
+                        {
+                            var editnp = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
+                            editnp.TenNhanvien = ten;
+                            editnp.Sdt = sdt;
+                            editnp.DiachiNhanvien = diachi;
+                            editnp.IdChucvu = chuvuseleted + 1;
+                            db.SaveChanges();
+                            MessageBox.Show("sua thanh cong");
+                            SelectedItem.ten = ten;
+                            SelectedItem.sdt = sdt;
+                            SelectedItem.diachi = diachi;
+                            SelectedItem.IdChucvu = chuvuseleted + 1;
+                        }
+                        else
+                        {
+                            var edit = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
+                            edit.TenNhanvien = ten;
+                            edit.PassNhanvien = pass;
+                            edit.Sdt = sdt;
+                            edit.DiachiNhanvien = diachi;
+                            edit.IdChucvu = chuvuseleted + 1;
+                            db.SaveChanges();
+                            MessageBox.Show("sua thanh cong");
+                            SelectedItem.ten = ten;
+                            SelectedItem.sdt = sdt;
+                            SelectedItem.diachi = diachi;
+                            SelectedItem.IdChucvu = chuvuseleted + 1;
+                        }*/
                     });
-
         }
 
         void themsanpham(ThemSanPhamWindow k)
@@ -88,6 +138,7 @@ namespace WPF_BanHang.Viewmodel
                     spl.Loaisp = loaisp.TenLoai;
                     spl.SanphamHot = item.SanphamHot;
                     spl.SanphamMoi = item.SanphamMoi;
+                    spl.IdLoaisp = item.IdLoaisp;
                     sanphamlist.Add(spl);
                 }
 
