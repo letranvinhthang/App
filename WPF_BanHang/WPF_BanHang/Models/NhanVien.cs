@@ -11,6 +11,7 @@ namespace WPF_BanHang.Models
         }
 
         public int IdNhanvien { get; set; }
+
         public string PassNhanvien { get; set; }
         public string TenNhanvien { get; set; }
         public DateTime NgaySinh { get; set; }

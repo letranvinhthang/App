@@ -41,7 +41,7 @@ namespace WPF_BanHang.Viewmodel
                 string pass = MD5Hash(Base64Encode(password));
                 var tk = db.NhanVien.Where(x => x.IdNhanvien == id && x.PassNhanvien == pass);
                 var account = tk.Count();
-                if (account > 0)
+                if (account > 0 && tk.FirstOrDefault().XoaNhanVien == false)
                 {
                     if (tk.FirstOrDefault().Disable == true)
                     {

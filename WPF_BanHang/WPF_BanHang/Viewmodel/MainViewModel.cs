@@ -134,7 +134,11 @@ namespace WPF_BanHang.Viewmodel
         public ICommand BtnNhapKhoCommand { get; set; }
         public ICommand exitcommand { get; set; }
         public ICommand closecommand { get; set; }
+<<<<<<< HEAD
         public ICommand Doanhthucommand { get; set; }
+=======
+        public ICommand xoacommand { get; set; }
+>>>>>>> origin/hao1
         #endregion
 
         public MainViewModel()
@@ -146,8 +150,9 @@ namespace WPF_BanHang.Viewmodel
             }, (p) =>
             {
                 SetupQuyenTaiKhoan();
-            });    
-              closecommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
+            });
+         
+            closecommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
                   MainWindow lga = new MainWindow();
                   p.Close();
                   lga.Show();

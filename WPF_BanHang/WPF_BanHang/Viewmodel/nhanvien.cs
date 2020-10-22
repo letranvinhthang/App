@@ -37,7 +37,7 @@ namespace WPF_BanHang.Viewmodel
                     ngaysinh = SelectedItem.ngaysinh;
                     diachi = SelectedItem.diachi;
                     sdt = SelectedItem.sdt;
-                    chuvuseleted = SelectedItem.IdChucvu - 1;
+                    chuvuseleted = SelectedItem.IdChucvu - 2;
                     manv = SelectedItem.Manv;
                 }
             }
@@ -84,6 +84,7 @@ namespace WPF_BanHang.Viewmodel
         public ICommand TextChangedcommand { get; set; }
         public ICommand exitcommand { get; set; }
         public ICommand disablecommand { get; set; }
+        public ICommand xoacommand { get; set; }
         public ICommand enablecommand { get; set; }
         public ICommand loadcommand { get; set; }
         #endregion
@@ -104,6 +105,14 @@ namespace WPF_BanHang.Viewmodel
             themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => {
                 themnhanvien(a); });
                  loadednvcommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { loadnhanvien(); });
+            xoacommand = new RelayCommand<object>((a) => { return true; }, (a) => {
+                var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
+                dis.XoaNhanVien = true;
+                db.SaveChanges();
+                MessageBox.Show("xoa thanh cong ");
+                loadnhanvien();
+
+            });
             disablecommand = new RelayCommand<object>((p) =>
             {
                 bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
@@ -160,13 +169,13 @@ namespace WPF_BanHang.Viewmodel
                             editnp.TenNhanvien = ten;
                             editnp.Sdt = sdt;
                             editnp.DiachiNhanvien = diachi;
-                            editnp.IdChucvu = chuvuseleted + 1;
+                            editnp.IdChucvu = chuvuseleted + 2;
                             db.SaveChanges();
                             MessageBox.Show("sua thanh cong");
                             SelectedItem.ten = ten;
                             SelectedItem.sdt = sdt;
                             SelectedItem.diachi = diachi;
-                            SelectedItem.IdChucvu = chuvuseleted + 1;
+                            SelectedItem.IdChucvu = chuvuseleted + 2;
                         }
                         else
                         {
@@ -175,13 +184,13 @@ namespace WPF_BanHang.Viewmodel
                             edit.PassNhanvien = pass;
                             edit.Sdt = sdt;
                             edit.DiachiNhanvien = diachi;
-                            edit.IdChucvu = chuvuseleted + 1;
+                            edit.IdChucvu = chuvuseleted + 2;
                             db.SaveChanges();
                             MessageBox.Show("sua thanh cong");
                             SelectedItem.ten = ten;
                             SelectedItem.sdt = sdt;
                             SelectedItem.diachi = diachi;
-                            SelectedItem.IdChucvu = chuvuseleted + 1;
+                            SelectedItem.IdChucvu = chuvuseleted + 2;
                         }
                     });
             void themnhanvien(ChinhSuaWindow a)
@@ -196,6 +205,7 @@ namespace WPF_BanHang.Viewmodel
             {
                 SuaNhanVienWindow window2 = new SuaNhanVienWindow();
                 window2.ShowDialog();
+                loadnhanvien();
             }
             //mã hóa base 64
      
@@ -228,7 +238,7 @@ namespace WPF_BanHang.Viewmodel
         {
             var db = new qlbhContext();
             nhanvienlist = new ObservableCollection<nvxl>();
-            cvlist = new ObservableCollection<QuyenHan>(db.QuyenHan);
+            cvlist = new ObservableCollection<QuyenHan>(db.QuyenHan.Where(p => p.IdChucvu != 1));
             var nv = db.NhanVien;
             var qh = db.QuyenHan;
 
@@ -249,7 +259,6 @@ namespace WPF_BanHang.Viewmodel
                     nvl.sdt = item.Sdt;
                     nhanvienlist.Add(nvl);
                 }
-
             }
             else
             {

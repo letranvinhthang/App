@@ -44,6 +44,9 @@ namespace WPF_BanHang.Viewmodel
         private int _chuvuseleted;
 
         public int chuvuseleted { get => _chuvuseleted; set { _chuvuseleted = value; OnPropertyChanged(); } }
+        private string _cvseleted;
+
+        public string cvseleted { get => _cvseleted; set { _cvseleted = value; OnPropertyChanged(); } }
         #region ma hoa
         public static string Base64Encode(string plainText)
         {
@@ -67,8 +70,10 @@ namespace WPF_BanHang.Viewmodel
         {
             #region nhan vien
             string pass = "";
-            var db = new qlbhContext();
-            cvlist = new ObservableCollection<QuyenHan>(db.QuyenHan);
+                int? idch = MainViewModel.TaiKhoan.Idcuahang;
+
+                var db = new qlbhContext();
+            cvlist = new ObservableCollection<QuyenHan>(db.QuyenHan.Where(p => p.IdChucvu != 1));
             PasswordChangedcommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { password = p.Password; }); 
                 addcommand = new RelayCommand<object>((p) =>
                     {
@@ -83,24 +88,27 @@ namespace WPF_BanHang.Viewmodel
                     },
                     (p) =>
                     {
-                        db.NhanVien.Add(new NhanVien
-                        {
-                            TenNhanvien = ten,
-                            PassNhanvien = pass,
-                            DiachiNhanvien = diachi,
-                            NgaySinh = DateTime.Now,
-                            IdChucvu = chuvuseleted+1,
-                            Sdt=sdt
-                            
-                        });
-                        db.SaveChanges();
+                       
+                            db.NhanVien.Add(new NhanVien
+                            {
+                                TenNhanvien = ten,
+                                PassNhanvien = pass,
+                                DiachiNhanvien = diachi,
+                                NgaySinh = DateTime.Now,
+                                IdChucvu = chuvuseleted +2,
+                                Sdt = sdt,
+                                Idcuahang = Int32.Parse(idch.ToString())
+                            }); ;
+                            db.SaveChanges();
                         MessageBox.Show("them thanh cong");
-                        ten = "";
-                        pass = "";
-                        diachi = "";
-                        sdt="";
+                            ten = "";
+
+                            diachi = "";
+                            sdt = "";
+                        
+                 
                     });
-                exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
+            exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
             #endregion
 
 
