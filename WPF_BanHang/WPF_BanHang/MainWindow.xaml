@@ -204,7 +204,7 @@
                                 <RowDefinition Height="1*"></RowDefinition>
                             </Grid.RowDefinitions>
                             <!--BARCODE-->
-                            <Grid Grid.Row="0" Margin="0 0 -20 10">
+                            <Grid Grid.Row="0">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Nhập Barcode: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" />
                                     <TextBox x:Name="BARCODE" FontSize="20" Width="200" Height="30">
@@ -226,6 +226,16 @@
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
                                     </TextBox>
+                                    <!--NÚT NHẬP SỐ LƯỢNG-->
+                                    <Button Content="Nhập" Margin="10 0 0 0" Width="120" Height="30">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction 
+                                                Command="{Binding BarcodeChangedcommand}" 
+                                                CommandParameter="{Binding ElementName=BARCODE}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
                                 </StackPanel>
                             </Grid>
                             <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
