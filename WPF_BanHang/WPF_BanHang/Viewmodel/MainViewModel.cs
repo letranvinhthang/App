@@ -13,9 +13,13 @@ namespace WPF_BanHang.Viewmodel
 {
     public class MainViewModel : BaseViewModel
     {
+        public enum ChucNangTKe
+        {
+            DoanhThu, SanPham, HoaDon
+        };
         public enum ChucNangQL
         {
-            Order, ThongKe, NhapKho, NhanVien, DangXuat, DoanhThu, SanPham, LichSuDonHang
+            Order, ThongKe, NhapKho, NhanVien, DangXuat
         };
         private NhanVien _TaiKhoanHienThi;
         public NhanVien TaiKhoanHienThi { get => _TaiKhoanHienThi; set { _TaiKhoanHienThi = value; OnPropertyChanged(); } }
@@ -30,6 +34,9 @@ namespace WPF_BanHang.Viewmodel
         static public NhanVien TaiKhoan { get; set; }
         private int _ChucNang;
         public int ChucNang { get => _ChucNang; set { _ChucNang = value; OnPropertyChanged(); } }
+
+        private int _ChucNangThongKe;
+        public int ChucNangThongKe { get => _ChucNangThongKe; set { _ChucNangThongKe = value; OnPropertyChanged(); } }
 
         static public nhanvien Nhanvien { get; set; }
 
@@ -127,6 +134,7 @@ namespace WPF_BanHang.Viewmodel
         public ICommand BtnNhapKhoCommand { get; set; }
         public ICommand exitcommand { get; set; }
         public ICommand closecommand { get; set; }
+        public ICommand Doanhthucommand { get; set; }
         #endregion
 
         public MainViewModel()
@@ -144,6 +152,10 @@ namespace WPF_BanHang.Viewmodel
                   p.Close();
                   lga.Show();
               });
+            Doanhthucommand = new RelayCommand<Grid>((p) => { return true; },(p)=>
+            {
+                ChucNangThongKe = (int)ChucNangTKe.DoanhThu;
+            });
             BtnNhanVienCommand = new RelayCommand<Grid>((p) => 
             { 
              if (QuyenTK == (int)QuyenTaiKhoan.NhanVien)

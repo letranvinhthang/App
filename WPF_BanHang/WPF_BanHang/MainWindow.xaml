@@ -319,73 +319,85 @@
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid x:Name="thongke">
-                        <Grid.Style>
-                            <Style TargetType="Grid">
-                                <Setter Property="Visibility" Value="Hidden"></Setter>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ChucNang}" Value="1">
-                                        <Setter Property="Visibility" Value="Visible"></Setter>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Grid.Style>
-                        <Grid x:Name="chucnangthongke">
-                            <!--CHỨC NĂNG THÔNG KÊ-->
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <Button Height="40" Width="150" Content="Doanh thu" Background="#FF0B4911" BorderBrush="{x:Null}">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction Command="{Binding ChucNangThongKe}">
-                                            </i:InvokeCommandAction>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>
-                                <Button Height="40" Width="150" Content="Sản phẩm" Background="#FF0B4911" BorderBrush="{x:Null}" Margin="15 0 0 0"/>
-                                <Button Height="40" Width="150" Content="Lịch sử đơn hàng" Background="#FF0B4911" BorderBrush="{x:Null}" Margin="15 0 0 0"/>
-                            </StackPanel>
-                        </Grid>
-                    </Grid>
-                    <Grid x:Name="noidungthongke">
-                        <Grid.Style>
-                            <Style TargetType="Grid">
-                                <Setter Property="Visibility" Value="Hidden"></Setter>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ChucNangthongKe}" Value="1">
-                                        <Setter Property="Visibility" Value="Visible"></Setter>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Grid.Style>
-                        <!--THÔNG TIN THỐNG KÊ-->
-                        <ListView ItemsSource="{Binding abc}">
-                            <!--ĐỊNH DẠNG NỘI DUNG-->
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                    <Setter Property="FontSize" Value="15"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" x:Name="thongke">
+                            <Grid.Style>
+                                <Style TargetType="Grid">
+                                    <Setter Property="Visibility" Value="Hidden"></Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ChucNang}" Value="1">
+                                            <Setter Property="Visibility" Value="Visible"></Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
                                 </Style>
-                            </ListView.ItemContainerStyle>
-                            <ListView.View>
-                                <GridView>
-                                    <!--ĐỊNH DẠNG HEADER-->
-                                    <GridView.ColumnHeaderContainerStyle>
-                                        <Style TargetType="GridViewColumnHeader">
-                                            <Setter Property="FontSize" Value="20"/>
-                                            <Setter Property="Margin" Value="10"/>
-                                            <Setter Property="VerticalAlignment" Value="Center"/>
-                                            <Setter Property="IsEnabled" Value="False"/>
+                            </Grid.Style>
+                            <Grid x:Name="chucnangthongke">
+                                <!--CHỨC NĂNG THÔNG KÊ-->
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
+                                    <Button Height="40" Width="150" Content="Doanh thu" Background="#FF0B4911" BorderBrush="{x:Null}">
+                                        <Button.Style>
+                                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                                                <Setter Property="FontWeight" Value="Normal"></Setter>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ChucNangTKe}" Value="5">
+                                                        <Setter Property="FontWeight" Value="Bold"></Setter>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button Height="40" Width="150" Content="Sản phẩm" Background="#FF0B4911" BorderBrush="{x:Null}" Margin="15 0 0 0"/>
+                                    <Button Height="40" Width="150" Content="Lịch sử đơn hàng" Background="#FF0B4911" BorderBrush="{x:Null}" Margin="15 0 0 0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid x:Name="thongke_doanhthu">
+                                <Grid.Style>
+                                    <Style TargetType="Grid">
+                                        <Setter Property="Visibility" Value="Hidden"></Setter>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ChucNangTKe}" Value="5">
+                                                <Setter Property="Visibility" Value="Visible"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                                <!--THÔNG TIN THỐNG KÊ-->
+                                <ListView ItemsSource="{Binding orderlist}">
+                                    <!--ĐỊNH DẠNG NỘI DUNG-->
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="ListViewItem">
+                                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            <Setter Property="FontSize" Value="15"/>
                                         </Style>
-                                    </GridView.ColumnHeaderContainerStyle>
-                                    <GridViewColumn Width="200" Header="Mã sản phẩm" DisplayMemberBinding="{Binding bar}"/>
+                                    </ListView.ItemContainerStyle>
+                                    <ListView.View>
+                                        <GridView>
+                                            <!--ĐỊNH DẠNG HEADER-->
+                                            <GridView.ColumnHeaderContainerStyle>
+                                                <Style TargetType="GridViewColumnHeader">
+                                                    <Setter Property="FontSize" Value="20"/>
+                                                    <Setter Property="Margin" Value="10"/>
+                                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                                    <Setter Property="IsEnabled" Value="False"/>
+                                                </Style>
+                                            </GridView.ColumnHeaderContainerStyle>
+                                            <GridViewColumn Width="200" Header="Mã sản phẩm" DisplayMemberBinding="{Binding bar}"/>
 
-                                    <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                    <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding ngaysinh}"/>
-                                    <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding diachi}"/>
-                                    <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding chucvu}"/>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
+                                            <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
+                                            <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding ngaysinh}"/>
+                                            <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding diachi}"/>
+                                            <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding chucvu}"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                        </Grid>
                     </Grid>
                     <Grid x:Name="nhapkho">
                         <Grid.Style>
