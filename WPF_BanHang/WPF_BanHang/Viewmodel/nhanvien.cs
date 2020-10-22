@@ -94,7 +94,6 @@ namespace WPF_BanHang.Viewmodel
             {
                 loadnhanvien();
             });
-         
             suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => {
                 if (SelectedItem == null)
                 {

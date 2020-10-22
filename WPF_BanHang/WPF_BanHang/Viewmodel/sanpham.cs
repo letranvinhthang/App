@@ -16,8 +16,8 @@ namespace WPF_BanHang.Viewmodel
         public ObservableCollection<DanhmucSanpham> _lsplist;
 
         public ObservableCollection<DanhmucSanpham> lsplist { get => _lsplist; set { _lsplist = value; OnPropertyChanged(); } }
-        public ObservableCollection<sanpham> _sanphamlist;
-        public ObservableCollection<sanpham> sanphamlist { get => _sanphamlist; set { _sanphamlist = value; OnPropertyChanged(); } }
+        public ObservableCollection<spxl> _sanphamlist;
+        public ObservableCollection<spxl> sanphamlist { get => _sanphamlist; set { _sanphamlist = value; OnPropertyChanged(); } }
         private string _ten;
 
         public string ten { get => _ten; set { _ten = value; OnPropertyChanged(); } }
@@ -66,7 +66,37 @@ namespace WPF_BanHang.Viewmodel
         {
             SuaSanPhamWindow window4 = new SuaSanPhamWindow();
             window4.ShowDialog();
-        }      
+        }
+        void loadsanpham()
+        {
+            var db = new qlbhContext();
+            sanphamlist = new ObservableCollection<spxl>();
+            lsplist = new ObservableCollection<DanhmucSanpham>(db.DanhmucSanpham);
+            var sp = db.SanPham;
+            var lsp = db.DanhmucSanpham;
+
+            if (MainViewModel.TaiKhoan != null)
+            {
+                int? idch = MainViewModel.TaiKhoan.Idcuahang;
+                foreach (var item in sp.ToList())
+                {
+                    var loaisp = lsp.Where(p => p.IdLoaisp == item.IdLoaisp).FirstOrDefault();
+                    spxl spl= new spxl();
+                    spl.HinhSanpham = item.HinhSanpham;
+                    spl.IdSanpham = item.IdSanpham;
+                    spl.TenSanpham = item.TenSanpham;
+                    spl.Loaisp = loaisp.TenLoai;
+                    spl.SanphamHot = item.SanphamHot;
+                    spl.SanphamMoi = item.SanphamMoi;
+                    sanphamlist.Add(spl);
+                }
+
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 }
 
