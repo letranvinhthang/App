@@ -12,6 +12,8 @@ namespace WPF_BanHang.Viewmodel
 {
     class OrderViewModel : BaseViewModel
     {
+        private long _hinhsp;
+        public long hinhsp { get => _hinhsp; set { _hinhsp = value; OnPropertyChanged(); } }
 
         private long _barcode;
         public long barcode { get => _barcode; set { _barcode = value; OnPropertyChanged(); } }
@@ -52,6 +54,7 @@ namespace WPF_BanHang.Viewmodel
                             {
                                 var dssp = order.FirstOrDefault();
                                 Orderxl orderl = new Orderxl();
+                                orderl.hinhsp = dssp.HinhSanpham;
                                 orderl.barcode = dssp.IdSanpham;
                                 orderl.tensp = dssp.TenSanpham;
                                 orderl.dongia = chsp.GiaTheoQuan;
