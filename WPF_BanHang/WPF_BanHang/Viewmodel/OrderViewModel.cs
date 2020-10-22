@@ -52,18 +52,31 @@ namespace WPF_BanHang.Viewmodel
                             var chsp = db.CuahangSanpham.Where(x => x.IdSanpham == barcode && x.IdCuahang == idch).FirstOrDefault();
                             if (order.Count() > 0)
                             {
-                                var dssp = order.FirstOrDefault();
-                                Orderxl orderl = new Orderxl();
-                                orderl.hinhsp = dssp.HinhSanpham;
-                                orderl.barcode = dssp.IdSanpham;
-                                orderl.tensp = dssp.TenSanpham;
-                                orderl.dongia = chsp.GiaTheoQuan;
-                                orderl.soluong = 1;
-                                orderl.tongtien = orderl.dongia * orderl.soluong;
-                                orderlist.Add(orderl);
-                            }
-                        }
+                                    var dssp = order.FirstOrDefault();
+                                    Orderxl orderl = new Orderxl();
+                                foreach (var od in orderlist)
+                                {
+                                    if(od.barcode == dssp.IdSanpham)
+                                    {
+                                        od.soluong+=1;
+                                        od.tongtien = od.soluong * od.dongia;
+                                        orderlist.Remove(od);
+                                        orderlist.Add(od);
+                                        p.Text = null;
+                                        return;
 
+                                    }
+                                 }
+                                    orderl.hinhsp = dssp.HinhSanpham;
+                                    orderl.barcode = dssp.IdSanpham;
+                                    orderl.tensp = dssp.TenSanpham;
+                                    orderl.dongia = chsp.GiaTheoQuan;
+                                    orderl.soluong = 1;
+                                    orderl.tongtien = orderl.dongia * orderl.soluong;
+                                    orderlist.Add(orderl);
+                                p.Text = null;
+                             }
+                        }
                     }
                 }
                 catch
@@ -75,7 +88,7 @@ namespace WPF_BanHang.Viewmodel
 
         public void loadorder()
         {
-            
+            orderlist = null;
         }
     }
 }
