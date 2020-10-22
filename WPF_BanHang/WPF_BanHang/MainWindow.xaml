@@ -415,8 +415,7 @@
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Click">
                                                 <i:InvokeCommandAction 
-                                                Command="{Binding BarcodeChangedcommand}" 
-                                                CommandParameter="{Binding ElementName=BARCODE}"/>
+                                                Command="{Binding xoacommand}"/>
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
                                     </Button>
