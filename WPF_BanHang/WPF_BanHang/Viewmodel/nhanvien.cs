@@ -101,7 +101,8 @@ namespace WPF_BanHang.Viewmodel
                 }
                 return true;
             }, (c) => { suanhanvien(c); });
-            themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { themnhanvien(a); });
+            themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => {
+                themnhanvien(a); });
                  loadednvcommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { loadnhanvien(); });
             disablecommand = new RelayCommand<object>((p) =>
             {
@@ -234,7 +235,7 @@ namespace WPF_BanHang.Viewmodel
             if(MainViewModel.TaiKhoan != null)
             {
                 int? idch = MainViewModel.TaiKhoan.Idcuahang;
-                foreach (var item in nv.Where(p => p.Idcuahang == idch).ToList())
+                foreach (var item in nv.Where(p => p.Idcuahang == idch && p.XoaNhanVien == false ).ToList())
                 {
                     var tencv = qh.Where(p => p.IdChucvu == item.IdChucvu).FirstOrDefault();
                     nvxl nvl = new nvxl();
