@@ -50,15 +50,52 @@ namespace WPF_BanHang.Viewmodel
                             var chsp = db.CuahangSanpham.Where(x => x.IdSanpham == barcode && x.IdCuahang == idch).FirstOrDefault();
                             if (order.Count() > 0)
                             {
-                                var dssp = order.FirstOrDefault();
-                                Orderxl orderl = new Orderxl();
-                                orderl.barcode = dssp.IdSanpham;
-                                orderl.tensp = dssp.TenSanpham;
-                                orderl.dongia = chsp.GiaTheoQuan;
-                                orderl.soluong = 1;
-                                orderl.tongtien = orderl.dongia * orderl.soluong;
-                                orderlist.Add(orderl);
-                            }
+                            
+                            /*    if (orderlist == null)
+                                {*/
+                                    var dssp = order.FirstOrDefault();
+                                    Orderxl orderl = new Orderxl();
+                                foreach (var od in orderlist)
+                                {
+                                    if(od.barcode == dssp.IdSanpham)
+                                    {
+                                        od.soluong+=1;
+                                        od.tongtien = od.soluong * od.dongia;
+                                        orderlist.Remove(od);
+                                        orderlist.Add(od);
+                                        return;
+                                    }
+                                 }
+                                    orderl.barcode = dssp.IdSanpham;
+                                    orderl.tensp = dssp.TenSanpham;
+                                    orderl.dongia = chsp.GiaTheoQuan;
+                                    orderl.soluong = 1;
+                                    orderl.tongtien = orderl.dongia * orderl.soluong;
+                                    orderlist.Add(orderl);
+
+                              /*  }
+                                else
+                                {
+                                    foreach (var od in orderlist)
+                                    {
+                                        var dssp = order.FirstOrDefault();
+                                        if (od.barcode == dssp.IdSanpham)
+                                        {
+                                            od.soluong++;
+                                        }
+                                        else
+                                        {
+                                            Orderxl orderl = new Orderxl();
+                                            orderl.barcode = dssp.IdSanpham;
+                                            orderl.tensp = dssp.TenSanpham;
+                                            orderl.dongia = chsp.GiaTheoQuan;
+                                            orderl.soluong = 1;
+                                            orderl.tongtien = orderl.dongia * orderl.soluong;
+                                            orderlist.Add(orderl);
+                                        }
+                                    }*/
+                                
+                             }
                         }
                     }
                 }

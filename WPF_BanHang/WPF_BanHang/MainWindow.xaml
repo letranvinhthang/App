@@ -192,7 +192,7 @@
                             <Style TargetType="Grid">
                                 <Setter Property="Visibility" Value="Hidden"></Setter>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ChucNang}" Value="1">
+                                    <DataTrigger Binding="{Binding ChucNang}" Value="0">
                                         <Setter Property="Visibility" Value="Visible"></Setter>
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -271,7 +271,7 @@
                             <Style TargetType="Grid">
                                 <Setter Property="Visibility" Value="Hidden"></Setter>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ChucNang}" Value="3">
+                                    <DataTrigger Binding="{Binding ChucNang}" Value="1">
                                         <Setter Property="Visibility" Value="Visible"></Setter>
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -337,7 +337,7 @@
                         <Grid Grid.Row="1" DataContext="{StaticResource nkVM}">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Loaded">
-                                    <i:InvokeCommandAction Command="{Binding loadcommand}"/>
+                                    <i:InvokeCommandAction Command="{Binding loadcomannd}"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                             <ListView ItemsSource="{Binding tonkhoxlist}">
@@ -383,91 +383,86 @@
                             <Style TargetType="Grid">
                                 <Setter Property="Visibility" Value="Hidden"></Setter>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ChucNang}" Value="0">
+                                    <DataTrigger Binding="{Binding ChucNang}" Value="3">
                                         <Setter Property="Visibility" Value="Visible"></Setter>
                                     </DataTrigger>
                                 </Style.Triggers>
-                            </Style> 
+                            </Style>
                         </Grid.Style>
-                        <Grid.RowDefinitions>
+                        <Grid  DataContext="{StaticResource nvVM}">
+                            <Grid.RowDefinitions>
                             <RowDefinition Height="50"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <!--CHỨC NĂNG THÊM XÓA SỬA SẢN PHẨM-->
-                        <Grid Grid.Row="0" DataContext="">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <!--NÚT THÊM NHÂN VIÊN-->
-                                <Button Content="Thêm" Margin="0 0 20 0">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction 
+                 
+                            <!--CHỨC NĂNG THÊM XÓA SỬA SẢN PHẨM-->
+                            <Grid Grid.Row="0">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <!--NÚT THÊM NHÂN VIÊN-->
+                                    <Button Content="Thêm" Margin="0 0 20 0" Command="{Binding themnhanviencommand}">
+                                    </Button>
+                                    <!--NÚT SỬA NHÂN VIÊN-->
+                                    <Button Content="sửa" Margin="0 0 20 0">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction 
+                                                Command="{Binding suanhanviencommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                    <!--NÚT XÓA NHÂN VIÊN-->
+                                    <Button Content="Xóa" Margin="0 0 20 0">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction 
                                                 Command="{Binding BarcodeChangedcommand}" 
                                                 CommandParameter="{Binding ElementName=BARCODE}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>
-                                <!--NÚT SỬA NHÂN VIÊN-->
-                                <Button Content="sửa" Margin="0 0 20 0">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction 
-                                                Command="{Binding BarcodeChangedcommand}" 
-                                                CommandParameter="{Binding ElementName=BARCODE}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>
-                                <!--NÚT XÓA NHÂN VIÊN-->
-                                <Button Content="Xóa" Margin="0 0 20 0">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction 
-                                                Command="{Binding BarcodeChangedcommand}" 
-                                                CommandParameter="{Binding ElementName=BARCODE}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>
-                            </StackPanel>
-                        </Grid>
-                        <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
-                        <Grid Grid.Row="1" DataContext="{StaticResource nvVM}">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Loaded">
-                                    <i:InvokeCommandAction Command="{Binding loadcommand}"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                            <ListView ItemsSource="{Binding nhanvienlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
-                                <!--ĐỊNH DẠNG NỘI DUNG-->
-                                <ListView.ItemContainerStyle>
-                                    <Style TargetType="ListViewItem">
-                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                        <Setter Property="FontSize" Value="15"/>
-                                    </Style>
-                                </ListView.ItemContainerStyle>
-                                <ListView.View>
-                                    <GridView>
-                                        <!--ĐỊNH DẠNG HEADER-->
-                                        <GridView.ColumnHeaderContainerStyle>
-                                            <Style TargetType="GridViewColumnHeader">
-                                                <Setter Property="FontSize" Value="20"/>
-                                                <Setter Property="Margin" Value="10"/>
-                                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                                <Setter Property="IsEnabled" Value="False"/>
-                                            </Style>
-                                        </GridView.ColumnHeaderContainerStyle>
-                                        <GridViewColumn Width="200" Header="Hình ảnh">
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <Image Source="{Binding hinhnhanvien}"/>
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
-                                        <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                        <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding ngaysinh}"/>
-                                        <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding diachi}"/>
-                                        <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding chucvu}"/>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                            <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
+                            <Grid Grid.Row="1">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Loaded">
+                                        <i:InvokeCommandAction Command="{Binding loadcommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <ListView ItemsSource="{Binding nhanvienlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                                    <!--ĐỊNH DẠNG NỘI DUNG-->
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="ListViewItem">
+                                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            <Setter Property="FontSize" Value="15"/>
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
+                                    <ListView.View>
+                                        <GridView>
+                                            <!--ĐỊNH DẠNG HEADER-->
+                                            <GridView.ColumnHeaderContainerStyle>
+                                                <Style TargetType="GridViewColumnHeader">
+                                                    <Setter Property="FontSize" Value="20"/>
+                                                    <Setter Property="Margin" Value="10"/>
+                                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                                    <Setter Property="IsEnabled" Value="False"/>
+                                                </Style>
+                                            </GridView.ColumnHeaderContainerStyle>
+                                            <GridViewColumn Width="200" Header="Hình ảnh">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Image Source="{Binding hinhnhanvien}"/>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
+                                            <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding ngaysinh}"/>
+                                            <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding diachi}"/>
+                                            <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding chucvu}"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
