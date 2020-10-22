@@ -46,9 +46,9 @@
                     <Image Source="Hinh/Logo.png" Width="40" Margin="20 0 0 0"/>
                 </StackPanel>
             </Grid>
-            
 
-        <!--NỘI DUNG-->
+
+            <!--NỘI DUNG-->
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -187,6 +187,7 @@
                 <!--CONTENT-->
                 <Grid>
                     <Grid x:Name="order">
+                       
                         <Grid.Style>
                             <Style TargetType="Grid">
                                 <Setter Property="Visibility" Value="Hidden"></Setter>
@@ -198,11 +199,18 @@
                             </Style>
                         </Grid.Style>
                         <Grid DataContext="{StaticResource orderVM}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Unloaded">
+                                    <i:InvokeCommandAction 
+                Command="{Binding unloadcommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="50"></RowDefinition>
                                 <RowDefinition Height="6*"></RowDefinition>
                                 <RowDefinition Height="1*"></RowDefinition>
                             </Grid.RowDefinitions>
+                            
                             <!--BARCODE-->
                             <Grid Grid.Row="0">
                                 <StackPanel Orientation="Horizontal">
@@ -217,30 +225,21 @@
                                         </i:Interaction.Triggers>
                                     </TextBox>
                                     <TextBlock Margin="30 0 0 0" Text="Số lượng: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" />
-                                    <TextBox x:Name="SOLUONG" FontSize="20" Width="200" Height="30">
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="TextChanged">
-                                                <i:InvokeCommandAction 
-                                                    Command="{Binding BarcodeChangedcommand}" 
-                                                    CommandParameter="{Binding ElementName=BARCODE}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
+                                    <TextBox x:Name="SOLUONG" FontSize="20" Width="200" Height="30" Text="{Binding soluongsp}">
+
                                     </TextBox>
                                     <!--NÚT NHẬP SỐ LƯỢNG-->
-                                    <Button Content="Nhập" Margin="10 0 0 0" Width="120" Height="30">
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Click">
-                                                <i:InvokeCommandAction 
-                                                Command="{Binding BarcodeChangedcommand}" 
-                                                CommandParameter="{Binding ElementName=BARCODE}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
+                                    <Button Content="Nhập" Margin="10 0 0 0" Width="120" Height="30" Command="{Binding editsoluong}" CommandParameter="{Binding ElementName=SOLUONG}">
                                     </Button>
                                 </StackPanel>
                             </Grid>
                             <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
                             <Grid Grid.Row="1">
-                                <ListView ItemsSource="{Binding orderlist}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="31*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                </Grid.ColumnDefinitions>
+                                <ListView ItemsSource="{Binding orderlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Grid.ColumnSpan="2">
                                     <!--ĐỊNH DẠNG NỘI DUNG-->
                                     <ListView.ItemContainerStyle>
                                         <Style TargetType="ListViewItem">
@@ -431,14 +430,6 @@
                                             </Style>
                                         </GridView.ColumnHeaderContainerStyle>
                                         <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding STT}"/>
-                                        <GridViewColumn Width="200" Header="Hình ảnh">
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <Image Source="{Binding hinh}"/>
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
-
                                         <GridViewColumn Width="430" Header="barcode" DisplayMemberBinding="{Binding IdSanpham }"/>
                                         <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
                                         <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding }"/>
@@ -462,10 +453,10 @@
                         </Grid.Style>
                         <Grid  DataContext="{StaticResource nvVM}">
                             <Grid.RowDefinitions>
-                            <RowDefinition Height="50"></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                 
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
                             <!--CHỨC NĂNG THÊM XÓA SỬA SẢN PHẨM-->
                             <Grid Grid.Row="0">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
