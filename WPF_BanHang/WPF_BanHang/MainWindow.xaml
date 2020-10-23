@@ -154,15 +154,10 @@
                         </Button>
                     </StackPanel>
                     <!--NÚT ĐỔI MẬT KHẨU-->
-                    <Button Height="50" Content="ĐỔI MẬT KHẨU" Margin="0 0 0 65" VerticalAlignment="Bottom" BorderBrush="Transparent" Background="Transparent">
+                    <Button Command="{Binding dmkcommand}" Height="50" Content="ĐỔI MẬT KHẨU" Margin="0 0 0 65" VerticalAlignment="Bottom" BorderBrush="Transparent" Background="Transparent">
                         <Button.Style>
                             <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                 <Setter Property="FontWeight" Value="Normal"></Setter>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ChucNangNS}" Value="1">
-                                        <Setter Property="FontWeight" Value="Bold"></Setter>
-                                    </DataTrigger>
-                                </Style.Triggers>
                             </Style>
                         </Button.Style>
                     </Button>
@@ -232,14 +227,16 @@
                                 </StackPanel>
                             </Grid>
                             <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
+<<<<<<< HEAD
                             
+=======
+>>>>>>> b565f6d81047abde4a4fecf73c23551c0b498320
                             <Grid Grid.Row="1" Background="lightGray">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="31*"/>
                                     <ColumnDefinition Width="5*"/>
                                 </Grid.ColumnDefinitions>
                                 <ListView  ItemsSource="{Binding orderlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Grid.ColumnSpan="2">
-
                                     <!--ĐỊNH DẠNG NỘI DUNG-->
                                     <ListView.ItemContainerStyle>
                                         <Style TargetType="ListViewItem">
@@ -331,11 +328,12 @@
                                 </Style.Triggers>
                             </Style>
                         </Grid.Style>
-                        <Grid DataContext="{StaticResource thongkeVM}">
+                        <Grid DataContext="{StaticResource thongkeVM }">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="50"></RowDefinition>
                                 <RowDefinition Height="1*"></RowDefinition>
                             </Grid.RowDefinitions>
+                    
                             <Grid Grid.Row="0" x:Name="chucnangthongke">
                                 <!--CHỨC NĂNG THÔNG KÊ-->
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
@@ -417,6 +415,7 @@
                                             </Style.Triggers>
                                         </Style>
                                     </Grid.Style>
+
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Loaded">
                                             <i:InvokeCommandAction Command="{Binding loadcommand}"/>
@@ -443,23 +442,37 @@
                                                         
                                                 </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
+<<<<<<< HEAD
                                                 <GridViewColumn Width="150" Header="Ngày" DisplayMemberBinding="{Binding Path=NgayTao,StringFormat=dd-MM-yyyy}"/>
                                                 <GridViewColumn Width="auto" Header="Số lượng hóa đơn" DisplayMemberBinding="{Binding SoLuongHoaDon }"/>
                                                 <GridViewColumn Width="auto" Header="Tổng tiền" DisplayMemberBinding="{Binding TongDoanhThu}"/>
                                              
+=======
+                                                <GridViewColumn Width="auto" Header="Mã sản phẩm" DisplayMemberBinding="{Binding NgayTao}"/>
+                                                <GridViewColumn Width="auto" Header="Tên sản phẩm" DisplayMemberBinding="{Binding SoLuongHoaDon }"/>
+                                                <GridViewColumn Width="auto" Header="Đơn giá" DisplayMemberBinding="{Binding TongDoanhThu}"/>
+
+>>>>>>> b565f6d81047abde4a4fecf73c23551c0b498320
                                             </GridView>
                                         </ListView.View>
                                     </ListView>
                                 </Grid>
                                 <Grid x:Name="thongke_sanpham">
+<<<<<<< HEAD
 
+=======
+>>>>>>> b565f6d81047abde4a4fecf73c23551c0b498320
                                     <Grid.Style>
                                         <Style TargetType="Grid">
                                             <Setter Property="Visibility" Value="Hidden"></Setter>
                                             <Style.Triggers>
+<<<<<<< HEAD
 
                                                 <DataTrigger Binding="{Binding ChucNangThongKe}" Value="1">
 
+=======
+                                                <DataTrigger Binding="{Binding ChucNangThongKe}" Value="1">
+>>>>>>> b565f6d81047abde4a4fecf73c23551c0b498320
                                                     <Setter Property="Visibility" Value="Visible"></Setter>
                                                 </DataTrigger>
                                             </Style.Triggers>
@@ -489,7 +502,10 @@
                                                 <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
                                                 <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding ngaysinh}"/>
                                                 <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding diachi}"/>
+<<<<<<< HEAD
 
+=======
+>>>>>>> b565f6d81047abde4a4fecf73c23551c0b498320
                                                 <GridViewColumn Width="150" Header="Tổng tiền" DisplayMemberBinding="{Binding chucvu}"/>
                                             </GridView>
                                         </ListView.View>
@@ -530,7 +546,10 @@
                                                 <GridViewColumn Width="430" Header="Sản phẩm + đơn giá + số lượng" DisplayMemberBinding="{Binding ten }"/>
                                                 <GridViewColumn Width="200" Header="Tổng tiền" DisplayMemberBinding="{Binding ngaysinh}"/>
                                                 <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding diachi}"/>
+<<<<<<< HEAD
 
+=======
+>>>>>>> b565f6d81047abde4a4fecf73c23551c0b498320
                                                 <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding chucvu}"/>
                                             </GridView>
                                         </ListView.View>
@@ -539,6 +558,7 @@
                             </Grid>
                         </Grid>
                     </Grid>
+<<<<<<< HEAD
 
                     <Grid x:Name="nhapkho">
                         <Grid.Style>
@@ -551,58 +571,76 @@
                                 </Style.Triggers>
                             </Style>
                         </Grid.Style>
+=======
+                </Grid>
+                <Grid x:Name="nhapkho">
 
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Visibility" Value="Hidden"></Setter>
+                            <Style.Triggers>
+>>>>>>> b565f6d81047abde4a4fecf73c23551c0b498320
+
+                                <DataTrigger Binding="{Binding ChucNang}" Value="2">
+
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <Grid DataContext="{StaticResource spVM}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
 
                         <!--THÔNG TIN SẢN PHẨM TẠI CỬA HÀNG-->
-                        <Grid Grid.Row="0" Margin="0 10 0 5">
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
-                                <Button Height="40" Command="{Binding themsanphamcommand}" Width="150" Content="Thêm" Background="#FF0B4911" BorderBrush="{x:Null}"></Button>
-                                <Button Height="40" Command="{Binding suasanphamcommand}" Width="150" Content="Sửa" Background="#FF0B4911" BorderBrush="{x:Null}" Margin="15 0 0 0"/>
-                                <Button Height="40" Command="{Binding disablesanphamcommand}" Width="150" Content="Disable" Background="#FF0B4911" BorderBrush="{x:Null}" Margin="15 0 0 0"/>
-                                <Button Height="40" Command="{Binding enablesanphamcommand}" Width="150" Content="Enable" Background="#FF0B4911" BorderBrush="{x:Null}" Margin="15 0 0 0"/>
-                            </StackPanel>
-                        </Grid>
-                        <Grid Grid.Row="1" Background="lightGray" DataContext="{StaticResource nkVM}">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Loaded">
-                                    <i:InvokeCommandAction Command="{Binding loadcomannd}"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                            <ListView ItemsSource="{Binding tonkhoxlist}">
-                                <!--ĐỊNH DẠNG NỘI DUNG-->
-                                <ListView.ItemContainerStyle>
-                                    <Style TargetType="ListViewItem">
-                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                        <Setter Property="FontSize" Value="15"/>
-                                    </Style>
-                                </ListView.ItemContainerStyle>
-                                <ListView.View>
-                                    <GridView>
-                                        <!--ĐỊNH DẠNG HEADER-->
-                                        <GridView.ColumnHeaderContainerStyle>
-                                            <Style TargetType="GridViewColumnHeader">
-                                                <Setter Property="FontSize" Value="20"/>
-                                                <Setter Property="Margin" Value="10"/>
-                                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                                <Setter Property="IsEnabled" Value="False"/>
-                                            </Style>
-                                        </GridView.ColumnHeaderContainerStyle>
-                                        <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding STT}"/>
-                                        <GridViewColumn Width="430" Header="barcode" DisplayMemberBinding="{Binding IdSanpham }"/>
-                                        <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                        <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding }"/>
-                                        <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
-
+                    <Grid Grid.Row="1">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding loadcomannd}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <ListView ItemsSource="{Binding sanphamlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                            <!--ĐỊNH DẠNG NỘI DUNG-->
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    <Setter Property="FontSize" Value="15"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.View>
+                                <GridView>
+                                    <!--ĐỊNH DẠNG HEADER-->
+                                    <GridView.ColumnHeaderContainerStyle>
+                                        <Style TargetType="GridViewColumnHeader">
+                                            <Setter Property="FontSize" Value="20"/>
+                                            <Setter Property="Margin" Value="10"/>
+                                            <Setter Property="VerticalAlignment" Value="Center"/>
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </Style>
+                                    </GridView.ColumnHeaderContainerStyle>
+                                    <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding STT}"/>
+                                    <GridViewColumn Width="430" Header="barcode" DisplayMemberBinding="{Binding IdSanpham }"/>
+                                        <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSanpham }"/>
+                                        <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding Gia }"/>
+                                        <GridViewColumn Width="110" Header="Số lượng">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <CheckBox IsEnabled="False"  IsChecked="{Binding SanphamHot}"/>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
                                     </GridView>
-                                </ListView.View>
-                            </ListView>
-                        </Grid>
+                            </ListView.View>
+                        </ListView>
                     </Grid>
+<<<<<<< HEAD
 
+=======
+                </Grid>
+            </Grid>
+>>>>>>> b565f6d81047abde4a4fecf73c23551c0b498320
                 <Grid x:Name="nhanvien">
                     <Grid.Style>
                         <Style TargetType="Grid">
@@ -619,7 +657,10 @@
                             <RowDefinition Height="50"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
+<<<<<<< HEAD
 
+=======
+>>>>>>> b565f6d81047abde4a4fecf73c23551c0b498320
 
                         <!--CHỨC NĂNG THÊM XÓA SỬA SẢN PHẨM-->
                         <Grid Grid.Row="0">
