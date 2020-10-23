@@ -32,5 +32,6 @@ namespace WPF_BanHang.Viewmodel
             lsplist = new ObservableCollection<DanhmucSanpham>(db.DanhmucSanpham);
 
         }
+        
     }
 }
