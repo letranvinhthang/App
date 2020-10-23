@@ -228,26 +228,12 @@
                                 </StackPanel>
                             </Grid>
                             <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
-<<<<<<< HEAD
-                            <Grid Grid.Row="1" Background="LightGray">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="133*"/>
-                                    <ColumnDefinition Width="43*"/>
-                                    <ColumnDefinition Width="364*"/>
-                                </Grid.ColumnDefinitions>
-                                   <ListView ItemsSource="{Binding orderlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Grid.ColumnSpan="3">
-
-                        
-=======
-
                             <Grid Grid.Row="1" Background="lightGray">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="31*"/>
                                     <ColumnDefinition Width="5*"/>
                                 </Grid.ColumnDefinitions>
                                 <ListView  ItemsSource="{Binding orderlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Grid.ColumnSpan="2">
-
->>>>>>> 511278bc444197debfabb1d9e6b7291086ca6753
                                     <!--ĐỊNH DẠNG NỘI DUNG-->
                                     <ListView.ItemContainerStyle>
                                         <Style TargetType="ListViewItem">

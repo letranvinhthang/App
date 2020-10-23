@@ -44,11 +44,6 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </PasswordBox>
-<<<<<<< HEAD
-                <ComboBox ItemsSource="{Binding cvlist}" DisplayMemberPath="TenChucvu" SelectedValuePath="IdChuvu" Width="400" Height="30" Margin="0 15 0 0"
-  materialDesign:HintAssist.Hint="CHỨC VỤ" Foreground="Black"
-                         SelectedIndex="{Binding chuvuseleted}" >
-=======
                 <ComboBox ItemsSource="{Binding cvlist}" DisplayMemberPath="TenChucvu"
                           SelectedValuePath="IdChuvu"
                           Width="400" 
@@ -58,7 +53,6 @@
                           
                          SelectedIndex="{Binding chuvuseleted}" >
 
->>>>>>> 511278bc444197debfabb1d9e6b7291086ca6753
                     <!--CHỨC VỤ NHÂN VIÊN-->
                 </ComboBox>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
