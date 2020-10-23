@@ -105,22 +105,26 @@ namespace WPF_BanHang.Viewmodel
                 });
             editsoluong = new RelayCommand<TextBox>((p) => { return p == null ? false : true; }, (p) =>
              {
-                 var order = db.SanPham.Where(x => x.IdSanpham == SelectedItem.barcode);
-                 var dssp = order.FirstOrDefault();
-                 foreach (var od in orderlist)
+                 try
                  {
-                   
-                     if (od.barcode == dssp.IdSanpham)
+                     var order = db.SanPham.Where(x => x.IdSanpham == SelectedItem.barcode);
+                     var dssp = order.FirstOrDefault();
+                     foreach (var od in orderlist)
                      {
-                         od.soluong = soluongsp;
-                         od.tongtien = od.soluong * od.dongia;
-                         orderlist.Remove(od);
-                         orderlist.Add(od);
-                         p.Text = null;
-                         return;
+                         if (od.barcode == dssp.IdSanpham)
+                         {
+                             od.soluong = soluongsp;
+                             od.tongtien = od.soluong * od.dongia;
+                             orderlist.Remove(od);
+                             orderlist.Add(od);
+                             p.Text = null;
+                             return;
 
+                         }
                      }
                  }
+                 catch { }
+ 
 
              });
         }
