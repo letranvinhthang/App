@@ -8,4 +8,5 @@
     <viewmodel:nhanvien x:Key="nvVM"></viewmodel:nhanvien>
     <viewmodel:OrderViewModel x:Key="orderVM"></viewmodel:OrderViewModel>
     <viewmodel:NhapkhoViewModel x:Key="nkVM"></viewmodel:NhapkhoViewModel>
+    <viewmodel:ThongKeViewModel x:Key="thongkeVM"></viewmodel:ThongKeViewModel>
 </ResourceDictionary>
