@@ -246,14 +246,15 @@
             <Grid>
 
                 <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                    <Image Source="Hinh/Event/spider-web.png" Width="100" Height="150">
-                    </Image>
+                    <Image Source="Hinh/Event/spider-web.png" Width="100" Height="150"></Image>
                 </StackPanel>
+                
                 <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
+                    
                     <Image Source="Hinh/Event/bat.png" Width="100" Height="150">
                     </Image>
                 </StackPanel>
-
+                
                 <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" Margin="50 0 0 300">
                     <Image Source="UserControl_BanHang/Icons/Logo.png" Width="100" Height="100" Margin="0 0 0 100"/>
                 </StackPanel>
