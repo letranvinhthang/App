@@ -401,6 +401,7 @@
                                     </Button>
                                 </StackPanel>
                             </Grid>
+                            <!--NỘI DUNG THỐNG KÊ-->
                             <Grid Grid.Row="1" x:Name="thongke_noidung">
                                 <Grid x:Name="thongke_doanhthu">
                                     <Grid.Style>
@@ -413,8 +414,13 @@
                                             </Style.Triggers>
                                         </Style>
                                     </Grid.Style>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Loaded">
+                                            <i:InvokeCommandAction Command="{Binding loadcommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
                                     <!--THÔNG TIN THỐNG KÊ-->
-                                    <ListView>
+                                    <ListView ItemsSource="{Binding doanhthulist}">
                                         <!--ĐỊNH DẠNG NỘI DUNG-->
                                         <ListView.ItemContainerStyle>
                                             <Style TargetType="ListViewItem">
@@ -433,11 +439,10 @@
                                                         <Setter Property="IsEnabled" Value="False"/>
                                                     </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
-                                                <GridViewColumn Width="200" Header="Mã sản phẩm" DisplayMemberBinding="{Binding bar}"/>
-                                                <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                                <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding ngaysinh}"/>
-                                                <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding diachi}"/>
-                                                <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding chucvu}"/>
+                                                <GridViewColumn Width="auto" Header="Mã sản phẩm" DisplayMemberBinding="{Binding NgayTao}"/>
+                                                <GridViewColumn Width="auto" Header="Tên sản phẩm" DisplayMemberBinding="{Binding SoLuongHoaDon }"/>
+                                                <GridViewColumn Width="auto" Header="Đơn giá" DisplayMemberBinding="{Binding TongDoanhThu}"/>
+                                             
                                             </GridView>
                                         </ListView.View>
                                     </ListView>
