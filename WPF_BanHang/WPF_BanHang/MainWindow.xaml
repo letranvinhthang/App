@@ -228,22 +228,15 @@
                                 </StackPanel>
                             </Grid>
                             <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
-<<<<<<< HEAD
-                            <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="31*"/>
-                                    <ColumnDefinition Width="5*"/>
-                                </Grid.ColumnDefinitions>
-                                <ListView ItemsSource="{Binding orderlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Grid.ColumnSpan="2">
-=======
                             <Grid Grid.Row="1" Background="LightGray">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="133*"/>
                                     <ColumnDefinition Width="43*"/>
                                     <ColumnDefinition Width="364*"/>
                                 </Grid.ColumnDefinitions>
-                                <ListView  ItemsSource="{Binding orderlist}" Grid.ColumnSpan="3">
->>>>>>> a058c8a06c4ddf2c24f7824b23a50095018bbf6c
+                                   <ListView ItemsSource="{Binding orderlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Grid.ColumnSpan="3">
+
+                        
                                     <!--ĐỊNH DẠNG NỘI DUNG-->
                                     <ListView.ItemContainerStyle>
                                         <Style TargetType="ListViewItem">
@@ -410,7 +403,7 @@
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid x:Name="nhapkho">
+                    <Grid x:Name="sanpham">
                         <Grid.Style>
                             <Style TargetType="Grid">
                                 <Setter Property="Visibility" Value="Hidden"></Setter>
@@ -428,13 +421,13 @@
                         </Grid.RowDefinitions>
 
                         <!--THÔNG TIN SẢN PHẨM TẠI CỬA HÀNG-->
-                        <Grid Grid.Row="1" DataContext="{StaticResource nkVM}">
+                        <Grid Grid.Row="1" DataContext="{StaticResource spVM}">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Loaded">
                                     <i:InvokeCommandAction Command="{Binding loadcomannd}"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
-                            <ListView ItemsSource="{Binding tonkhoxlist}">
+                            <ListView ItemsSource="{Binding sanphamlist}">
                                 <!--ĐỊNH DẠNG NỘI DUNG-->
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
@@ -453,11 +446,11 @@
                                                 <Setter Property="IsEnabled" Value="False"/>
                                             </Style>
                                         </GridView.ColumnHeaderContainerStyle>
-                                        <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding STT}"/>
-                                        <GridViewColumn Width="430" Header="barcode" DisplayMemberBinding="{Binding IdSanpham }"/>
-                                        <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                        <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding }"/>
-                                        <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
+                                        <GridViewColumn Width="auto" Header="barcode" DisplayMemberBinding="{Binding IdSanpham }"/>
+                                        <GridViewColumn Width="auto" Header="Khuyến mãi" DisplayMemberBinding="{Binding TenSanpham}"/>
+                                        <GridViewColumn Width="auto" Header="Tên sản phẩm" DisplayMemberBinding="{Binding Loaisp }"/>
+                                        <GridViewColumn Width="auto" Header="Đơn giá" DisplayMemberBinding="{Binding Gia }"/>
+                                        <GridViewColumn Width="auto" Header="Số lượng" DisplayMemberBinding="{Binding IdLoaisp}"/>
 
                                     </GridView>
                                 </ListView.View>

@@ -38,12 +38,18 @@ namespace WPF_BanHang.Viewmodel
         private string _ten;
 
         public string ten { get => _ten; set { _ten = value; OnPropertyChanged(); } }
+        private byte[] _hinh;
+
+        public byte[] hinh { get => _hinh; set { _hinh = value; OnPropertyChanged(); } }
         private long  _barcode;
 
         public long barcode { get => _barcode; set { _barcode = value; OnPropertyChanged(); } }
         private int _soluong;
 
         public int soluong { get => _soluong; set { _soluong = value; OnPropertyChanged(); } }
+        private int _gia;
+
+        public int gia { get => _gia; set { _gia = value; OnPropertyChanged(); } }
 
 
         private bool _spmoi;
@@ -60,11 +66,13 @@ namespace WPF_BanHang.Viewmodel
 
         public ICommand themsanphamcommand { get; set; }
         public ICommand suasanphamcommand { get; set; }
+        public ICommand loadcomannd { get; set; }
         public ICommand editcommand { get; set; }
 
         public sanpham()
         {
             var db = new qlbhContext();
+            loadcomannd = new RelayCommand<Object>((k) => { return true; }, (k) => { loadsanpham(); });
             themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
             suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
             editcommand = new RelayCommand<object>((p) =>
@@ -128,17 +136,20 @@ namespace WPF_BanHang.Viewmodel
             if (MainViewModel.TaiKhoan != null)
             {
                 int? idch = MainViewModel.TaiKhoan.Idcuahang;
+                var spch = db.CuahangSanpham.Where(p => p.IdCuahang == idch);
                 foreach (var item in sp.ToList())
                 {
+                    var chsp = spch.Where(p => p.IdSanpham == item.IdSanpham).FirstOrDefault();
                     var loaisp = lsp.Where(p => p.IdLoaisp == item.IdLoaisp).FirstOrDefault();
                     spxl spl= new spxl();
-                    spl.HinhSanpham = item.HinhSanpham;
+                   // spl.HinhSanpham = item.HinhSanpham;
                     spl.IdSanpham = item.IdSanpham;
                     spl.TenSanpham = item.TenSanpham;
                     spl.Loaisp = loaisp.TenLoai;
                     spl.SanphamHot = item.SanphamHot;
                     spl.SanphamMoi = item.SanphamMoi;
                     spl.IdLoaisp = item.IdLoaisp;
+                    spl.Gia = chsp.GiaTheoQuan;
                     sanphamlist.Add(spl);
                 }
 

@@ -28,13 +28,14 @@ namespace WPF_BanHang.Models
         public virtual DbSet<SanPham> SanPham { get; set; }
         public virtual DbSet<SanphamYeuthich> SanphamYeuthich { get; set; }
         public virtual DbSet<TonKho> TonKho { get; set; }
+        public virtual DbSet<ViewThongke> ViewThongke { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("server=192.168.10.225;user=root;database=qlbh", x => x.ServerVersion("10.4.14-mariadb"));
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySql("server=192.168.10.225;database=qlbh;user=root", x => x.ServerVersion("10.4.14-mariadb"));
             }
         }
 
@@ -170,8 +171,8 @@ namespace WPF_BanHang.Models
 
                 entity.Property(e => e.NgayTao)
                     .HasColumnName("Ngay_tao")
-                    .HasColumnType("timestamp")
-                    .HasDefaultValueSql("current_timestamp()");
+                    .HasColumnType("date")
+                    .HasDefaultValueSql("'current_timestamp()'");
 
                 entity.Property(e => e.ThanhTien).HasColumnName("Thanh_tien");
 
@@ -374,11 +375,6 @@ namespace WPF_BanHang.Models
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_general_ci");
 
-<<<<<<< HEAD
-=======
-                
-
->>>>>>> a058c8a06c4ddf2c24f7824b23a50095018bbf6c
                 entity.Property(e => e.IdChucvu)
                     .HasColumnName("ID_chucvu")
                     .HasColumnType("int(11)");
@@ -387,9 +383,8 @@ namespace WPF_BanHang.Models
 
                 entity.Property(e => e.NgaySinh)
                     .HasColumnName("Ngay_sinh")
-                    .HasColumnType("timestamp")
-                    .HasDefaultValueSql("current_timestamp()")
-                    .ValueGeneratedOnAddOrUpdate();
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("current_timestamp()");
 
                 entity.Property(e => e.PassNhanvien)
                     .IsRequired()
@@ -609,6 +604,35 @@ namespace WPF_BanHang.Models
                     .HasForeignKey(d => d.IdSanpham)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("ton_kho_ibfk_1");
+            });
+
+            modelBuilder.Entity<ViewThongke>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("view_thongke");
+
+                entity.Property(e => e.IdCuahang)
+                    .HasColumnName("ID_cuahang")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.IdHoadon)
+                    .HasColumnName("ID_hoadon")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.NgayTao)
+                    .HasColumnName("Ngay_tao")
+                    .HasColumnType("date")
+                    .HasDefaultValueSql("'current_timestamp()'");
+
+                entity.Property(e => e.SumHoaDonThanhTien).HasColumnName("SUM(hoa_don.Thanh_tien)");
+
+                entity.Property(e => e.TenNhanvien)
+                    .IsRequired()
+                    .HasColumnName("Ten_nhanvien")
+                    .HasColumnType("varchar(100)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
             });
 
             OnModelCreatingPartial(modelBuilder);

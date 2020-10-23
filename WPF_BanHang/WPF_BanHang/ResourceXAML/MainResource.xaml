@@ -9,4 +9,5 @@
     <viewmodel:OrderViewModel x:Key="orderVM"></viewmodel:OrderViewModel>
     <viewmodel:NhapkhoViewModel x:Key="nkVM"></viewmodel:NhapkhoViewModel>
     <viewmodel:dmkviewmodel x:Key="dmkVM"></viewmodel:dmkviewmodel>
+    <viewmodel:sanpham x:Key="spVM"></viewmodel:sanpham>
 </ResourceDictionary>

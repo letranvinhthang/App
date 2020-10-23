@@ -13,6 +13,7 @@ namespace WPF_BanHang.Models
         public bool SanphamMoi { get; set; }
         public byte[] HinhSanpham { get; set; }
         public int IdLoaisp { get; set; }
+        public double Gia { get; set; }
         public bool XoaSanPham { get; set; }
 
     }

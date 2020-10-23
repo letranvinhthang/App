@@ -11,7 +11,6 @@ namespace WPF_BanHang.Models
         }
 
         public int IdNhanvien { get; set; }
-
         public string PassNhanvien { get; set; }
         public string TenNhanvien { get; set; }
         public DateTime NgaySinh { get; set; }
@@ -21,10 +20,6 @@ namespace WPF_BanHang.Models
         public bool Disable { get; set; }
         public bool XoaNhanVien { get; set; }
         public int Idcuahang { get; set; }
-<<<<<<< HEAD
-=======
-        
->>>>>>> a058c8a06c4ddf2c24f7824b23a50095018bbf6c
 
         public virtual QuyenHan IdChucvuNavigation { get; set; }
         public virtual ICollection<HoaDon> HoaDon { get; set; }

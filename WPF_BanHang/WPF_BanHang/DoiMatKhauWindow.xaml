@@ -9,17 +9,15 @@
            x:Name="window"
         WindowStyle="None"
         Background="Transparent"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 DataContext="{StaticResource dmkVM}"
         Title="DoiMatKhauWindow" Height="320" Width="500">
     <Grid Background="#14212B">
         <Border  Height="300" Width="480" HorizontalAlignment="Center" VerticalAlignment="Center"  Background="#1C2F3E" BorderBrush="Black" BorderThickness="1" CornerRadius="10">
-
-<<<<<<< HEAD
             <StackPanel Orientation="Vertical" >
-            <TextBlock FontSize="25" HorizontalAlignment="Center" Margin="10" Text="ĐỔI MẬT KHẨU"/>
-                <PasswordBox Margin="5" FontSize="14"
+            <TextBlock FontSize="25" HorizontalAlignment="Center" Foreground="White" Margin="10" Text="ĐỔI MẬT KHẨU"/>
+                <PasswordBox Margin="5" FontSize="14" Foreground="LightGray"
   x:Name="pass_cu"
   materialDesign:HintAssist.Hint="Mật khẩu cũ"
   materialDesign:HintAssist.Foreground="Green"
@@ -34,7 +32,7 @@ DataContext="{StaticResource dmkVM}"
                     </i:Interaction.Triggers>
                 </PasswordBox>
 
-                <PasswordBox Margin="5" FontSize="14"
+                <PasswordBox Margin="5" FontSize="14" Foreground="LightGray"
   x:Name="pass_moi"
   materialDesign:HintAssist.Hint="Mật khẩu mới"
   materialDesign:HintAssist.Foreground="Green"
@@ -49,7 +47,7 @@ DataContext="{StaticResource dmkVM}"
                     </i:Interaction.Triggers>
                 </PasswordBox>
 
-                <PasswordBox Margin="5"
+                <PasswordBox Margin="5" Foreground="LightGray"
   x:Name="pass_moi_nhaplai" FontSize="14"
   materialDesign:HintAssist.Hint="Nhập lại mật khẩu"
   materialDesign:HintAssist.Foreground="Green"
@@ -65,14 +63,14 @@ DataContext="{StaticResource dmkVM}"
                 </PasswordBox>
 
                 <StackPanel Width="250" Margin="10" Orientation="Horizontal">
-                <Button  Margin="10" Width="auto" 
+                    <Button  Margin="10" Width="auto" 
     Style="{StaticResource MaterialDesignRaisedButton}"
     Content="XÁC NHẬN"
     ToolTip="Resource name: MaterialDesignRaisedButton"
                          Command="{Binding domkcommand}"
                          CommandParameter="{Binding ElementName=window}">
-                    
-                </Button>
+
+                    </Button>
                     <Button  Margin="10" Background="Red"
     Style="{StaticResource MaterialDesignRaisedButton}"
     Width="100" Content="HỦY"
@@ -80,51 +78,10 @@ DataContext="{StaticResource dmkVM}"
                              Command="{Binding exitcommand}"
                          CommandParameter="{Binding ElementName=window}"
                              >
-                    
-                </Button>
-            </StackPanel>
-=======
-            <StackPanel Orientation="Vertical" Width="400" >
-                <TextBlock Foreground="White" FontSize="25" HorizontalAlignment="Center"  Margin="10" Text="ĐỔI MẬT KHẨU"/>
-                <PasswordBox Foreground="LightGray" Margin="10" FontSize="14"
-                    x:Name="pass_cu"
-                    materialDesign:HintAssist.Hint="Mật khẩu cũ"
-                    materialDesign:HintAssist.Foreground="Green"
-                    materialDesign:TextFieldAssist.UnderlineBrush="Green"
-                    Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
 
-                <PasswordBox Foreground="LightGray" Margin="10" FontSize="14"
-                    x:Name="pass_moi"
-                    materialDesign:HintAssist.Hint="Mật khẩu mới"
-                    materialDesign:HintAssist.Foreground="Green"
-                    materialDesign:TextFieldAssist.UnderlineBrush="Green"
-                    Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
-
-                <PasswordBox Foreground="LightGray" Margin="5"
-                    x:Name="pass_moi_nhaplai" FontSize="14"
-                    materialDesign:HintAssist.Hint="Nhập lại mật khẩu"
-                    materialDesign:HintAssist.Foreground="Green"
-                    materialDesign:TextFieldAssist.UnderlineBrush="Green"
-                    Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
-
-            <StackPanel Width="250" Margin="10" Orientation="Horizontal">
-                
-                <Button  Margin="10" Width="auto"  HorizontalAlignment="Center"
-                    Style="{StaticResource MaterialDesignRaisedButton}"
-                    Content="XÁC NHẬN"
-                    BorderBrush="Transparent"
-                    ToolTip="Resource name: MaterialDesignRaisedButton">
-                </Button>
-
-                    <Button  Margin="10" Background="Red"  HorizontalAlignment="Center"
-                    Style="{StaticResource MaterialDesignRaisedButton}"
-                    Width="100" Content="HỦY"
-                    BorderBrush="Transparent"
-                    ToolTip="Resource name: MaterialDesignRaisedButton">
-                 </Button>
-             </StackPanel>
->>>>>>> a058c8a06c4ddf2c24f7824b23a50095018bbf6c
-        </StackPanel>
+                    </Button>
+                </StackPanel>
+                </StackPanel>
         </Border>
     </Grid>
 </Window>
