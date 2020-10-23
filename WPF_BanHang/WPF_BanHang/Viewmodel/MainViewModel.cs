@@ -15,7 +15,7 @@ namespace WPF_BanHang.Viewmodel
     {
         public enum ChucNangQL
         {
-            Order, ThongKe, NhapKho, NhanVien, DangXuat, DoanhThu, SanPham, LichSuDonHang
+            Order, ThongKe, NhapKho, NhanVien, DangXuat, DoanhThu, SanPham, LichSu
         };
         private NhanVien _TaiKhoanHienThi;
         public NhanVien TaiKhoanHienThi { get => _TaiKhoanHienThi; set { _TaiKhoanHienThi = value; OnPropertyChanged(); } }
@@ -127,7 +127,11 @@ namespace WPF_BanHang.Viewmodel
         public ICommand BtnNhapKhoCommand { get; set; }
         public ICommand exitcommand { get; set; }
         public ICommand closecommand { get; set; }
+        public ICommand BtnDoanhThuCommand { get; set; }
+        public ICommand BtnSanPhamCommand { get; set; }
+        public ICommand BtnLichSuCommand { get; set; }
         public ICommand xoacommand { get; set; }
+
         #endregion
 
         public MainViewModel()
@@ -146,6 +150,21 @@ namespace WPF_BanHang.Viewmodel
                   p.Close();
                   lga.Show();
               });
+            #region Nút chức năng thống kê
+            BtnDoanhThuCommand = new RelayCommand<Grid>((p) => { return true; },(p)=>
+            {
+                ChucNang = (int)ChucNangQL.DoanhThu;
+            });
+            BtnSanPhamCommand = new RelayCommand<Grid>((p) => { return true; }, (p) =>
+            {
+                ChucNang = (int)ChucNangQL.SanPham;
+            });
+            BtnLichSuCommand = new RelayCommand<Grid>((p) => { return true; }, (p) =>
+            {
+                ChucNang = (int)ChucNangQL.LichSu;
+            });
+            #endregion
+
             BtnNhanVienCommand = new RelayCommand<Grid>((p) => 
             { 
              if (QuyenTK == (int)QuyenTaiKhoan.NhanVien)
