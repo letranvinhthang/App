@@ -9,27 +9,30 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{StaticResource addVM}"
         Name="window"
-        Title="ChinhSuaWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <materialDesign:Card Margin="20" UniformCornerRadius="10">
-            <StackPanel Margin="15">
-                <Label FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="UltraBold">THÊM NHÂN VIÊN</Label>
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Title="ChinhSuaWindow" Height="450" Width="800" >
+    <Grid Background="#FF223E55" >
+        <Border Margin="10" Background="#FF1B4B71" CornerRadius="15" BorderThickness="1">
+            <StackPanel  Orientation="Vertical">
+                <Label Foreground="White" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Content="THÊM NHÂN VIÊN" />
                 <TextBox
-                    Text="{Binding ten}"
+                    Text="{Binding ten}" Foreground="LightGray"
   materialDesign:HintAssist.Hint="Tên nhân viên" Width="400"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
   VerticalAlignment="Center" />
-                <TextBox
+                <TextBox Foreground="LightGray"
                     Text="{Binding diachi}"
   materialDesign:HintAssist.Hint="Địa chỉ" Width="400"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
   VerticalAlignment="Center" />
-                <TextBox Text="{Binding sdt}"
+                <TextBox Text="{Binding sdt}" Foreground="LightGray"
   materialDesign:HintAssist.Hint="Số điện thoại" Width="400"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
   VerticalAlignment="Center" />
-                <PasswordBox
-                        x:Name="FloatingPasswordBox" Background="White" Width="400"
+                <PasswordBox Foreground="LightGray"
+                        x:Name="FloatingPasswordBox"  Width="400"
                 materialDesign:HintAssist.Hint=" Mật khẩu"
                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
                 VerticalAlignment="Center">
@@ -42,9 +45,14 @@
                     </i:Interaction.Triggers>
                 </PasswordBox>
                 <ComboBox ItemsSource="{Binding cvlist}" DisplayMemberPath="TenChucvu" SelectedValuePath="IdChuvu" Width="400" Height="30" Margin="0 15 0 0"
+<<<<<<< HEAD
   materialDesign:HintAssist.Hint="CHỨC VỤ"
                          SelectedIndex="{Binding chuvuseleted}" 
                           >
+=======
+  materialDesign:HintAssist.Hint="CHỨC VỤ" Foreground="Black"
+                         SelectedIndex="{Binding chuvuseleted}" >
+>>>>>>> a058c8a06c4ddf2c24f7824b23a50095018bbf6c
                     <!--CHỨC VỤ NHÂN VIÊN-->
                 </ComboBox>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
@@ -65,6 +73,6 @@
                 </StackPanel>
                 
             </StackPanel>
-        </materialDesign:Card>
+        </Border>
     </Grid>
 </Window>

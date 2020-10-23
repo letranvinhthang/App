@@ -228,12 +228,22 @@
                                 </StackPanel>
                             </Grid>
                             <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
+<<<<<<< HEAD
                             <Grid Grid.Row="1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="31*"/>
                                     <ColumnDefinition Width="5*"/>
                                 </Grid.ColumnDefinitions>
                                 <ListView ItemsSource="{Binding orderlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Grid.ColumnSpan="2">
+=======
+                            <Grid Grid.Row="1" Background="LightGray">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="133*"/>
+                                    <ColumnDefinition Width="43*"/>
+                                    <ColumnDefinition Width="364*"/>
+                                </Grid.ColumnDefinitions>
+                                <ListView  ItemsSource="{Binding orderlist}" Grid.ColumnSpan="3">
+>>>>>>> a058c8a06c4ddf2c24f7824b23a50095018bbf6c
                                     <!--ĐỊNH DẠNG NỘI DUNG-->
                                     <ListView.ItemContainerStyle>
                                         <Style TargetType="ListViewItem">
@@ -533,14 +543,14 @@
                                                     <Setter Property="IsEnabled" Value="False"/>
                                                 </Style>
                                             </GridView.ColumnHeaderContainerStyle>
-                                            <GridViewColumn Width="200" Header="Hình ảnh">
+                                            <!--<GridViewColumn Width="200" Header="Hình ảnh">
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
                                                         <Image Source="{Binding hinhnhanvien}"/>
                                                     </DataTemplate>
                                                 </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
-                                            <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
+                                            </GridViewColumn>-->
+                                            <GridViewColumn Width="150" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
                                             <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding ngaysinh}"/>
                                             <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding diachi}"/>
                                             <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding chucvu}"/>

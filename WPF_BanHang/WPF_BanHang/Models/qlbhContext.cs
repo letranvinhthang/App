@@ -374,6 +374,11 @@ namespace WPF_BanHang.Models
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_general_ci");
 
+<<<<<<< HEAD
+=======
+                
+
+>>>>>>> a058c8a06c4ddf2c24f7824b23a50095018bbf6c
                 entity.Property(e => e.IdChucvu)
                     .HasColumnName("ID_chucvu")
                     .HasColumnType("int(11)");
