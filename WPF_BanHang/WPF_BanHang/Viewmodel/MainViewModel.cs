@@ -131,6 +131,7 @@ namespace WPF_BanHang.Viewmodel
         public ICommand BtnSanPhamCommand { get; set; }
         public ICommand BtnLichSuCommand { get; set; }
         public ICommand xoacommand { get; set; }
+        public ICommand dmkcommand { get; set; }
 
         #endregion
 
@@ -197,6 +198,7 @@ namespace WPF_BanHang.Viewmodel
             suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });               
             themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
             suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
+            dmkcommand = new RelayCommand<Window>((l) => { return true; }, (l) => { doimatkhau(l); });
             exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });         
             loadedwindowcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -325,6 +327,11 @@ namespace WPF_BanHang.Viewmodel
             void suasanpham(SuaSanPhamWindow l)
             {
                 SuaSanPhamWindow window4 = new SuaSanPhamWindow();
+                window4.ShowDialog();
+            }
+            void doimatkhau(Window l)
+            {
+                DoiMatKhauWindow window4 = new DoiMatKhauWindow();
                 window4.ShowDialog();
             }
         }

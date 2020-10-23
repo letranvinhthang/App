@@ -2,51 +2,82 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_BanHang"
         mc:Ignorable="d"
+           x:Name="window"
         WindowStyle="None"
         WindowStartupLocation="CenterOwner"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-
+DataContext="{StaticResource dmkVM}"
         Title="DoiMatKhauWindow" Height="320" Width="500">
     <Grid>
         <Border  Height="270" Width="450" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" Background="Wheat" BorderBrush="Black" BorderThickness="1" CornerRadius="10">
 
             <StackPanel Orientation="Vertical" >
             <TextBlock FontSize="25" HorizontalAlignment="Center" Margin="10" Text="ĐỔI MẬT KHẨU"/>
-            <PasswordBox Margin="5" FontSize="14"
+                <PasswordBox Margin="5" FontSize="14"
   x:Name="pass_cu"
   materialDesign:HintAssist.Hint="Mật khẩu cũ"
   materialDesign:HintAssist.Foreground="Green"
   materialDesign:TextFieldAssist.UnderlineBrush="Green"
-  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="PasswordChanged">
+                            <i:InvokeCommandAction 
+                Command="{Binding PasswordoldChangedcommand}" 
+                CommandParameter="{Binding ElementName=pass_cu}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </PasswordBox>
 
                 <PasswordBox Margin="5" FontSize="14"
   x:Name="pass_moi"
   materialDesign:HintAssist.Hint="Mật khẩu mới"
   materialDesign:HintAssist.Foreground="Green"
   materialDesign:TextFieldAssist.UnderlineBrush="Green"
-  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="PasswordChanged">
+                            <i:InvokeCommandAction 
+                Command="{Binding PasswordmoiChangedcommand}" 
+                CommandParameter="{Binding ElementName=pass_moi}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </PasswordBox>
 
-            <PasswordBox Margin="5"
+                <PasswordBox Margin="5"
   x:Name="pass_moi_nhaplai" FontSize="14"
   materialDesign:HintAssist.Hint="Nhập lại mật khẩu"
   materialDesign:HintAssist.Foreground="Green"
   materialDesign:TextFieldAssist.UnderlineBrush="Green"
-  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="PasswordChanged">
+                            <i:InvokeCommandAction 
+                Command="{Binding PasswordmoilaiChangedcommand}" 
+                CommandParameter="{Binding ElementName=pass_moi_nhaplai}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </PasswordBox>
 
-            <StackPanel Width="250" Margin="10" Orientation="Horizontal">
+                <StackPanel Width="250" Margin="10" Orientation="Horizontal">
                 <Button  Margin="10" Width="auto" 
     Style="{StaticResource MaterialDesignRaisedButton}"
     Content="XÁC NHẬN"
-    ToolTip="Resource name: MaterialDesignRaisedButton">
+    ToolTip="Resource name: MaterialDesignRaisedButton"
+                         Command="{Binding domkcommand}"
+                         CommandParameter="{Binding ElementName=window}">
                     
                 </Button>
                     <Button  Margin="10" Background="Red"
     Style="{StaticResource MaterialDesignRaisedButton}"
     Width="100" Content="HỦY"
-    ToolTip="Resource name: MaterialDesignRaisedButton">
+    ToolTip="Resource name: MaterialDesignRaisedButton"
+                             Command="{Binding exitcommand}"
+                         CommandParameter="{Binding ElementName=window}"
+                             >
                     
                 </Button>
             </StackPanel>

@@ -154,15 +154,10 @@
                         </Button>
                     </StackPanel>
                     <!--NÚT ĐỔI MẬT KHẨU-->
-                    <Button Height="50" Content="ĐỔI MẬT KHẨU" Margin="0 0 0 65" VerticalAlignment="Bottom" BorderBrush="Transparent" Background="Transparent">
+                    <Button Command="{Binding dmkcommand}" Height="50" Content="ĐỔI MẬT KHẨU" Margin="0 0 0 65" VerticalAlignment="Bottom" BorderBrush="Transparent" Background="Transparent">
                         <Button.Style>
                             <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                 <Setter Property="FontWeight" Value="Normal"></Setter>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ChucNangNS}" Value="1">
-                                        <Setter Property="FontWeight" Value="Bold"></Setter>
-                                    </DataTrigger>
-                                </Style.Triggers>
                             </Style>
                         </Button.Style>
                     </Button>
