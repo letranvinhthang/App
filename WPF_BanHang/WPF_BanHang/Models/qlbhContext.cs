@@ -374,11 +374,6 @@ namespace WPF_BanHang.Models
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_general_ci");
 
-<<<<<<< HEAD
-                
-
-=======
->>>>>>> origin/hao1
                 entity.Property(e => e.IdChucvu)
                     .HasColumnName("ID_chucvu")
                     .HasColumnType("int(11)");

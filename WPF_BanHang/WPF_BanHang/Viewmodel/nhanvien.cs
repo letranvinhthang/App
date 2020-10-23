@@ -249,10 +249,6 @@ namespace WPF_BanHang.Viewmodel
                 {
                     var tencv = qh.Where(p => p.IdChucvu == item.IdChucvu).FirstOrDefault();
                     nvxl nvl = new nvxl();
-<<<<<<< HEAD
-                    
-=======
->>>>>>> origin/hao1
                     nvl.Manv = item.IdNhanvien;
                     nvl.ten = item.TenNhanvien;
                     nvl.Pass = item.PassNhanvien;

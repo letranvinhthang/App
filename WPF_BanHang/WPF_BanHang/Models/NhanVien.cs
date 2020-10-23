@@ -21,10 +21,6 @@ namespace WPF_BanHang.Models
         public bool Disable { get; set; }
         public bool XoaNhanVien { get; set; }
         public int Idcuahang { get; set; }
-<<<<<<< HEAD
-        
-=======
->>>>>>> origin/hao1
 
         public virtual QuyenHan IdChucvuNavigation { get; set; }
         public virtual ICollection<HoaDon> HoaDon { get; set; }
