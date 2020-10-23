@@ -233,7 +233,7 @@
                                 </StackPanel>
                             </Grid>
                             <!--THÔNG TIN SẢN PHẨM KHÁCH MUA-->
-
+                            
                             <Grid Grid.Row="1" Background="lightGray">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="31*"/>
@@ -280,6 +280,7 @@
                                     </ListView.View>
                                 </ListView>
                             </Grid>
+                            
                             <!--THANH TOÁN-->
                             <Grid Grid.Row="2">
                                 <!--TỔNG HÓA ĐƠN-->
