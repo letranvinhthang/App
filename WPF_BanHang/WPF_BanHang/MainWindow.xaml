@@ -185,7 +185,10 @@
             </Grid>
             <Grid Grid.Column="1">
                 <!--CONTENT-->
+<<<<<<< HEAD
                 
+=======
+>>>>>>> 68d76f356b04c11aa7f99a5cc3cd6128979119b9
                     <Grid x:Name="order">
                         <Grid.Style>
                             <Style TargetType="Grid">
@@ -249,8 +252,8 @@
                                         </Style>
                                     </ListView.ItemContainerStyle>
                                     <ListView.View>
-                                        <GridView>
-                                            <!--ĐỊNH DẠNG HEADER-->
+                                    <GridView>
+                                        <!--ĐỊNH DẠNG HEADER-->
                                             <GridView.ColumnHeaderContainerStyle>
                                                 <Style TargetType="GridViewColumnHeader">
                                                     <Setter Property="FontSize" Value="20"/>
@@ -266,7 +269,7 @@
                                             <GridViewColumn Header="Hình ảnh">
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
-                                                        <Image Source="{Binding hinhsp}" Width="200" Height="200"/>
+                                                        <Image Source="{Binding hinhsp}" Width="100" Height="100"/>
                                                     </DataTemplate>
                                                 </GridViewColumn.CellTemplate>
                                             </GridViewColumn>
@@ -441,11 +444,12 @@
                                                         <Setter Property="Margin" Value="10"/>
                                                         <Setter Property="VerticalAlignment" Value="Center"/>
                                                         <Setter Property="IsEnabled" Value="False"/>
-                                                    </Style>
+                                                        
+                                                </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
-                                                <GridViewColumn Width="auto" Header="Mã sản phẩm" DisplayMemberBinding="{Binding NgayTao}"/>
-                                                <GridViewColumn Width="auto" Header="Tên sản phẩm" DisplayMemberBinding="{Binding SoLuongHoaDon }"/>
-                                                <GridViewColumn Width="auto" Header="Đơn giá" DisplayMemberBinding="{Binding TongDoanhThu}"/>
+                                                <GridViewColumn Width="150" Header="Ngày" DisplayMemberBinding="{Binding Path=NgayTao,StringFormat=dd-MM-yyyy}"/>
+                                                <GridViewColumn Width="auto" Header="Số lượng hóa đơn" DisplayMemberBinding="{Binding SoLuongHoaDon }"/>
+                                                <GridViewColumn Width="auto" Header="Tổng tiền" DisplayMemberBinding="{Binding TongDoanhThu}"/>
                                              
                                             </GridView>
                                         </ListView.View>
@@ -540,8 +544,11 @@
                         </Grid>
                     </Grid>
 
+<<<<<<< HEAD
                 
 
+=======
+>>>>>>> 68d76f356b04c11aa7f99a5cc3cd6128979119b9
                     <Grid x:Name="nhapkho">
                         <Grid.Style>
                             <Style TargetType="Grid">
