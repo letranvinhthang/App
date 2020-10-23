@@ -34,15 +34,8 @@ namespace WPF_BanHang.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-<<<<<<< HEAD
-
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("server=192.168.10.225;database=qlbh;user=root", x => x.ServerVersion("10.4.14-mariadb"));
-
-=======
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseMySql("server=192.168.10.225;database=qlbh;user=root", x => x.ServerVersion("10.4.14-mariadb"));
->>>>>>> fc78d96d812ff29f24444e393ec6efbba7bc7911
             }
         }
 
@@ -623,34 +616,16 @@ namespace WPF_BanHang.Models
                     .HasColumnName("ID_cuahang")
                     .HasColumnType("int(11)");
 
-<<<<<<< HEAD
-                entity.Property(e => e.IdHoadon)
-                    .HasColumnName("ID_hoadon")
-                    .HasColumnType("int(11)");
-
-=======
->>>>>>> fc78d96d812ff29f24444e393ec6efbba7bc7911
                 entity.Property(e => e.NgayTao)
                     .HasColumnName("Ngay_tao")
                     .HasColumnType("date")
                     .HasDefaultValueSql("'current_timestamp()'");
 
-<<<<<<< HEAD
-                entity.Property(e => e.SumHoaDonThanhTien).HasColumnName("SUM(hoa_don.Thanh_tien)");
-
-                entity.Property(e => e.TenNhanvien)
-                    .IsRequired()
-                    .HasColumnName("Ten_nhanvien")
-                    .HasColumnType("varchar(100)")
-                    .HasCharSet("utf8mb4")
-                    .HasCollation("utf8mb4_general_ci");
-=======
                 entity.Property(e => e.SoLuongHoaDon)
                     .HasColumnName("SO_LUONG_HOA_DON")
                     .HasColumnType("bigint(21)");
 
                 entity.Property(e => e.TongDoanhThu).HasColumnName("TONG_DOANH_THU");
->>>>>>> fc78d96d812ff29f24444e393ec6efbba7bc7911
             });
 
             OnModelCreatingPartial(modelBuilder);
