@@ -185,7 +185,7 @@
             </Grid>
             <Grid Grid.Column="1">
                 <!--CONTENT-->
-                <Grid>
+                
                     <Grid x:Name="order">
                         <Grid.Style>
                             <Style TargetType="Grid">
@@ -540,7 +540,7 @@
                         </Grid>
                     </Grid>
 
-                </Grid>
+                
 
                     <Grid x:Name="nhapkho">
                         <Grid.Style>
