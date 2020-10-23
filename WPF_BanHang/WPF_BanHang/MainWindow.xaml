@@ -185,10 +185,6 @@
             </Grid>
             <Grid Grid.Column="1">
                 <!--CONTENT-->
-<<<<<<< HEAD
-                
-=======
->>>>>>> 68d76f356b04c11aa7f99a5cc3cd6128979119b9
                     <Grid x:Name="order">
                         <Grid.Style>
                             <Style TargetType="Grid">
@@ -544,11 +540,6 @@
                         </Grid>
                     </Grid>
 
-<<<<<<< HEAD
-                
-
-=======
->>>>>>> 68d76f356b04c11aa7f99a5cc3cd6128979119b9
                     <Grid x:Name="nhapkho">
                         <Grid.Style>
                             <Style TargetType="Grid">
@@ -612,7 +603,7 @@
                         </Grid>
                     </Grid>
 
-                <Grid x:Name="nhanvien">
+                    <Grid x:Name="nhanvien">
                     <Grid.Style>
                         <Style TargetType="Grid">
                             <Setter Property="Visibility" Value="Hidden"></Setter>
@@ -711,6 +702,7 @@
                         </Grid>
                     </Grid>
                 </Grid>
+                
             </Grid>
         </Grid>
     </Grid>
