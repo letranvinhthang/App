@@ -45,8 +45,14 @@
                     </i:Interaction.Triggers>
                 </PasswordBox>
                 <ComboBox ItemsSource="{Binding cvlist}" DisplayMemberPath="TenChucvu" SelectedValuePath="IdChuvu" Width="400" Height="30" Margin="0 15 0 0"
+<<<<<<< HEAD
   materialDesign:HintAssist.Hint="CHỨC VỤ" Foreground="Black"
                          SelectedIndex="{Binding chuvuseleted}" >
+=======
+  materialDesign:HintAssist.Hint="CHỨC VỤ"
+                         SelectedIndex="{Binding chuvuseleted}" 
+                          >
+>>>>>>> origin/hao1
                     <!--CHỨC VỤ NHÂN VIÊN-->
                 </ComboBox>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">

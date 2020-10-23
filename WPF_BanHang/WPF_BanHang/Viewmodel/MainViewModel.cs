@@ -15,7 +15,7 @@ namespace WPF_BanHang.Viewmodel
     {
         public enum ChucNangQL
         {
-            Order, ThongKe, NhapKho, NhanVien, DangXuat
+            Order, ThongKe, NhapKho, NhanVien, DangXuat, DoanhThu, SanPham, LichSuDonHang
         };
         private NhanVien _TaiKhoanHienThi;
         public NhanVien TaiKhoanHienThi { get => _TaiKhoanHienThi; set { _TaiKhoanHienThi = value; OnPropertyChanged(); } }
@@ -127,6 +127,7 @@ namespace WPF_BanHang.Viewmodel
         public ICommand BtnNhapKhoCommand { get; set; }
         public ICommand exitcommand { get; set; }
         public ICommand closecommand { get; set; }
+        public ICommand xoacommand { get; set; }
         #endregion
 
         public MainViewModel()
@@ -138,8 +139,9 @@ namespace WPF_BanHang.Viewmodel
             }, (p) =>
             {
                 SetupQuyenTaiKhoan();
-            });    
-              closecommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
+            });
+         
+            closecommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
                   MainWindow lga = new MainWindow();
                   p.Close();
                   lga.Show();

@@ -219,7 +219,7 @@
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0" Margin="20 120 20 00">
 
-                            <TextBox Margin="0,10" materialDesign:HintAssist.Hint="ID nhân viên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18" Text="{Binding usename}" Width="200"/>
+                            <TextBox Margin="0,15" materialDesign:HintAssist.Hint="ID nhân viên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18" Text="{Binding usename}" Width="200"/>
 
                         </Grid>
                         <Grid Grid.Row="1" Margin="20 0 20 120">
@@ -241,17 +241,18 @@
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 400 0 0">
                 <StackPanel VerticalAlignment="Center"  Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Margin="50 0 10 0"
-    Style="{StaticResource MaterialDesignRaisedButton}"
-    
-    Command="{Binding logincommand}"
-    CommandParameter="{Binding ElementName=window}"
-    ToolTip="BẤM ĐI BẠN EI~" Content="ĐĂNG NHẬP">
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        BorderBrush="Transparent"
+                        Command="{Binding logincommand}"
+                        CommandParameter="{Binding ElementName=window}"
+                        ToolTip="BẤM ĐI BẠN EI~" Content="ĐĂNG NHẬP">
 
                     </Button>
                     <Button  Margin="10 0 0 0"
                         Command="{Binding exitcommand}"
                         CommandParameter="{Binding ElementName=window}"
                         Style="{StaticResource MaterialDesignRaisedButton}"
+                        BorderBrush="Transparent"
                         Width="100"
                         Background="Red"
                         ToolTip="THOÁT CHƯƠNG TRÌNH" Content="Exit">
