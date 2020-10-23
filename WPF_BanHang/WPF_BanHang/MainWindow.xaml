@@ -577,7 +577,7 @@
                                         <GridViewColumn Width="430" Header="barcode" DisplayMemberBinding="{Binding IdSanpham }"/>
                                         <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSanpham }"/>
                                         <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding Gia }"/>
-                                        <GridViewColumn Width="110" Header="Số lượng">
+                                        <GridViewColumn Width="110" Header="Bán chạy">
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <CheckBox IsEnabled="False"  IsChecked="{Binding SanphamHot}"/>
