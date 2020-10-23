@@ -18,18 +18,46 @@ namespace WPF_BanHang.Viewmodel
         private string _ten;
 
         public string ten { get => _ten; set { _ten = value; OnPropertyChanged(); } }
-        private int _barcode;
+        private long _barcode;
 
-        public int barcode { get => _barcode; set { _barcode = value; OnPropertyChanged(); } }
-        private int _soluong;
+        public long barcode { get => _barcode; set { _barcode = value; OnPropertyChanged(); } }
+        private double _dongia;
 
-        public int soluong { get => _soluong; set { _soluong = value; OnPropertyChanged(); } }
+        public double dongia { get => _dongia; set { _dongia = value; OnPropertyChanged(); } }
         public ICommand addcommand { get; set; }
         public ICommand exitcommand { get; set; }
         public addsanpham()
         {
             var db = new qlbhContext();
             lsplist = new ObservableCollection<DanhmucSanpham>(db.DanhmucSanpham);
+            addcommand = new RelayCommand<object>((p) =>
+            {
+
+                if (string.IsNullOrEmpty(ten) || barcode == null || dongia == null)
+                    return false;
+                return true;
+            },
+                   (p) =>
+                   {
+                       int idch = MainViewModel.TaiKhoan.Idcuahang;
+                       db.SanPham.Add(new SanPham
+                       {
+                            TenSanpham = ten,
+                           IdSanpham = barcode
+                  
+                       }); ;
+                       db.CuahangSanpham.Add(new CuahangSanpham
+                       {
+                           IdSanpham = barcode,
+                           IdCuahang= idch,
+                           GiaTheoQuan=dongia
+
+                       }); ;
+                       db.SaveChanges();
+                       MessageBox.Show("them thanh cong");
+
+
+                   });
 
         }
         

@@ -63,6 +63,8 @@ namespace WPF_BanHang.Viewmodel
             {
                 var db = new qlbhContext();
                 doanhthulist = new ObservableCollection<ThongKeXL>();
+                if (MainViewModel.TaiKhoan != null)
+                {
                     var hoadon = db.ViewThongke;
                     int? idch = MainViewModel.TaiKhoan.Idcuahang;
                     foreach (var item in hoadon.Where(p => p.IdCuahang == idch).ToList())
@@ -71,9 +73,9 @@ namespace WPF_BanHang.Viewmodel
                         thongke.SoLuongHoaDon = item.SoLuongHoaDon;
                         thongke.NgayTao = item.NgayTao;
                         thongke.TongDoanhThu = item.TongDoanhThu;
-                    doanhthulist.Add(thongke);
+                        doanhthulist.Add(thongke);
                     }
-
+                }
             }
         }
     }
