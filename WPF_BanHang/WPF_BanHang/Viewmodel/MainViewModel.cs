@@ -168,12 +168,24 @@ namespace WPF_BanHang.Viewmodel
                 ChucNang = (int)ChucNangQL.Order;
             });
             BtnNhapKhoCommand = new RelayCommand<Grid>((p) =>
-            { return true; }, (p) =>
+            {
+                if (QuyenTK == (int)QuyenTaiKhoan.NhanVien)
+                {
+                    MessageBoxResult result = MessageBox.Show("Bạn không đủ quyền truy cập vào chức năng này!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+                return true; }, (p) =>
             {
                 ChucNang = (int)ChucNangQL.NhapKho;
             });
             BtnThongKeCommand = new RelayCommand<Grid>((p) =>
-            { return true; }, (p) =>
+            {
+                if (QuyenTK == (int)QuyenTaiKhoan.NhanVien)
+                {
+                    MessageBoxResult result = MessageBox.Show("Bạn không đủ quyền truy cập vào chức năng này!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+                return true; }, (p) =>
             {
                 ChucNang = (int)ChucNangQL.ThongKe;
             });
