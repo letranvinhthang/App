@@ -8,11 +8,17 @@
         mc:Ignorable="d"
            x:Name="window"
         WindowStyle="None"
+<<<<<<< HEAD
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
+=======
+        Background="White"
+        WindowStartupLocation="CenterOwner"
+>>>>>>> 511278bc444197debfabb1d9e6b7291086ca6753
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 DataContext="{StaticResource dmkVM}"
         Title="DoiMatKhauWindow" Height="320" Width="500">
+<<<<<<< HEAD
     <Grid Background="#14212B">
         <Border  Height="300" Width="480" HorizontalAlignment="Center" VerticalAlignment="Center"  Background="#1C2F3E" BorderBrush="Black" BorderThickness="1" CornerRadius="10">
             <StackPanel Orientation="Vertical" >
@@ -69,6 +75,33 @@ DataContext="{StaticResource dmkVM}"
     ToolTip="Resource name: MaterialDesignRaisedButton"
                          Command="{Binding domkcommand}"
                          CommandParameter="{Binding ElementName=window}">
+=======
+    <Grid>
+        <Border  Height="300" Width="480" HorizontalAlignment="Center" VerticalAlignment="Center"  Background="Wheat" BorderBrush="Black" BorderThickness="1" CornerRadius="10">
+
+            <StackPanel Orientation="Vertical" Width="400" >
+                <TextBlock  FontSize="25" HorizontalAlignment="Center"  Margin="10" Text="ĐỔI MẬT KHẨU"/>
+                <PasswordBox  Margin="10" FontSize="14"
+                    x:Name="pass_cu"
+                    materialDesign:HintAssist.Hint="Mật khẩu cũ"
+                    materialDesign:HintAssist.Foreground="Green"
+                    materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                    Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+
+                <PasswordBox  Margin="10" FontSize="14"
+                    x:Name="pass_moi"
+                    materialDesign:HintAssist.Hint="Mật khẩu mới"
+                    materialDesign:HintAssist.Foreground="Green"
+                    materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                    Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+
+                <PasswordBox  Margin="5"
+                    x:Name="pass_moi_nhaplai" FontSize="14"
+                    materialDesign:HintAssist.Hint="Nhập lại mật khẩu"
+                    materialDesign:HintAssist.Foreground="Green"
+                    materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                    Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+>>>>>>> 511278bc444197debfabb1d9e6b7291086ca6753
 
                     </Button>
                     <Button  Margin="10" Background="Red"

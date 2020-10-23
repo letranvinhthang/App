@@ -8,15 +8,15 @@
 
         mc:Ignorable="d"
                xmlns:uc="clr-namespace:WPF_BanHang.UserControl_BanHang"
-
+        
 x:Name="window"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
    DataContext="{StaticResource nvVM}"
 
         Title="SuaNhanVienWindow" Height="500" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Grid>
-            <materialDesign:Card Margin="20" UniformCornerRadius="10">
+    <Grid Background="White">
+
+        <Border Margin="20" CornerRadius="15" Background="Wheat">
 
                 <StackPanel Margin="15" Name="SuaNV">
 
@@ -99,9 +99,8 @@ x:Name="window"
                 </StackPanel>
 
 
+        </Border>
 
-            </materialDesign:Card>
 
-        </Grid>
     </Grid>
 </Window>

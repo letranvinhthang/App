@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_BanHang"
         mc:Ignorable="d"
-        Background="#1C2F3E"
-
+        Background="White"
+        
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         
         WindowStyle="None"
         Title="ThemSanPhamWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid >
 
-        
-            <materialDesign:Card Margin="20" UniformCornerRadius="10">
 
-            <StackPanel Margin="15">
+        <Border Margin="15" CornerRadius="15" Background="Wheat">
+
+            <StackPanel >
 
                 <Label FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="UltraBold" Content="THÊM SẢN PHẨM"></Label>
 
@@ -61,9 +61,8 @@
 
             </StackPanel>
 
+        </Border>
 
-
-        </materialDesign:Card>
 
     </Grid>
 </Window>

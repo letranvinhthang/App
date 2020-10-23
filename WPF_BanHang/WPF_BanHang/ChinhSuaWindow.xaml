@@ -13,25 +13,25 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Title="ChinhSuaWindow" Height="450" Width="800" >
-    <Grid Background="#FF223E55" >
-        <Border Margin="10" Background="#FF1B4B71" CornerRadius="15" BorderThickness="1">
-            <StackPanel  Orientation="Vertical">
-                <Label Foreground="White" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Content="THÊM NHÂN VIÊN" />
+    <Grid Background="White" >
+        <Border Margin="10" Background="Wheat" CornerRadius="15" BorderThickness="1">
+            <StackPanel Margin="15" Orientation="Vertical">
+                <Label  FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Content="THÊM NHÂN VIÊN" />
                 <TextBox
-                    Text="{Binding ten}" Foreground="LightGray"
+                    Text="{Binding ten}" 
   materialDesign:HintAssist.Hint="Tên nhân viên" Width="400"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
   VerticalAlignment="Center" />
-                <TextBox Foreground="LightGray"
+                <TextBox 
                     Text="{Binding diachi}"
   materialDesign:HintAssist.Hint="Địa chỉ" Width="400"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
   VerticalAlignment="Center" />
-                <TextBox Text="{Binding sdt}" Foreground="LightGray"
+                <TextBox Text="{Binding sdt}" 
   materialDesign:HintAssist.Hint="Số điện thoại" Width="400"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
   VerticalAlignment="Center" />
-                <PasswordBox Foreground="LightGray"
+                <PasswordBox 
                         x:Name="FloatingPasswordBox"  Width="400"
                 materialDesign:HintAssist.Hint=" Mật khẩu"
                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
@@ -44,9 +44,21 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </PasswordBox>
+<<<<<<< HEAD
                 <ComboBox ItemsSource="{Binding cvlist}" DisplayMemberPath="TenChucvu" SelectedValuePath="IdChuvu" Width="400" Height="30" Margin="0 15 0 0"
   materialDesign:HintAssist.Hint="CHỨC VỤ" Foreground="Black"
                          SelectedIndex="{Binding chuvuseleted}" >
+=======
+                <ComboBox ItemsSource="{Binding cvlist}" DisplayMemberPath="TenChucvu"
+                          SelectedValuePath="IdChuvu"
+                          Width="400" 
+                          Height="30"
+                          Margin="0 15 0 0"
+                          materialDesign:HintAssist.Hint="CHỨC VỤ"
+                          
+                         SelectedIndex="{Binding chuvuseleted}" >
+
+>>>>>>> 511278bc444197debfabb1d9e6b7291086ca6753
                     <!--CHỨC VỤ NHÂN VIÊN-->
                 </ComboBox>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
