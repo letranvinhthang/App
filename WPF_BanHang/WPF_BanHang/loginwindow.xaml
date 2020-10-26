@@ -20,20 +20,29 @@
         Background="Transparent"
         Name="window"
        DataContext="{StaticResource loginVM}"
-     
-     FontFamily="{DynamicResource MaterialDesignFont}"
+          
+    FontFamily="{DynamicResource MaterialDesignFont}"
         Icon="Hinh/Logo.png"
         Title="Đăng nhập" Height="1080" Width="1920" >
     <Window.InputBindings>
         <KeyBinding Key="Enter" Command="{Binding logincommand}"
                     CommandParameter="{Binding ElementName=window}"/>
     </Window.InputBindings>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction 
+                Command="{Binding loadedpasscommand}" 
+                CommandParameter="{Binding ElementName=window}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
-<!--<<<<<<< HEAD
+    <!--<<<<<<< HEAD
     <Grid>
-        --><!--<Grid.Background>
+        -->
+    <!--<Grid.Background>
             <ImageBrush ImageSource="Hinh/Login.jpg" Stretch="UniformToFill" />
-        </Grid.Background>--><!--
+        </Grid.Background>-->
+    <!--
         <Rectangle Margin="0,0,0,-16">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="Hinh/Background.jpg"/>
@@ -56,7 +65,7 @@
                         <i:EventTrigger EventName="PasswordChanged">
                             <i:InvokeCommandAction 
 =======-->
-    
+
     <!--<Grid Background="AliceBlue">
         
         
@@ -120,8 +129,8 @@
 
 
     </Grid>-->
-    
-    
+
+
     <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -184,45 +193,47 @@
                 </Grid>
             </materialDesign:Card>
         </Grid>-->
-    
-    
-    
+
+
+
     <Grid>
+<<<<<<< HEAD
         <Grid Margin="20" Background="Goldenrod">
             
             <Grid Height="400" Width="350" HorizontalAlignment="Center" VerticalAlignment="Center">
 
                 <Border BorderBrush="Transparent" Background="PaleGoldenrod" BorderThickness="1" CornerRadius="15">
 
+=======
+        <Grid Margin="20" Background="#1C2F3E">
+
+            <Grid Height="400" Width="350" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                <Border BorderBrush="black" Background="Wheat" BorderThickness="1" CornerRadius="15">
+>>>>>>> 46d14d511933b6f8805bc2a3838dfdb8f9861a9e
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
-
-
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0" Margin="20 120 20 00">
-
-                            <TextBox Margin="0,15" materialDesign:HintAssist.Hint="ID nhân viên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18" Text="{Binding usename}" Width="200"/>
-
+                            <TextBox x:Name="ID" Margin="0,15" materialDesign:HintAssist.Hint="ID nhân viên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18" Text="{Binding usename}" Width="200"/>
                         </Grid>
                         <Grid Grid.Row="1" Margin="20 0 20 120">
-                            <PasswordBox x:Name="FloatingPasswordBox" Margin="0,10" materialDesign:HintAssist.Hint="Mật khẩu" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18" Width="200">
+                            <PasswordBox x:Name="FloatingPasswordBox" Margin="29,10,29,10" materialDesign:HintAssist.Hint="Mật khẩu" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18" Width="200">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="PasswordChanged">
                                         <i:InvokeCommandAction 
-                Command="{Binding PasswordChangedcommand}" 
-                CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
+                                            Command="{Binding PasswordChangedcommand}" 
+                                            CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </PasswordBox>
                         </Grid>
-
                     </Grid>
-
                 </Border>
             </Grid>
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 400 0 0">
+            <Grid Margin="0 400 0 0">
                 <StackPanel VerticalAlignment="Center"  Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button HorizontalAlignment="Center" Margin="10" Width="120"
                         Style="{StaticResource MaterialDesignRaisedButton}"
@@ -250,17 +261,14 @@
                 <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom">
                     <Image Source="Hinh/Event/spider-web.png" Width="100" Height="150"></Image>
                 </StackPanel>
-                
+
                 <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
-                    
                     <Image Source="Hinh/Event/bat.png" Width="100" Height="150">
                     </Image>
                 </StackPanel>
-                
-                <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" Margin="0 0 0 300">
-                    <Image Source="UserControl_BanHang/Icons/Logo.png" Width="100" Height="100" Margin="0 0 0 100"/>
+                <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" Margin="0 0 0 400">
+                    <Image Source="UserControl_BanHang/Icons/Logo.png" Width="100" Height="100" Loaded="clearlogin"/>
                 </StackPanel>
-
             </Grid>
         </Grid>
     </Grid>

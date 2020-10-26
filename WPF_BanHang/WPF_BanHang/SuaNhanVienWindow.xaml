@@ -7,14 +7,16 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:WPF_BanHang.UserControl_BanHang"
-        x:Name="window"              
+        x:Name="window"           
+        Background="Transparent"
+        ResizeMode="NoResize"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{StaticResource nvVM}"
-        Title="SuaNhanVienWindow" Height="500" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid Background="White">
+        Title="SuaNhanVienWindow" Height="530" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid Background="Transparent">
         <Border Margin="20" CornerRadius="15" Background="Wheat">
             <StackPanel Margin="15" Name="SuaNV">
-                <TextBlock  FontSize="25" HorizontalAlignment="Center"  Margin="10" Text="ĐỔI MẬT KHẨU"/>
+                <TextBlock  FontSize="25" HorizontalAlignment="Center"  Margin="10" Text="CẬP NHẬT THÔNG TIN NHÂN VIÊN"/>
                 <TextBox                    
                    Text="{Binding ten}"
                    materialDesign:HintAssist.Hint="Tên nhân viên" Width="400"
@@ -80,6 +82,7 @@
                     <!--NÚT HỦY-->
                     <Button Command="{Binding exitcommand}"
                             CommandParameter="{Binding ElementName=window}"
+
                             Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="20"
                             Width="120" Height="40"
                             ToolTip="Resource name: MaterialDesignRaisedLightButton">

@@ -25,9 +25,8 @@
         DataContext="{StaticResource mainVM}">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction 
-                Command="{Binding loadedwindowcommand}" 
-                CommandParameter="{Binding ElementName=window}"/>
+            <i:InvokeCommandAction Command="{Binding SetupQuyenCommand}">
+            </i:InvokeCommandAction>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
@@ -56,7 +55,11 @@
                 <ColumnDefinition Width="200"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
+<<<<<<< HEAD
             <Grid Grid.Column="0" Background="Goldenrod">
+=======
+            <Grid Grid.Column="0" Background="#1C2F3E">
+>>>>>>> 46d14d511933b6f8805bc2a3838dfdb8f9861a9e
 
                 <Grid Grid.Row="0" VerticalAlignment="Top" Background="BlanchedAlmond">
                 </Grid>
@@ -550,7 +553,31 @@
                             <RowDefinition Height="50"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-
+                        <Grid Grid.Row="0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <!--NÚT THÊM SẢN PHẨM-->
+                                <Button Content="Thêm" Margin="0 0 20 0" Command="{Binding }">
+                                </Button>
+                                <!--NÚT SỬA SẢN PHẨM-->
+                                <Button Content="sửa" Margin="0 0 20 0">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction 
+                                                Command="{Binding }"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                                <!--NÚT XÓA SẢN PHẨM-->
+                                <Button Content="Xóa" Margin="0 0 20 0">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction 
+                                                Command="{Binding }"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
                         <!--THÔNG TIN SẢN PHẨM TẠI CỬA HÀNG-->
                         <Grid Grid.Row="1" Background="PaleGoldenrod">
                             <i:Interaction.Triggers>
@@ -680,11 +707,16 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>-->
+<<<<<<< HEAD
 
                                         <GridViewColumn Width="430" Header="Tên nhân viên" DisplayMemberBinding="{Binding ten }"/>
                                         <GridViewColumn Width="200" Header="Ngày bắt đầu làm việc" DisplayMemberBinding="{Binding Path=ngaysinh,StringFormat=dd-MM-yyyy}"/>
+=======
+                                        <GridViewColumn Width="250" Header="Tên nhân viên" DisplayMemberBinding="{Binding ten }"/>
+                                        <GridViewColumn Width="230" Header="Ngày bắt đầu làm việc" DisplayMemberBinding="{Binding Path=ngaysinh,StringFormat=dd-MM-yyyy}"/>
+>>>>>>> 46d14d511933b6f8805bc2a3838dfdb8f9861a9e
                                         <GridViewColumn Width="500" Header="Địa chỉ" DisplayMemberBinding="{Binding diachi}"/>
-                                        <GridViewColumn Width="150" Header="Chức vụ" DisplayMemberBinding="{Binding chucvu}"/>
+                                        <GridViewColumn Width="120" Header="Chức vụ" DisplayMemberBinding="{Binding chucvu}"/>
                                     </GridView>
                                 </ListView.View>
                             </ListView>

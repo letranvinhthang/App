@@ -21,7 +21,7 @@ namespace WPF_BanHang.Viewmodel
         public NhanVien TaiKhoanHienThi { get => _TaiKhoanHienThi; set { _TaiKhoanHienThi = value; OnPropertyChanged(); } }
         public enum QuyenTaiKhoan
         {
-            NhanVien, Quanly
+            Quanly, NhanVien
         };
         private int _QuyenTK;
         public int QuyenTK { get => _QuyenTK; set { _QuyenTK = value; OnPropertyChanged(); } }
@@ -114,7 +114,6 @@ namespace WPF_BanHang.Viewmodel
         //bắt  command
         #region Command ẩn hiện grid
         public ICommand loadedwindowcommand { get; set; }
-        public bool isloaded = false;
 
         public ICommand themsanphamcommand { get; set; }
         public ICommand suasanphamcommand { get; set; }
@@ -144,10 +143,16 @@ namespace WPF_BanHang.Viewmodel
             });
          
             closecommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
-                  MainWindow lga = new MainWindow();
-                  p.Close();
-                  lga.Show();
-              });
+                MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn đăng xuất khỏi hệ thống không?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    p.Hide();
+                    loginwindow loginWindow = new loginwindow();
+                    loginWindow.ShowDialog();
+                    p.Close();
+                }
+
+            });
 
             BtnNhanVienCommand = new RelayCommand<Grid>((p) => 
             { 
@@ -195,29 +200,6 @@ namespace WPF_BanHang.Viewmodel
             suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
             dmkcommand = new RelayCommand<Window>((l) => { return true; }, (l) => { doimatkhau(l); });
             exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });         
-            loadedwindowcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
-            {
-                if (p == null)
-                    return;
-                isloaded = true;
-                p.Hide();
-                loginwindow login = new loginwindow();
-                login.ShowDialog();
-                if (login.DataContext == null)
-                    return;
-                var loginnVM = login.DataContext as LoginViewModel;
-                if (loginnVM.IsLogin)
-                {
-                    p.Show();
-                    loadtonkho();
-                    loadnhanvien();
-                    SetupQuyenTaiKhoan();
-                }
-                else
-                {
-                    p.Close();
-                }
-            });
             //xử lý sửa thông tin
 
 
@@ -332,11 +314,11 @@ namespace WPF_BanHang.Viewmodel
         }
         public void SetupQuyenTaiKhoan()
         {
-            if (TaiKhoan.IdChucvu== 2)
+            if (TaiKhoan.IdChucvu == 2)
             {
                 QuyenTK = (int)QuyenTaiKhoan.Quanly;
             }
-            else if (TaiKhoan.IdChucvu == 1)
+            else if (TaiKhoan.IdChucvu == 3)
             {
                 QuyenTK = (int)QuyenTaiKhoan.NhanVien;
             }
