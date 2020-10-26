@@ -11,4 +11,5 @@
     <viewmodel:dmkviewmodel x:Key="dmkVM"></viewmodel:dmkviewmodel>
     <viewmodel:sanpham x:Key="spVM"></viewmodel:sanpham>
     <viewmodel:ThongKeViewModel x:Key="thongkeVM"></viewmodel:ThongKeViewModel>
+    <viewmodel:addsanpham x:Key="addspVM"></viewmodel:addsanpham>
 </ResourceDictionary>

@@ -459,33 +459,35 @@
                                     </Style>
                                 </Grid.Style>
                                 <!--THÔNG TIN THỐNG KÊ-->
-                                <ListView>
-                                    <!--ĐỊNH DẠNG NỘI DUNG-->
-                                    <ListView.ItemContainerStyle>
-                                        <Style TargetType="ListViewItem">
-                                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                            <Setter Property="FontSize" Value="15"/>
-                                        </Style>
-                                    </ListView.ItemContainerStyle>
-                                    <ListView.View>
-                                        <GridView>
-                                            <!--ĐỊNH DẠNG HEADER-->
-                                            <GridView.ColumnHeaderContainerStyle>
-                                                <Style TargetType="GridViewColumnHeader">
-                                                    <Setter Property="FontSize" Value="20"/>
-                                                    <Setter Property="Margin" Value="10"/>
-                                                    <Setter Property="VerticalAlignment" Value="Center"/>
-                                                    <Setter Property="IsEnabled" Value="False"/>
-                                                </Style>
-                                            </GridView.ColumnHeaderContainerStyle>
-                                            <GridViewColumn Width="200" Header="Mã sản phẩm" DisplayMemberBinding="{Binding bar}"/>
-                                            <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                            <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding ngaysinh}"/>
-                                            <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding diachi}"/>
-                                            <GridViewColumn Width="150" Header="Tổng tiền" DisplayMemberBinding="{Binding chucvu}"/>
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
+                                <Grid DataContext="{StaticResource nkVM}">
+                                    <ListView ItemsSource="{Binding tonkhoxlist}">
+                                        <!--ĐỊNH DẠNG NỘI DUNG-->
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="ListViewItem">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                                <Setter Property="FontSize" Value="15"/>
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
+                                        <ListView.View>
+                                            <GridView>
+                                                <!--ĐỊNH DẠNG HEADER-->
+                                                <GridView.ColumnHeaderContainerStyle>
+                                                    <Style TargetType="GridViewColumnHeader">
+                                                        <Setter Property="FontSize" Value="20"/>
+                                                        <Setter Property="Margin" Value="10"/>
+                                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                                        <Setter Property="IsEnabled" Value="False"/>
+                                                    </Style>
+                                                </GridView.ColumnHeaderContainerStyle>
+                                                <GridViewColumn Width="200" Header="Mã sản phẩm" DisplayMemberBinding="{Binding IdSanpham}"/>
+                                                <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
+                                                <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding STT}"/>
+                                                <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
+                                                <GridViewColumn Width="150" Header="Tổng tiền" DisplayMemberBinding="{Binding chucvu}"/>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </Grid>
                             </Grid>
                             <Grid x:Name="thongke_lichsu">
                                 <Grid.Style>

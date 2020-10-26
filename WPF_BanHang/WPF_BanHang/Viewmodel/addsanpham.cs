@@ -24,6 +24,15 @@ namespace WPF_BanHang.Viewmodel
         private double _dongia;
 
         public double dongia { get => _dongia; set { _dongia = value; OnPropertyChanged(); } }
+        private bool _spmoi;
+
+        public bool spmoi { get => _spmoi; set { _spmoi = value; OnPropertyChanged(); } }
+        private int _loaispseleted;
+
+        public int loaispseleted { get => _loaispseleted; set { _loaispseleted = value; OnPropertyChanged(); } }
+        private bool _sphot;
+
+        public bool sphot { get => _sphot; set { _sphot = value; OnPropertyChanged(); } }
         public ICommand addcommand { get; set; }
         public ICommand exitcommand { get; set; }
         public addsanpham()
@@ -43,9 +52,12 @@ namespace WPF_BanHang.Viewmodel
                        db.SanPham.Add(new SanPham
                        {
                             TenSanpham = ten,
-                           IdSanpham = barcode
-                  
-                       }); ;
+                           IdSanpham = barcode,
+                           IdLoaisp = loaispseleted + 1,
+                           SanphamHot = sphot,
+                           SanphamMoi = spmoi
+
+                   }); ;
                        db.CuahangSanpham.Add(new CuahangSanpham
                        {
                            IdSanpham = barcode,
