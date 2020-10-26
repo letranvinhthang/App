@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_BanHang"
         mc:Ignorable="d"
-        Background="White"       
+        Background="Transparent"      
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"      
         WindowStyle="None"
         Title="ThemSanPhamWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid >
         <Border Margin="15" CornerRadius="15" Background="Wheat">
             <StackPanel >
-                <TextBlock  FontSize="25" HorizontalAlignment="Center"  Margin="10" Text="ĐỔI MẬT KHẨU"/>
+                <TextBlock  FontSize="25" HorizontalAlignment="Center"  Margin="10" Text="THÊM SẢN PHẨM"/>
                 <TextBox                  
                     Text="{Binding ten}"
                     materialDesign:HintAssist.Hint="Tên sản phẩm" Width="400"
