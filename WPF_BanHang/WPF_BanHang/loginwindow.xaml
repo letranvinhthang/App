@@ -200,20 +200,20 @@
 
         <Grid Margin="20" Background="Goldenrod">
             
-            <Grid Height="400" Width="350" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid Height="200" Width="350" HorizontalAlignment="Center" VerticalAlignment="Center">
 
                 <Border BorderBrush="Transparent" Background="PaleGoldenrod" BorderThickness="1" CornerRadius="15">
 
 
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0" Margin="20 120 20 00">
+                        <Grid Grid.Row="0" Margin="0 0 0 20">
                             <TextBox x:Name="ID" Margin="0,15" materialDesign:HintAssist.Hint="ID nhân viên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18" Text="{Binding usename}" Width="200"/>
                         </Grid>
-                        <Grid Grid.Row="1" Margin="20 0 20 120">
+                        <Grid Grid.Row="1" Margin="0 0 0 30" >
                             <PasswordBox x:Name="FloatingPasswordBox" Margin="29,10,29,10" materialDesign:HintAssist.Hint="Mật khẩu" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18" Width="200">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="PasswordChanged">
@@ -227,27 +227,37 @@
                     </Grid>
                 </Border>
             </Grid>
-            <Grid Margin="0 400 0 0">
+            <Grid Margin="0 270 0 0">
                 <StackPanel VerticalAlignment="Center"  Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button HorizontalAlignment="Center" Margin="10" Width="120"
-                        Style="{StaticResource MaterialDesignRaisedButton}"
-                        BorderBrush="Transparent"
-                        Command="{Binding logincommand}"
-                        CommandParameter="{Binding ElementName=window}"
-                        ToolTip="BẤM ĐI BẠN EI~" Content="ĐĂNG NHẬP">
-                       
+                    
+
+
+                    <Button
+                            Margin="10"
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            Height="50"
+                            materialDesign:ButtonAssist.CornerRadius="25"
+                            ToolTip="Đăng nhập"
+                            Width="120"
+                            BorderBrush="Transparent"
+                            Command="{Binding logincommand}"
+                            CommandParameter="{Binding ElementName=window}"
+                            Content="ĐĂNG NHẬP">
                     </Button>
 
-                   
-
-                    <Button HorizontalAlignment="Center" Margin="10" Width="120"
-                        Command="{Binding exitcommand}"
-                        CommandParameter="{Binding ElementName=window}"
-                        Style="{StaticResource MaterialDesignRaisedButton}"
-                        BorderBrush="Transparent"
-                        Background="Red"
-                        ToolTip="THOÁT CHƯƠNG TRÌNH" Content="Exit">
+                    <Button
+                            Margin="10"
+                            Height="50"
+                            materialDesign:ButtonAssist.CornerRadius="25"
+                            Width="120"
+                            BorderBrush="Transparent"
+                            Command="{Binding exitcommand}"
+                            CommandParameter="{Binding ElementName=window}"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            Background="Red"
+                            ToolTip="THOÁT CHƯƠNG TRÌNH" Content="Exit">
                     </Button>
+                    
                 </StackPanel>
             </Grid>
             <Grid>
@@ -260,7 +270,7 @@
                     <Image Source="Hinh/Event/bat.png" Width="100" Height="150">
                     </Image>
                 </StackPanel>
-                <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" Margin="0 0 0 400">
+                <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" Margin="0 0 0 350">
                     <Image Source="UserControl_BanHang/Icons/Logo.png" Width="100" Height="100" Loaded="clearlogin"/>
                 </StackPanel>
             </Grid>

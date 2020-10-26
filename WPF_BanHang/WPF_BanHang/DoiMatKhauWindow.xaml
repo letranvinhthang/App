@@ -10,7 +10,7 @@
         Background="Transparent"
         WindowStyle="None"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 DataContext="{StaticResource dmkVM}"
         Title="DoiMatKhauWindow" Height="320" Width="500">
