@@ -26,7 +26,7 @@
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction 
-                Command="{Binding loadedwindowcommand}" 
+                Command="{Binding SetupQuyenCommand}" 
                 CommandParameter="{Binding ElementName=window}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>

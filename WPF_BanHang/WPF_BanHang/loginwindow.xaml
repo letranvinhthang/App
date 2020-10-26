@@ -201,36 +201,30 @@
 
             <Grid Height="400" Width="350" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                <Border Margin="74,10,-24,-10" BorderBrush="black" Background="Wheat" BorderThickness="1" CornerRadius="15">
+                <Border BorderBrush="black" Background="Wheat" BorderThickness="1" CornerRadius="15">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
-
-
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0" Margin="20 120 20 00">
-
                             <TextBox x:Name="ID" Margin="0,15" materialDesign:HintAssist.Hint="ID nhân viên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18" Text="{Binding usename}" Width="200"/>
-
                         </Grid>
                         <Grid Grid.Row="1" Margin="20 0 20 120">
                             <PasswordBox x:Name="FloatingPasswordBox" Margin="29,10,29,10" materialDesign:HintAssist.Hint="Mật khẩu" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18" Width="200">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="PasswordChanged">
                                         <i:InvokeCommandAction 
-                Command="{Binding PasswordChangedcommand}" 
-                CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
+                                            Command="{Binding PasswordChangedcommand}" 
+                                            CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </PasswordBox>
                         </Grid>
-
                     </Grid>
-
                 </Border>
             </Grid>
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="100 400 0 0">
+            <Grid Margin="0 400 0 0">
                 <StackPanel VerticalAlignment="Center"  Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button HorizontalAlignment="Center" Margin="10" Width="120"
                         Style="{StaticResource MaterialDesignRaisedButton}"
@@ -256,15 +250,11 @@
                 </StackPanel>
 
                 <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
-<<<<<<< HEAD
-=======
-
->>>>>>> a5e2ce3a8c65420fb5cdb1311fa173bf49caed46
                     <Image Source="Hinh/Event/bat.png" Width="100" Height="150">
                     </Image>
                 </StackPanel>
-                <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" Margin="0 0 0 300">
-                    <Image Source="UserControl_BanHang/Icons/Logo.png" Width="100" Height="100" Margin="100 0 0 100" Loaded="clearlogin"/>
+                <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" Margin="0 0 0 400">
+                    <Image Source="UserControl_BanHang/Icons/Logo.png" Width="100" Height="100" Loaded="clearlogin"/>
                 </StackPanel>
             </Grid>
         </Grid>
