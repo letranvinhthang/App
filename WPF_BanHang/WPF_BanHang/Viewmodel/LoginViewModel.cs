@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
@@ -14,6 +15,7 @@ namespace WPF_BanHang.Viewmodel
         public bool IsLogin { get; set; }
         public ICommand logincommand { get; set; }
         public ICommand exitcommand { get; set; }
+        public ICommand loadedpasscommand { get; set; }
         public ICommand PasswordChangedcommand { get; set; }
         //public ICommand unitcommand { get; set; }
         private int? _username;
@@ -28,10 +30,15 @@ namespace WPF_BanHang.Viewmodel
             logincommand = new RelayCommand<Window>((p) => { return true; }, (p) => { login(p); });
             PasswordChangedcommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { password = p.Password; });
             exitcommand = new RelayCommand<Window>((e) => { return true; }, (e) => { exit(e); });
+            loadedpasscommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+               
+            });
 
         }
         void login(Window p)
         {
+
             var db = new qlbhContext();
             if (p == null)
                 return;
@@ -50,9 +57,13 @@ namespace WPF_BanHang.Viewmodel
                     else
                     {
                         MainViewModel.TaiKhoan = tk.SingleOrDefault();
-                        IsLogin = true;
+                        p.Hide();
+                        MainWindow main = new MainWindow();
+                        main.ShowDialog();
+                        account = 0;
+
                         p.Close();
-              
+
                     }
                 }
                 else

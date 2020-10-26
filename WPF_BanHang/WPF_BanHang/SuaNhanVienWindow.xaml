@@ -80,6 +80,7 @@
                     <!--NÚT HỦY-->
                     <Button Command="{Binding exitcommand}"
                             CommandParameter="{Binding ElementName=window}"
+
                             Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="20"
                             Width="120" Height="40"
                             ToolTip="Resource name: MaterialDesignRaisedLightButton">
