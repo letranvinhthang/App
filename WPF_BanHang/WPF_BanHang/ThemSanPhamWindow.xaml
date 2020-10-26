@@ -27,7 +27,11 @@
                           materialDesign:HintAssist.Hint="Loại Sản phẩm"
                           SelectedIndex="{Binding chuvuseleted}" >
                 </ComboBox>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 50 0 0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 30 0 0">
+                    <CheckBox Content="Sản phẩm mới" Margin="10" Command="{Binding}"/>
+                    <CheckBox Content="Sản phẩm hot" Margin="10" Command="{Binding}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
                     <Button
                             Command="{Binding addcommand}"
                             Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="20" 
