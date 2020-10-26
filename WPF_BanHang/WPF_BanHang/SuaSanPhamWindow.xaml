@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:WPF_BanHang"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Background="White"
+        Background="Transparent"
+        WindowStyle="None"
         Title="SuaSanPhamWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Border Margin="15" CornerRadius="15" Background="Wheat">

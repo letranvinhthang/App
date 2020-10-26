@@ -10,6 +10,7 @@
         x:Name="window"           
         Background="Transparent"
         ResizeMode="NoResize"
+        WindowStyle="None"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{StaticResource nvVM}"
         Title="SuaNhanVienWindow" Height="530" Width="800" WindowStartupLocation="CenterScreen">
@@ -82,7 +83,6 @@
                     <!--NÚT HỦY-->
                     <Button Command="{Binding exitcommand}"
                             CommandParameter="{Binding ElementName=window}"
-
                             Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="20"
                             Width="120" Height="40"
                             ToolTip="Resource name: MaterialDesignRaisedLightButton">
