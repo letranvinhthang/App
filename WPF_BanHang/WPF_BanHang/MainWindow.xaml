@@ -25,9 +25,8 @@
         DataContext="{StaticResource mainVM}">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction 
-                Command="{Binding loadedwindowcommand}" 
-                CommandParameter="{Binding ElementName=window}"/>
+            <i:InvokeCommandAction Command="{Binding SetupQuyenCommand}">
+            </i:InvokeCommandAction>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>

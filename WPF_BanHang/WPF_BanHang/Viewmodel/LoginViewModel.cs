@@ -56,12 +56,13 @@ namespace WPF_BanHang.Viewmodel
                     }
                     else
                     {
-                        MainViewModel.TaiKhoan = tk.SingleOrDefault();
+                        MainViewModel.TaiKhoan = tk.FirstOrDefault();
                         p.Hide();
                         MainWindow main = new MainWindow();
+                        MessageBox.Show(" chuc vu id" + tk.FirstOrDefault().IdChucvu);
                         main.ShowDialog();
                         account = 0;
-
+                       
                         p.Close();
 
                     }

@@ -21,7 +21,7 @@ namespace WPF_BanHang.Viewmodel
         public NhanVien TaiKhoanHienThi { get => _TaiKhoanHienThi; set { _TaiKhoanHienThi = value; OnPropertyChanged(); } }
         public enum QuyenTaiKhoan
         {
-            NhanVien, Quanly
+            Quanly, NhanVien
         };
         private int _QuyenTK;
         public int QuyenTK { get => _QuyenTK; set { _QuyenTK = value; OnPropertyChanged(); } }
@@ -200,10 +200,6 @@ namespace WPF_BanHang.Viewmodel
             suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
             dmkcommand = new RelayCommand<Window>((l) => { return true; }, (l) => { doimatkhau(l); });
             exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });         
-            loadedwindowcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
-            {
-        
-            });
             //xử lý sửa thông tin
 
 
@@ -318,11 +314,11 @@ namespace WPF_BanHang.Viewmodel
         }
         public void SetupQuyenTaiKhoan()
         {
-            if (TaiKhoan.IdChucvu== 2)
+            if (TaiKhoan.IdChucvu == 2)
             {
                 QuyenTK = (int)QuyenTaiKhoan.Quanly;
             }
-            else if (TaiKhoan.IdChucvu == 1)
+            else if (TaiKhoan.IdChucvu == 3)
             {
                 QuyenTK = (int)QuyenTaiKhoan.NhanVien;
             }
