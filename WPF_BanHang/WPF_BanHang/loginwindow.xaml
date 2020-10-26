@@ -197,20 +197,14 @@
 
 
     <Grid>
-<<<<<<< HEAD
+
         <Grid Margin="20" Background="Goldenrod">
             
             <Grid Height="400" Width="350" HorizontalAlignment="Center" VerticalAlignment="Center">
 
                 <Border BorderBrush="Transparent" Background="PaleGoldenrod" BorderThickness="1" CornerRadius="15">
 
-=======
-        <Grid Margin="20" Background="#1C2F3E">
 
-            <Grid Height="400" Width="350" HorizontalAlignment="Center" VerticalAlignment="Center">
-
-                <Border BorderBrush="black" Background="Wheat" BorderThickness="1" CornerRadius="15">
->>>>>>> 46d14d511933b6f8805bc2a3838dfdb8f9861a9e
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
