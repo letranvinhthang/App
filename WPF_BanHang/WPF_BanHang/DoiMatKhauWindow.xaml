@@ -6,15 +6,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_BanHang"
         mc:Ignorable="d"
-           x:Name="window"
+        x:Name="window"
+        Background="Transparent"
         WindowStyle="None"
-
-        Background="White"
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 DataContext="{StaticResource dmkVM}"
         Title="DoiMatKhauWindow" Height="320" Width="500">
-    <Grid>
+    <Grid Background="Transparent">
         <Border  Height="300" Width="480" HorizontalAlignment="Center" VerticalAlignment="Center"  Background="Wheat" BorderBrush="Black" BorderThickness="1" CornerRadius="10">
 
             <StackPanel Orientation="Vertical" Width="400" >

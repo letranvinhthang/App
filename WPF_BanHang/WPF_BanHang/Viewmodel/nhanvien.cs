@@ -102,9 +102,9 @@ namespace WPF_BanHang.Viewmodel
                 }
                 return true;
             }, (c) => { suanhanvien(c); });
-            themnhanviencommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => {
+            themnhanviencommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) => {
                 themnhanvien(a); });
-                 loadednvcommand = new RelayCommand<ChinhSuaWindow>((a) => { return true; }, (a) => { loadnhanvien(); });
+                 loadednvcommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) => { loadnhanvien(); });
             xoacommand = new RelayCommand<object>((a) => { return true; }, (a) => {
                 var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
                 dis.XoaNhanVien = true;
@@ -193,9 +193,9 @@ namespace WPF_BanHang.Viewmodel
                             SelectedItem.IdChucvu = chuvuseleted + 2;
                         }
                     });
-            void themnhanvien(ChinhSuaWindow a)
+            void themnhanvien(ThemNhanVienWindow a)
             {
-                ChinhSuaWindow window1 = new ChinhSuaWindow();
+                ThemNhanVienWindow window1 = new ThemNhanVienWindow();
                 window1.ShowDialog();
                 loadnhanvien();
             }

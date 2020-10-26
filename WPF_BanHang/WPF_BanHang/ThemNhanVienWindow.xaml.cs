@@ -15,9 +15,9 @@ namespace WPF_BanHang
     /// <summary>
     /// Interaction logic for ChinhSuaWindow.xaml
     /// </summary>
-    public partial class ChinhSuaWindow : Window
+    public partial class ThemNhanVienWindow : Window
     {
-        public ChinhSuaWindow()
+        public ThemNhanVienWindow()
         {
             InitializeComponent();
         }

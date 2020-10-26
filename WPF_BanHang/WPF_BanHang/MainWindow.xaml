@@ -695,10 +695,10 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>-->
-                                        <GridViewColumn Width="430" Header="Tên nhân viên" DisplayMemberBinding="{Binding ten }"/>
-                                        <GridViewColumn Width="200" Header="Ngày bắt đầu làm việc" DisplayMemberBinding="{Binding Path=ngaysinh,StringFormat=dd-MM-yyyy}"/>
+                                        <GridViewColumn Width="250" Header="Tên nhân viên" DisplayMemberBinding="{Binding ten }"/>
+                                        <GridViewColumn Width="230" Header="Ngày bắt đầu làm việc" DisplayMemberBinding="{Binding Path=ngaysinh,StringFormat=dd-MM-yyyy}"/>
                                         <GridViewColumn Width="500" Header="Địa chỉ" DisplayMemberBinding="{Binding diachi}"/>
-                                        <GridViewColumn Width="150" Header="Chức vụ" DisplayMemberBinding="{Binding chucvu}"/>
+                                        <GridViewColumn Width="120" Header="Chức vụ" DisplayMemberBinding="{Binding chucvu}"/>
                                     </GridView>
                                 </ListView.View>
                             </ListView>
