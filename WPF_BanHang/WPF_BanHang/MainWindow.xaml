@@ -66,8 +66,8 @@
                         <!--NÚT ORDER-->
                         <Button Height="50"  Margin="0 15 0 0" BorderBrush="Transparent" Background="Transparent">
                             <DockPanel>
-                                <Image Width="30" Height="30" Source="UserControl_BanHang/Icons/ThemSP.png"/>
-                                <TextBlock Margin="0 7 0 0"> ORDER</TextBlock>
+                                <Image Width="40" Height="40" Source="UserControl_BanHang/Icons/ThemSP.png"/>
+                                <TextBlock VerticalAlignment="Center" FontSize="20" Margin="0 7 0 0"> ORDER</TextBlock>
                             </DockPanel>
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
@@ -89,8 +89,8 @@
                         <!--NÚT THỐNG KÊ-->
                         <Button Height="50"  Margin="0 15 0 0" BorderBrush="Transparent" Background="Transparent">
                             <DockPanel>
-                                <Image Width="30" Height="30" Source="UserControl_BanHang/Icons/Thongke.png"/>
-                                <TextBlock Margin="0 7 0 0">THỐNG KÊ</TextBlock>
+                                <Image Width="40" Height="40" Source="UserControl_BanHang/Icons/Thongke.png"/>
+                                <TextBlock VerticalAlignment="Center" FontSize="20" Margin="0 7 0 0">THỐNG KÊ</TextBlock>
                             </DockPanel>
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
@@ -111,8 +111,8 @@
                         <!--NÚT NHẬP KHO-->
                         <Button Height="50"  Margin="0 15 0 0" BorderBrush="Transparent" Background="Transparent">
                             <DockPanel>
-                                <Image Width="30" Source="UserControl_BanHang/Icons/Kho.png"/>
-                                <TextBlock Margin="0 7 0 0" Text="SẢN PHẨM"></TextBlock>
+                                <Image Width="40" Height="40" Source="UserControl_BanHang/Icons/Kho.png"/>
+                                <TextBlock VerticalAlignment="Center" FontSize="20" Margin="0 7 0 0" Text="SẢN PHẨM"></TextBlock>
                             </DockPanel>
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
@@ -133,8 +133,8 @@
                         <!--NÚT NHÂN VIÊN-->
                         <Button  Height="50"  Margin="0 15 0 0" BorderBrush="Transparent" Background="Transparent">
                             <DockPanel>
-                                <Image Width="30" Source="Hinh/Nhanvien.png"/>
-                                <TextBlock Margin="0 7 0 0"> NHÂN VIÊN</TextBlock>
+                                <Image Width="40" Height="40" Source="Hinh/Nhanvien.png"/>
+                                <TextBlock VerticalAlignment="Center" FontSize="20" Margin="0 7 0 0"> NHÂN VIÊN</TextBlock>
                             </DockPanel>
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
@@ -155,7 +155,7 @@
                         </Button>
                     </StackPanel>
                     <!--NÚT ĐỔI MẬT KHẨU-->
-                    <Button Command="{Binding dmkcommand}" Height="50" Content="ĐỔI MẬT KHẨU" Margin="0 0 0 65" VerticalAlignment="Bottom" BorderBrush="Transparent" Background="Transparent">
+                    <Button Command="{Binding dmkcommand}" Height="50" FontSize="20" Content="ĐỔI MẬT KHẨU" Margin="0 0 0 65" VerticalAlignment="Bottom" BorderBrush="Transparent" Background="Transparent">
                         <Button.Style>
                             <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                 <Setter Property="FontWeight" Value="Normal"></Setter>
@@ -633,11 +633,6 @@
                                                 Command="{Binding xoacommand}"/>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
-                                </Button>
-                                <!--NÚT DISABLE NHÂN VIÊN-->
-                                <Button Content="Disable" Margin="0 0 20 0" Command="{Binding disablecommand}">
-                                </Button>
-                                <Button Content="Enable" Margin="0 0 20 0" Command="{Binding enablecommand}">
                                 </Button>
                             </StackPanel>
                         </Grid>

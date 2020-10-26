@@ -50,7 +50,7 @@ DataContext="{StaticResource dmkVM}"
 
                 </PasswordBox>
 
-                <PasswordBox  Margin="5"
+                <PasswordBox  Margin="10"
                     x:Name="pass_moi_nhaplai" FontSize="14"
                     materialDesign:HintAssist.Hint="Nhập lại mật khẩu"
                     materialDesign:HintAssist.Foreground="Green"
@@ -68,7 +68,7 @@ DataContext="{StaticResource dmkVM}"
                     <!--NÚT XÁC NHẬN-->
                     <Button
                             Command="{Binding }"
-                            Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="20" 
+                            Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="10" 
                             Width="120" Height="40"
                             ToolTip="ARE YOU SURE?">
                             XÁC NHẬN
@@ -76,7 +76,7 @@ DataContext="{StaticResource dmkVM}"
                     <!--NÚT HỦY-->
                     <Button Command="{Binding exitcommand}"
                             CommandParameter="{Binding ElementName=window}"
-                            Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="20"
+                            Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="10"
                             Width="120" Height="40"
                             ToolTip="Resource name: MaterialDesignRaisedLightButton">
                             HỦY

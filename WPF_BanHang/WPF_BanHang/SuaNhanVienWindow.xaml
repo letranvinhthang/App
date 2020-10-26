@@ -4,74 +4,58 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_BanHang"
-           xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-               xmlns:uc="clr-namespace:WPF_BanHang.UserControl_BanHang"
-        
-x:Name="window"
-                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-   DataContext="{StaticResource nvVM}"
-
+        xmlns:uc="clr-namespace:WPF_BanHang.UserControl_BanHang"
+        x:Name="window"              
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        DataContext="{StaticResource nvVM}"
         Title="SuaNhanVienWindow" Height="500" Width="800" WindowStartupLocation="CenterScreen">
     <Grid Background="White">
-
         <Border Margin="20" CornerRadius="15" Background="Wheat">
-
             <StackPanel Margin="15" Name="SuaNV">
-
-                <Label FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="UltraBold" Content="SỬA NHÂN VIÊN"></Label>
-
+                <TextBlock  FontSize="25" HorizontalAlignment="Center"  Margin="10" Text="ĐỔI MẬT KHẨU"/>
                 <TextBox                    
                    Text="{Binding ten}"
-  materialDesign:HintAssist.Hint="Tên nhân viên" Width="400"
-  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-  VerticalAlignment="Center" />
-
-                <TextBox
-                    
+                   materialDesign:HintAssist.Hint="Tên nhân viên" Width="400"
+                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                   VerticalAlignment="Center" />
+                <TextBox                  
                     Text="{Binding diachi}"
-  materialDesign:HintAssist.Hint="Địa chỉ" Width="400"
-  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-  VerticalAlignment="Center" />
-
+                    materialDesign:HintAssist.Hint="Địa chỉ" Width="400"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    VerticalAlignment="Center" />
                 <TextBox
-                   Text="{Binding sdt}"
-                        x:Name="textsdt"
-  materialDesign:HintAssist.Hint="Số điện thoại" Width="400"
-  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-
-  VerticalAlignment="Center">
+                    Text="{Binding sdt}"
+                    x:Name="textsdt"
+                    materialDesign:HintAssist.Hint="Số điện thoại" Width="400"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    VerticalAlignment="Center">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="TextChanged">
                             <i:InvokeCommandAction 
-                Command="{Binding TextChangedcommand}" 
-                CommandParameter="{Binding ElementName=textsdt}"/>
+                                Command="{Binding TextChangedcommand}" 
+                                CommandParameter="{Binding ElementName=textsdt}"/>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </TextBox>
 
 
                 <StackPanel Margin="10">
-
-
-
                     <PasswordBox Width="400"
-                                    x:Name="FloatingPasswordBox"
-    Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
-
-    VerticalAlignment="Top"
-    materialDesign:HintAssist.Hint="Mật khẩu" >
+                                 x:Name="FloatingPasswordBox"
+                                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                                 VerticalAlignment="Top"
+                                 materialDesign:HintAssist.Hint="Mật khẩu" >
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="PasswordChanged">
                                 <i:InvokeCommandAction 
-                Command="{Binding PassChangedcommand}" 
-                CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
+                                     Command="{Binding PassChangedcommand}" 
+                                     CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </PasswordBox>
                 </StackPanel>
-
                 <ComboBox ItemsSource="{Binding cvlist}"
                           DisplayMemberPath="TenChucvu" 
                           SelectedValuePath="IdChuvu"  Width="400" Height="30" Margin="0 15 0 0"
