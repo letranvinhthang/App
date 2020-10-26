@@ -643,13 +643,13 @@
                                                 <i:InvokeCommandAction 
                                                 Command="{Binding BarcodeChangedcommand}" 
                                                 CommandParameter="{Binding ElementName=BARCODE}"/>
-<<<<<<< HEAD
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-                                    </Button>
-                                </StackPanel>
-                            </Grid>
-                            <!--THÔNG TIN NHÂN VIÊN-->
+
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                        <!--THÔNG TIN NHÂN VIÊN-->
                             <Grid Grid.Row="1">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Loaded">
@@ -670,76 +670,29 @@
                                             <GridView.ColumnHeaderContainerStyle>
                                                 <Style TargetType="GridViewColumnHeader">
                                                     <Setter Property="FontSize" Value="20"/>
+                                                    <Setter Property="FontWeight" Value="Bold"/>
                                                     <Setter Property="Margin" Value="10"/>
                                                     <Setter Property="VerticalAlignment" Value="Center"/>
-                                                    <Setter Property="IsEnabled" Value="False"/>
+                                                    <Setter Property="IsEnabled" Value="True"/>
+                                                    <Setter Property="Width" Value="auto"/>
+                                                    <Setter Property="Background" Value="#FF8AD6C5"/>
                                                 </Style>
                                             </GridView.ColumnHeaderContainerStyle>
-                                            <GridViewColumn Width="200" Header="Hình ảnh">
-                                                <GridViewColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <Image Source="{Binding hinhnhanvien}"/>
-                                                    </DataTemplate>
-                                                </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
-                                            <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
-                                            <GridViewColumn Width="200" Header="Đơn giá" DisplayMemberBinding="{Binding ngaysinh}"/>
-                                            <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding diachi}"/>
-                                            <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding chucvu}"/>
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
-                            </Grid>
-=======
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>
-                            </StackPanel>
-                        </Grid>
-                        <!--THÔNG TIN NHÂN VIÊN-->
-                        <Grid Grid.Row="1">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Loaded">
-                                    <i:InvokeCommandAction Command="{Binding loadcommand}"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                            <ListView ItemsSource="{Binding nhanvienlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
-                                <!--ĐỊNH DẠNG NỘI DUNG-->
-                                <ListView.ItemContainerStyle>
-                                    <Style TargetType="ListViewItem">
-                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                        <Setter Property="FontSize" Value="15"/>
-                                    </Style>
-                                </ListView.ItemContainerStyle>
-                                <ListView.View>
-                                    <GridView>
-                                        <!--ĐỊNH DẠNG HEADER-->
-                                        <GridView.ColumnHeaderContainerStyle>
-                                            <Style TargetType="GridViewColumnHeader">
-                                                <Setter Property="FontSize" Value="20"/>
-                                                <Setter Property="FontWeight" Value="Bold"/>
-                                                <Setter Property="Margin" Value="10"/>
-                                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                                <Setter Property="IsEnabled" Value="True"/>
-                                                <Setter Property="Width" Value="auto"/>
-                                                <Setter Property="Background" Value="#FF8AD6C5"/>
-                                            </Style>
-                                        </GridView.ColumnHeaderContainerStyle>
-                                        <!--<GridViewColumn Width="200" Header="Hình ảnh">
+                                            <!--<GridViewColumn Width="200" Header="Hình ảnh">
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Image Source="{Binding hinhnhanvien}"/>
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>-->
-                                        <GridViewColumn Width="430" Header="Tên nhân viên" DisplayMemberBinding="{Binding ten }"/>
-                                        <GridViewColumn Width="200" Header="Ngày sinh" DisplayMemberBinding="{Binding Path=ngaysinh,StringFormat=dd-MM-yyyy}"/>
-                                        <GridViewColumn Width="500" Header="Địa chỉ" DisplayMemberBinding="{Binding diachi}"/>
-                                        <GridViewColumn Width="150" Header="Chức vụ" DisplayMemberBinding="{Binding chucvu}"/>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
->>>>>>> f756bbeb437955cf27c6bb4a2b9abfeab9660f39
+                                            <GridViewColumn Width="430" Header="Tên nhân viên" DisplayMemberBinding="{Binding ten }"/>
+                                            <GridViewColumn Width="200" Header="Ngày sinh" DisplayMemberBinding="{Binding Path=ngaysinh,StringFormat=dd-MM-yyyy}"/>
+                                            <GridViewColumn Width="500" Header="Địa chỉ" DisplayMemberBinding="{Binding diachi}"/>
+                                            <GridViewColumn Width="150" Header="Chức vụ" DisplayMemberBinding="{Binding chucvu}"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
