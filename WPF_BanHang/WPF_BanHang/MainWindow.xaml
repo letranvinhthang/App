@@ -635,14 +635,9 @@
                                     </i:Interaction.Triggers>
                                 </Button>
                                 <!--NÚT DISABLE NHÂN VIÊN-->
-                                <Button Content="Disable" Margin="0 0 20 0">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction 
-                                                Command="{Binding BarcodeChangedcommand}" 
-                                                CommandParameter="{Binding ElementName=BARCODE}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                <Button Content="Disable" Margin="0 0 20 0" Command="{Binding disablecommand}">
+                                </Button>
+                                <Button Content="Enable" Margin="0 0 20 0" Command="{Binding enablecommand}">
                                 </Button>
                             </StackPanel>
                         </Grid>

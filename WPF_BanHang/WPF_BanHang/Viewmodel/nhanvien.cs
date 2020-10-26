@@ -131,9 +131,9 @@ namespace WPF_BanHang.Viewmodel
             });
             enablecommand = new RelayCommand<object>((p) =>
             {
-                /* bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
+                 bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
                    if (a != true)
-                       return false;*/
+                       return false;
                 return true;
             }, (p) =>
             {
