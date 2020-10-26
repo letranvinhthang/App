@@ -125,20 +125,22 @@ namespace WPF_BanHang.Viewmodel
             {
                 var editnp = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
                 editnp.Disable = true;
+                MessageBox.Show("da vo hieu hoa tai khoan");
                 db.SaveChanges();
                 disa = SelectedItem.Disable;
 
             });
             enablecommand = new RelayCommand<Window>((p) =>
             {
-              /*   bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
+               bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
                    if (a != true)
-                       return false;*/
+                       return false;
                 return true;
             }, (p) =>
             {
                 var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
                 dis.Disable = false;
+                MessageBox.Show("da mo lai hoa tai khoan");
                 db.SaveChanges();
                 disa = SelectedItem.Disable;
             });

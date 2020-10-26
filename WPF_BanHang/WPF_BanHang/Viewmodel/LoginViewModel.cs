@@ -38,7 +38,7 @@ namespace WPF_BanHang.Viewmodel
         }
         void login(Window p)
         {
-
+          
             var db = new qlbhContext();
             if (p == null)
                 return;
@@ -56,13 +56,12 @@ namespace WPF_BanHang.Viewmodel
                     }
                     else
                     {
+                        usename = null;
+                        password = null;
                         MainViewModel.TaiKhoan = tk.FirstOrDefault();
                         p.Hide();
                         MainWindow main = new MainWindow();
-                        MessageBox.Show(" chuc vu id" + tk.FirstOrDefault().IdChucvu);
-                        main.ShowDialog();
-                        account = 0;
-                       
+                        main.ShowDialog();                  
                         p.Close();
 
                     }
