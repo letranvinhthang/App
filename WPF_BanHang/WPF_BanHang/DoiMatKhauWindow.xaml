@@ -50,7 +50,7 @@ DataContext="{StaticResource dmkVM}"
 
                 </PasswordBox>
 
-                <PasswordBox  Margin="5"
+                <PasswordBox  Margin="10"
                     x:Name="pass_moi_nhaplai" FontSize="14"
                     materialDesign:HintAssist.Hint="Nhập lại mật khẩu"
                     materialDesign:HintAssist.Foreground="Green"
@@ -64,17 +64,25 @@ DataContext="{StaticResource dmkVM}"
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </PasswordBox>
-                <Button  Margin="10" Background="Red"
-    Style="{StaticResource MaterialDesignRaisedButton}"
-    Width="100" Content="HỦY"
-    ToolTip="Resource name: MaterialDesignRaisedButton"
-                             Command="{Binding exitcommand}"
-                         CommandParameter="{Binding ElementName=window}"
-                             >
-
-                </Button>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <!--NÚT XÁC NHẬN-->
+                    <Button
+                            Command="{Binding }"
+                            Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="10" 
+                            Width="120" Height="40"
+                            ToolTip="ARE YOU SURE?">
+                            XÁC NHẬN
+                    </Button>
+                    <!--NÚT HỦY-->
+                    <Button Command="{Binding exitcommand}"
+                            CommandParameter="{Binding ElementName=window}"
+                            Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="10"
+                            Width="120" Height="40"
+                            ToolTip="Resource name: MaterialDesignRaisedLightButton">
+                            HỦY
+                    </Button>
+                </StackPanel>
             </StackPanel>
         </Border>
     </Grid>
-
 </Window>

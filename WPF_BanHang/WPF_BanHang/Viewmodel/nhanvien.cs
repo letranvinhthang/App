@@ -109,11 +109,11 @@ namespace WPF_BanHang.Viewmodel
                 var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
                 dis.XoaNhanVien = true;
                 db.SaveChanges();
-                MessageBox.Show("xoa thanh cong ");
+                MessageBox.Show("Xóa thành công!","Thông báo");
                 loadnhanvien();
 
             });
-            disablecommand = new RelayCommand<object>((p) =>
+            disablecommand = new RelayCommand<Window>((p) =>
             {
                 bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
 
@@ -129,11 +129,11 @@ namespace WPF_BanHang.Viewmodel
                 disa = SelectedItem.Disable;
 
             });
-            enablecommand = new RelayCommand<object>((p) =>
+            enablecommand = new RelayCommand<Window>((p) =>
             {
-                /* bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
+                 bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
                    if (a != true)
-                       return false;*/
+                       return false;
                 return true;
             }, (p) =>
             {
@@ -171,7 +171,7 @@ namespace WPF_BanHang.Viewmodel
                             editnp.DiachiNhanvien = diachi;
                             editnp.IdChucvu = chuvuseleted + 2;
                             db.SaveChanges();
-                            MessageBox.Show("sua thanh cong");
+                            MessageBox.Show("Sửa thành công!","Thông báo");
                             SelectedItem.ten = ten;
                             SelectedItem.sdt = sdt;
                             SelectedItem.diachi = diachi;
@@ -186,7 +186,7 @@ namespace WPF_BanHang.Viewmodel
                             edit.DiachiNhanvien = diachi;
                             edit.IdChucvu = chuvuseleted + 2;
                             db.SaveChanges();
-                            MessageBox.Show("sua thanh cong");
+                            MessageBox.Show("Sửa thành công!", "Thông báo");
                             SelectedItem.ten = ten;
                             SelectedItem.sdt = sdt;
                             SelectedItem.diachi = diachi;

@@ -5,64 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_BanHang"
         mc:Ignorable="d"
-        Background="White"
-        
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        
+        Background="White"       
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"      
         WindowStyle="None"
         Title="ThemSanPhamWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid >
-
-
         <Border Margin="15" CornerRadius="15" Background="Wheat">
-
             <StackPanel >
-
-                <Label FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="UltraBold" Content="THÊM SẢN PHẨM"></Label>
-
-                <TextBox
-                    
+                <TextBlock  FontSize="25" HorizontalAlignment="Center"  Margin="10" Text="ĐỔI MẬT KHẨU"/>
+                <TextBox                  
                     Text="{Binding ten}"
-  materialDesign:HintAssist.Hint="Tên sản phẩm" Width="400"
-  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-  VerticalAlignment="Center" />
-
-                <TextBox
-                    
+                    materialDesign:HintAssist.Hint="Tên sản phẩm" Width="400"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    VerticalAlignment="Center" />
+                <TextBox                  
                     Text="{Binding diachi}"
-  materialDesign:HintAssist.Hint="Barcode" Width="400"
-  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-  VerticalAlignment="Center" />
-
-                
+                    materialDesign:HintAssist.Hint="Barcode" Width="400"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    VerticalAlignment="Center" />
                 <ComboBox ItemsSource="{Binding cvlist}" DisplayMemberPath="TenChucvu" SelectedValuePath="IdChuvu" Width="400" Height="30" Margin="0 15 0 0"
-  materialDesign:HintAssist.Hint="Loại Sản phẩm"
-                         SelectedIndex="{Binding chuvuseleted}" >
-                    <!--CHỨC VỤ NHÂN VIÊN-->
-
+                          materialDesign:HintAssist.Hint="Loại Sản phẩm"
+                          SelectedIndex="{Binding chuvuseleted}" >
                 </ComboBox>
-
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 50 0 0">
                     <Button
                             Command="{Binding addcommand}"
-        Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="20" 
-        Width="120" Height="40"
-        ToolTip="ARE YOU SURE?">
+                            Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="20" 
+                            Width="120" Height="40"
+                            ToolTip="ARE YOU SURE?">
                         XÁC NHẬN
                     </Button>
                     <Button Command="{Binding exitcommand}"
                             CommandParameter="{Binding ElementName=window}"
-        Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="20"
-        Width="120" Height="40"
-        ToolTip="Resource name: MaterialDesignRaisedLightButton">
+                            Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="20"
+                            Width="120" Height="40"
+                            ToolTip="Resource name: MaterialDesignRaisedLightButton">
                         HỦY
                     </Button>
                 </StackPanel>
-
             </StackPanel>
-
         </Border>
-
-
     </Grid>
 </Window>

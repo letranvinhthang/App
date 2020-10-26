@@ -188,11 +188,11 @@
     
     
     <Grid>
-        <Grid Margin="20" Background="#1C2F3E">
+        <Grid Margin="20" Background="#1C2F3E" Loaded="ClearLogin">
             
             <Grid Height="400" Width="350" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                <Border Margin="50 0 0 0" BorderBrush="black" Background="Wheat" BorderThickness="1" CornerRadius="15">
+                <Border BorderBrush="black" Background="Wheat" BorderThickness="1" CornerRadius="15">
 
                     <Grid>
                         <Grid.RowDefinitions>
@@ -224,20 +224,18 @@
             </Grid>
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 400 0 0">
                 <StackPanel VerticalAlignment="Center"  Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Margin="50 0 10 0"
+                    <Button HorizontalAlignment="Center" Margin="10" Width="120"
                         Style="{StaticResource MaterialDesignRaisedButton}"
                         BorderBrush="Transparent"
                         Command="{Binding logincommand}"
                         CommandParameter="{Binding ElementName=window}"
                         ToolTip="BẤM ĐI BẠN EI~" Content="ĐĂNG NHẬP">
-
                     </Button>
-                    <Button  Margin="10 0 0 0"
+                    <Button HorizontalAlignment="Center" Margin="10" Width="120"
                         Command="{Binding exitcommand}"
                         CommandParameter="{Binding ElementName=window}"
                         Style="{StaticResource MaterialDesignRaisedButton}"
                         BorderBrush="Transparent"
-                        Width="100"
                         Background="Red"
                         ToolTip="THOÁT CHƯƠNG TRÌNH" Content="Exit">
                     </Button>
@@ -255,7 +253,7 @@
                     </Image>
                 </StackPanel>
                 
-                <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" Margin="50 0 0 300">
+                <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" Margin="0 0 0 300">
                     <Image Source="UserControl_BanHang/Icons/Logo.png" Width="100" Height="100" Margin="0 0 0 100"/>
                 </StackPanel>
 
