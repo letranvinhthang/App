@@ -45,7 +45,7 @@ namespace WPF_BanHang.Viewmodel
                 {
                     if (tk.FirstOrDefault().Disable == true)
                     {
-                        MessageBox.Show("tài khoản đã bị vô hiệu");
+                        MessageBox.Show("Tài khoản đã bị vô hiệu!");
                     }
                     else
                     {
@@ -58,8 +58,7 @@ namespace WPF_BanHang.Viewmodel
                 else
                 {
                     MessageBox.Show("Sai thông tin!", "Thông báo");                   
-                }
-                
+                }             
             }
             else
             {

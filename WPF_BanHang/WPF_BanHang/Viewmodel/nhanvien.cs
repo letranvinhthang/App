@@ -113,7 +113,7 @@ namespace WPF_BanHang.Viewmodel
                 loadnhanvien();
 
             });
-            disablecommand = new RelayCommand<object>((p) =>
+            disablecommand = new RelayCommand<Window>((p) =>
             {
                 bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
 
@@ -129,7 +129,7 @@ namespace WPF_BanHang.Viewmodel
                 disa = SelectedItem.Disable;
 
             });
-            enablecommand = new RelayCommand<object>((p) =>
+            enablecommand = new RelayCommand<Window>((p) =>
             {
                  bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
                    if (a != true)
