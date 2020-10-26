@@ -167,8 +167,8 @@
                             Command="{Binding closecommand}"
                             CommandParameter="{Binding ElementName=window}">
                         <DockPanel>
-                            <Image Width="30" Height="30" Source="UserControl_BanHang/Icons/logout.png"/>
-                            <TextBlock Margin="0 7 0 0"> ĐĂNG XUẤT</TextBlock>
+                            <Image Width="40" Height="40" Source="UserControl_BanHang/Icons/logout.png"/>
+                            <TextBlock VerticalAlignment="Center" FontSize="20" Margin="0 7 0 0"> ĐĂNG XUẤT</TextBlock>
                         </DockPanel>
                         <Button.Style>
                             <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
