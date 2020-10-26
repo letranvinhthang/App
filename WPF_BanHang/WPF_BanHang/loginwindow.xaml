@@ -188,11 +188,11 @@
     
     
     <Grid>
-        <Grid Margin="20" Background="#1C2F3E" Loaded="ClearLogin">
+        <Grid Margin="20" Background="Goldenrod">
             
             <Grid Height="400" Width="350" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                <Border BorderBrush="black" Background="Wheat" BorderThickness="1" CornerRadius="15">
+                <Border BorderBrush="Transparent" Background="PaleGoldenrod" BorderThickness="1" CornerRadius="15">
 
                     <Grid>
                         <Grid.RowDefinitions>
@@ -230,7 +230,11 @@
                         Command="{Binding logincommand}"
                         CommandParameter="{Binding ElementName=window}"
                         ToolTip="BẤM ĐI BẠN EI~" Content="ĐĂNG NHẬP">
+                       
                     </Button>
+
+                   
+
                     <Button HorizontalAlignment="Center" Margin="10" Width="120"
                         Command="{Binding exitcommand}"
                         CommandParameter="{Binding ElementName=window}"
