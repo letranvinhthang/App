@@ -29,10 +29,18 @@
                             SelectedIndex="{Binding chuvuseleted}" >
                     <!--CHỨC VỤ NHÂN VIÊN-->
                 </ComboBox>
+<<<<<<< HEAD
                 <CheckBox 
                     
                     ></CheckBox>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 50 0 0">
+=======
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 30 0 0">
+                    <CheckBox Content="Sản phẩm mới" Margin="10" Command="{Binding}"/>
+                    <CheckBox Content="Sản phẩm hot" Margin="10" Command="{Binding}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
+>>>>>>> 7c22faf499090c9784a1e93254105d9679464309
                     <Button
                             Command="{Binding addcommand}"
                             Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="20" 
