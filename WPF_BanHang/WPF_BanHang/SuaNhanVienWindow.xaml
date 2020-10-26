@@ -94,7 +94,9 @@ x:Name="window"
         ToolTip="Resource name: MaterialDesignRaisedLightButton">
                             HỦY
                         </Button>
-                    </StackPanel>
+                    <Button Content="Disable" Margin="0 0 20 0" Command="{Binding disablecommand}">
+                    </Button>
+                </StackPanel>
 
                 </StackPanel>
 
