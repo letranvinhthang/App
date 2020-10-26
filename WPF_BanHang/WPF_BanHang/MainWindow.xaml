@@ -255,13 +255,13 @@
                                                 <Setter Property="BorderThickness" Value="5"/>
                                             </Style>
                                         </GridView.ColumnHeaderContainerStyle>
-                                        <GridViewColumn Header="Hình ảnh">
+                                        <!--<GridViewColumn Header="Hình ảnh">
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Image Source="{Binding hinhsp}" Width="100" Height="100"/>
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
+                                        </GridViewColumn>-->
                                         <GridViewColumn Header="Tên sản phẩm" DisplayMemberBinding="{Binding tensp }"/>
                                         <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding dongia}"/>
                                         <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>

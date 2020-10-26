@@ -86,7 +86,7 @@ namespace WPF_BanHang.Viewmodel
 
                                     }
                                  }
-                                    orderl.hinhsp = dssp.HinhSanpham;
+                                    //orderl.hinhsp = dssp.HinhSanpham;
                                     orderl.barcode = dssp.IdSanpham;
                                     orderl.tensp = dssp.TenSanpham;
                                     orderl.dongia = chsp.GiaTheoQuan;
