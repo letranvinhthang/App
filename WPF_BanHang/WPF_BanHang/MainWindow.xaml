@@ -25,14 +25,8 @@
         DataContext="{StaticResource mainVM}">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-<<<<<<< HEAD
-            <i:InvokeCommandAction 
-                Command="{Binding SetupQuyenCommand}" 
-                CommandParameter="{Binding ElementName=window}"/>
-=======
             <i:InvokeCommandAction Command="{Binding SetupQuyenCommand}">
             </i:InvokeCommandAction>
->>>>>>> f9c409dc00e531aedcdcf334ed5aa610ec3a2932
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
@@ -61,7 +55,7 @@
                 <ColumnDefinition Width="200"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" Background="#14212B">
+            <Grid Grid.Column="0" Background="#1C2F3E">
 
                 <Grid Grid.Row="0" VerticalAlignment="Top" Background="BlanchedAlmond">
                 </Grid>
@@ -553,7 +547,31 @@
                             <RowDefinition Height="50"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-
+                        <Grid Grid.Row="0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <!--NÚT THÊM SẢN PHẨM-->
+                                <Button Content="Thêm" Margin="0 0 20 0" Command="{Binding }">
+                                </Button>
+                                <!--NÚT SỬA SẢN PHẨM-->
+                                <Button Content="sửa" Margin="0 0 20 0">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction 
+                                                Command="{Binding }"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                                <!--NÚT XÓA SẢN PHẨM-->
+                                <Button Content="Xóa" Margin="0 0 20 0">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction 
+                                                Command="{Binding }"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
                         <!--THÔNG TIN SẢN PHẨM TẠI CỬA HÀNG-->
                         <Grid Grid.Row="1">
                             <i:Interaction.Triggers>
