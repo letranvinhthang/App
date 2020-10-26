@@ -29,6 +29,10 @@ namespace WPF_BanHang
                 e.Handled = regex.IsMatch(e.Text);
         }
 
- 
+        private void clearlogin(object sender, RoutedEventArgs e)
+        {
+            ID.Text = "";
+            FloatingPasswordBox.Password = "";
+        }
     }
 }

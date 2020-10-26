@@ -197,20 +197,11 @@
 
 
     <Grid>
-<<<<<<< HEAD
         <Grid Margin="20" Background="#1C2F3E">
 
             <Grid Height="400" Width="350" HorizontalAlignment="Center" VerticalAlignment="Center">
 
                 <Border Margin="74,10,-24,-10" BorderBrush="black" Background="Wheat" BorderThickness="1" CornerRadius="15">
-=======
-        <Grid Margin="20" Background="#1C2F3E" Loaded="ClearLogin">
-            
-            <Grid Height="400" Width="350" HorizontalAlignment="Center" VerticalAlignment="Center">
-
-                <Border BorderBrush="black" Background="Wheat" BorderThickness="1" CornerRadius="15">
->>>>>>> 35cbd72aecfe38901fc548fcfd5b246108383b47
-
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
@@ -231,11 +222,6 @@
                 Command="{Binding PasswordChangedcommand}" 
                 CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
                                     </i:EventTrigger>
-                                    <i:EventTrigger EventName="Unloaded">
-                                        <i:InvokeCommandAction 
-                Command="{Binding loadedpasscommand}" 
-                CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
-                                    </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </PasswordBox>
                         </Grid>
@@ -244,7 +230,7 @@
 
                 </Border>
             </Grid>
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 400 0 0">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="100 400 0 0">
                 <StackPanel VerticalAlignment="Center"  Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Margin="0 0 30 0"
                         Style="{StaticResource MaterialDesignRaisedButton}"
@@ -276,14 +262,8 @@
                     <Image Source="Hinh/Event/bat.png" Width="100" Height="150">
                     </Image>
                 </StackPanel>
-<<<<<<< HEAD
-
-                <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" Margin="50 0 0 300">
-=======
-                
                 <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" Margin="0 0 0 300">
->>>>>>> 35cbd72aecfe38901fc548fcfd5b246108383b47
-                    <Image Source="UserControl_BanHang/Icons/Logo.png" Width="100" Height="100" Margin="0 0 0 100"/>
+                    <Image Source="UserControl_BanHang/Icons/Logo.png" Width="100" Height="100" Margin="100 0 0 100" Loaded="clearlogin"/>
                 </StackPanel>
 
             </Grid>

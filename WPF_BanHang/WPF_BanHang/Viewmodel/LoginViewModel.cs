@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
@@ -59,6 +60,8 @@ namespace WPF_BanHang.Viewmodel
                         p.Hide();
                         MainWindow main = new MainWindow();
                         main.ShowDialog();
+                        account = 0;
+
                         p.Close();
 
                     }
