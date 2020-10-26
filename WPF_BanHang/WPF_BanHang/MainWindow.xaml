@@ -634,12 +634,6 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </Button>
-<<<<<<< HEAD
-                                <!--NÚT DISABLE NHÂN VIÊN-->
-                                <Button Content="Enable" Margin="0 0 20 0" Command="{Binding enablecommand}">
-                                </Button>
-=======
->>>>>>> 0cf85bfb51bacb3bf06bf7cb703fbdf32b2571bd
                             </StackPanel>
                         </Grid>
                         <!--THÔNG TIN NHÂN VIÊN-->

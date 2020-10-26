@@ -80,23 +80,12 @@
                     <!--NÚT HỦY-->
                     <Button Command="{Binding exitcommand}"
                             CommandParameter="{Binding ElementName=window}"
-<<<<<<< HEAD
-        Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="20"
-        Width="120" Height="40"
-        ToolTip="Resource name: MaterialDesignRaisedLightButton">
-                            HỦY
-                        </Button>
-                    <Button Content="Disable" Margin="0 0 20 0" Command="{Binding disablecommand}">
-                    </Button>
-                </StackPanel>
 
-=======
                             Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="20"
                             Width="120" Height="40"
                             ToolTip="Resource name: MaterialDesignRaisedLightButton">
                         HỦY
                     </Button>
->>>>>>> 0cf85bfb51bacb3bf06bf7cb703fbdf32b2571bd
                 </StackPanel>
             </StackPanel>
         </Border>
