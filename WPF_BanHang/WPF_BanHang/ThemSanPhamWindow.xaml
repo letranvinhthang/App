@@ -22,13 +22,13 @@
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                     VerticalAlignment="Center" />
                 <TextBox                  
-                    Text="{Binding diachi}"
+                    Text="{Binding barcode}"
                     materialDesign:HintAssist.Hint="Barcode" Width="400"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                     VerticalAlignment="Center" />
-                <ComboBox ItemsSource="{Binding cvlist}" DisplayMemberPath="TenChucvu" SelectedValuePath="IdChuvu" Width="400" Height="30" Margin="0 15 0 0"
+                <ComboBox ItemsSource="{Binding lsplist}" DisplayMemberPath="TenChucvu" SelectedValuePath="IdChuvu" Width="400" Height="30" Margin="0 15 0 0"
                           materialDesign:HintAssist.Hint="Loại Sản phẩm"
-                          SelectedIndex="{Binding chuvuseleted}" >
+                          SelectedIndex="{Binding loaispseleted}" >
                 </ComboBox>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 30 0 0">
                     <CheckBox Content="Sản phẩm mới" Margin="10" Command="{Binding}"/>

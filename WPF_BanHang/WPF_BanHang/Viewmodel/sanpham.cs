@@ -66,11 +66,20 @@ namespace WPF_BanHang.Viewmodel
         public ICommand suasanphamcommand { get; set; }
         public ICommand loadcomannd { get; set; }
         public ICommand editcommand { get; set; }
-
+        public ICommand xoacommand { get; set; }
         public sanpham()
         {
             var db = new qlbhContext();
-            loadcomannd = new RelayCommand<Object>((k) => { return true; }, (k) => { loadsanpham(); });
+            xoacommand = new RelayCommand<object>((a) => { return true; }, (a) =>
+            {
+                var dis = db.SanPham.Where(x => x.IdSanpham == SelectedItem.IdSanpham).SingleOrDefault();
+                dis.XoaSanPham = true;
+                db.SaveChanges();
+                MessageBox.Show("Xóa thành công!", "Thông báo");
+                loadsanpham();
+
+            });
+                loadcomannd = new RelayCommand<Object>((k) => { return true; }, (k) => { loadsanpham(); });
             themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
             suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
             editcommand = new RelayCommand<object>((p) =>
@@ -124,7 +133,7 @@ namespace WPF_BanHang.Viewmodel
             {
                 int? idch = MainViewModel.TaiKhoan.Idcuahang;
                 var spch = db.CuahangSanpham.Where(p => p.IdCuahang == idch);
-                foreach (var item in sp.ToList())
+                foreach (var item in sp.Where(p => p.XoaSanPham == false).ToList())
                 {
                     var chsp = spch.Where(p => p.IdSanpham == item.IdSanpham).FirstOrDefault();
                     var loaisp = lsp.Where(p => p.IdLoaisp == item.IdLoaisp).FirstOrDefault();
