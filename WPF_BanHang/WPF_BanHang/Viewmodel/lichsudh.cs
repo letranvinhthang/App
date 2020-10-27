@@ -36,7 +36,7 @@ namespace WPF_BanHang.Viewmodel
                 var khhd = kh.Where(p => p.IdKhachhang == item.IdKhachhang).FirstOrDefault();
                 var ncchd = ncc.Where(p => p.IdNhacc == item.IdNhacc).FirstOrDefault();
                 hdxl hoadonxuly = new hdxl();
-                hoadonxuly.MaHoadon = item.MaHoadon;
+                hoadonxuly.MaHoadon = item.MaHoaDon;
                 hoadonxuly.NgayTao = item.NgayTao;
                 hoadonxuly.ThanhTien = item.ThanhTien;
                 hoadonxuly.TenNhanvien = nvhd.TenNhanvien;
