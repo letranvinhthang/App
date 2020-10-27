@@ -75,11 +75,7 @@
                                 <Image  Width="40" Height="40" Source="UserControl_BanHang/Icons/icon-order.png" RenderTransformOrigin="-0.19,0.542"/>
                                 <TextBlock VerticalAlignment="Center" FontSize="20" Margin="0 7 0 0" Text="ORDER"></TextBlock>
                             </DockPanel>
-                            
-
-                                
-                                
-                            
+                                                                                       
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                     <Setter Property="FontWeight" Value="Normal"></Setter>
@@ -218,16 +214,20 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="50"></RowDefinition>
-                            <RowDefinition Height="6*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition ></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
 
                         <!--BARCODE-->
                         <Grid Grid.Row="0" Background="DarkGoldenrod">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Nhập Barcode: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" />
-                                <TextBox x:Name="BARCODE" FontSize="20" Width="200" Height="30" Background="White">
+                                <TextBox
+                                    x:Name="BARCODE" Margin="10"
+                                    FontSize="20" Width="200" Height="30" 
+                                    Background="White"
+                                    materialDesign:HintAssist.Hint="Barcode"
+                                    >
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="TextChanged">
                                             <i:InvokeCommandAction 
@@ -236,6 +236,7 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </TextBox>
+                                
                                 <TextBlock Margin="30 0 0 0" Text="Số lượng: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" />
                                 <TextBox x:Name="SOLUONG" FontSize="20" Width="200" Height="30" Text="{Binding soluongsp}" Background="White">
 
@@ -298,7 +299,7 @@
                             <TextBlock Text="TỔNG TIỀN KHÁCH PHẢI TRẢ" FontSize="30" Margin="50 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White"/>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--NÚT THÊM ORDER-->
-                                <Button Content="Thanh toán" Margin="0 0 20 0" Width="120" Height="40">
+                                <Button Content="Thanh toán" Margin="10 10 20 10" Width="120" Height="40">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
                                             <i:InvokeCommandAction 
@@ -308,7 +309,7 @@
                                     </i:Interaction.Triggers>
                                 </Button>
                                 <!--NÚT SỬA ORDER-->
-                                <Button Content="sửa" Margin="0 0 20 0" Width="120" Height="40">
+                                <Button Content="sửa" Margin="10 10 20 10" Width="120" Height="40">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
                                             <i:InvokeCommandAction 
@@ -318,7 +319,7 @@
                                     </i:Interaction.Triggers>
                                 </Button>
                                 <!--NÚT XÓA ORDER-->
-                                <Button Content="Xóa" Margin="0 0 150 0" Width="120" Height="40">
+                                <Button Content="Xóa" Margin="10 10 150 10" Width="120" Height="40">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
                                             <i:InvokeCommandAction 
@@ -360,7 +361,7 @@
                                      
                                     Background="Transparent"
                                     BorderBrush="Transparent"
-                                     ToolTip="MaterialDesignFloatingActionMiniButton">
+                                     ToolTip="Doanh thu">
                                     <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-Revenue.png"/>
                                     
                                     <i:Interaction.Triggers>
@@ -379,7 +380,7 @@
                                      
                                     Background="Transparent"
                                     BorderBrush="Transparent"
-                                     ToolTip="MaterialDesignFloatingActionMiniButton">
+                                     ToolTip="Sản phẩm">
                                     <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-Product.png"/>
 
                                     <i:Interaction.Triggers>
@@ -398,7 +399,7 @@
                                      
                                     Background="Transparent"
                                     BorderBrush="Transparent"
-                                     ToolTip="MaterialDesignFloatingActionMiniButton">
+                                     ToolTip="Lịch sử">
                                     <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-History.png"/>
 
                                     <i:Interaction.Triggers>
@@ -625,7 +626,7 @@
                                      Command="{Binding }"
                                     Background="Transparent"
                                     BorderBrush="Transparent"
-                                     ToolTip="MaterialDesignFloatingActionMiniButton">
+                                     ToolTip="Thêm sản phẩm">
                                     <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-add.png"/>
                                 </Button>
                                 
@@ -637,7 +638,7 @@
                                     Background="Transparent"
                                     BorderBrush="Transparent"
                                      Command="{Binding }"
-                                     ToolTip="MaterialDesignFloatingActionMiniButton">
+                                     ToolTip="Sửa sản phẩm">
                                     <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-edit.png"/>
                                 </Button>
                                
@@ -649,7 +650,7 @@
                                      Command="{Binding }"
                                     Background="Transparent"
                                     BorderBrush="Transparent"
-                                     ToolTip="MaterialDesignFloatingActionMiniButton">
+                                     ToolTip="Xóa sản phẩm">
                                     <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-delete.png"/>
                                 </Button>
                                 

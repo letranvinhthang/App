@@ -211,6 +211,9 @@
                             <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0" Margin="0 0 0 20">
+                            
+                            
+                            
                             <TextBox x:Name="ID" Margin="0,15" materialDesign:HintAssist.Hint="ID nhân viên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18" Text="{Binding usename}" Width="200"/>
                         </Grid>
                         <Grid Grid.Row="1" Margin="0 0 0 30" >
