@@ -1,4 +1,7 @@
-﻿using Org.BouncyCastle.Asn1.Mozilla;
+﻿using GalaSoft.MvvmLight.Command;
+using LiveCharts;
+using LiveCharts.Wpf;
+using Org.BouncyCastle.Asn1.Mozilla;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,19 +15,9 @@ namespace WPF_BanHang.Viewmodel
 {
     class ThongKeViewModel : BaseViewModel
     {
-        public ThongKeXL _SelectedItem;
-        public ThongKeXL SelectedItem
-        {
-            get => _SelectedItem;
-            set
-            {
-                _SelectedItem = value; OnPropertyChanged();
-                if (SelectedItem != null)
-                {
-                    
-                }
-            }
-        }
+        public SeriesCollection ChartData { get; }
+        private readonly ChartValues<double> _ys;
+
         public enum ChucNangQL
         {
             DoanhThu, SanPham, LichSu
@@ -61,6 +54,7 @@ namespace WPF_BanHang.Viewmodel
             #endregion
             void loaddoanhthu()
             {
+                
                 var db = new qlbhContext();
                 doanhthulist = new ObservableCollection<ThongKeXL>();
                 if (MainViewModel.TaiKhoan != null)
@@ -73,11 +67,21 @@ namespace WPF_BanHang.Viewmodel
                         thongke.SoLuongHoaDon = item.SoLuongHoaDon;
                         thongke.NgayTao = item.NgayTao;
                         thongke.TongDoanhThu = item.TongDoanhThu;
+                        _ys.Add(double.Parse(item.TongDoanhThu.ToString()));
                         doanhthulist.Add(thongke);
                     }
                 }
             }
+
+            _ys = new ChartValues<double>();
+
+            ChartData = new SeriesCollection()
+        {
+            new LineSeries() {  Values = _ys }
+        };
         }
+
     }
+    
     
 }
