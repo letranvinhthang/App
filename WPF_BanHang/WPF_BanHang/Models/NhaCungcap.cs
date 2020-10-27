@@ -8,6 +8,7 @@ namespace WPF_BanHang.Models
         public NhaCungcap()
         {
             HoaDon = new HashSet<HoaDon>();
+            SanPham = new HashSet<SanPham>();
         }
 
         public int IdNhacc { get; set; }
@@ -15,5 +16,6 @@ namespace WPF_BanHang.Models
         public string DiachiNhacc { get; set; }
 
         public virtual ICollection<HoaDon> HoaDon { get; set; }
+        public virtual ICollection<SanPham> SanPham { get; set; }
     }
 }
