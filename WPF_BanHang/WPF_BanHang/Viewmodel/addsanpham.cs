@@ -54,10 +54,19 @@ namespace WPF_BanHang.Viewmodel
                 {
                     return false;
                 }
+            
                 return true;
             },
                    (p) =>
                    {
+                       var sp = db.SanPham;
+                       foreach (var item in sp.ToList())
+                       {
+                           if ( item.IdSanpham == barcode)
+                           {
+                               MessageBox.Show("barcode bi trung");
+                           }
+                       }
                        int idch = MainViewModel.TaiKhoan.Idcuahang;
                        db.SanPham.Add(new SanPham
                        {

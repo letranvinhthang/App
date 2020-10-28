@@ -110,12 +110,15 @@ namespace WPF_BanHang.Viewmodel
                 themnhanvien(a); });
                  loadednvcommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) => { loadnhanvien(); });
             xoacommand = new RelayCommand<object>((a) => { return true; }, (a) => {
-                var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
-                dis.XoaNhanVien = true;
-                db.SaveChanges();
-                MessageBox.Show("Xóa thành công!","Thông báo");
-                loadnhanvien();
-
+            MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
+                    dis.XoaNhanVien = true;
+                    db.SaveChanges();
+                    MessageBox.Show("Xóa thành công!", "Thông báo");
+                    loadnhanvien();
+                }
             });
             disablecommand = new RelayCommand<Window>((p) =>
             {
@@ -235,11 +238,7 @@ namespace WPF_BanHang.Viewmodel
             }
             return hash.ToString();
         }
-        void themsanpham(ThemSanPhamWindow k)
-        {
-            ThemSanPhamWindow window3 = new ThemSanPhamWindow();
-            window3.ShowDialog();
-        }
+
         void loadnhanvien()
         {
             var db = new qlbhContext();
