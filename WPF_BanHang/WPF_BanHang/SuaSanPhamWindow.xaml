@@ -25,9 +25,17 @@
                     materialDesign:HintAssist.Hint="Barcode" Width="400"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                     VerticalAlignment="Center" />
-                <ComboBox ItemsSource="{Binding lsplist}" DisplayMemberPath="TenChucvu" SelectedValuePath="IdChuvu" Width="400" Height="30" Margin="0 15 0 0"
-                            materialDesign:HintAssist.Hint="Loại Sản phẩm"
-                            SelectedIndex="{Binding loaispseleted}" >
+                <TextBox                    
+                    Text="{Binding dongia}"
+                    materialDesign:HintAssist.Hint="Barcode" Width="400"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    VerticalAlignment="Center" />
+                <ComboBox ItemsSource="{Binding lsplist}" 
+                          DisplayMemberPath="TenLoai" 
+                          SelectedValuePath="IdLoaisp"
+                          Width="400" Height="30" Margin="0 15 0 0"
+                          materialDesign:HintAssist.Hint="Loại Sản phẩm"
+                          SelectedIndex="{Binding loaispseleted}" >
                     <!--CHỨC VỤ NHÂN VIÊN-->
                 </ComboBox>
 
@@ -37,7 +45,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
                     <Button
-                            Command="{Binding addcommand}"
+                            Command="{Binding editcommand}"
                             Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="20" 
                             Width="120" Height="40"
                             ToolTip="ARE YOU SURE?">
