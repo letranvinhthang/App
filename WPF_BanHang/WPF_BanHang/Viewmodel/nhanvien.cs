@@ -11,7 +11,7 @@ using WPF_BanHang.Models;
 
 namespace WPF_BanHang.Viewmodel
 {
-   public class nhanvien:BaseViewModel
+    public class nhanvien : BaseViewModel
     {
         #region DataContext
         public ObservableCollection<nvxl> _nhanvienlist;
@@ -87,6 +87,7 @@ namespace WPF_BanHang.Viewmodel
         public ICommand xoacommand { get; set; }
         public ICommand enablecommand { get; set; }
         public ICommand loadcommand { get; set; }
+
         #endregion
         public nhanvien()
         {
@@ -95,25 +96,42 @@ namespace WPF_BanHang.Viewmodel
             {
                 loadnhanvien();
             });
+<<<<<<< HEAD
             exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 p.Close();
             });
             suanhanviencommand = new RelayCommand<Object>((l) => {
+=======
+            suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) =>
+            {
+>>>>>>> origin/thinh
                 if (SelectedItem == null)
                 {
                     return false;
                 }
                 return true;
+<<<<<<< HEAD
             }, (l) => { suanhanvien(); });
             themnhanviencommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) => {
                 themnhanvien(a); });
                  loadednvcommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) => { loadnhanvien(); });
             xoacommand = new RelayCommand<object>((a) => { return true; }, (a) => {
+=======
+            }, (c) => { suanhanvien(c); });
+            themnhanviencommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) =>
+            {
+                themnhanvien(a);
+            });
+            loadednvcommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) => { loadnhanvien(); });
+            xoacommand = new RelayCommand<object>((a) => { return true; }, (a) =>
+            {
+
+>>>>>>> origin/thinh
                 var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
                 dis.XoaNhanVien = true;
                 db.SaveChanges();
-                MessageBox.Show("Xóa thành công!","Thông báo");
+                MessageBox.Show("Xóa thành công!", "Thông báo");
                 loadnhanvien();
 
             });
@@ -136,9 +154,9 @@ namespace WPF_BanHang.Viewmodel
             });
             enablecommand = new RelayCommand<Window>((p) =>
             {
-               bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
-                   if (a != true)
-                       return false;
+                bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
+                if (a != true)
+                    return false;
                 return true;
             }, (p) =>
             {
@@ -148,8 +166,10 @@ namespace WPF_BanHang.Viewmodel
                 db.SaveChanges();
                 disa = SelectedItem.Disable;
             });
+            exitcommand = new RelayCommand<Window>((e) => { return true; }, (e) => { exit(e); });
             //xử lý sửa thông tin
             PassChangedcommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { password = p.Password; });
+
             TextChangedcommand = new RelayCommand<TextBox>((p) => { return true; }, (p) => { sodt = p.Text; });
             editcommand = new RelayCommand<object>((p) =>
             {
@@ -177,7 +197,7 @@ namespace WPF_BanHang.Viewmodel
                             editnp.DiachiNhanvien = diachi;
                             editnp.IdChucvu = chuvuseleted + 2;
                             db.SaveChanges();
-                            MessageBox.Show("Sửa thành công!","Thông báo");
+                            MessageBox.Show("Sửa thành công!", "Thông báo");
                             SelectedItem.ten = ten;
                             SelectedItem.sdt = sdt;
                             SelectedItem.diachi = diachi;
@@ -214,7 +234,7 @@ namespace WPF_BanHang.Viewmodel
                 loadnhanvien();
             }
             //mã hóa base 64
-     
+
 
         }
         public static string Base64Encode(string plainText)
@@ -235,6 +255,10 @@ namespace WPF_BanHang.Viewmodel
             }
             return hash.ToString();
         }
+        void exit(Window e)
+        {
+            e.Close();
+        }
         void themsanpham(ThemSanPhamWindow k)
         {
             ThemSanPhamWindow window3 = new ThemSanPhamWindow();
@@ -248,10 +272,10 @@ namespace WPF_BanHang.Viewmodel
             var nv = db.NhanVien;
             var qh = db.QuyenHan;
 
-            if(MainViewModel.TaiKhoan != null)
+            if (MainViewModel.TaiKhoan != null)
             {
                 int? idch = MainViewModel.TaiKhoan.Idcuahang;
-                foreach (var item in nv.Where(p => p.Idcuahang == idch && p.XoaNhanVien == false ).ToList())
+                foreach (var item in nv.Where(p => p.Idcuahang == idch && p.XoaNhanVien == false).ToList())
                 {
                     var tencv = qh.Where(p => p.IdChucvu == item.IdChucvu).FirstOrDefault();
                     nvxl nvl = new nvxl();
@@ -269,7 +293,10 @@ namespace WPF_BanHang.Viewmodel
             else
             {
                 return;
+
+
             }
+            
         }
     }
  }

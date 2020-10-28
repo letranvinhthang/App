@@ -40,8 +40,18 @@
                 </ComboBox>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 30 0 0">
-                    <CheckBox Content="Sản phẩm mới" Margin="10" IsChecked="{Binding spmoi}"/>
-                    <CheckBox Content="Sản phẩm hot" Margin="10" IsChecked="{Binding sphot}"/>
+
+                    <CheckBox
+                        Style="{StaticResource MaterialDesignFilterChipCheckBox}"
+                        IsChecked="{Binding spmoi}"
+                        Content="Sản phẩm mới">
+                    </CheckBox>
+                    <CheckBox
+                        Style="{StaticResource MaterialDesignFilterChipCheckBox}"
+                        IsChecked="{Binding sphot}"
+                        Content="Sản phẩm hot">
+                    </CheckBox>
+
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
                     <Button
