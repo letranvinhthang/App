@@ -1425,6 +1425,7 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>-->
+<<<<<<< HEAD
                                             <GridViewColumn Width="250" Header="Mã nhân viên" DisplayMemberBinding="{Binding Manv }"/>
                                             <GridViewColumn Width="250" Header="Tên nhân viên" DisplayMemberBinding="{Binding ten }"/>
                                             <GridViewColumn Width="230" Header="Ngày bắt đầu làm việc" DisplayMemberBinding="{Binding Path=ngaysinh,StringFormat=dd-MM-yyyy}"/>
@@ -1434,6 +1435,16 @@
                                     </ListView.View>
                                 </ListView>
                             </Grid>
+=======
+                                        <GridViewColumn Width="250" Header="Mã nhân viên" DisplayMemberBinding="{Binding Manv }"/>
+                                        <GridViewColumn Width="250" Header="Tên nhân viên" DisplayMemberBinding="{Binding ten }"/>
+                                        <GridViewColumn Width="230" Header="Ngày bắt đầu làm việc" DisplayMemberBinding="{Binding Path=ngaysinh,StringFormat=dd-MM-yyyy}"/>
+                                        <GridViewColumn Width="500" Header="Địa chỉ" DisplayMemberBinding="{Binding diachi}"/>
+                                        <GridViewColumn Width="120" Header="Chức vụ" DisplayMemberBinding="{Binding chucvu}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+>>>>>>> origin/hao1
                         </Grid>
                     </Grid>
                 </Grid>

@@ -11,11 +11,39 @@ namespace WPF_BanHang.Viewmodel
     {
         public ObservableCollection<hdxl> _hoadonlist;
         public ObservableCollection<hdxl> hoadonlist { get => _hoadonlist; set { _hoadonlist = value; OnPropertyChanged(); } }
+        public ObservableCollection<hdxl> _cthdlist;
+        public ObservableCollection<hdxl> cthdlist { get => _cthdlist; set { _cthdlist = value; OnPropertyChanged(); } }
+        public hdxl _SelectedItem;
+        public hdxl SelectedItem
+        {
+            get => _SelectedItem;
+            set
+            {
+                _SelectedItem = value; OnPropertyChanged();
+                if (SelectedItem != null)
+                {
+                    idhoadon = SelectedItem.IdHoadon;
+                    mahoadon = SelectedItem.MaHoadon;
+                }
+            }
+        }
+        private int _idhoadon;
+        public int idhoadon { get => _idhoadon; set { _idhoadon = value; OnPropertyChanged(); } }
+
+        private long _mahoadon;
+        public long mahoadon { get => _mahoadon; set { _mahoadon = value; OnPropertyChanged(); } }
+
+
         public ICommand loadcommannd { get; set; }
+        public ICommand cthdcommannd { get; set; }
         public lichsudh()
         {
             loadcommannd = new RelayCommand<Object>((k) => { return true; }, (k) => {
                 Loadhoadon();
+            });
+            cthdcommannd = new RelayCommand<Object>((k) => { return true; }, (k) => {
+                var db = new qlbhContext();
+                var 
             });
         }
         void Loadhoadon()
