@@ -95,13 +95,17 @@ namespace WPF_BanHang.Viewmodel
             {
                 loadnhanvien();
             });
-            suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => {
+            exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                p.Close();
+            });
+            suanhanviencommand = new RelayCommand<Object>((l) => {
                 if (SelectedItem == null)
                 {
                     return false;
                 }
                 return true;
-            }, (c) => { suanhanvien(c); });
+            }, (l) => { suanhanvien(); });
             themnhanviencommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) => {
                 themnhanvien(a); });
                  loadednvcommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) => { loadnhanvien(); });
@@ -203,7 +207,7 @@ namespace WPF_BanHang.Viewmodel
             }
 
             //mo win sua nv
-            void suanhanvien(SuaNhanVienWindow c)
+            void suanhanvien()
             {
                 SuaNhanVienWindow window2 = new SuaNhanVienWindow();
                 window2.ShowDialog();
