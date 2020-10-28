@@ -715,56 +715,6 @@
                                             <i:EventTrigger EventName="Click">
                                                 <i:InvokeCommandAction 
                                                 Command="{Binding xoacommand}"/>
-<<<<<<< HEAD
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>
-                            </StackPanel>
-                        </Grid>
-                        <!--THÔNG TIN NHÂN VIÊN-->
-                        <Grid Grid.Row="1">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Loaded">
-                                    <i:InvokeCommandAction Command="{Binding loadcommand}"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                            <ListView ItemsSource="{Binding nhanvienlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
-                                <!--ĐỊNH DẠNG NỘI DUNG-->
-                                <ListView.ItemContainerStyle>
-                                    <Style TargetType="ListViewItem">
-                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                        <Setter Property="FontSize" Value="15"/>
-                                    </Style>
-                                </ListView.ItemContainerStyle>
-                                <ListView.View>
-                                    <GridView>
-                                        <!--ĐỊNH DẠNG HEADER-->
-                                        <GridView.ColumnHeaderContainerStyle>
-                                            <Style TargetType="GridViewColumnHeader">
-                                                <Setter Property="FontSize" Value="20"/>
-                                                <Setter Property="FontWeight" Value="Bold"/>
-                                                <Setter Property="Margin" Value="10"/>
-                                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                                <Setter Property="IsEnabled" Value="True"/>
-                                                <Setter Property="Width" Value="auto"/>
-                                                <Setter Property="Background" Value="#FF8AD6C5"/>
-                                            </Style>
-                                        </GridView.ColumnHeaderContainerStyle>
-                                        <!--<GridViewColumn Width="200" Header="Hình ảnh">
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <Image Source="{Binding hinhnhanvien}"/>
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>-->
-                                        <GridViewColumn Width="250" Header="Tên nhân viên" DisplayMemberBinding="{Binding ten }"/>
-                                        <GridViewColumn Width="230" Header="Ngày bắt đầu làm việc" DisplayMemberBinding="{Binding Path=ngaysinh,StringFormat=dd-MM-yyyy}"/>
-                                        <GridViewColumn Width="500" Header="Địa chỉ" DisplayMemberBinding="{Binding diachi}"/>
-                                        <GridViewColumn Width="120" Header="Chức vụ" DisplayMemberBinding="{Binding chucvu}"/>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
-=======
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
                                     </Button>
@@ -821,7 +771,6 @@
                                     </ListView.View>
                                 </ListView>
                             </Grid>
->>>>>>> origin/thinh
                         </Grid>
                     </Grid>
 
