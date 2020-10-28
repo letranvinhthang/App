@@ -93,11 +93,7 @@ namespace WPF_BanHang.Viewmodel
                     Title="Doanh thu",
                     Values=_doanhthu
                 },
-                new LineSeries
-                {
-                    Title="Ngày",
-                    Values=_Ngay
-                },
+
                 new LineSeries
                 {
                     Title="Số lượng đơn",

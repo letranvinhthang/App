@@ -34,10 +34,8 @@ namespace WPF_BanHang.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("server=192.168.10.225;database=qlbh;user=root", x => x.ServerVersion("10.4.14-mariadb"));
-
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySql("server=192.168.10.225;user=root;database=qlbh", x => x.ServerVersion("10.4.14-mariadb"));
             }
         }
 
@@ -71,7 +69,8 @@ namespace WPF_BanHang.Models
 
             modelBuilder.Entity<CuahangSanpham>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.Dem)
+                    .HasName("PRIMARY");
 
                 entity.ToTable("cuahang_sanpham");
 
@@ -80,6 +79,10 @@ namespace WPF_BanHang.Models
 
                 entity.HasIndex(e => e.IdSanpham)
                     .HasName("ID_sanpham");
+
+                entity.Property(e => e.Dem)
+                    .HasColumnName("dem")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.GiaTheoQuan).HasColumnName("Gia_theo_quan");
 
@@ -92,13 +95,13 @@ namespace WPF_BanHang.Models
                     .HasColumnType("bigint(13)");
 
                 entity.HasOne(d => d.IdCuahangNavigation)
-                    .WithMany()
+                    .WithMany(p => p.CuahangSanpham)
                     .HasForeignKey(d => d.IdCuahang)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("cuahang_sanpham_ibfk_1");
 
                 entity.HasOne(d => d.IdSanphamNavigation)
-                    .WithMany()
+                    .WithMany(p => p.CuahangSanpham)
                     .HasForeignKey(d => d.IdSanpham)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("cuahang_sanpham_ibfk_2");
@@ -171,10 +174,13 @@ namespace WPF_BanHang.Models
                     .HasColumnName("ID_nhanvien")
                     .HasColumnType("int(11)");
 
+                entity.Property(e => e.MaHoadon)
+                    .HasColumnName("ma_hoadon")
+                    .HasColumnType("bigint(20)");
+
                 entity.Property(e => e.NgayTao)
                     .HasColumnName("Ngay_tao")
-                    .HasColumnType("date")
-                    .HasDefaultValueSql("'current_timestamp()'");
+                    .HasColumnType("date");
 
                 entity.Property(e => e.ThanhTien).HasColumnName("Thanh_tien");
 
@@ -496,17 +502,22 @@ namespace WPF_BanHang.Models
                 entity.HasIndex(e => e.IdLoaisp)
                     .HasName("ID_loaisp");
 
+                entity.HasIndex(e => e.IdNhacc)
+                    .HasName("ID_nhacc");
+
                 entity.Property(e => e.IdSanpham)
                     .HasColumnName("ID_sanpham")
                     .HasColumnType("bigint(13)")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.HinhSanpham)
-                    .IsRequired()
-                    .HasColumnName("Hinh_sanpham");
+                entity.Property(e => e.HinhSanpham).HasColumnName("Hinh_sanpham");
 
                 entity.Property(e => e.IdLoaisp)
                     .HasColumnName("ID_loaisp")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.IdNhacc)
+                    .HasColumnName("ID_nhacc")
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.SanphamHot).HasColumnName("Sanpham_hot");
@@ -531,6 +542,12 @@ namespace WPF_BanHang.Models
                     .HasForeignKey(d => d.IdLoaisp)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("san_pham_ibfk_1");
+
+                entity.HasOne(d => d.IdNhaccNavigation)
+                    .WithMany(p => p.SanPham)
+                    .HasForeignKey(d => d.IdNhacc)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("san_pham_ibfk_2");
             });
 
             modelBuilder.Entity<SanphamYeuthich>(entity =>
@@ -620,8 +637,7 @@ namespace WPF_BanHang.Models
 
                 entity.Property(e => e.NgayTao)
                     .HasColumnName("Ngay_tao")
-                    .HasColumnType("date")
-                    .HasDefaultValueSql("'current_timestamp()'");
+                    .HasColumnType("date");
 
                 entity.Property(e => e.SoLuongHoaDon)
                     .HasColumnName("SO_LUONG_HOA_DON")
