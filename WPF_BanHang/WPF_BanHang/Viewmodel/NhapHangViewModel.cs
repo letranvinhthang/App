@@ -14,8 +14,8 @@ namespace WPF_BanHang.Viewmodel
             Pepsico, CocaCola, InterFood, RedBull, TanHiepPhat, UniversaUniversalRobina, KinhDo
         };
 
-        private int _ChucNangBanHang;
-        public int ChucNangBanHang { get => _ChucNangBanHang; set { _ChucNangBanHang = value; OnPropertyChanged(); } }
+        private int _ChucNangNhapHang;
+        public int ChucNangNhapHang { get => _ChucNangNhapHang; set { _ChucNangNhapHang = value; OnPropertyChanged(); } }
 
         public ICommand BtnBtnPepsicoCommand { get; set; }
         public ICommand BtnCocaColaCommand { get; set; }
