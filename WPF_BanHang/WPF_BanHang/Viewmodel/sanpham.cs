@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using WPF_BanHang.Models;
 
 namespace WPF_BanHang.Viewmodel
@@ -32,6 +33,7 @@ namespace WPF_BanHang.Viewmodel
                     loaispseleted = SelectedItem.IdLoaisp - 1;
                     sphot = SelectedItem.SanphamHot;
                     spmoi = SelectedItem.SanphamMoi;
+                    dongia = SelectedItem.Gia;
                 }
             }
         }
@@ -44,13 +46,9 @@ namespace WPF_BanHang.Viewmodel
         private long  _barcode;
 
         public long barcode { get => _barcode; set { _barcode = value; OnPropertyChanged(); } }
-        private int _soluong;
+        private double _dongia;
 
-        public int soluong { get => _soluong; set { _soluong = value; OnPropertyChanged(); } }
-        private int _gia;
-
-        public int gia { get => _gia; set { _gia = value; OnPropertyChanged(); } }
-
+        public double dongia { get => _dongia; set { _dongia = value; OnPropertyChanged(); } }
 
         private bool _spmoi;
 
@@ -68,13 +66,29 @@ namespace WPF_BanHang.Viewmodel
         public ICommand suasanphamcommand { get; set; }
         public ICommand loadcomannd { get; set; }
         public ICommand editcommand { get; set; }
-
+        public ICommand exitcommand { get; set; }
+        public ICommand xoacommand { get; set; }
         public sanpham()
         {
             var db = new qlbhContext();
-            loadcomannd = new RelayCommand<Object>((k) => { return true; }, (k) => { loadsanpham(); });
+            xoacommand = new RelayCommand<object>((a) => { return true; }, (a) =>
+            {
+                var dis = db.SanPham.Where(x => x.IdSanpham == SelectedItem.IdSanpham).SingleOrDefault();
+                dis.XoaSanPham = true;
+                db.SaveChanges();
+                MessageBox.Show("Xóa thành công!", "Thông báo");
+                loadsanpham();
+
+            });
+                loadcomannd = new RelayCommand<Object>((k) => { return true; }, (k) => { loadsanpham(); });
+            exitcommand = new RelayCommand<Window>((k) => { return true; }, (k) => { k.Close(); });
             themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
-            suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
+            suasanphamcommand = new RelayCommand<Object>((l) => { 
+                if(SelectedItem == null)
+                {
+                    return false;
+                }
+                return true; }, (l) => { suasanpham(); });
             editcommand = new RelayCommand<object>((p) =>
             {
                 
@@ -82,35 +96,24 @@ namespace WPF_BanHang.Viewmodel
             },
                     (p) =>
                     {
-          /*              if (string.IsNullOrEmpty(password))
+                    if (string.IsNullOrEmpty(ten) || barcode == null || dongia == null)
                         {
-                            var editnp = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
-                            editnp.TenNhanvien = ten;
-                            editnp.Sdt = sdt;
-                            editnp.DiachiNhanvien = diachi;
-                            editnp.IdChucvu = chuvuseleted + 1;
-                            db.SaveChanges();
-                            MessageBox.Show("sua thanh cong");
-                            SelectedItem.ten = ten;
-                            SelectedItem.sdt = sdt;
-                            SelectedItem.diachi = diachi;
-                            SelectedItem.IdChucvu = chuvuseleted + 1;
+                            MessageBox.Show("vui long nhap day du thong tin");
                         }
                         else
                         {
-                            var edit = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
-                            edit.TenNhanvien = ten;
-                            edit.PassNhanvien = pass;
-                            edit.Sdt = sdt;
-                            edit.DiachiNhanvien = diachi;
-                            edit.IdChucvu = chuvuseleted + 1;
+                            int? idch = MainViewModel.TaiKhoan.Idcuahang;
+                            var giasp = db.CuahangSanpham.Where(x => x.IdSanpham == SelectedItem.IdSanpham && x.IdCuahang == idch).FirstOrDefault();
+                            var editsp = db.SanPham.Where(x => x.IdSanpham == SelectedItem.IdSanpham).SingleOrDefault();
+                            editsp.TenSanpham = ten;
+                            editsp.IdSanpham = barcode;
+                            editsp.IdLoaisp = loaispseleted +1;
+                            editsp.SanphamHot = sphot;
+                            editsp.SanphamMoi = spmoi;
+                            giasp.GiaTheoQuan = dongia;
                             db.SaveChanges();
                             MessageBox.Show("sua thanh cong");
-                            SelectedItem.ten = ten;
-                            SelectedItem.sdt = sdt;
-                            SelectedItem.diachi = diachi;
-                            SelectedItem.IdChucvu = chuvuseleted + 1;
-                        }*/
+                        }
                     });
         }
 
@@ -118,12 +121,14 @@ namespace WPF_BanHang.Viewmodel
         {
             ThemSanPhamWindow window3 = new ThemSanPhamWindow();
             window3.ShowDialog();
+            loadsanpham();
         }
 
-        void suasanpham(SuaSanPhamWindow l)
+        void suasanpham()
         {
             SuaSanPhamWindow window4 = new SuaSanPhamWindow();
             window4.ShowDialog();
+            loadsanpham();
         }
         void loadsanpham()
         {
@@ -135,22 +140,41 @@ namespace WPF_BanHang.Viewmodel
 
             if (MainViewModel.TaiKhoan != null)
             {
-                int? idch = MainViewModel.TaiKhoan.Idcuahang;
+                int idch = MainViewModel.TaiKhoan.Idcuahang;
                 var spch = db.CuahangSanpham.Where(p => p.IdCuahang == idch);
-                foreach (var item in sp.ToList())
+                foreach (var item in sp.Where(p => p.XoaSanPham == false).ToList())
                 {
                     var chsp = spch.Where(p => p.IdSanpham == item.IdSanpham).FirstOrDefault();
                     var loaisp = lsp.Where(p => p.IdLoaisp == item.IdLoaisp).FirstOrDefault();
-                    spxl spl= new spxl();
-                   // spl.HinhSanpham = item.HinhSanpham;
+                    spxl spl = new spxl();
+                    // spl.HinhSanpham = item.HinhSanpham;
                     spl.IdSanpham = item.IdSanpham;
                     spl.TenSanpham = item.TenSanpham;
                     spl.Loaisp = loaisp.TenLoai;
                     spl.SanphamHot = item.SanphamHot;
                     spl.SanphamMoi = item.SanphamMoi;
                     spl.IdLoaisp = item.IdLoaisp;
-                    spl.Gia = chsp.GiaTheoQuan;
-                    sanphamlist.Add(spl);
+                    if (chsp != null)
+                    {
+                        spl.Gia = chsp.GiaTheoQuan;
+                        sanphamlist.Add(spl);
+                    }
+                    else
+                    {
+                        db.CuahangSanpham.Add(new CuahangSanpham
+                        {
+                            IdSanpham = item.IdSanpham,
+                            IdCuahang = idch,
+                            GiaTheoQuan = 0
+
+                        });
+                        db.SaveChanges();
+                        spl.Gia = 0;
+
+                        MessageBox.Show("vui long qua san pham cap nhap lai gia");
+                            sanphamlist.Add(spl);
+                    }
+                
                 }
 
             }
