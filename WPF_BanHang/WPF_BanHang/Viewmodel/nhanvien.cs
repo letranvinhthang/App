@@ -96,38 +96,25 @@ namespace WPF_BanHang.Viewmodel
             {
                 loadnhanvien();
             });
-<<<<<<< HEAD
+
             exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 p.Close();
             });
             suanhanviencommand = new RelayCommand<Object>((l) => {
-=======
-            suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) =>
-            {
->>>>>>> origin/thinh
+
                 if (SelectedItem == null)
                 {
                     return false;
                 }
                 return true;
-<<<<<<< HEAD
+
             }, (l) => { suanhanvien(); });
             themnhanviencommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) => {
                 themnhanvien(a); });
                  loadednvcommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) => { loadnhanvien(); });
             xoacommand = new RelayCommand<object>((a) => { return true; }, (a) => {
-=======
-            }, (c) => { suanhanvien(c); });
-            themnhanviencommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) =>
-            {
-                themnhanvien(a);
-            });
-            loadednvcommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) => { loadnhanvien(); });
-            xoacommand = new RelayCommand<object>((a) => { return true; }, (a) =>
-            {
 
->>>>>>> origin/thinh
                 var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
                 dis.XoaNhanVien = true;
                 db.SaveChanges();
@@ -147,7 +134,7 @@ namespace WPF_BanHang.Viewmodel
             {
                 var editnp = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
                 editnp.Disable = true;
-                MessageBox.Show("da vo hieu hoa tai khoan");
+                MessageBox.Show("Đã vô hiệu hóa tài khoản");
                 db.SaveChanges();
                 disa = SelectedItem.Disable;
 
@@ -162,7 +149,7 @@ namespace WPF_BanHang.Viewmodel
             {
                 var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
                 dis.Disable = false;
-                MessageBox.Show("da mo lai hoa tai khoan");
+                MessageBox.Show("Đã mỡ lại tài khoản");
                 db.SaveChanges();
                 disa = SelectedItem.Disable;
             });

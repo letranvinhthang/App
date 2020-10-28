@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using LiveCharts;
 using LiveCharts.Configurations;
+using LiveCharts.Helpers;
 using LiveCharts.Wpf;
 using Org.BouncyCastle.Asn1.Mozilla;
 using System;
@@ -16,7 +17,30 @@ namespace WPF_BanHang.Viewmodel
 {
     class ThongKeViewModel : BaseViewModel
     {
+        public void ChartDoanhThu()
+        {
+            SeriesCollection = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Title="Doanh thu", Values=_doanhthu
+                },
+
+                new LineSeries
+                {
+                    Title="Số lượng hóa đơn", Values=_soluongdon 
+                }
+            };
+            Labels = _Ngay;
+            yFormatter = value => value.ToString("C");
+        }
+        public Func<double, string> yFormatter { get; set; }
         public SeriesCollection SeriesCollection { get; set; }
+        public ChartValues<double> Labels { get; set; }
+
+
+
+
         public SeriesCollection DoanhThu { get; }
         private readonly ChartValues<double> _doanhthu;
 
@@ -24,7 +48,7 @@ namespace WPF_BanHang.Viewmodel
         private readonly ChartValues<double> _soluongdon;
 
         public SeriesCollection Ngay { get; }
-        private readonly ChartValues<DateTime> _Ngay;
+        private readonly ChartValues<double> _Ngay;
 
         public enum ChucNangQL
         {
@@ -60,6 +84,10 @@ namespace WPF_BanHang.Viewmodel
                 ChucNangThongKe = (int)ChucNangQL.LichSu;
             });
             #endregion
+            _doanhthu = new ChartValues<double>();
+            _Ngay = new ChartValues<double>();
+            _soluongdon = new ChartValues<double>();
+
             void loaddoanhthu()
             {
                 
@@ -72,34 +100,32 @@ namespace WPF_BanHang.Viewmodel
                     foreach (var item in hoadon.Where(p => p.IdCuahang == idch).ToList())
                     {
                         ThongKeXL thongke = new ThongKeXL();
+                        
                         thongke.SoLuongHoaDon = item.SoLuongHoaDon;
                         thongke.NgayTao = item.NgayTao;
                         thongke.TongDoanhThu = item.TongDoanhThu;
                         _doanhthu.Add(double.Parse(item.TongDoanhThu.ToString()));
                         _soluongdon.Add(item.SoLuongHoaDon);
-                        _Ngay.Add(item.NgayTao);
+                        _Ngay.Add(double.Parse(item.NgayTao.ToString("dd")));
                         doanhthulist.Add(thongke);
                     }
                 }
             }
 
-            _doanhthu = new ChartValues<double>();
-            _Ngay = new ChartValues<DateTime>();
-            _soluongdon = new ChartValues<double>();
-            SeriesCollection = new SeriesCollection()
-            {
-                new LineSeries
-                {
-                    Title="Doanh thu",
-                    Values=_doanhthu
-                },
+            //SeriesCollection = new SeriesCollection()
+            //{
+            //    new LineSeries
+            //    {
+            //        Title="Doanh thu",
+            //        Values=_doanhthu
+            //    },
 
-                new LineSeries
-                {
-                    Title="Số lượng đơn",
-                    Values=_soluongdon
-                },
-            };
+            //    new LineSeries
+            //    {
+            //        Title="Số lượng đơn",
+            //        Values=_soluongdon
+            //    },
+            //};
         }
 
     }
