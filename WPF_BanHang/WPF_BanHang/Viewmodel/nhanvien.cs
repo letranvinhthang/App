@@ -254,19 +254,6 @@ namespace WPF_BanHang.Viewmodel
             }
             return hash.ToString();
         }
-<<<<<<< HEAD
-        void exit(Window e)
-        {
-            e.Close();
-        }
-        void themsanpham(ThemSanPhamWindow k)
-        {
-            ThemSanPhamWindow window3 = new ThemSanPhamWindow();
-            window3.ShowDialog();
-        }
-=======
-
->>>>>>> origin/hao1
         void loadnhanvien()
         {
             var db = new qlbhContext();
