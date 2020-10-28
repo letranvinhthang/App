@@ -66,6 +66,7 @@ namespace WPF_BanHang.Viewmodel
         public ICommand suasanphamcommand { get; set; }
         public ICommand loadcomannd { get; set; }
         public ICommand editcommand { get; set; }
+        public ICommand exitcommand { get; set; }
         public ICommand xoacommand { get; set; }
         public sanpham()
         {
@@ -80,8 +81,14 @@ namespace WPF_BanHang.Viewmodel
 
             });
                 loadcomannd = new RelayCommand<Object>((k) => { return true; }, (k) => { loadsanpham(); });
+            exitcommand = new RelayCommand<Window>((k) => { return true; }, (k) => { k.Close(); });
             themsanphamcommand = new RelayCommand<ThemSanPhamWindow>((k) => { return true; }, (k) => { themsanpham(k); });
-            suasanphamcommand = new RelayCommand<SuaSanPhamWindow>((l) => { return true; }, (l) => { suasanpham(l); });
+            suasanphamcommand = new RelayCommand<Object>((l) => { 
+                if(SelectedItem == null)
+                {
+                    return false;
+                }
+                return true; }, (l) => { suasanpham(); });
             editcommand = new RelayCommand<object>((p) =>
             {
                 
@@ -114,12 +121,14 @@ namespace WPF_BanHang.Viewmodel
         {
             ThemSanPhamWindow window3 = new ThemSanPhamWindow();
             window3.ShowDialog();
+            loadsanpham();
         }
 
-        void suasanpham(SuaSanPhamWindow l)
+        void suasanpham()
         {
             SuaSanPhamWindow window4 = new SuaSanPhamWindow();
             window4.ShowDialog();
+            loadsanpham();
         }
         void loadsanpham()
         {

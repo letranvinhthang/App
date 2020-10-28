@@ -1001,7 +1001,7 @@
                                     <Style TargetType="Grid">
                                         <Setter Property="Visibility" Value="Hidden"></Setter>
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding ChucNangBanHang}" Value="0">
+                                            <DataTrigger Binding="{Binding ChucNangNhapHang}" Value="0">
                                                 <Setter Property="Visibility" Value="Visible"></Setter>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -1015,7 +1015,7 @@
                                     <Style TargetType="Grid">
                                         <Setter Property="Visibility" Value="Hidden"></Setter>
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding ChucNangBanHang}" Value="1">
+                                            <DataTrigger Binding="{Binding ChucNangNhapHang}" Value="1">
                                                 <Setter Property="Visibility" Value="Visible"></Setter>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -1029,7 +1029,7 @@
                                     <Style TargetType="Grid">
                                         <Setter Property="Visibility" Value="Hidden"></Setter>
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding ChucNangBanHang}" Value="2">
+                                            <DataTrigger Binding="{Binding ChucNangNhapHang}" Value="2">
                                                 <Setter Property="Visibility" Value="Visible"></Setter>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -1043,7 +1043,7 @@
                                     <Style TargetType="Grid">
                                         <Setter Property="Visibility" Value="Hidden"></Setter>
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding ChucNangBanHang}" Value="3">
+                                            <DataTrigger Binding="{Binding ChucNangNhapHang}" Value="3">
                                                 <Setter Property="Visibility" Value="Visible"></Setter>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -1057,7 +1057,7 @@
                                     <Style TargetType="Grid">
                                         <Setter Property="Visibility" Value="Hidden"></Setter>
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding ChucNangBanHang}" Value="4">
+                                            <DataTrigger Binding="{Binding ChucNangNhapHang}" Value="4">
                                                 <Setter Property="Visibility" Value="Visible"></Setter>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -1071,7 +1071,7 @@
                                     <Style TargetType="Grid">
                                         <Setter Property="Visibility" Value="Hidden"></Setter>
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding ChucNangBanHang}" Value="5">
+                                            <DataTrigger Binding="{Binding ChucNangNhapHang}" Value="5">
                                                 <Setter Property="Visibility" Value="Visible"></Setter>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -1085,7 +1085,7 @@
                                     <Style TargetType="Grid">
                                         <Setter Property="Visibility" Value="Hidden"></Setter>
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding ChucNangBanHang}" Value="6">
+                                            <DataTrigger Binding="{Binding ChucNangNhapHang}" Value="6">
                                                 <Setter Property="Visibility" Value="Visible"></Setter>
                                             </DataTrigger>
                                         </Style.Triggers>

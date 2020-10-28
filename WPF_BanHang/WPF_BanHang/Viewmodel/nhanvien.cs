@@ -96,13 +96,22 @@ namespace WPF_BanHang.Viewmodel
             {
                 loadnhanvien();
             });
+<<<<<<< HEAD
             suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) =>
             {
+=======
+            exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                p.Close();
+            });
+            suanhanviencommand = new RelayCommand<Object>((l) => {
+>>>>>>> 77ecd36ec6b0efc86cc12eec4cfbc5671bc4673f
                 if (SelectedItem == null)
                 {
                     return false;
                 }
                 return true;
+<<<<<<< HEAD
             }, (c) => { suanhanvien(c); });
             themnhanviencommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) =>
             {
@@ -112,6 +121,13 @@ namespace WPF_BanHang.Viewmodel
             xoacommand = new RelayCommand<object>((a) => { return true; }, (a) =>
             {
 
+=======
+            }, (l) => { suanhanvien(); });
+            themnhanviencommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) => {
+                themnhanvien(a); });
+                 loadednvcommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) => { loadnhanvien(); });
+            xoacommand = new RelayCommand<object>((a) => { return true; }, (a) => {
+>>>>>>> 77ecd36ec6b0efc86cc12eec4cfbc5671bc4673f
                 var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
                 dis.XoaNhanVien = true;
                 db.SaveChanges();
@@ -211,7 +227,7 @@ namespace WPF_BanHang.Viewmodel
             }
 
             //mo win sua nv
-            void suanhanvien(SuaNhanVienWindow c)
+            void suanhanvien()
             {
                 SuaNhanVienWindow window2 = new SuaNhanVienWindow();
                 window2.ShowDialog();
