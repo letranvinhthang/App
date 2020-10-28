@@ -13,4 +13,5 @@
     <viewmodel:ThongKeViewModel x:Key="thongkeVM"></viewmodel:ThongKeViewModel>
     <viewmodel:addsanpham x:Key="addspVM"></viewmodel:addsanpham>
     <viewmodel:lichsudh x:Key="lsdh"></viewmodel:lichsudh>
+    <viewmodel:NhapHangViewModel x:Key="nhVM"></viewmodel:NhapHangViewModel>
 </ResourceDictionary>
