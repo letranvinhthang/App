@@ -86,6 +86,8 @@ namespace WPF_BanHang.Models
 
                 entity.Property(e => e.GiaTheoQuan).HasColumnName("Gia_theo_quan");
 
+                entity.Property(e => e.Gianhap).HasColumnName("gianhap");
+
                 entity.Property(e => e.IdCuahang)
                     .HasColumnName("ID_cuahang")
                     .HasColumnType("int(11)");
@@ -214,7 +216,8 @@ namespace WPF_BanHang.Models
 
             modelBuilder.Entity<HoaDonChitiet>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.IdHoaDonChitiet)
+                    .HasName("PRIMARY");
 
                 entity.ToTable("hoa_don_chitiet");
 
@@ -229,6 +232,10 @@ namespace WPF_BanHang.Models
 
                 entity.HasIndex(e => e.IdSanpham)
                     .HasName("ID_sanpham");
+
+                entity.Property(e => e.IdHoaDonChitiet)
+                    .HasColumnName("ID_hoa_don_chitiet")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.GiaTien).HasColumnName("Gia_tien");
 
@@ -253,18 +260,18 @@ namespace WPF_BanHang.Models
                     .HasColumnType("int(11)");
 
                 entity.HasOne(d => d.IdHoadonNavigation)
-                    .WithMany()
+                    .WithMany(p => p.HoaDonChitiet)
                     .HasForeignKey(d => d.IdHoadon)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("hoa_don_chitiet_ibfk_1");
 
                 entity.HasOne(d => d.IdKhachhangNavigation)
-                    .WithMany()
+                    .WithMany(p => p.HoaDonChitiet)
                     .HasForeignKey(d => d.IdKhachhang)
                     .HasConstraintName("hoa_don_chitiet_ibfk_2");
 
                 entity.HasOne(d => d.IdNhaccNavigation)
-                    .WithMany()
+                    .WithMany(p => p.HoaDonChitiet)
                     .HasForeignKey(d => d.IdNhacc)
                     .HasConstraintName("ID_nhacc");
             });

@@ -5,6 +5,7 @@ namespace WPF_BanHang.Models
 {
     public partial class HoaDonChitiet
     {
+        public int IdHoaDonChitiet { get; set; }
         public int IdHoadon { get; set; }
         public long IdSanpham { get; set; }
         public int SoLuong { get; set; }

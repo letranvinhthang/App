@@ -174,6 +174,7 @@ namespace WPF_BanHang.Viewmodel
                     {
                         if (string.IsNullOrEmpty(password))
                         {
+                            MessageBox.Show("" + SelectedItem.Manv);
                             var editnp = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
                             editnp.TenNhanvien = ten;
                             editnp.Sdt = sdt;
