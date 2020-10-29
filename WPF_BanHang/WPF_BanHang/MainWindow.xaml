@@ -821,7 +821,9 @@
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0" Background="DarkGoldenrod" x:Name="chucnangnhaphang">
+                            
                             <!--CHỨC NĂNG THÔNG KÊ-->
+                            
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
                                 <!--Button PEPSI-->
                                 <Button
@@ -962,6 +964,9 @@
                                     </i:Interaction.Triggers>
                                 </Button>-->
                             </StackPanel>
+                            
+                            
+                                
                         </Grid>
                         <!--NỘI DUNG NHẬP HÀNG-->
                         <Grid Grid.Row="1" Background="PaleGoldenrod" x:Name="nhaphang_noidung">
@@ -997,7 +1002,7 @@
                                                         <Setter Property="VerticalAlignment" Value="Center"/>
                                                         <Setter Property="IsEnabled" Value="True"/>
                                                         <Setter Property="Width" Value="auto"/>
-                                                        <Setter Property="Background" Value="#ff8f00"/>
+                                                        <Setter Property="Background" Value="Transparent"/>
                                                     </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
                                                 <GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>
@@ -1098,7 +1103,7 @@
                                                             <Setter Property="VerticalAlignment" Value="Center"/>
                                                             <Setter Property="IsEnabled" Value="True"/>
                                                             <Setter Property="Width" Value="auto"/>
-                                                            <Setter Property="Background" Value="#ff8f00"/>
+                                                            <Setter Property="Background" Value="Transparent"/>
                                                         </Style>
                                                     </GridView.ColumnHeaderContainerStyle>
                                                     <GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>
@@ -1147,7 +1152,7 @@
                                                                 <Setter Property="VerticalAlignment" Value="Center"/>
                                                                 <Setter Property="IsEnabled" Value="True"/>
                                                                 <Setter Property="Width" Value="auto"/>
-                                                                <Setter Property="Background" Value="#ff8f00"/>
+                                                                <Setter Property="Background" Value="Transparent"/>
                                                             </Style>
                                                         </GridView.ColumnHeaderContainerStyle>
                                                         <GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>
@@ -1193,7 +1198,7 @@
                                                         <Setter Property="VerticalAlignment" Value="Center"/>
                                                         <Setter Property="IsEnabled" Value="True"/>
                                                         <Setter Property="Width" Value="auto"/>
-                                                        <Setter Property="Background" Value="#ff8f00"/>
+                                                        <Setter Property="Background" Value="Transparent"/>
                                                     </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
                                                 <GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>
@@ -1237,7 +1242,7 @@
                                                         <Setter Property="VerticalAlignment" Value="Center"/>
                                                         <Setter Property="IsEnabled" Value="True"/>
                                                         <Setter Property="Width" Value="auto"/>
-                                                        <Setter Property="Background" Value="#ff8f00"/>
+                                                        <Setter Property="Background" Value="Transparent"/>
                                                     </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
                                                 <GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>
@@ -1281,7 +1286,7 @@
                                                         <Setter Property="VerticalAlignment" Value="Center"/>
                                                         <Setter Property="IsEnabled" Value="True"/>
                                                         <Setter Property="Width" Value="auto"/>
-                                                        <Setter Property="Background" Value="#ff8f00"/>
+                                                        <Setter Property="Background" Value="Transparent"/>
                                                     </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
                                                 <GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>
@@ -1325,7 +1330,7 @@
                                                         <Setter Property="VerticalAlignment" Value="Center"/>
                                                         <Setter Property="IsEnabled" Value="True"/>
                                                         <Setter Property="Width" Value="auto"/>
-                                                        <Setter Property="Background" Value="#ff8f00"/>
+                                                        <Setter Property="Background" Value="Transparent"/>
                                                     </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
                                                 <GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>
@@ -1409,7 +1414,7 @@
                                                     <Setter Property="VerticalAlignment" Value="Center"/>
                                                     <Setter Property="IsEnabled" Value="True"/>
                                                     <Setter Property="Width" Value="auto"/>
-                                                    <Setter Property="Background" Value="#FF8AD6C5"/>
+                                                    <Setter Property="Background" Value="Transparent"/>
                                                 </Style>
                                             </GridView.ColumnHeaderContainerStyle>
                                             <!--<GridViewColumn Width="200" Header="Hình ảnh">
