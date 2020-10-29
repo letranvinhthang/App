@@ -306,17 +306,11 @@
                                         <GridViewColumn Header="Tên sản phẩm" DisplayMemberBinding="{Binding tensp}"/>
                                         <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding dongia}"/>
                                         <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
-<<<<<<< HEAD
-                                        <GridViewColumn Header="Khuyến mãi" DisplayMemberBinding="{Binding ''}"/>
-=======
->>>>>>> origin/hao1
                                         <GridViewColumn Header="Tổng tiền" DisplayMemberBinding="{Binding tongtien}"/>
-
                                     </GridView>
                                 </ListView.View>
                             </ListView>
                         </Grid>
-
                         <!--THANH TOÁN-->
                         <Grid Grid.Row="2" Background="DarkGoldenrod">
                             <StackPanel Orientation="Horizontal">
@@ -1437,33 +1431,19 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>-->
-<<<<<<< HEAD
-
                                             <GridViewColumn Width="250" Header="Mã nhân viên" DisplayMemberBinding="{Binding Manv }"/>
                                             <GridViewColumn Width="250" Header="Tên nhân viên" DisplayMemberBinding="{Binding ten }"/>
                                             <GridViewColumn Width="230" Header="Ngày bắt đầu làm việc" DisplayMemberBinding="{Binding Path=ngaysinh,StringFormat=dd-MM-yyyy}"/>
+
                                             <GridViewColumn Width="500" Header="Địa chỉ" DisplayMemberBinding="{Binding diachi}"/>
                                             <GridViewColumn Width="120" Header="Chức vụ" DisplayMemberBinding="{Binding chucvu}"/>
                                         </GridView>
                                     </ListView.View>
                                 </ListView>
                             </Grid>
-=======
-                                        <GridViewColumn Width="250" Header="Mã nhân viên" DisplayMemberBinding="{Binding Manv }"/>
-                                            <GridViewColumn Width="250" Header="Tên nhân viên" DisplayMemberBinding="{Binding ten }"/>
-                                        <GridViewColumn Width="230" Header="Ngày bắt đầu làm việc" DisplayMemberBinding="{Binding Path=ngaysinh,StringFormat=dd-MM-yyyy}"/>
-
-                                        <GridViewColumn Width="500" Header="Địa chỉ" DisplayMemberBinding="{Binding diachi}"/>
-                                        <GridViewColumn Width="120" Header="Chức vụ" DisplayMemberBinding="{Binding chucvu}"/>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
->>>>>>> origin/hao1
-
                         </Grid>
                     </Grid>
                 </Grid>
-
             </Grid>
         </Grid>
     </Grid>
