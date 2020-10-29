@@ -114,7 +114,6 @@ namespace WPF_BanHang.Viewmodel
                 themnhanvien(a); });
                  loadednvcommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) => { loadnhanvien(); });
             xoacommand = new RelayCommand<object>((a) => { return true; }, (a) => {
-<<<<<<< HEAD
             MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
@@ -124,15 +123,7 @@ namespace WPF_BanHang.Viewmodel
                     MessageBox.Show("Xóa thành công!", "Thông báo");
                     loadnhanvien();
                 }
-=======
 
-                var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
-                dis.XoaNhanVien = true;
-                db.SaveChanges();
-                MessageBox.Show("Xóa thành công!", "Thông báo");
-                loadnhanvien();
-
->>>>>>> d23be53639ed4562d88b16d1d58b1a720103d3c1
             });
             disablecommand = new RelayCommand<Window>((p) =>
             {
@@ -165,7 +156,7 @@ namespace WPF_BanHang.Viewmodel
                 db.SaveChanges();
                 disa = SelectedItem.Disable;
             });
-            exitcommand = new RelayCommand<Window>((e) => { return true; }, (e) => { exit(e); });
+         
             //xử lý sửa thông tin
             PassChangedcommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { password = p.Password; });
 
@@ -255,19 +246,6 @@ namespace WPF_BanHang.Viewmodel
             }
             return hash.ToString();
         }
-<<<<<<< HEAD
-
-=======
-        void exit(Window e)
-        {
-            e.Close();
-        }
-        void themsanpham(ThemSanPhamWindow k)
-        {
-            ThemSanPhamWindow window3 = new ThemSanPhamWindow();
-            window3.ShowDialog();
-        }
->>>>>>> d23be53639ed4562d88b16d1d58b1a720103d3c1
         void loadnhanvien()
         {
             var db = new qlbhContext();

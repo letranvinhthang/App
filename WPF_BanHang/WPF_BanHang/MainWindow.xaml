@@ -275,6 +275,12 @@
                                 <ColumnDefinition Width="5*"/>
                             </Grid.ColumnDefinitions>
                             <ListView ItemsSource="{Binding orderlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Grid.ColumnSpan="2">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="TargetUpdated">
+                                        <i:InvokeCommandAction Command="{Binding totalcommand}">
+                                        </i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                                 <!--ĐỊNH DẠNG NỘI DUNG-->
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
@@ -307,7 +313,6 @@
                                         <GridViewColumn Header="Tên sản phẩm" DisplayMemberBinding="{Binding tensp }"/>
                                         <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding dongia}"/>
                                         <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
-                                        <GridViewColumn Header="Khuyến mãi" DisplayMemberBinding="{Binding }"/>
                                         <GridViewColumn Header="Tổng tiền" DisplayMemberBinding="{Binding tongtien}"/>
 
                                     </GridView>
@@ -317,9 +322,13 @@
 
                         <!--THANH TOÁN-->
                         <Grid Grid.Row="2" Background="DarkGoldenrod">
+                            <StackPanel Orientation="Horizontal">
                             <!--TỔNG HÓA ĐƠN-->
-                            <TextBlock Text="TỔNG TIỀN KHÁCH PHẢI TRẢ" FontSize="30" Margin="50 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White"/>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock Text="Tổng tiền: "  FontSize="30" Margin="50 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White"/>
+
+                            <TextBlock Text="{Binding total}" FontSize="30" Margin="50 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White"/>
+                            </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--NÚT THÊM ORDER-->
                                 <Button Background="#ff6f00" BorderBrush="Transparent" Content="Thanh toán" Margin="10 10 20 10" Width="120" Height="40">
                                     <i:Interaction.Triggers>
@@ -1275,12 +1284,8 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>-->
-<<<<<<< HEAD
                                         <GridViewColumn Width="250" Header="Mã nhân viên" DisplayMemberBinding="{Binding Manv }"/>
-=======
-
->>>>>>> d23be53639ed4562d88b16d1d58b1a720103d3c1
-                                        <GridViewColumn Width="250" Header="Tên nhân viên" DisplayMemberBinding="{Binding ten }"/>
+                                            <GridViewColumn Width="250" Header="Tên nhân viên" DisplayMemberBinding="{Binding ten }"/>
                                         <GridViewColumn Width="230" Header="Ngày bắt đầu làm việc" DisplayMemberBinding="{Binding Path=ngaysinh,StringFormat=dd-MM-yyyy}"/>
 
                                         <GridViewColumn Width="500" Header="Địa chỉ" DisplayMemberBinding="{Binding diachi}"/>
