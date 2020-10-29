@@ -129,11 +129,7 @@
                         </StackPanel>-->
                         <StackPanel Grid.Column="2">
                             <!--TỔNG HÓA ĐƠN-->
-<<<<<<< HEAD
-                            <TextBlock Text="{Binding tongtien}" FontSize="25" Margin="5" HorizontalAlignment="Right" Foreground="#FF62013C" FontWeight="Bold"/>
-=======
                             <TextBlock Text="{Binding tongtien, StringFormat=C, ConverterCulture=vi }" FontSize="25" Margin="5" HorizontalAlignment="Right" Foreground="#FF62013C" FontWeight="Bold"/>
->>>>>>> origin/thinh
                         </StackPanel>
                     </Grid>
                     <Rectangle Fill="Black" Height="1" Margin="5" Opacity="0.5"/>

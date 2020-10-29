@@ -17,29 +17,8 @@ namespace WPF_BanHang.Viewmodel
 {
     class ThongKeViewModel : BaseViewModel
     {
-        public void ChartDoanhThu()
-        {
-            SeriesCollection = new SeriesCollection
-            {
-                new LineSeries
-                {
-                    Title="Doanh thu", Values=_doanhthu
-                },
 
-                new LineSeries
-                {
-                    Title="Số lượng hóa đơn", Values=_soluongdon 
-                }
-            };
-            Labels = _Ngay;
-            yFormatter = value => value.ToString("C");
-        }
-        public Func<double, string> yFormatter { get; set; }
         public SeriesCollection SeriesCollection { get; set; }
-        public ChartValues<double> Labels { get; set; }
-
-
-
 
         public SeriesCollection DoanhThu { get; }
         private readonly ChartValues<double> _doanhthu;
@@ -112,20 +91,20 @@ namespace WPF_BanHang.Viewmodel
                 }
             }
 
-            //SeriesCollection = new SeriesCollection()
-            //{
-            //    new LineSeries
-            //    {
-            //        Title="Doanh thu",
-            //        Values=_doanhthu
-            //    },
+            SeriesCollection = new SeriesCollection()
+            {
+                new LineSeries
+                {
+                    Title="Doanh thu",
+                    Values=_doanhthu
+                },
 
-            //    new LineSeries
-            //    {
-            //        Title="Số lượng đơn",
-            //        Values=_soluongdon
-            //    },
-            //};
+                new LineSeries
+                {
+                    Title="Số lượng đơn",
+                    Values=_soluongdon
+                },
+            };
         }
 
     }

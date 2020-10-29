@@ -493,10 +493,10 @@
                                 <Grid>
                                     <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right">
                                         <lvc:CartesianChart.AxisY>
-                                            <lvc:Axis Title="Doanh thu" LabelFormatter="{Binding }"/>
+                                            <lvc:Axis Title="Doanh thu" LabelFormatter="{Binding doanhthu}"/>
                                         </lvc:CartesianChart.AxisY>
                                         <lvc:CartesianChart.AxisX>
-                                            <lvc:Axis Title="Ngày" Labels="{Binding labels}"/>
+                                            <lvc:Axis Title="Ngày" Labels="{Binding ngay}"/>
                                         </lvc:CartesianChart.AxisX>
                                     </lvc:CartesianChart>
                                 </Grid>
