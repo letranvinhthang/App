@@ -9,6 +9,10 @@ namespace WPF_BanHang.Models
         public long IdSanpham { get; set; }
         public double GiaTheoQuan { get; set; }
         public double Gianhap { get; set; }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/hao1
         public int Dem { get; set; }
 
         public virtual CuaHang IdCuahangNavigation { get; set; }
