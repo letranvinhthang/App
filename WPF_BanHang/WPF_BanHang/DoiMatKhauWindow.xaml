@@ -67,7 +67,8 @@ DataContext="{StaticResource dmkVM}"
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <!--NÚT XÁC NHẬN-->
                     <Button
-                            Command="{Binding }"
+                            Command="{Binding domkcommand }"
+                            CommandParameter="{Binding ElementName=window}"
                             Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="10" 
                             Width="120" Height="40"
                             ToolTip="ARE YOU SURE?">

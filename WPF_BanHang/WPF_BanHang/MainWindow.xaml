@@ -21,8 +21,8 @@
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStyle="None"
-        WindowState="Maximized"
-        ResizeMode="NoResize"
+        WindowState="Normal"
+        ResizeMode="CanResize"
         DataContext="{StaticResource mainVM}">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
