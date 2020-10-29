@@ -114,15 +114,7 @@ namespace WPF_BanHang.Viewmodel
                 themnhanvien(a); });
                  loadednvcommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) => { loadnhanvien(); });
             xoacommand = new RelayCommand<object>((a) => { return true; }, (a) => {
-<<<<<<< HEAD
 
-                var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
-                dis.XoaNhanVien = true;
-                db.SaveChanges();
-                MessageBox.Show("Xóa thành công!", "Thông báo");
-                loadnhanvien();
-
-=======
             MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
@@ -132,7 +124,7 @@ namespace WPF_BanHang.Viewmodel
                     MessageBox.Show("Xóa thành công!", "Thông báo");
                     loadnhanvien();
                 }
->>>>>>> origin/hao1
+
             });
             disablecommand = new RelayCommand<Window>((p) =>
             {
@@ -165,7 +157,7 @@ namespace WPF_BanHang.Viewmodel
                 db.SaveChanges();
                 disa = SelectedItem.Disable;
             });
-            exitcommand = new RelayCommand<Window>((e) => { return true; }, (e) => { exit(e); });
+
             //xử lý sửa thông tin
             PassChangedcommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { password = p.Password; });
 
@@ -254,6 +246,7 @@ namespace WPF_BanHang.Viewmodel
             }
             return hash.ToString();
         }
+
         void loadnhanvien()
         {
             var db = new qlbhContext();
