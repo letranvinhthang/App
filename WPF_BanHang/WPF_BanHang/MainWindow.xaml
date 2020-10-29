@@ -498,17 +498,19 @@
                                 </i:Interaction.Triggers>
 
 
-                                <Grid>
-                                    <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right">
-                                        <lvc:CartesianChart.AxisY>
-                                            <lvc:Axis Title="Doanh thu" LabelFormatter="{Binding doanhthu}"/>
-                                        </lvc:CartesianChart.AxisY>
-                                        <lvc:CartesianChart.AxisX>
-                                            <lvc:Axis Title="Ngày" Labels="{Binding ngay}"/>
-                                        </lvc:CartesianChart.AxisX>
-                                    </lvc:CartesianChart>
-                                </Grid>
 
+                                <lvc:CartesianChart Series="{Binding DoanhThu}">
+                                    <lvc:CartesianChart.AxisX>
+                                        <lvc:Axis Title="Ngày" FontSize="20" Foreground="Black" Labels="{Binding Ngay}">
+                                            <lvc:Axis.Separator>
+                                                <lvc:Separator Step="1"/>
+                                            </lvc:Axis.Separator>
+                                        </lvc:Axis>
+                                    </lvc:CartesianChart.AxisX>
+                                    <lvc:CartesianChart.AxisY>
+                                        <lvc:Axis Title="Doanh thu" FontSize="20" Foreground="Black"/>
+                                    </lvc:CartesianChart.AxisY>
+                                </lvc:CartesianChart>
 
 
                                 <!--THÔNG TIN THỐNG KÊ-->
@@ -1012,8 +1014,8 @@
                                                         <Setter Property="Background" Value="Transparent"/>
                                                     </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
-                                                <GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>
-                                                <GridViewColumn Width="auto" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSP }"/>
+                                                <!--<GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>-->
+                                                <GridViewColumn Width="250" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSP }"/>
                                                 <GridViewColumn Width="auto" Header="Số lượng" DisplayMemberBinding="{Binding SoLuong}"/>
 
                                             </GridView>
@@ -1113,8 +1115,8 @@
                                                             <Setter Property="Background" Value="Transparent"/>
                                                         </Style>
                                                     </GridView.ColumnHeaderContainerStyle>
-                                                    <GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>
-                                                    <GridViewColumn Width="auto" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSP }"/>
+                                                    <!--<GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>-->
+                                                    <GridViewColumn Width="250" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSP }"/>
                                                     <GridViewColumn Width="auto" Header="Số lượng" DisplayMemberBinding="{Binding SoLuong}"/>
 
                                                 </GridView>
@@ -1162,8 +1164,8 @@
                                                                 <Setter Property="Background" Value="Transparent"/>
                                                             </Style>
                                                         </GridView.ColumnHeaderContainerStyle>
-                                                        <GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>
-                                                        <GridViewColumn Width="auto" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSP }"/>
+                                                        <!--<GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>-->
+                                                        <GridViewColumn Width="250" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSP }"/>
                                                         <GridViewColumn Width="auto" Header="Số lượng" DisplayMemberBinding="{Binding SoLuong}"/>
 
                                                     </GridView>
@@ -1208,8 +1210,8 @@
                                                         <Setter Property="Background" Value="Transparent"/>
                                                     </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
-                                                <GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>
-                                                <GridViewColumn Width="auto" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSP }"/>
+                                                <!--<GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>-->
+                                                <GridViewColumn Width="250" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSP }"/>
                                                 <GridViewColumn Width="auto" Header="Số lượng" DisplayMemberBinding="{Binding SoLuong}"/>
 
                                             </GridView>
@@ -1252,8 +1254,8 @@
                                                         <Setter Property="Background" Value="Transparent"/>
                                                     </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
-                                                <GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>
-                                                <GridViewColumn Width="auto" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSP }"/>
+                                                <!--<GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>-->
+                                                <GridViewColumn Width="250" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSP }"/>
                                                 <GridViewColumn Width="auto" Header="Số lượng" DisplayMemberBinding="{Binding SoLuong}"/>
 
                                             </GridView>
@@ -1296,8 +1298,8 @@
                                                         <Setter Property="Background" Value="Transparent"/>
                                                     </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
-                                                <GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>
-                                                <GridViewColumn Width="auto" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSP }"/>
+                                                <!--<GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>-->
+                                                <GridViewColumn Width="250" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSP }"/>
                                                 <GridViewColumn Width="auto" Header="Số lượng" DisplayMemberBinding="{Binding SoLuong}"/>
 
                                             </GridView>
@@ -1340,8 +1342,8 @@
                                                         <Setter Property="Background" Value="Transparent"/>
                                                     </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
-                                                <GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>
-                                                <GridViewColumn Width="auto" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSP }"/>
+                                                <!--<GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>-->
+                                                <GridViewColumn Width="250" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSP }"/>
                                                 <GridViewColumn Width="auto" Header="Số lượng" DisplayMemberBinding="{Binding SoLuong}"/>
 
                                             </GridView>
@@ -1365,25 +1367,70 @@
                     </Grid.Style>
                     <Grid  DataContext="{StaticResource nvVM}">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="auto"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <!--CHỨC NĂNG THÊM XÓA SỬA SẢN PHẨM-->
                         <Grid Grid.Row="0" Background="DarkGoldenrod">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <!--NÚT THÊM NHÂN VIÊN-->
-                                <Button Content="Thêm" Margin="0 0 20 0" Command="{Binding themnhanviencommand}"/>
+                                
+                                <Button
+                                     Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                     HorizontalAlignment="Left"
+                                    Margin="20 10 20 10"
+                                     Command="{Binding themnhanviencommand}"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent">
+                                    <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-add.png"/>
+
+                                </Button>
                                 <!--NÚT SỬA NHÂN VIÊN-->
-                                <Button Content="sửa" Margin="0 0 20 0">
+                                <Button
+                                     Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                     HorizontalAlignment="Left"
+                                    Margin="20 10 20 10"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent"
+                                     Command="{Binding suanhanviencommand}"
+                                     ToolTip="Sửa sản phẩm">
+                                    <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-edit.png"/>
+
+                                </Button>
+                                <!--<Button
+                                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                     HorizontalAlignment="Left"
+                                    Margin="20 10 20 10"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent" >
+                                    <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-add.png"/>
+                                    >
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
                                             <i:InvokeCommandAction 
                                                 Command="{Binding suanhanviencommand}"/>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
-                                </Button>
+                                </Button>-->
                                 <!--NÚT XÓA NHÂN VIÊN-->
-                                <Button Content="Xóa" Margin="0 0 20 0">
+                                <Button
+                                     Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                     HorizontalAlignment="Left"
+                                    Margin="20 10 20 10"
+                                     
+                                    Background="Transparent"
+                                    BorderBrush="Transparent"
+                                     ToolTip="Xóa sản phẩm">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction 
+                                                Command="{Binding xoacommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-delete.png"/>
+
+                                </Button>
+                                <!--<Button Content="Xóa" Margin="0 0 20 0">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
                                             <i:InvokeCommandAction 
@@ -1391,7 +1438,7 @@
 
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
-                                </Button>
+                                </Button>-->
                             </StackPanel>
                         </Grid>
                         <!--THÔNG TIN NHÂN VIÊN-->

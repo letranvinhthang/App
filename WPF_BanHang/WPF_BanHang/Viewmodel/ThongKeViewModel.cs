@@ -1,5 +1,8 @@
 ﻿using LiveCharts;
+using LiveCharts.Configurations;
 using LiveCharts.Wpf;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
@@ -10,9 +13,6 @@ namespace WPF_BanHang.Viewmodel
 {
     class ThongKeViewModel : BaseViewModel
     {
-
-        public SeriesCollection SeriesCollection { get; set; }
-
         public SeriesCollection DoanhThu { get; }
         private readonly ChartValues<double> _doanhthu;
 
@@ -57,8 +57,15 @@ namespace WPF_BanHang.Viewmodel
             });
             #endregion
             _doanhthu = new ChartValues<double>();
+            DoanhThu = new SeriesCollection()
+            {
+                new ColumnSeries(){Values=_doanhthu}
+
+            };         
+          
             _Ngay = new ChartValues<double>();
-            _soluongdon = new ChartValues<double>();
+            _soluongdon = new ChartValues<double>();           
+            
 
             void loaddoanhthu()
             {
@@ -83,21 +90,8 @@ namespace WPF_BanHang.Viewmodel
                     }
                 }
             }
-
-            SeriesCollection = new SeriesCollection()
-            {
-                new LineSeries
-                {
-                    Title="Doanh thu",
-                    Values=_doanhthu
-                },
-
-                new LineSeries
-                {
-                    Title="Số lượng đơn",
-                    Values=_soluongdon
-                },
-            };
+            
+            
         }
 
     }

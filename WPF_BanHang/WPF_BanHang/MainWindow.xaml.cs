@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
+using WPF_BanHang.Models;
 
 namespace WPF_BanHang
 {
@@ -31,7 +34,6 @@ namespace WPF_BanHang
             dongho1.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm tt");
             
         }
-
-        
+       
     }
 }

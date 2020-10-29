@@ -10,8 +10,8 @@
         x:Name="window"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{StaticResource lsdh}"
-        Title="Invoice" Height="750" Width="550" ResizeMode="NoResize" WindowStyle="None" FontFamily="Roboto" WindowStartupLocation="CenterScreen">
-    <ScrollViewer>
+        Title="Invoice" Height="470" Width="550" ResizeMode="NoResize" WindowStyle="None" FontFamily="Roboto" WindowStartupLocation="CenterScreen">
+
         <Grid>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Loaded">
@@ -23,9 +23,9 @@
             </Button>
             <Grid x:Name="print" Width="550">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="120"/>
-                    <RowDefinition Height="400"/>
-                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="150"/>
                 </Grid.RowDefinitions>
 
                 <StackPanel Orientation="Horizontal" Margin="30" Grid.Row="0">
@@ -95,7 +95,7 @@
                     </ListView>
                 </StackPanel>
 
-                <StackPanel Grid.Row="2" Margin="20 0">
+                <StackPanel Grid.Row="2" VerticalAlignment="Bottom">
                     <Grid Margin="10 20 10 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -148,5 +148,5 @@
                 </StackPanel>
             </Grid>
         </Grid>
-    </ScrollViewer>
+ 
 </Window>
