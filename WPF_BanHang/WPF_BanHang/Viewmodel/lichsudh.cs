@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 using WPF_BanHang.Models;
 namespace WPF_BanHang.Viewmodel
@@ -11,8 +12,8 @@ namespace WPF_BanHang.Viewmodel
     {
         public ObservableCollection<hdxl> _hoadonlist;
         public ObservableCollection<hdxl> hoadonlist { get => _hoadonlist; set { _hoadonlist = value; OnPropertyChanged(); } }
-        public ObservableCollection<hdxl> _cthdlist;
-        public ObservableCollection<hdxl> cthdlist { get => _cthdlist; set { _cthdlist = value; OnPropertyChanged(); } }
+        public ObservableCollection<cthdxl> _cthdlist;
+        public ObservableCollection<cthdxl> cthdlist { get => _cthdlist; set { _cthdlist = value; OnPropertyChanged(); } }
         public hdxl _SelectedItem;
         public hdxl SelectedItem
         {
@@ -32,6 +33,12 @@ namespace WPF_BanHang.Viewmodel
 
         private long _mahoadon;
         public long mahoadon { get => _mahoadon; set { _mahoadon = value; OnPropertyChanged(); } }
+        private string _ten;
+
+        public string ten { get => _ten; set { _ten = value; OnPropertyChanged(); } }
+        private string _tenkh;
+
+        public string tenkh { get => _tenkh; set { _tenkh = value; OnPropertyChanged(); } }
 
 
         public ICommand loadcommannd { get; set; }
@@ -43,7 +50,16 @@ namespace WPF_BanHang.Viewmodel
             });
             cthdcommannd = new RelayCommand<Object>((k) => { return true; }, (k) => {
                 var db = new qlbhContext();
-                var 
+                var kh = db.KhachHang;
+                var hdct = db.HoaDonChitiet;
+                var ncc = db.NhaCungcap;
+                var nv = db.NhanVien;
+                var qc = db.QuangCao;
+                foreach (var item in hdct.Where(p => p.IdHoadon == SelectedItem.IdHoadon).ToList())
+                {
+                    hdxl hoadonxuly = new hdxl();
+                }
+
             });
         }
         void Loadhoadon()
