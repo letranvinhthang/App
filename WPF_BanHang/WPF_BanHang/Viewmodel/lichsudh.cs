@@ -12,8 +12,8 @@ namespace WPF_BanHang.Viewmodel
     {
         public ObservableCollection<hdxl> _hoadonlist;
         public ObservableCollection<hdxl> hoadonlist { get => _hoadonlist; set { _hoadonlist = value; OnPropertyChanged(); } }
-        public ObservableCollection<cthdxl> _cthdlist;
-        public ObservableCollection<cthdxl> cthdlist { get => _cthdlist; set { _cthdlist = value; OnPropertyChanged(); } }
+        public ObservableCollection<cthdxl> _cthdxlist;
+        public ObservableCollection<cthdxl> cthdxlist { get => _cthdxlist;  set { _cthdxlist = value; OnPropertyChanged(); } }
         public hdxl _SelectedItem;
         public hdxl SelectedItem
         {
@@ -25,6 +25,10 @@ namespace WPF_BanHang.Viewmodel
                 {
                     idhoadon = SelectedItem.IdHoadon;
                     mahoadon = SelectedItem.MaHoadon;
+                    tenkh = SelectedItem.bennhan;
+                    ngaytao = SelectedItem.NgayTao;
+                    ten = SelectedItem.TenNhanvien;
+                    tongtien = SelectedItem.ThanhTien;
                 }
             }
         }
@@ -39,28 +43,54 @@ namespace WPF_BanHang.Viewmodel
         private string _tenkh;
 
         public string tenkh { get => _tenkh; set { _tenkh = value; OnPropertyChanged(); } }
+        private DateTime _ngaytao;
 
+        public DateTime ngaytao { get => _ngaytao; set { _ngaytao = value; OnPropertyChanged(); } }
+        private double _tongtien;
+
+        public double tongtien { get => _tongtien; set { _tongtien = value; OnPropertyChanged(); } }
 
         public ICommand loadcommannd { get; set; }
-        public ICommand cthdcommannd { get; set; }
+        public ICommand loadcscommannd { get; set; }
+        public ICommand xemhdcommand { get; set; }
         public lichsudh()
         {
             loadcommannd = new RelayCommand<Object>((k) => { return true; }, (k) => {
                 Loadhoadon();
             });
-            cthdcommannd = new RelayCommand<Object>((k) => { return true; }, (k) => {
-                var db = new qlbhContext();
-                var kh = db.KhachHang;
-                var hdct = db.HoaDonChitiet;
-                var ncc = db.NhaCungcap;
-                var nv = db.NhanVien;
-                var qc = db.QuangCao;
-                foreach (var item in hdct.Where(p => p.IdHoadon == SelectedItem.IdHoadon).ToList())
-                {
-                    hdxl hoadonxuly = new hdxl();
-                }
-
+            xemhdcommand = new RelayCommand<Object>((k) => { return true; }, (k) => {
+                cshd();
             });
+            loadcscommannd = new RelayCommand<Object>((k) => { return true; }, (k) => {
+               
+            });
+        }
+        void cshd()
+        {
+            cthdxlist= new ObservableCollection<cthdxl>();
+
+            var db = new qlbhContext();
+            var hdct = db.HoaDonChitiet;
+            var ncc = db.NhaCungcap;
+            var sp = db.SanPham;
+            var chsp = db.CuahangSanpham;
+            int? idch = MainViewModel.TaiKhoan.Idcuahang;
+     
+                MessageBox.Show("nuull" + SelectedItem.IdHoadon ) ;
+            foreach (var item in hdct.Where(p => p.IdHoadon == SelectedItem.IdHoadon).ToList())
+            {
+                cthdxl hoadonxulys = new cthdxl();
+                var tensp = sp.Where(p => p.IdSanpham == item.IdSanpham).FirstOrDefault();
+                var gia = chsp.Where(p => p.IdSanpham == item.IdSanpham && p.IdCuahang == idch).FirstOrDefault();
+                hoadonxulys.TenSanpham = tensp.TenSanpham;
+                hoadonxulys.soluong = item.SoLuong;
+                hoadonxulys.GiaTheoQuan = gia.GiaTheoQuan;
+                hoadonxulys.ThanhTien = item.SoLuong * gia.GiaTheoQuan;
+                cthdxlist.Add(hoadonxulys);
+            }
+
+            HoaDonWindow window = new HoaDonWindow();
+            window.ShowDialog();
         }
         void Loadhoadon()
         {
@@ -80,6 +110,7 @@ namespace WPF_BanHang.Viewmodel
                 var khhd = kh.Where(p => p.IdKhachhang == item.IdKhachhang).FirstOrDefault();
                 var ncchd = ncc.Where(p => p.IdNhacc == item.IdNhacc).FirstOrDefault();
                 hdxl hoadonxuly = new hdxl();
+                hoadonxuly.IdHoadon = item.IdHoadon;
                 hoadonxuly.MaHoadon = item.MaHoadon;
                 hoadonxuly.NgayTao = item.NgayTao;
                 hoadonxuly.ThanhTien = item.ThanhTien;

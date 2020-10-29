@@ -631,7 +631,7 @@
 
                                     <!--THÔNG TIN THỐNG KÊ-->
                                     <Grid Grid.Row="0">
-                                        <Button Content="Chi tiết hóa đơn" Width="200" HorizontalAlignment="Right" Margin="20" />
+                                        <Button Content="Chi tiết hóa đơn" Command="{Binding xemhdcommand}" Width="200" HorizontalAlignment="Right" Margin="20" />
                                     </Grid>
                                     <Grid Grid.Row="1">
                                         <i:Interaction.Triggers>
@@ -639,7 +639,7 @@
                                                 <i:InvokeCommandAction Command="{Binding loadcommannd}"/>
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
-                                        <ListView ItemsSource="{Binding hoadonlist}">
+                                        <ListView ItemsSource="{Binding hoadonlist , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                                             <!--ĐỊNH DẠNG NỘI DUNG-->
                                             <ListView.ItemContainerStyle>
                                                 <Style TargetType="{x:Type ListViewItem}">
