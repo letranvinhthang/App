@@ -34,13 +34,8 @@ namespace WPF_BanHang.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-<<<<<<< HEAD
                 optionsBuilder.UseMySql("server=192.168.0.5;database=qlbh;user=root", x => x.ServerVersion("10.4.11-mariadb"));
-=======
-                optionsBuilder.UseMySql("server=192.168.10.225;user=root;database=qlbh", x => x.ServerVersion("10.4.14-mariadb"));
->>>>>>> ae376750b34e9d16b3acc378720beddcfb4c66a5
             }
         }
 
@@ -181,10 +176,13 @@ namespace WPF_BanHang.Models
                     .HasColumnName("ID_nhanvien")
                     .HasColumnType("int(11)");
 
+                entity.Property(e => e.MaHoadon)
+                    .HasColumnName("ma_hoadon")
+                    .HasColumnType("bigint(20)");
+
                 entity.Property(e => e.NgayTao)
                     .HasColumnName("Ngay_tao")
-                    .HasColumnType("timestamp")
-                    .HasDefaultValueSql("current_timestamp()");
+                    .HasColumnType("date");
 
                 entity.Property(e => e.ThanhTien).HasColumnName("Thanh_tien");
 
@@ -640,13 +638,19 @@ namespace WPF_BanHang.Models
 
                 entity.ToView("view_thongke");
 
-                entity.Property(e => e.IdCuahang).HasColumnType("int(11)");
+                entity.Property(e => e.IdCuahang)
+                    .HasColumnName("ID_cuahang")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.NgayTao)
-                    .HasColumnType("timestamp")
-                    .HasDefaultValueSql("current_timestamp()");
+                    .HasColumnName("Ngay_tao")
+                    .HasColumnType("date");
 
-                entity.Property(e => e.SoLuongHoaDon).HasColumnType("bigint(21)");
+                entity.Property(e => e.SoLuongHoaDon)
+                    .HasColumnName("SO_LUONG_HOA_DON")
+                    .HasColumnType("bigint(21)");
+
+                entity.Property(e => e.TongDoanhThu).HasColumnName("TONG_DOANH_THU");
             });
 
             OnModelCreatingPartial(modelBuilder);

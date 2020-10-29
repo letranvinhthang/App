@@ -256,5 +256,5 @@ namespace WPF_BanHang.Viewmodel
                 }
             }
         }
-}
+    }
 }

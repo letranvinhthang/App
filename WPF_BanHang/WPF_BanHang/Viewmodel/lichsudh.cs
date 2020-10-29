@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using WPF_BanHang.Models;
 namespace WPF_BanHang.Viewmodel
 {
-   public class lichsudh : BaseViewModel
+    public class lichsudh : BaseViewModel
     {
         public ObservableCollection<hdxl> _hoadonlist;
         public ObservableCollection<hdxl> hoadonlist { get => _hoadonlist; set { _hoadonlist = value; OnPropertyChanged(); } }
@@ -81,7 +79,7 @@ namespace WPF_BanHang.Viewmodel
             var chsp = db.CuahangSanpham;
             int? idch = MainViewModel.TaiKhoan.Idcuahang;
      
-                MessageBox.Show("nuull" + SelectedItem.IdHoadon ) ;
+                //MessageBox.Show("nuull" + SelectedItem.IdHoadon ) ;
             foreach (var item in hdct.Where(p => p.IdHoadon == SelectedItem.IdHoadon).ToList())
             {
                 cthdxl hoadonxulys = new cthdxl();
@@ -115,12 +113,10 @@ namespace WPF_BanHang.Viewmodel
                 var khhd = kh.Where(p => p.IdKhachhang == item.IdKhachhang).FirstOrDefault();
                 var ncchd = ncc.Where(p => p.IdNhacc == item.IdNhacc).FirstOrDefault();
                 hdxl hoadonxuly = new hdxl();
-<<<<<<< HEAD
-                hoadonxuly.MaHoadon = item.MaHoaDon;
-=======
+
                 hoadonxuly.IdHoadon = item.IdHoadon;
                 hoadonxuly.MaHoadon = item.MaHoadon;
->>>>>>> ae376750b34e9d16b3acc378720beddcfb4c66a5
+
                 hoadonxuly.NgayTao = item.NgayTao;
                 hoadonxuly.ThanhTien = item.ThanhTien;
                 hoadonxuly.TenNhanvien = nvhd.TenNhanvien;
@@ -134,7 +130,7 @@ namespace WPF_BanHang.Viewmodel
                 }
                 if (item.IdChuongtrinh == null)
                 {
-                    hoadonxuly.TenChuongtrinh = "Khong";
+                    hoadonxuly.TenChuongtrinh = "Không";
                 }
                 else
                 {
@@ -143,10 +139,10 @@ namespace WPF_BanHang.Viewmodel
 
                 if (item.HuyHoaDon == true)
                 {
-                    hoadonxuly.trangthai = "HUY";
+                    hoadonxuly.trangthai = "Hủy";
                 }
 
-                hoadonxuly.trangthai = "hoan thanh";
+                hoadonxuly.trangthai = "Hoàn thành";
 
                 hoadonlist.Add(hoadonxuly);
             }

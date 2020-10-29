@@ -11,6 +11,7 @@ namespace WPF_BanHang.Models
         }
 
         public int IdHoadon { get; set; }
+        public long MaHoadon { get; set; }
         public DateTime NgayTao { get; set; }
         public int? IdNhacc { get; set; }
         public double ThanhTien { get; set; }

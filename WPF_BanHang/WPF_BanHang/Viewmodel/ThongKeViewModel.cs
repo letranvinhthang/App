@@ -1,14 +1,7 @@
-﻿using GalaSoft.MvvmLight.Command;
-using LiveCharts;
-using LiveCharts.Configurations;
-using LiveCharts.Helpers;
+﻿using LiveCharts;
 using LiveCharts.Wpf;
-using Org.BouncyCastle.Asn1.Mozilla;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WPF_BanHang.Models;
@@ -79,7 +72,7 @@ namespace WPF_BanHang.Viewmodel
                     foreach (var item in hoadon.Where(p => p.IdCuahang == idch).ToList())
                     {
                         ThongKeXL thongke = new ThongKeXL();
-                        
+
                         thongke.SoLuongHoaDon = item.SoLuongHoaDon;
                         thongke.NgayTao = item.NgayTao;
                         thongke.TongDoanhThu = item.TongDoanhThu;
