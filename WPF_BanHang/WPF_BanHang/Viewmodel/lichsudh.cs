@@ -53,6 +53,7 @@ namespace WPF_BanHang.Viewmodel
         public ICommand loadcommannd { get; set; }
         public ICommand loadcscommannd { get; set; }
         public ICommand xemhdcommand { get; set; }
+        public ICommand exitcommand { get; set; }
         public lichsudh()
         {
             loadcommannd = new RelayCommand<Object>((k) => { return true; }, (k) => {
@@ -61,9 +62,13 @@ namespace WPF_BanHang.Viewmodel
             xemhdcommand = new RelayCommand<Object>((k) => { return true; }, (k) => {
                 cshd();
             });
-            loadcscommannd = new RelayCommand<Object>((k) => { return true; }, (k) => {
-               
+            exitcommand = new RelayCommand<Window>((k) => { return true; }, (k) => {
+                exithoadon(k);
             });
+        }
+        void exithoadon(Window k)
+        {
+            k.Close();
         }
         void cshd()
         {

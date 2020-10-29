@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:WPF_BanHang"
           xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
+        x:Name="window"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{StaticResource lsdh}"
         Title="Invoice" Height="750" Width="550" ResizeMode="NoResize" WindowStyle="None" FontFamily="Roboto" WindowStartupLocation="CenterScreen">
@@ -16,8 +17,8 @@
                     <i:InvokeCommandAction Command="{Binding loadcscommannd}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-            <Button HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top">
-                <materialDesign:PackIcon Kind="Printer"/>
+            <Button HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top" Command="{Binding exitcommand}" CommandParameter="{Binding ElementName=window}">
+                <materialDesign:PackIcon Kind="Close"/>
             </Button>
             <Grid x:Name="print" Width="550">
                 <Grid.RowDefinitions>
@@ -148,7 +149,7 @@
                         </StackPanel>
                         <StackPanel Grid.Column="2">
                             <!--TỔNG HÓA ĐƠN-->
-                                <TextBlock Text="{Binding tongtien}" FontSize="25" Margin="5" HorizontalAlignment="Right" Foreground="#FF62013C" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding tongtien}" FontSize="25" Margin="5" HorizontalAlignment="Right" Foreground="#FF62013C" FontWeight="Bold"/>
                         </StackPanel>
                     </Grid>
                     <Rectangle Fill="Black" Height="1" Margin="5" Opacity="0.5"/>

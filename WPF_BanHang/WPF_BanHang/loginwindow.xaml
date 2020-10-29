@@ -7,21 +7,19 @@
         WindowStartupLocation="CenterScreen"
         xmlns:local="clr-namespace:WPF_BanHang"
         mc:Ignorable="d"
-            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-     TextElement.FontWeight="Regular"
-     TextElement.FontSize="13"
-     TextOptions.TextFormattingMode="Ideal"
-     TextOptions.TextRenderingMode="Auto"
-      ResizeMode="NoResize"
-      WindowState="Maximized"
-        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        ResizeMode="NoResize"
+        WindowState="Maximized"       
         WindowStyle="None"
         Background="Transparent"
         Name="window"
-       DataContext="{StaticResource loginVM}"
-          
-    FontFamily="{DynamicResource MaterialDesignFont}"
+        DataContext="{StaticResource loginVM}"          
+        FontFamily="{DynamicResource MaterialDesignFont}"
         Icon="Hinh/Logo.png"
         Title="Đăng nhập" Height="1080" Width="1920" >
     <Window.InputBindings>
@@ -271,7 +269,7 @@
                     <Image Source="Hinh/Event/bat.png" Width="100" Height="150">
                     </Image>
                 </StackPanel>
-                <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" Margin="0 0 0 350">
+                <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center" Margin="0 0 0 300">
                     <Image Source="UserControl_BanHang/Icons/Logo.png" Width="100" Height="100" Loaded="clearlogin"/>
                 </StackPanel>
             </Grid>

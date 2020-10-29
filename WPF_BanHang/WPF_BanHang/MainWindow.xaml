@@ -152,7 +152,7 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                             <DockPanel>
-                                <Image Width="40" Height="40" Source="UserControl_BanHang/Icons/Kho.png"/>
+                                <Image Width="40" Height="40" Source="UserControl_BanHang/Icons/ThemSP.png"/>
                                 <TextBlock VerticalAlignment="Center" FontSize="20" Margin="0 7 0 0" Text="NHẬP HÀNG"/>
                             </DockPanel>
                         </Button>
@@ -314,7 +314,7 @@
                             <TextBlock Text="TỔNG TIỀN KHÁCH PHẢI TRẢ" FontSize="30" Margin="50 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White"/>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--NÚT THÊM ORDER-->
-                                <Button Background="#ff6f00" BorderBrush="Transparent" Content="Thanh toán" Margin="10 10 20 10" Width="120" Height="40">
+                                <Button Background="#ff6f00" BorderBrush="Transparent" Content="Thanh toán" Margin="10 10 300 10" Width="120" Height="40">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
                                             <i:InvokeCommandAction 
@@ -324,7 +324,7 @@
                                     </i:Interaction.Triggers>
                                 </Button>
                                 <!--NÚT SỬA ORDER-->
-                                <Button Background="#ff6f00" BorderBrush="Transparent" Content="sửa" Margin="10 10 20 10" Width="120" Height="40">
+                                <!--<Button Background="#ff6f00" BorderBrush="Transparent" Content="sửa" Margin="10 10 20 10" Width="120" Height="40">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
                                             <i:InvokeCommandAction 
@@ -332,9 +332,9 @@
                                                 CommandParameter="{Binding ElementName=BARCODE}"/>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
-                                </Button>
+                                </Button>-->
                                 <!--NÚT XÓA ORDER-->
-                                <Button Background="#ff6f00" BorderBrush="Transparent" Content="Xóa" Margin="10 10 150 10" Width="120" Height="40">
+                                <!--<Button Background="#ff6f00" BorderBrush="Transparent" Content="Xóa" Margin="10 10 150 10" Width="120" Height="40">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
                                             <i:InvokeCommandAction 
@@ -342,7 +342,7 @@
                                                 CommandParameter="{Binding ElementName=BARCODE}"/>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
-                                </Button>
+                                </Button>-->
                             </StackPanel>
                         </Grid>
                     </Grid>
