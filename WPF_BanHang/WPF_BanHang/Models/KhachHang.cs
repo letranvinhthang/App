@@ -8,6 +8,7 @@ namespace WPF_BanHang.Models
         public KhachHang()
         {
             HoaDon = new HashSet<HoaDon>();
+            HoaDonChitiet = new HashSet<HoaDonChitiet>();
         }
 
         public int IdKhachhang { get; set; }
@@ -22,5 +23,6 @@ namespace WPF_BanHang.Models
 
         public virtual QuyenHan IdChucvuNavigation { get; set; }
         public virtual ICollection<HoaDon> HoaDon { get; set; }
+        public virtual ICollection<HoaDonChitiet> HoaDonChitiet { get; set; }
     }
 }

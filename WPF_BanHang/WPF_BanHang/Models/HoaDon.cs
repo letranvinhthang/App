@@ -5,6 +5,11 @@ namespace WPF_BanHang.Models
 {
     public partial class HoaDon
     {
+        public HoaDon()
+        {
+            HoaDonChitiet = new HashSet<HoaDonChitiet>();
+        }
+
         public int IdHoadon { get; set; }
         public DateTime NgayTao { get; set; }
         public int? IdNhacc { get; set; }
@@ -20,5 +25,6 @@ namespace WPF_BanHang.Models
         public virtual KhachHang IdKhachhangNavigation { get; set; }
         public virtual NhaCungcap IdNhaccNavigation { get; set; }
         public virtual NhanVien IdNhanvienNavigation { get; set; }
+        public virtual ICollection<HoaDonChitiet> HoaDonChitiet { get; set; }
     }
 }

@@ -11,7 +11,7 @@ using WPF_BanHang.Models;
 
 namespace WPF_BanHang.Viewmodel
 {
-   public class nhanvien:BaseViewModel
+    public class nhanvien : BaseViewModel
     {
         #region DataContext
         public ObservableCollection<nvxl> _nhanvienlist;
@@ -87,6 +87,7 @@ namespace WPF_BanHang.Viewmodel
         public ICommand xoacommand { get; set; }
         public ICommand enablecommand { get; set; }
         public ICommand loadcommand { get; set; }
+
         #endregion
         public nhanvien()
         {
@@ -95,22 +96,34 @@ namespace WPF_BanHang.Viewmodel
             {
                 loadnhanvien();
             });
-            suanhanviencommand = new RelayCommand<SuaNhanVienWindow>((c) => {
+
+            exitcommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                p.Close();
+            });
+            suanhanviencommand = new RelayCommand<Object>((l) => {
+
                 if (SelectedItem == null)
                 {
                     return false;
                 }
                 return true;
-            }, (c) => { suanhanvien(c); });
+
+            }, (l) => { suanhanvien(); });
             themnhanviencommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) => {
                 themnhanvien(a); });
                  loadednvcommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) => { loadnhanvien(); });
             xoacommand = new RelayCommand<object>((a) => { return true; }, (a) => {
-                var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
-                dis.XoaNhanVien = true;
-                db.SaveChanges();
-                MessageBox.Show("Xóa thành công!","Thông báo");
-                loadnhanvien();
+
+            MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
+                    dis.XoaNhanVien = true;
+                    db.SaveChanges();
+                    MessageBox.Show("Xóa thành công!", "Thông báo");
+                    loadnhanvien();
+                }
 
             });
             disablecommand = new RelayCommand<Window>((p) =>
@@ -125,27 +138,28 @@ namespace WPF_BanHang.Viewmodel
             {
                 var editnp = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
                 editnp.Disable = true;
-                MessageBox.Show("da vo hieu hoa tai khoan");
+                MessageBox.Show("Đã vô hiệu hóa tài khoản");
                 db.SaveChanges();
                 disa = SelectedItem.Disable;
 
             });
             enablecommand = new RelayCommand<Window>((p) =>
             {
-               bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
-                   if (a != true)
-                       return false;
+                bool a = db.NhanVien.Where(p => p.IdNhanvien == SelectedItem.Manv).FirstOrDefault().Disable;
+                if (a != true)
+                    return false;
                 return true;
             }, (p) =>
             {
                 var dis = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
                 dis.Disable = false;
-                MessageBox.Show("da mo lai hoa tai khoan");
+                MessageBox.Show("Đã mỡ lại tài khoản");
                 db.SaveChanges();
                 disa = SelectedItem.Disable;
             });
             //xử lý sửa thông tin
             PassChangedcommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { password = p.Password; });
+
             TextChangedcommand = new RelayCommand<TextBox>((p) => { return true; }, (p) => { sodt = p.Text; });
             editcommand = new RelayCommand<object>((p) =>
             {
@@ -167,13 +181,14 @@ namespace WPF_BanHang.Viewmodel
                     {
                         if (string.IsNullOrEmpty(password))
                         {
+                            MessageBox.Show("" + SelectedItem.Manv);
                             var editnp = db.NhanVien.Where(x => x.IdNhanvien == SelectedItem.Manv).SingleOrDefault();
                             editnp.TenNhanvien = ten;
                             editnp.Sdt = sdt;
                             editnp.DiachiNhanvien = diachi;
                             editnp.IdChucvu = chuvuseleted + 2;
                             db.SaveChanges();
-                            MessageBox.Show("Sửa thành công!","Thông báo");
+                            MessageBox.Show("Sửa thành công!", "Thông báo");
                             SelectedItem.ten = ten;
                             SelectedItem.sdt = sdt;
                             SelectedItem.diachi = diachi;
@@ -203,14 +218,14 @@ namespace WPF_BanHang.Viewmodel
             }
 
             //mo win sua nv
-            void suanhanvien(SuaNhanVienWindow c)
+            void suanhanvien()
             {
                 SuaNhanVienWindow window2 = new SuaNhanVienWindow();
                 window2.ShowDialog();
                 loadnhanvien();
             }
             //mã hóa base 64
-     
+
 
         }
         public static string Base64Encode(string plainText)
@@ -231,11 +246,6 @@ namespace WPF_BanHang.Viewmodel
             }
             return hash.ToString();
         }
-        void themsanpham(ThemSanPhamWindow k)
-        {
-            ThemSanPhamWindow window3 = new ThemSanPhamWindow();
-            window3.ShowDialog();
-        }
         void loadnhanvien()
         {
             var db = new qlbhContext();
@@ -244,10 +254,10 @@ namespace WPF_BanHang.Viewmodel
             var nv = db.NhanVien;
             var qh = db.QuyenHan;
 
-            if(MainViewModel.TaiKhoan != null)
+            if (MainViewModel.TaiKhoan != null)
             {
                 int? idch = MainViewModel.TaiKhoan.Idcuahang;
-                foreach (var item in nv.Where(p => p.Idcuahang == idch && p.XoaNhanVien == false ).ToList())
+                foreach (var item in nv.Where(p => p.Idcuahang == idch && p.XoaNhanVien == false).ToList())
                 {
                     var tencv = qh.Where(p => p.IdChucvu == item.IdChucvu).FirstOrDefault();
                     nvxl nvl = new nvxl();
@@ -265,7 +275,10 @@ namespace WPF_BanHang.Viewmodel
             else
             {
                 return;
+
+
             }
+            
         }
     }
  }

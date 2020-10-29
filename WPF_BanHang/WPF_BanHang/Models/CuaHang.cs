@@ -7,6 +7,7 @@ namespace WPF_BanHang.Models
     {
         public CuaHang()
         {
+            CuahangSanpham = new HashSet<CuahangSanpham>();
             HoaDon = new HashSet<HoaDon>();
         }
 
@@ -14,6 +15,7 @@ namespace WPF_BanHang.Models
         public string TenCuahang { get; set; }
         public string DiachiCuahang { get; set; }
 
+        public virtual ICollection<CuahangSanpham> CuahangSanpham { get; set; }
         public virtual ICollection<HoaDon> HoaDon { get; set; }
     }
 }

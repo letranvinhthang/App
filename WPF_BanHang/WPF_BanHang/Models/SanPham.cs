@@ -5,6 +5,11 @@ namespace WPF_BanHang.Models
 {
     public partial class SanPham
     {
+        public SanPham()
+        {
+            CuahangSanpham = new HashSet<CuahangSanpham>();
+        }
+
         public long IdSanpham { get; set; }
         public string TenSanpham { get; set; }
         public int SoluongTonkho { get; set; }
@@ -17,5 +22,6 @@ namespace WPF_BanHang.Models
 
         public virtual DanhmucSanpham IdLoaispNavigation { get; set; }
         public virtual NhaCungcap IdNhaccNavigation { get; set; }
+        public virtual ICollection<CuahangSanpham> CuahangSanpham { get; set; }
     }
 }

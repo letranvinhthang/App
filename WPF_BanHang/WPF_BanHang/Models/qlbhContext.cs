@@ -34,8 +34,13 @@ namespace WPF_BanHang.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
+
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+<<<<<<< HEAD
                 optionsBuilder.UseMySql("server=192.168.0.5;database=qlbh;user=root", x => x.ServerVersion("10.4.11-mariadb"));
+=======
+                optionsBuilder.UseMySql("server=192.168.10.225;user=root;database=qlbh", x => x.ServerVersion("10.4.14-mariadb"));
+>>>>>>> ae376750b34e9d16b3acc378720beddcfb4c66a5
             }
         }
 
@@ -69,7 +74,8 @@ namespace WPF_BanHang.Models
 
             modelBuilder.Entity<CuahangSanpham>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.Dem)
+                    .HasName("PRIMARY");
 
                 entity.ToTable("cuahang_sanpham");
 
@@ -79,7 +85,13 @@ namespace WPF_BanHang.Models
                 entity.HasIndex(e => e.IdSanpham)
                     .HasName("ID_sanpham");
 
+                entity.Property(e => e.Dem)
+                    .HasColumnName("dem")
+                    .HasColumnType("int(11)");
+
                 entity.Property(e => e.GiaTheoQuan).HasColumnName("Gia_theo_quan");
+
+                entity.Property(e => e.Gianhap).HasColumnName("gianhap");
 
                 entity.Property(e => e.IdCuahang)
                     .HasColumnName("ID_cuahang")
@@ -90,13 +102,13 @@ namespace WPF_BanHang.Models
                     .HasColumnType("bigint(13)");
 
                 entity.HasOne(d => d.IdCuahangNavigation)
-                    .WithMany()
+                    .WithMany(p => p.CuahangSanpham)
                     .HasForeignKey(d => d.IdCuahang)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("cuahang_sanpham_ibfk_1");
 
                 entity.HasOne(d => d.IdSanphamNavigation)
-                    .WithMany()
+                    .WithMany(p => p.CuahangSanpham)
                     .HasForeignKey(d => d.IdSanpham)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("cuahang_sanpham_ibfk_2");
@@ -206,7 +218,8 @@ namespace WPF_BanHang.Models
 
             modelBuilder.Entity<HoaDonChitiet>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.IdHoaDonChitiet)
+                    .HasName("PRIMARY");
 
                 entity.ToTable("hoa_don_chitiet");
 
@@ -221,6 +234,10 @@ namespace WPF_BanHang.Models
 
                 entity.HasIndex(e => e.IdSanpham)
                     .HasName("ID_sanpham");
+
+                entity.Property(e => e.IdHoaDonChitiet)
+                    .HasColumnName("ID_hoa_don_chitiet")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.GiaTien).HasColumnName("Gia_tien");
 
@@ -245,18 +262,18 @@ namespace WPF_BanHang.Models
                     .HasColumnType("int(11)");
 
                 entity.HasOne(d => d.IdHoadonNavigation)
-                    .WithMany()
+                    .WithMany(p => p.HoaDonChitiet)
                     .HasForeignKey(d => d.IdHoadon)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("hoa_don_chitiet_ibfk_1");
 
                 entity.HasOne(d => d.IdKhachhangNavigation)
-                    .WithMany()
+                    .WithMany(p => p.HoaDonChitiet)
                     .HasForeignKey(d => d.IdKhachhang)
                     .HasConstraintName("hoa_don_chitiet_ibfk_2");
 
                 entity.HasOne(d => d.IdNhaccNavigation)
-                    .WithMany()
+                    .WithMany(p => p.HoaDonChitiet)
                     .HasForeignKey(d => d.IdNhacc)
                     .HasConstraintName("ID_nhacc");
             });
@@ -502,9 +519,7 @@ namespace WPF_BanHang.Models
                     .HasColumnType("bigint(13)")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.HinhSanpham)
-                    .IsRequired()
-                    .HasColumnName("Hinh_sanpham");
+                entity.Property(e => e.HinhSanpham).HasColumnName("Hinh_sanpham");
 
                 entity.Property(e => e.IdLoaisp)
                     .HasColumnName("ID_loaisp")

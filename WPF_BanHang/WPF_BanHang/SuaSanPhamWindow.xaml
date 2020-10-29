@@ -8,6 +8,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Background="Transparent"
         WindowStyle="None"
+        x:Name="window"
         DataContext="{StaticResource spVM}"
         Title="SuaSanPhamWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
@@ -24,19 +25,37 @@
                     materialDesign:HintAssist.Hint="Barcode" Width="400"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                     VerticalAlignment="Center" />
-                <ComboBox ItemsSource="{Binding lsplist}" DisplayMemberPath="TenChucvu" SelectedValuePath="IdChuvu" Width="400" Height="30" Margin="0 15 0 0"
-                            materialDesign:HintAssist.Hint="Loại Sản phẩm"
-                            SelectedIndex="{Binding loaispseleted}" >
+                <TextBox                    
+                    Text="{Binding dongia}"
+                    materialDesign:HintAssist.Hint="Barcode" Width="400"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    VerticalAlignment="Center" />
+                <ComboBox ItemsSource="{Binding lsplist}" 
+                          DisplayMemberPath="TenLoai" 
+                          SelectedValuePath="IdLoaisp"
+                          Width="400" Height="30" Margin="0 15 0 0"
+                          materialDesign:HintAssist.Hint="Loại Sản phẩm"
+                          SelectedIndex="{Binding loaispseleted}" >
                     <!--CHỨC VỤ NHÂN VIÊN-->
                 </ComboBox>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 30 0 0">
-                    <CheckBox Content="Sản phẩm mới" Margin="10" IsChecked="{Binding spmoi}"/>
-                    <CheckBox Content="Sản phẩm hot" Margin="10" IsChecked="{Binding sphot}"/>
+
+                    <CheckBox
+                        Style="{StaticResource MaterialDesignFilterChipCheckBox}"
+                        IsChecked="{Binding spmoi}"
+                        Content="Sản phẩm mới">
+                    </CheckBox>
+                    <CheckBox
+                        Style="{StaticResource MaterialDesignFilterChipCheckBox}"
+                        IsChecked="{Binding sphot}"
+                        Content="Sản phẩm hot">
+                    </CheckBox>
+
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
                     <Button
-                            Command="{Binding addcommand}"
+                            Command="{Binding editcommand}"
                             Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="20" 
                             Width="120" Height="40"
                             ToolTip="ARE YOU SURE?">

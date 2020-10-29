@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WPF_BanHang.Models;
@@ -42,12 +39,17 @@ namespace WPF_BanHang.Viewmodel
 
         private string _tongtien;
         public string tongtien { get => _tongtien; set { _tongtien = value; OnPropertyChanged(); } }
+        private double _total;
+        public double total { get => _total; set { _total = value; OnPropertyChanged(); } }
+
 
         private ObservableCollection<Orderxl> _orderlist;
         public ObservableCollection<Orderxl> orderlist { get => _orderlist; set { _orderlist = value; OnPropertyChanged(); } }
         public ICommand loadcommand { get; set; }
         public ICommand BarcodeChangedcommand { get; set; }
         public ICommand editsoluong { get; set; }
+
+        public ICommand thanhtoan { get; set; }
         public ICommand unloadcommand { get; set; }
 
         public OrderViewModel()
@@ -55,6 +57,8 @@ namespace WPF_BanHang.Viewmodel
             unloadcommand = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
                 orderlist.Clear();
+                Orderxl od = new Orderxl();
+                od = null;
             });
             orderlist = new ObservableCollection<Orderxl>();
             BarcodeChangedcommand = new RelayCommand<TextBox>((p) => {  return p == null? false: true; }, (p) =>
@@ -66,26 +70,40 @@ namespace WPF_BanHang.Viewmodel
                         barcode = long.Parse(p.Text);
                         if (MainViewModel.TaiKhoan != null)
                         {
-                            int? idch = MainViewModel.TaiKhoan.Idcuahang;
+                            total = 0;
+                            int ? idch = MainViewModel.TaiKhoan.Idcuahang;
                             var order = db.SanPham.Where(x => x.IdSanpham == barcode);
                             var chsp = db.CuahangSanpham.Where(x => x.IdSanpham == barcode && x.IdCuahang == idch).FirstOrDefault();
                             if (order.Count() > 0)
                             {
-                                    var dssp = order.FirstOrDefault();
+                               
+                                var dssp = order.FirstOrDefault();
                                     Orderxl orderl = new Orderxl();
                                 foreach (var od in orderlist)
                                 {
-                                    if(od.barcode == dssp.IdSanpham)
+                                  
+                                    if (od.barcode == dssp.IdSanpham)
                                     {
-                                        od.soluong+=1;
+                                        total = 0;
+                                        soluongsp = od.soluong +1;
+                                        od.soluong = soluongsp;
                                         od.tongtien = od.soluong * od.dongia;
+                                        
                                         orderlist.Remove(od);
                                         orderlist.Add(od);
+                           
+                                        soluongsp = 0;
                                         p.Text = null;
+                                        foreach (var odl in orderlist)
+                                        {
+                                            total += odl.tongtien;
+                                        }
                                         return;
 
+
                                     }
-                                 }
+
+                                }
                                     //orderl.hinhsp = dssp.HinhSanpham;
                                     orderl.barcode = dssp.IdSanpham;
                                     orderl.tensp = dssp.TenSanpham;
@@ -93,6 +111,10 @@ namespace WPF_BanHang.Viewmodel
                                     orderl.soluong = 1;
                                     orderl.tongtien = orderl.dongia * orderl.soluong;
                                     orderlist.Add(orderl);
+                                foreach (var od in orderlist)
+                                {
+                                    total += od.tongtien;
+                                }
                                 p.Text = null;
                              }
                         }
@@ -107,19 +129,24 @@ namespace WPF_BanHang.Viewmodel
              {
                  try
                  {
+                 
                      var order = db.SanPham.Where(x => x.IdSanpham == SelectedItem.barcode);
                      var dssp = order.FirstOrDefault();
                      foreach (var od in orderlist)
                      {
                          if (od.barcode == dssp.IdSanpham)
                          {
+                             total = 0;
                              od.soluong = soluongsp;
                              od.tongtien = od.soluong * od.dongia;
                              orderlist.Remove(od);
                              orderlist.Add(od);
                              p.Text = null;
+                             foreach (var odl in orderlist)
+                             {
+                                 total += odl.tongtien;
+                             }
                              return;
-
                          }
                      }
                  }
@@ -127,6 +154,49 @@ namespace WPF_BanHang.Viewmodel
  
 
              });
+           /* thanhtoan = new RelayCommand<object>((p) =>
+            {
+
+                if (orderlist == null)
+                {
+                    return false;
+                }
+
+                return true;
+            },
+                (p) =>
+                {
+                    int? idch = MainViewModel.TaiKhoan.Idcuahang;
+                    int i = Int32.Parse( db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon).ToString());
+                    foreach (var item in orderlist)
+                    {
+                        db..Add(new SanPham
+                        {
+                            TenSanpham = ten,
+                            IdSanpham = barcode,
+                            IdLoaisp = loaispseleted + 1,
+                            IdNhacc = nccseleted + 1,
+                            SanphamHot = sphot,
+                            SanphamMoi = spmoi
+
+                        }); ;
+                        db.SaveChanges();
+                    }
+                    int idch = MainViewModel.TaiKhoan.Idcuahang;
+            
+                    var idsp = db.SanPham.Where(p => p.IdSanpham == barcode).FirstOrDefault();
+                    db.CuahangSanpham.Add(new CuahangSanpham
+                    {
+                        IdSanpham = idsp.IdSanpham,
+                        IdCuahang = idch,
+                        GiaTheoQuan = dongia
+
+                    }); ;
+                    db.SaveChanges();
+                    MessageBox.Show("them thanh cong");
+
+
+                });*/
         }
 
         public void loadorder()

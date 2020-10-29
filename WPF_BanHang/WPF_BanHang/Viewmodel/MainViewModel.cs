@@ -8,6 +8,7 @@ using System;
 using System.Windows.Controls;
 using System.Security.Cryptography;
 using System.Text;
+using Renci.SshNet.Messages;
 
 namespace WPF_BanHang.Viewmodel
 {
@@ -15,7 +16,7 @@ namespace WPF_BanHang.Viewmodel
     {
         public enum ChucNangQL
         {
-            Order, ThongKe, NhapKho, NhanVien, DangXuat
+            Order, ThongKe, NhapKho, NhanVien, NhapHang
         };
         private NhanVien _TaiKhoanHienThi;
         public NhanVien TaiKhoanHienThi { get => _TaiKhoanHienThi; set { _TaiKhoanHienThi = value; OnPropertyChanged(); } }
@@ -123,6 +124,7 @@ namespace WPF_BanHang.Viewmodel
         public ICommand SetupQuyenCommand { get; set; }
         #endregion
         public ICommand BtnThongKeCommand { get; set; }
+        public ICommand BtnNhapHangCommand { get; set; }
         public ICommand BtnNhapKhoCommand { get; set; }
         public ICommand exitcommand { get; set; }
         public ICommand closecommand { get; set; }
@@ -183,6 +185,22 @@ namespace WPF_BanHang.Viewmodel
             {
                 ChucNang = (int)ChucNangQL.NhapKho;
             });
+
+            BtnNhapHangCommand = new RelayCommand<Grid>((p)=>
+            {
+                if (QuyenTK == (int)QuyenTaiKhoan.NhanVien)
+                {
+                    MessageBoxResult result = MessageBox.Show("Bạn không đủ quyền truy cập vào chức năng này!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+                return true; }, (p) =>
+            {
+                ChucNang = (int)ChucNangQL.NhapHang;
+            });
+            
+            
+            
+
             BtnThongKeCommand = new RelayCommand<Grid>((p) =>
             {
                 if (QuyenTK == (int)QuyenTaiKhoan.NhanVien)

@@ -1,0 +1,9 @@
+1. Bỏ hình khỏi app window					Y
+2. Form xác nhận thanh toán(chi tiết hóa đơn)			Y
+3. Chart							X
+4. Lịch sử đơn hàng - Chỉ tiết hóa đơn				X
+5. Khuyến mãi							X
+
+Đặc biệt(Hóa đơn + Hóa đơn chi tiết.)
+
+

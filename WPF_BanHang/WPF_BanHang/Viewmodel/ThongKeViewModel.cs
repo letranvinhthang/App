@@ -1,5 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using LiveCharts;
+using LiveCharts.Configurations;
+using LiveCharts.Helpers;
 using LiveCharts.Wpf;
 using Org.BouncyCastle.Asn1.Mozilla;
 using System;
@@ -15,8 +17,17 @@ namespace WPF_BanHang.Viewmodel
 {
     class ThongKeViewModel : BaseViewModel
     {
-        public SeriesCollection ChartData { get; }
-        private readonly ChartValues<double> _ys;
+
+        public SeriesCollection SeriesCollection { get; set; }
+
+        public SeriesCollection DoanhThu { get; }
+        private readonly ChartValues<double> _doanhthu;
+
+        public SeriesCollection SoLuongDon { get; }
+        private readonly ChartValues<double> _soluongdon;
+
+        public SeriesCollection Ngay { get; }
+        private readonly ChartValues<double> _Ngay;
 
         public enum ChucNangQL
         {
@@ -52,6 +63,10 @@ namespace WPF_BanHang.Viewmodel
                 ChucNangThongKe = (int)ChucNangQL.LichSu;
             });
             #endregion
+            _doanhthu = new ChartValues<double>();
+            _Ngay = new ChartValues<double>();
+            _soluongdon = new ChartValues<double>();
+
             void loaddoanhthu()
             {
                 
@@ -64,21 +79,32 @@ namespace WPF_BanHang.Viewmodel
                     foreach (var item in hoadon.Where(p => p.IdCuahang == idch).ToList())
                     {
                         ThongKeXL thongke = new ThongKeXL();
+                        
                         thongke.SoLuongHoaDon = item.SoLuongHoaDon;
                         thongke.NgayTao = item.NgayTao;
                         thongke.TongDoanhThu = item.TongDoanhThu;
-                        _ys.Add(double.Parse(item.TongDoanhThu.ToString()));
+                        _doanhthu.Add(double.Parse(item.TongDoanhThu.ToString()));
+                        _soluongdon.Add(item.SoLuongHoaDon);
+                        _Ngay.Add(double.Parse(item.NgayTao.ToString("dd")));
                         doanhthulist.Add(thongke);
                     }
                 }
             }
 
-            _ys = new ChartValues<double>();
+            SeriesCollection = new SeriesCollection()
+            {
+                new LineSeries
+                {
+                    Title="Doanh thu",
+                    Values=_doanhthu
+                },
 
-            ChartData = new SeriesCollection()
-        {
-            new LineSeries() {  Values = _ys }
-        };
+                new LineSeries
+                {
+                    Title="Số lượng đơn",
+                    Values=_soluongdon
+                },
+            };
         }
 
     }
