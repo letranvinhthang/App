@@ -323,7 +323,7 @@
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--NÚT THÊM ORDER-->
 
-                                <Button Background="#ff6f00" BorderBrush="Transparent" Content="Thanh toán" Margin="10 10 300 10" Width="120" Height="40" Command="{Binding xacnhancommand}">
+                                <Button Background="#ff6f00" BorderBrush="Transparent" Content="Thanh toán" Margin="10 10 100 10" Width="120" Height="40" Command="{Binding xacnhancommand}">
 
                                 </Button>
                                 <!--NÚT XÓA-->
