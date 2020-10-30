@@ -58,7 +58,8 @@ namespace WPF_BanHang.Viewmodel
         public ICommand loadcommand { get; set; }
         public ICommand BarcodeChangedcommand { get; set; }
         public ICommand editsoluong { get; set; }
-
+        public ICommand exitcommand { get; set; }
+        public ICommand xoasanpham { get; set; }
         public ICommand xacnhancommand { get; set; }
         public ICommand thanhtoan { get; set; }
         public ICommand unloadcommand { get; set; }
@@ -73,7 +74,11 @@ namespace WPF_BanHang.Viewmodel
                 od = null;
                 total = 0;
             });
-            xacnhancommand = new RelayCommand<Object>((p) => { return true; }, (p) =>
+            xacnhancommand = new RelayCommand<Object>((p) => {
+                if (total == 0)
+                    return false;
+                return true;
+            }, (p) =>
             {
                 int? idch = MainViewModel.TaiKhoan.Idcuahang;
  
@@ -85,7 +90,7 @@ namespace WPF_BanHang.Viewmodel
 
 
             });
-            thanhtoan = new RelayCommand<Object>((p) => 
+            thanhtoan = new RelayCommand<Window>((p) => 
             {  
                 if(orderlist == null)
                 return false;
@@ -125,7 +130,7 @@ namespace WPF_BanHang.Viewmodel
                 Orderxl odl = new Orderxl();
                 odl = null;
                 total = 0;
-
+                p.Close();
             });
             orderlist = new ObservableCollection<Orderxl>();
             BarcodeChangedcommand = new RelayCommand<TextBox>((p) => {  return p == null? false: true; }, (p) =>
@@ -221,7 +226,38 @@ namespace WPF_BanHang.Viewmodel
  
 
              });
-        
+            xoasanpham = new RelayCommand<Object>((p) => {
+            if(SelectedItem == null)
+                    return false;
+
+                   return true; 
+                }, (p) =>
+            {
+                try
+                {
+
+                    var order = db.SanPham.Where(x => x.IdSanpham == SelectedItem.barcode);
+                    var dssp = order.FirstOrDefault();
+                    foreach (var od in orderlist)
+                    {
+                        if (od.barcode == dssp.IdSanpham)
+                        {
+                            total = 0;
+                            orderlist.Remove(od);
+                            foreach (var odl in orderlist)
+                            {
+                                total += odl.tongtien;
+                            }
+                            soluongsp = 0;
+                            return;
+                        }
+                    }
+                }
+                catch { }
+
+
+            });
+            exitcommand = new RelayCommand<Window>((e) => { return true; }, (e) => { e.Close(); });
         }
 
         public void loadorder()

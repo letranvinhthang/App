@@ -19,9 +19,7 @@
                     <i:InvokeCommandAction Command="{Binding loadcscommannd}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-            <Button HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top" Command="{Binding exitcommand}" CommandParameter="{Binding ElementName=window}">
-                <materialDesign:PackIcon Kind="Close"/>
-            </Button>
+      
             <Grid x:Name="print" Width="550">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
@@ -141,12 +139,11 @@
                 <Grid >
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Button Width="120" Content="XÁC NHẬN" Margin="100 20 30 0"
-                            Command="{Binding thanhtoan}">
+                            Command="{Binding thanhtoan}" CommandParameter="{Binding ElementName=window}">
 
                         </Button>
                         <Button Width="120" Background="Red" Content="HỦY"  Margin="30 20 100 0"
-                                Command="{Binding huyxacnhan}">
-
+                                Command="{Binding exitcommand}" CommandParameter="{Binding ElementName=window}">
                         </Button>
                     </StackPanel>
                 </Grid>
