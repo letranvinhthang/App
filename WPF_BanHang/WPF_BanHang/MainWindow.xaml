@@ -356,10 +356,12 @@
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0" Background="DarkGoldenrod" x:Name="chucnangthongke">
+                            
                             <!--CHỨC NĂNG THÔNG KÊ-->
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
-                                <!--Button Doanh Thu-->
-                                <Button
+                            <Grid>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
+                                    <!--Button Doanh Thu-->
+                                    <Button
                                      Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                                      HorizontalAlignment="Left"
                                     Margin="20 10 20 10"
@@ -368,17 +370,17 @@
                                     BorderBrush="Transparent"
                                      ToolTip="Doanh thu">
 
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction Command="{Binding BtnDoanhThuCommand}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding BtnDoanhThuCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
 
-                                    <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-Revenue.png"/>
+                                        <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-Revenue.png"/>
 
-                                </Button>
-                                <!--Button San Pham-->
-                                <Button
+                                    </Button>
+                                    <!--Button San Pham-->
+                                    <Button
                                      Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                                      HorizontalAlignment="Left"
                                     Margin="20 10 20 10"
@@ -387,17 +389,17 @@
                                     BorderBrush="Transparent"
                                      ToolTip="Sản phẩm">
 
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction Command="{Binding BtnSanPhamCommand}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding BtnSanPhamCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
 
-                                    <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-Product.png"/>
+                                        <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-Product.png"/>
 
-                                </Button>
-                                <!--Button History-->
-                                <Button
+                                    </Button>
+                                    <!--Button History-->
+                                    <Button
                                      Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                                      HorizontalAlignment="Left"
                                     Margin="20 10 20 10"
@@ -406,17 +408,17 @@
                                     BorderBrush="Transparent"
                                      ToolTip="Lịch sử">
 
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction Command="{Binding BtnLichSuCommand}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding BtnLichSuCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
 
-                                    <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-History.png"/>
+                                        <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-History.png"/>
 
-                                </Button>
+                                    </Button>
 
-                                <!--<Button Height="40" Width="150" Background="#FF0B4911" BorderBrush="{x:Null}" Margin="15 0 0 0">
+                                    <!--<Button Height="40" Width="150" Background="#FF0B4911" BorderBrush="{x:Null}" Margin="15 0 0 0">
                                     <DockPanel>
                                         <Image Width="30" Height="30" Source="UserControl_BanHang/Icons/Thongke.png"/>
                                         <TextBlock Margin="0 7 0 0">SẢN PHẨM</TextBlock>
@@ -458,7 +460,9 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </Button>-->
-                            </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                            
                         </Grid>
                         <!--NỘI DUNG THỐNG KÊ-->
                         <Grid Grid.Row="1" Background="PaleGoldenrod" x:Name="thongke_noidung">
@@ -624,7 +628,23 @@
 
                                     <!--THÔNG TIN THỐNG KÊ-->
                                     <Grid Grid.Row="0">
+                                        <StackPanel Orientation="Horizontal">
+                                        <TextBox HorizontalAlignment="Left"
+                                    x:Name="MAHOADON" Margin="10"
+                                    FontSize="20" Width="200" Height="30" 
+                                    Background="White"
+                                    materialDesign:HintAssist.Hint="Mã hóa đơn"
+                                    >
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="TextChanged">
+                                                    <i:InvokeCommandAction 
+                                                    Command="{Binding BarcodeChangedcommand}" 
+                                                    CommandParameter="{Binding ElementName=BARCODE}"/>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </TextBox>
                                         <Button Content="Chi tiết hóa đơn" Command="{Binding xemhdcommand}" Width="200" HorizontalAlignment="Right" Margin="20" />
+                                        </StackPanel>
                                     </Grid>
                                     <Grid Grid.Row="1">
                                         <i:Interaction.Triggers>
