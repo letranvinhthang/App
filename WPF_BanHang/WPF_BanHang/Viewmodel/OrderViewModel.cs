@@ -54,11 +54,11 @@ namespace WPF_BanHang.Viewmodel
         public ICommand unloadcommand { get; set; }
 
         public OrderViewModel()
-        { var db = new qlbhContext();
+        {
+            var db = new qlbhContext();
             unloadcommand = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
-                orderlist.Clear();
-                MessageBox.Show("xoa");
+                orderlist.Clear();    
                 Orderxl od = new Orderxl();
                 od = null;
                 total = 0;
@@ -97,6 +97,11 @@ namespace WPF_BanHang.Viewmodel
                         IdKhachhang=1
                     }) ;
                     db.SaveChanges();
+                    MessageBox.Show("thanh toan thanh cong");
+                    orderlist.Clear();
+                    Orderxl odl = new Orderxl();
+                    odl = null;
+                    total = 0;
                 }
 
             });
@@ -194,49 +199,7 @@ namespace WPF_BanHang.Viewmodel
  
 
              });
-           /* thanhtoan = new RelayCommand<object>((p) =>
-            {
-
-                if (orderlist == null)
-                {
-                    return false;
-                }
-
-                return true;
-            },
-                (p) =>
-                {
-                    int? idch = MainViewModel.TaiKhoan.Idcuahang;
-                    int i = Int32.Parse( db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon).ToString());
-                    foreach (var item in orderlist)
-                    {
-                        db..Add(new SanPham
-                        {
-                            TenSanpham = ten,
-                            IdSanpham = barcode,
-                            IdLoaisp = loaispseleted + 1,
-                            IdNhacc = nccseleted + 1,
-                            SanphamHot = sphot,
-                            SanphamMoi = spmoi
-
-                        }); ;
-                        db.SaveChanges();
-                    }
-                    int idch = MainViewModel.TaiKhoan.Idcuahang;
-            
-                    var idsp = db.SanPham.Where(p => p.IdSanpham == barcode).FirstOrDefault();
-                    db.CuahangSanpham.Add(new CuahangSanpham
-                    {
-                        IdSanpham = idsp.IdSanpham,
-                        IdCuahang = idch,
-                        GiaTheoQuan = dongia
-
-                    }); ;
-                    db.SaveChanges();
-                    MessageBox.Show("them thanh cong");
-
-
-                });*/
+        
         }
 
         public void loadorder()
