@@ -302,9 +302,12 @@
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>-->
                                         <GridViewColumn Header="Tên sản phẩm" DisplayMemberBinding="{Binding tensp}"/>
-                                        <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding dongia}"/>
+                                        <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding dongia, StringFormat=C, ConverterCulture=vi }"/>
                                         <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
-                                        <GridViewColumn Header="Tổng tiền" DisplayMemberBinding="{Binding tongtien}"/>
+                                        <GridViewColumn Header="Tổng tiền" DisplayMemberBinding="{Binding tongtien, StringFormat=C, ConverterCulture=vi }"/>
+                                        
+                                            
+                                        
                                     </GridView>
                                 </ListView.View>
                             </ListView>
@@ -315,14 +318,18 @@
                             <!--TỔNG HÓA ĐƠN-->
                             <TextBlock Text="Tổng tiền: "  FontSize="30" Margin="50 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White"/>
 
-                            <TextBlock Text="{Binding total}" FontSize="30" Margin="50 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White"/>
+                                <TextBlock Text="{Binding total, StringFormat=C, ConverterCulture=vi }" FontSize="30" Margin="50 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White"/>
                             </StackPanel>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--NÚT THÊM ORDER-->
+<<<<<<< HEAD
                                 <Button Background="#ff6f00" BorderBrush="Transparent" Content="Thanh toán" Margin="10 10 300 10" Width="120" Height="40" Command="{Binding xacnhancommand}">
+=======
+                                <Button Background="#ff6f00" BorderBrush="Transparent" Content="Thanh toán" Margin="10 10 100 10" Width="120" Height="40" Command="{Binding thanhtoan}">
+>>>>>>> origin/thinh
                                 </Button>
-                                <!--NÚT SỬA ORDER-->
-                                <!--<Button Background="#ff6f00" BorderBrush="Transparent" Content="sửa" Margin="10 10 20 10" Width="120" Height="40">
+                                <!--NÚT XÓA-->
+                                <Button Background="#ff6f00" BorderBrush="Transparent" Content="Xóa" Margin="10 10 100 10" Width="120" Height="40" Command="{Binding xoasanpham}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
                                             <i:InvokeCommandAction 
@@ -330,17 +337,7 @@
                                                 CommandParameter="{Binding ElementName=BARCODE}"/>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
-                                </Button>-->
-                                <!--NÚT XÓA ORDER-->
-                                <!--<Button Background="#ff6f00" BorderBrush="Transparent" Content="Xóa" Margin="10 10 150 10" Width="120" Height="40">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction 
-                                                Command="{Binding BarcodeChangedcommand}" 
-                                                CommandParameter="{Binding ElementName=BARCODE}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>-->
+                                </Button>
                             </StackPanel>
                         </Grid>
                     </Grid>
@@ -363,10 +360,12 @@
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0" Background="DarkGoldenrod" x:Name="chucnangthongke">
+                            
                             <!--CHỨC NĂNG THÔNG KÊ-->
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
-                                <!--Button Doanh Thu-->
-                                <Button
+                            <Grid>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
+                                    <!--Button Doanh Thu-->
+                                    <Button
                                      Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                                      HorizontalAlignment="Left"
                                     Margin="20 10 20 10"
@@ -375,17 +374,17 @@
                                     BorderBrush="Transparent"
                                      ToolTip="Doanh thu">
 
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction Command="{Binding BtnDoanhThuCommand}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding BtnDoanhThuCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
 
-                                    <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-Revenue.png"/>
+                                        <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-Revenue.png"/>
 
-                                </Button>
-                                <!--Button San Pham-->
-                                <Button
+                                    </Button>
+                                    <!--Button San Pham-->
+                                    <Button
                                      Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                                      HorizontalAlignment="Left"
                                     Margin="20 10 20 10"
@@ -394,17 +393,17 @@
                                     BorderBrush="Transparent"
                                      ToolTip="Sản phẩm">
 
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction Command="{Binding BtnSanPhamCommand}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding BtnSanPhamCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
 
-                                    <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-Product.png"/>
+                                        <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-Product.png"/>
 
-                                </Button>
-                                <!--Button History-->
-                                <Button
+                                    </Button>
+                                    <!--Button History-->
+                                    <Button
                                      Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                                      HorizontalAlignment="Left"
                                     Margin="20 10 20 10"
@@ -413,17 +412,17 @@
                                     BorderBrush="Transparent"
                                      ToolTip="Lịch sử">
 
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction Command="{Binding BtnLichSuCommand}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding BtnLichSuCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
 
-                                    <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-History.png"/>
+                                        <Image Stretch="Fill" Source="UserControl_BanHang/Icons/icon-History.png"/>
 
-                                </Button>
+                                    </Button>
 
-                                <!--<Button Height="40" Width="150" Background="#FF0B4911" BorderBrush="{x:Null}" Margin="15 0 0 0">
+                                    <!--<Button Height="40" Width="150" Background="#FF0B4911" BorderBrush="{x:Null}" Margin="15 0 0 0">
                                     <DockPanel>
                                         <Image Width="30" Height="30" Source="UserControl_BanHang/Icons/Thongke.png"/>
                                         <TextBlock Margin="0 7 0 0">SẢN PHẨM</TextBlock>
@@ -465,7 +464,9 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </Button>-->
-                            </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                            
                         </Grid>
                         <!--NỘI DUNG THỐNG KÊ-->
                         <Grid Grid.Row="1" Background="PaleGoldenrod" x:Name="thongke_noidung">
@@ -631,7 +632,23 @@
 
                                     <!--THÔNG TIN THỐNG KÊ-->
                                     <Grid Grid.Row="0">
+                                        <StackPanel Orientation="Horizontal">
+                                        <TextBox HorizontalAlignment="Left"
+                                    x:Name="MAHOADON" Margin="10"
+                                    FontSize="20" Width="200" Height="30" 
+                                    Background="White"
+                                    materialDesign:HintAssist.Hint="Mã hóa đơn"
+                                    >
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="TextChanged">
+                                                    <i:InvokeCommandAction 
+                                                    Command="{Binding BarcodeChangedcommand}" 
+                                                    CommandParameter="{Binding ElementName=BARCODE}"/>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </TextBox>
                                         <Button Content="Chi tiết hóa đơn" Command="{Binding xemhdcommand}" Width="200" HorizontalAlignment="Right" Margin="20" />
+                                        </StackPanel>
                                     </Grid>
                                     <Grid Grid.Row="1">
                                         <i:Interaction.Triggers>
@@ -818,12 +835,17 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition/>
+                            
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0" Background="DarkGoldenrod" x:Name="chucnangnhaphang">
-                            
+                            <Grid.RowDefinitions>
+                                <RowDefinition ></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                               
+                            </Grid.RowDefinitions>
                             <!--CHỨC NĂNG THÔNG KÊ-->
-                            
+                            <Grid Grid.Row="0">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
                                 <!--Button PEPSI-->
                                 <Button
@@ -920,56 +942,27 @@
                                     </i:Interaction.Triggers>
 
                                 </Button>
-                                <!--<Button Height="40" Width="150" Background="#FF0B4911" BorderBrush="{x:Null}" Margin="15 0 0 0">
-                                    <DockPanel>
-                                        <Image Width="30" Height="30" Source="UserControl_BanHang/Icons/Thongke.png"/>
-                                        <TextBlock Margin="0 7 0 0">SẢN PHẨM</TextBlock>
-                                    </DockPanel>
-                                    <Button.Style>
-                                        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ChucNangThongKe}" Value="1">
-                                                    <Setter Property="FontWeight" Value="Bold"></Setter>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Button.Style>
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction Command="{Binding BtnSanPhamCommand}">
-                                            </i:InvokeCommandAction>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>
-                                <Button Height="40" Width="150" Background="#FF0B4911" BorderBrush="{x:Null}" Margin="15 0 0 0">
-                                    <DockPanel>
-                                        <Image Width="30" Height="30" Source="UserControl_BanHang/Icons/Thongke.png"/>
-                                        <TextBlock Margin="0 7 0 0">LỊCH SỬ ĐƠN HÀNG</TextBlock>
-                                    </DockPanel>
-                                    <Button.Style>
-                                        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ChucNangThongKe}" Value="2">
-                                                    <Setter Property="FontWeight" Value="Bold"></Setter>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Button.Style>
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction Command="{Binding BtnLichSuCommand}">
-                                            </i:InvokeCommandAction>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>-->
+                               
                             </StackPanel>
-                            
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock Margin="10" Text="Số lượng: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" />
+                                    <TextBox  Margin="10" FontSize="20" Width="200" Height="30" Text="{Binding themsoluong}" Background="White"/>
+                                    <Button  Margin="10" Content="Thêm" Width="120" Height="auto" />
+                                </StackPanel>
+                                
+                            </Grid>
                             
                                 
                         </Grid>
                         <!--NỘI DUNG NHẬP HÀNG-->
                         <Grid Grid.Row="1" Background="PaleGoldenrod" x:Name="nhaphang_noidung">
                             <Grid x:Name="PEPSI">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                </Grid.RowDefinitions>
                                 <Grid.Style>
                                     <Style TargetType="{x:Type Grid}">
                                         <Setter Property="Visibility" Value="Hidden"/>
@@ -987,8 +980,8 @@
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
 
- <!--NỘI DUNG NHẬP HÀNG-->
-                                <Grid>
+                            <!--NỘI DUNG NHẬP HÀNG-->
+                                <Grid Grid.Row="0">
                                     <ListView ItemsSource="{Binding pepsilist}">
                                         <ListView.View>
                                             <GridView>
@@ -1011,6 +1004,9 @@
                                             </GridView>
                                         </ListView.View>
                                     </ListView>
+                                </Grid>
+                                <Grid VerticalAlignment="Bottom" Grid.Row="1">
+                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapPepsi}"/>
                                 </Grid>
 
 
@@ -1071,6 +1067,10 @@
                                 </ListView>-->
                             </Grid>
                             <Grid x:Name="COCA">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                </Grid.RowDefinitions>
                                 <Grid.Style>
                                     <Style TargetType="{x:Type Grid}">
                                         <Setter Property="Visibility" Value="Hidden"/>
@@ -1089,7 +1089,7 @@
                                             <i:InvokeCommandAction Command="{Binding loadcoca}"/>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
-                                    <Grid>
+                                    <Grid Grid.Row="0">
                                         <ListView ItemsSource="{Binding cocalist}">
                                             <ListView.View>
                                                 <GridView>
@@ -1113,6 +1113,9 @@
                                             </ListView.View>
                                         </ListView>
                                     </Grid>
+                                    <Grid VerticalAlignment="Bottom" Grid.Row="1">
+                                        <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapCoca}"/>
+                                    </Grid>
                                 </Grid>
                             </Grid>
                             <Grid x:Name="INTERFOOD">
@@ -1132,7 +1135,7 @@
 
                                     <!--THÔNG TIN THỐNG KÊ-->
                             
-                                    <Grid>
+                                    <Grid Grid.Row="0">
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Loaded">
                                                 <i:InvokeCommandAction Command="{Binding loadinterfood}"/>
@@ -1163,9 +1166,16 @@
                                             </ListView>
                                         </Grid>
                                     </Grid>
+                                    <Grid VerticalAlignment="Bottom" Grid.Row="1">
+                                        <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapInter}"/>
+                                    </Grid>
                                 </Grid>
                             </Grid>
                             <Grid x:Name="REDBULL">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                </Grid.RowDefinitions>
                                 <Grid.Style>
                                     <Style TargetType="{x:Type Grid}">
                                         <Setter Property="Visibility" Value="Hidden"/>
@@ -1184,7 +1194,7 @@
                                 </i:Interaction.Triggers>
 
                                 <!--NỘI DUNG NHẬP HÀNG-->
-                                <Grid>
+                                <Grid Grid.Row="0">
                                     <ListView ItemsSource="{Binding redbulllist}">
                                         <ListView.View>
                                             <GridView>
@@ -1208,8 +1218,15 @@
                                         </ListView.View>
                                     </ListView>
                                 </Grid>
+                                <Grid VerticalAlignment="Bottom" Grid.Row="1">
+                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapRedBull}"/>
+                                </Grid>
                             </Grid>
                             <Grid x:Name="TANHIEPPHAT">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                </Grid.RowDefinitions>
                                 <Grid.Style>
                                     <Style TargetType="{x:Type Grid}">
                                         <Setter Property="Visibility" Value="Hidden"/>
@@ -1228,7 +1245,7 @@
                                 </i:Interaction.Triggers>
 
                                 <!--NỘI DUNG NHẬP HÀNG-->
-                                <Grid>
+                                <Grid Grid.Row="0">
                                     <ListView ItemsSource="{Binding tanhiepphatlist}">
                                         <ListView.View>
                                             <GridView>
@@ -1252,8 +1269,15 @@
                                         </ListView.View>
                                     </ListView>
                                 </Grid>
+                                <Grid VerticalAlignment="Bottom" Grid.Row="1">
+                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapTanHiepPhat}"/>
+                                </Grid>
                             </Grid>
                             <Grid x:Name="UniversaUniversalRobina">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                </Grid.RowDefinitions>
                                 <Grid.Style>
                                     <Style TargetType="{x:Type Grid}">
                                         <Setter Property="Visibility" Value="Hidden"/>
@@ -1272,7 +1296,7 @@
                                 </i:Interaction.Triggers>
 
                                 <!--NỘI DUNG NHẬP HÀNG-->
-                                <Grid>
+                                <Grid Grid.Row="0">
                                     <ListView ItemsSource="{Binding URlist}">
                                         <ListView.View>
                                             <GridView>
@@ -1296,8 +1320,15 @@
                                         </ListView.View>
                                     </ListView>
                                 </Grid>
+                                <Grid VerticalAlignment="Bottom" Grid.Row="1">
+                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapUniver}"/>
+                                </Grid>
                             </Grid>
                             <Grid x:Name="KinhDo">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                </Grid.RowDefinitions>
                                 <Grid.Style>
                                     <Style TargetType="{x:Type Grid}">
                                         <Setter Property="Visibility" Value="Hidden"/>
@@ -1316,7 +1347,7 @@
                                 </i:Interaction.Triggers>
 
                                 <!--NỘI DUNG NHẬP HÀNG-->
-                                <Grid>
+                                <Grid Grid.Row="0">
                                     <ListView ItemsSource="{Binding kinhdolist}">
                                         <ListView.View>
                                             <GridView>
@@ -1340,8 +1371,12 @@
                                         </ListView.View>
                                     </ListView>
                                 </Grid>
+                                <Grid VerticalAlignment="Bottom" Grid.Row="1">
+                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapKinhDo}"/>
+                                </Grid>
                             </Grid>
                         </Grid>
+                        
                     </Grid>
                 </Grid>
                 <Grid x:Name="nhanvien">
