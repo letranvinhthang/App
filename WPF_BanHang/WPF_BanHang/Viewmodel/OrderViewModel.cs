@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WPF_BanHang.Models;
@@ -57,8 +58,47 @@ namespace WPF_BanHang.Viewmodel
             unloadcommand = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
                 orderlist.Clear();
+                MessageBox.Show("xoa");
                 Orderxl od = new Orderxl();
                 od = null;
+                total = 0;
+            });
+            thanhtoan = new RelayCommand<Object>((p) => 
+            {  
+                if(orderlist == null)
+                return false;
+                return true;
+            }, (p) =>
+            {
+                int? idch = MainViewModel.TaiKhoan.Idcuahang;
+                int idnv = MainViewModel.TaiKhoan.IdNhanvien;
+                long mahd = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
+                db.HoaDon.Add(new HoaDon
+                {
+                    MaHoadon = mahd+1,
+                    NgayTao = DateTime.UtcNow,
+                    ThanhTien = total,
+                    IdNhanvien=idnv,
+                    IdKhachhang = 1,
+                    IdCuahang=Int32.Parse(idch.ToString())
+                    
+                });
+                db.SaveChanges();
+                long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
+                var h = db.HoaDon.Where(p => p.MaHoadon == mahdln).FirstOrDefault();
+                foreach( var od in orderlist)
+                {
+                    db.HoaDonChitiet.Add(new HoaDonChitiet
+                    {
+                        IdHoadon = h.IdHoadon,
+                        IdSanpham= od.barcode,
+                        SoLuong=od.soluong,
+                        GiaTien=od.dongia,
+                        IdKhachhang=1
+                    }) ;
+                    db.SaveChanges();
+                }
+
             });
             orderlist = new ObservableCollection<Orderxl>();
             BarcodeChangedcommand = new RelayCommand<TextBox>((p) => {  return p == null? false: true; }, (p) =>
