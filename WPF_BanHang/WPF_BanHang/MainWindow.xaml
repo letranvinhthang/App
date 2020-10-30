@@ -226,12 +226,7 @@
                         </Style>
                     </Grid.Style>
                     <Grid DataContext="{StaticResource orderVM}">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Unloaded">
-                                <i:InvokeCommandAction 
-                                        Command="{Binding unloadcommand}"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
+                  
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition />
@@ -270,9 +265,9 @@
                             </Grid.ColumnDefinitions>
                             <ListView ItemsSource="{Binding orderlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Grid.ColumnSpan="2">
                                 <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="TargetUpdated">
-                                        <i:InvokeCommandAction Command="{Binding totalcommand}">
-                                        </i:InvokeCommandAction>
+                                    <i:EventTrigger EventName="Loaded">
+                                        <i:InvokeCommandAction 
+                                        Command="{Binding unloadcommand}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                                 <!--ĐỊNH DẠNG NỘI DUNG-->
@@ -322,14 +317,7 @@
                             </StackPanel>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--NÚT THÊM ORDER-->
-                                <Button Background="#ff6f00" BorderBrush="Transparent" Content="Thanh toán" Margin="10 10 300 10" Width="120" Height="40">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction 
-                                                Command="{Binding BarcodeChangedcommand}" 
-                                                CommandParameter="{Binding ElementName=BARCODE}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                <Button Background="#ff6f00" BorderBrush="Transparent" Content="Thanh toán" Margin="10 10 300 10" Width="120" Height="40" Command="{Binding thanhtoan}">
                                 </Button>
                                 <!--NÚT SỬA ORDER-->
                                 <!--<Button Background="#ff6f00" BorderBrush="Transparent" Content="sửa" Margin="10 10 20 10" Width="120" Height="40">
