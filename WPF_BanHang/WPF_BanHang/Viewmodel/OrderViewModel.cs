@@ -58,7 +58,12 @@ namespace WPF_BanHang.Viewmodel
             var db = new qlbhContext();
             unloadcommand = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
+<<<<<<< HEAD
                 orderlist.Clear();    
+=======
+                orderlist.Clear();
+                
+>>>>>>> 9d6c3f629ad594e237a9bd133d9ec4ab658495b5
                 Orderxl od = new Orderxl();
                 od = null;
                 total = 0;
@@ -206,5 +211,7 @@ namespace WPF_BanHang.Viewmodel
         {
             orderlist = null;
         }
+
+        
     }
 }

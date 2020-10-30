@@ -56,23 +56,23 @@ namespace WPF_BanHang.Viewmodel
                             db.SaveChanges();
                 
                             p.Close();
-                            MessageBox.Show("doi mat khau thanh cong");
+                            MessageBox.Show("Đổi mật khẩu thành công!");
                         }
                         else
                         {
-                            MessageBox.Show("mat khau nhap lai khong dung");
+                            MessageBox.Show("Mật khẩu nhập lại không đúng!");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("mat khau khong dung");
+                        MessageBox.Show("Mật khẩu không đúng!");
                     }
 
                 }
             }
             else
             {
-                MessageBox.Show("vui long nap day du cac cot");
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
             }
         }
         void exit(Window e)

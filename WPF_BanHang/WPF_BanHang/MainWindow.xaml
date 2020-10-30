@@ -22,6 +22,8 @@
      FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStyle="None"
         WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+        
         ResizeMode="NoResize"
         DataContext="{StaticResource mainVM}">
     <i:Interaction.Triggers>
