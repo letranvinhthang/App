@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WPF_BanHang.Models;
@@ -53,12 +54,56 @@ namespace WPF_BanHang.Viewmodel
         public ICommand unloadcommand { get; set; }
 
         public OrderViewModel()
-        { var db = new qlbhContext();
+        {
+            var db = new qlbhContext();
             unloadcommand = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
-                orderlist.Clear();
+                orderlist.Clear();    
                 Orderxl od = new Orderxl();
                 od = null;
+                total = 0;
+            });
+            thanhtoan = new RelayCommand<Object>((p) => 
+            {  
+                if(orderlist == null)
+                return false;
+                return true;
+            }, (p) =>
+            {
+                int? idch = MainViewModel.TaiKhoan.Idcuahang;
+                int idnv = MainViewModel.TaiKhoan.IdNhanvien;
+                long mahd = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
+                db.HoaDon.Add(new HoaDon
+                {
+                    MaHoadon = mahd+1,
+                    NgayTao = DateTime.UtcNow,
+                    ThanhTien = total,
+                    IdNhanvien=idnv,
+                    IdKhachhang = 1,
+                    IdCuahang=Int32.Parse(idch.ToString())
+                    
+                });
+                db.SaveChanges();
+                long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
+                var h = db.HoaDon.Where(p => p.MaHoadon == mahdln).FirstOrDefault();
+                foreach( var od in orderlist)
+                {
+                    db.HoaDonChitiet.Add(new HoaDonChitiet
+                    {
+                        IdHoadon = h.IdHoadon,
+                        IdSanpham= od.barcode,
+                        SoLuong=od.soluong,
+                        GiaTien=od.dongia,
+                        IdKhachhang=1
+                    }) ;
+                    db.SaveChanges();
+                    MessageBox.Show("thanh toan thanh cong");
+                    orderlist.Clear();
+                    Orderxl odl = new Orderxl();
+                    odl = null;
+                    total = 0;
+                }
+
             });
             orderlist = new ObservableCollection<Orderxl>();
             BarcodeChangedcommand = new RelayCommand<TextBox>((p) => {  return p == null? false: true; }, (p) =>
@@ -154,49 +199,7 @@ namespace WPF_BanHang.Viewmodel
  
 
              });
-           /* thanhtoan = new RelayCommand<object>((p) =>
-            {
-
-                if (orderlist == null)
-                {
-                    return false;
-                }
-
-                return true;
-            },
-                (p) =>
-                {
-                    int? idch = MainViewModel.TaiKhoan.Idcuahang;
-                    int i = Int32.Parse( db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon).ToString());
-                    foreach (var item in orderlist)
-                    {
-                        db..Add(new SanPham
-                        {
-                            TenSanpham = ten,
-                            IdSanpham = barcode,
-                            IdLoaisp = loaispseleted + 1,
-                            IdNhacc = nccseleted + 1,
-                            SanphamHot = sphot,
-                            SanphamMoi = spmoi
-
-                        }); ;
-                        db.SaveChanges();
-                    }
-                    int idch = MainViewModel.TaiKhoan.Idcuahang;
-            
-                    var idsp = db.SanPham.Where(p => p.IdSanpham == barcode).FirstOrDefault();
-                    db.CuahangSanpham.Add(new CuahangSanpham
-                    {
-                        IdSanpham = idsp.IdSanpham,
-                        IdCuahang = idch,
-                        GiaTheoQuan = dongia
-
-                    }); ;
-                    db.SaveChanges();
-                    MessageBox.Show("them thanh cong");
-
-
-                });*/
+        
         }
 
         public void loadorder()
