@@ -23,14 +23,16 @@ namespace WPF_BanHang.Viewmodel
                 }
             }
         }
-        private long _hinhsp;
-        public long hinhsp { get => _hinhsp; set { _hinhsp = value; OnPropertyChanged(); } }
+        private long _mahd;
+        public long mahd { get => _mahd; set { _mahd = value; OnPropertyChanged(); } }
 
         private long _barcode;
         public long barcode { get => _barcode; set { _barcode = value; OnPropertyChanged(); } }
 
         private string _tensp;
         public string tensp { get => _tensp; set { _tensp = value; OnPropertyChanged(); } }
+        private string _ten;
+        public string ten { get => _ten; set { _ten = value; OnPropertyChanged(); } }
 
         private int _soluongsp;
         public int soluongsp { get => _soluongsp; set { _soluongsp = value; OnPropertyChanged(); } }
@@ -58,12 +60,7 @@ namespace WPF_BanHang.Viewmodel
             var db = new qlbhContext();
             unloadcommand = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
-<<<<<<< HEAD
                 orderlist.Clear();    
-=======
-                orderlist.Clear();
-                
->>>>>>> 9d6c3f629ad594e237a9bd133d9ec4ab658495b5
                 Orderxl od = new Orderxl();
                 od = null;
                 total = 0;
@@ -102,12 +99,12 @@ namespace WPF_BanHang.Viewmodel
                         IdKhachhang=1
                     }) ;
                     db.SaveChanges();
-                    MessageBox.Show("thanh toan thanh cong");
-                    orderlist.Clear();
-                    Orderxl odl = new Orderxl();
-                    odl = null;
-                    total = 0;
                 }
+                MessageBox.Show("thanh toan thanh cong");
+                orderlist.Clear();
+                Orderxl odl = new Orderxl();
+                odl = null;
+                total = 0;
 
             });
             orderlist = new ObservableCollection<Orderxl>();

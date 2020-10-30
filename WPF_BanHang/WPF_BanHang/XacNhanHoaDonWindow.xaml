@@ -9,7 +9,7 @@
         
                  Height="470" Width="550" ResizeMode="NoResize" WindowStyle="None" FontFamily="Roboto" WindowStartupLocation="CenterScreen"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        DataContext="{StaticResource lsdh}"
+        DataContext="{StaticResource orderVM}"
         x:Name="window"
     Title="XacNhanHoaDonWindow">
     <Grid>
@@ -41,7 +41,7 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Margin="10">
                             <!--TÊN NHÂN VIÊN-->
-                            <TextBlock Text="{Binding ten }" FontSize="20" Margin="5"/>
+                            <TextBlock Text="{Binding  }" FontSize="20" Margin="5"/>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Ngày tạo" FontSize="12" Margin="5"/>
                                 <!--NGÀY TẠO-->
