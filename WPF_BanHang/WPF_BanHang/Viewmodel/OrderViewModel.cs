@@ -10,6 +10,8 @@ namespace WPF_BanHang.Viewmodel
 {
     class OrderViewModel : BaseViewModel
     {
+        public ObservableCollection<hdxl> _hoadonlist;
+        public ObservableCollection<hdxl> hoadonlist { get => _hoadonlist; set { _hoadonlist = value; OnPropertyChanged(); } }
         public Orderxl _SelectedItem;
         public Orderxl SelectedItem
         {
@@ -33,6 +35,11 @@ namespace WPF_BanHang.Viewmodel
         public string tensp { get => _tensp; set { _tensp = value; OnPropertyChanged(); } }
         private string _ten;
         public string ten { get => _ten; set { _ten = value; OnPropertyChanged(); } }
+        private DateTime _ngaytao;
+        public DateTime ngaytao { get => _ngaytao; set { _ngaytao = value; OnPropertyChanged(); } }
+
+        private int _soluong;
+        public int soluong { get => _soluong; set { _soluong = value; OnPropertyChanged(); } }
 
         private int _soluongsp;
         public int soluongsp { get => _soluongsp; set { _soluongsp = value; OnPropertyChanged(); } }
@@ -52,6 +59,7 @@ namespace WPF_BanHang.Viewmodel
         public ICommand BarcodeChangedcommand { get; set; }
         public ICommand editsoluong { get; set; }
 
+        public ICommand xacnhancommand { get; set; }
         public ICommand thanhtoan { get; set; }
         public ICommand unloadcommand { get; set; }
 
@@ -65,6 +73,18 @@ namespace WPF_BanHang.Viewmodel
                 od = null;
                 total = 0;
             });
+            xacnhancommand = new RelayCommand<Object>((p) => { return true; }, (p) =>
+            {
+                int? idch = MainViewModel.TaiKhoan.Idcuahang;
+                long mahdl = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
+                ten = MainViewModel.TaiKhoan.TenNhanvien;
+                ngaytao = DateTime.Now;
+                mahd = mahdl + 1;
+                XacNhanHoaDonWindow xn = new XacNhanHoaDonWindow();
+                xn.ShowDialog();
+
+
+            });
             thanhtoan = new RelayCommand<Object>((p) => 
             {  
                 if(orderlist == null)
@@ -74,11 +94,11 @@ namespace WPF_BanHang.Viewmodel
             {
                 int? idch = MainViewModel.TaiKhoan.Idcuahang;
                 int idnv = MainViewModel.TaiKhoan.IdNhanvien;
-                long mahd = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
+
                 db.HoaDon.Add(new HoaDon
                 {
-                    MaHoadon = mahd+1,
-                    NgayTao = DateTime.UtcNow,
+                    MaHoadon = mahd,
+                    NgayTao = ngaytao,
                     ThanhTien = total,
                     IdNhanvien=idnv,
                     IdKhachhang = 1,

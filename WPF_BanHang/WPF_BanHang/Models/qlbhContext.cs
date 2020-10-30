@@ -34,8 +34,8 @@ namespace WPF_BanHang.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("server=192.168.10.225;database=qlbh;user=root", x => x.ServerVersion("10.4.11-mariadb"));
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySql("server=192.168.10.225;database=qlbh;user=root", x => x.ServerVersion("10.4.14-mariadb"));
             }
         }
 
@@ -182,7 +182,7 @@ namespace WPF_BanHang.Models
 
                 entity.Property(e => e.NgayTao)
                     .HasColumnName("Ngay_tao")
-                    .HasColumnType("date");
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.ThanhTien).HasColumnName("Thanh_tien");
 
@@ -194,7 +194,6 @@ namespace WPF_BanHang.Models
                 entity.HasOne(d => d.IdCuahangNavigation)
                     .WithMany(p => p.HoaDon)
                     .HasForeignKey(d => d.IdCuahang)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("hoa_don_ibfk_1");
 
                 entity.HasOne(d => d.IdKhachhangNavigation)
@@ -210,7 +209,6 @@ namespace WPF_BanHang.Models
                 entity.HasOne(d => d.IdNhanvienNavigation)
                     .WithMany(p => p.HoaDon)
                     .HasForeignKey(d => d.IdNhanvien)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("hoa_don_ibfk_2");
             });
 
@@ -644,7 +642,7 @@ namespace WPF_BanHang.Models
 
                 entity.Property(e => e.NgayTao)
                     .HasColumnName("Ngay_tao")
-                    .HasColumnType("date");
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.SoLuongHoaDon)
                     .HasColumnName("SO_LUONG_HOA_DON")
