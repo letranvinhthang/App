@@ -58,7 +58,7 @@ namespace WPF_BanHang.Viewmodel
             unloadcommand = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
                 orderlist.Clear();
-                MessageBox.Show("xoa");
+                
                 Orderxl od = new Orderxl();
                 od = null;
                 total = 0;
@@ -243,5 +243,7 @@ namespace WPF_BanHang.Viewmodel
         {
             orderlist = null;
         }
+
+        
     }
 }
