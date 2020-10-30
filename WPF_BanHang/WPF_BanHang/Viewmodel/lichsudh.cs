@@ -57,7 +57,10 @@ namespace WPF_BanHang.Viewmodel
             loadcommannd = new RelayCommand<Object>((k) => { return true; }, (k) => {
                 Loadhoadon();
             });
-            xemhdcommand = new RelayCommand<Object>((k) => { return true; }, (k) => {
+            xemhdcommand = new RelayCommand<Object>((k) => {
+                if (SelectedItem == null)
+                    return false;
+                return true; }, (k) => {
                 cshd();
             });
             exitcommand = new RelayCommand<Window>((k) => { return true; }, (k) => {
@@ -118,7 +121,7 @@ namespace WPF_BanHang.Viewmodel
                 hoadonxuly.MaHoadon = item.MaHoadon;
 
                 hoadonxuly.NgayTao = item.NgayTao;
-                hoadonxuly.ThanhTien = item.ThanhTien;
+               hoadonxuly.ThanhTien = item.ThanhTien;
                 hoadonxuly.TenNhanvien = nvhd.TenNhanvien;
                 if (item.IdKhachhang == null)
                 {
