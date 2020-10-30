@@ -108,12 +108,12 @@ namespace WPF_BanHang.Viewmodel
                 db.SaveChanges();
                 long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
                 var h = db.HoaDon.Where(p => p.MaHoadon == mahdln).FirstOrDefault();
-                foreach( var od in orderlist)
+                foreach ( var od in orderlist)
                 {
                     db.HoaDonChitiet.Add(new HoaDonChitiet
                     {
                         IdHoadon = h.IdHoadon,
-                        IdSanpham= od.barcode,
+                        IdSanpham = od.barcode,
                         SoLuong=od.soluong,
                         GiaTien=od.dongia,
                         IdKhachhang=1
