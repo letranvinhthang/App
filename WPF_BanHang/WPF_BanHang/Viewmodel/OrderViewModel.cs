@@ -76,10 +76,10 @@ namespace WPF_BanHang.Viewmodel
             xacnhancommand = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
                 int? idch = MainViewModel.TaiKhoan.Idcuahang;
-                long mahdl = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
+ 
                 ten = MainViewModel.TaiKhoan.TenNhanvien;
                 ngaytao = DateTime.Now;
-                mahd = mahdl + 1;
+
                 XacNhanHoaDonWindow xn = new XacNhanHoaDonWindow();
                 xn.ShowDialog();
 
@@ -94,10 +94,10 @@ namespace WPF_BanHang.Viewmodel
             {
                 int? idch = MainViewModel.TaiKhoan.Idcuahang;
                 int idnv = MainViewModel.TaiKhoan.IdNhanvien;
-
+                long mahdl = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
                 db.HoaDon.Add(new HoaDon
                 {
-                    MaHoadon = mahd,
+                    MaHoadon = mahdl+1,
                     NgayTao = ngaytao,
                     ThanhTien = total,
                     IdNhanvien=idnv,

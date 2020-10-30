@@ -118,7 +118,7 @@ namespace WPF_BanHang.Viewmodel
                 hoadonxuly.MaHoadon = item.MaHoadon;
 
                 hoadonxuly.NgayTao = item.NgayTao;
-                hoadonxuly.ThanhTien = item.ThanhTien;
+               hoadonxuly.ThanhTien = item.ThanhTien;
                 hoadonxuly.TenNhanvien = nvhd.TenNhanvien;
                 if (item.IdKhachhang == null)
                 {

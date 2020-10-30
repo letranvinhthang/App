@@ -322,11 +322,7 @@
                             </StackPanel>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--NÚT THÊM ORDER-->
-<<<<<<< HEAD
                                 <Button Background="#ff6f00" BorderBrush="Transparent" Content="Thanh toán" Margin="10 10 300 10" Width="120" Height="40" Command="{Binding xacnhancommand}">
-=======
-                                <Button Background="#ff6f00" BorderBrush="Transparent" Content="Thanh toán" Margin="10 10 100 10" Width="120" Height="40" Command="{Binding thanhtoan}">
->>>>>>> e193f59bf999a034180a1d79f0ce4cab7538acae
                                 </Button>
                                 <!--NÚT XÓA-->
                                 <Button Background="#ff6f00" BorderBrush="Transparent" Content="Xóa" Margin="10 10 100 10" Width="120" Height="40" Command="{Binding xoasanpham}">
