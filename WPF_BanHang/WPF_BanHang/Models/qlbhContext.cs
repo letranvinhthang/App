@@ -194,6 +194,7 @@ namespace WPF_BanHang.Models
                 entity.HasOne(d => d.IdCuahangNavigation)
                     .WithMany(p => p.HoaDon)
                     .HasForeignKey(d => d.IdCuahang)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("hoa_don_ibfk_1");
 
                 entity.HasOne(d => d.IdKhachhangNavigation)
@@ -209,6 +210,7 @@ namespace WPF_BanHang.Models
                 entity.HasOne(d => d.IdNhanvienNavigation)
                     .WithMany(p => p.HoaDon)
                     .HasForeignKey(d => d.IdNhanvien)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("hoa_don_ibfk_2");
             });
 
