@@ -95,6 +95,7 @@
                             </DockPanel>
 
                         </Button>
+                        
                         <!--NÚT THỐNG KÊ-->
                         <Button Height="50"  Margin="0 15 0 0" BorderBrush="Transparent" Background="Transparent">
                             <Button.Style>
@@ -717,6 +718,7 @@
 
                                 <Button
                                      Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+
                                      HorizontalAlignment="Left"
                                     Margin="20 10 20 10"
                                      Command="{Binding themsanphamcommand}"
@@ -837,122 +839,150 @@
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0" Background="DarkGoldenrod" x:Name="chucnangnhaphang">
-                            <Grid.RowDefinitions>
-                                <RowDefinition ></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                               
-                            </Grid.RowDefinitions>
+                            
                             <!--CHỨC NĂNG THÔNG KÊ-->
-                            <Grid Grid.Row="0">
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
-                                <!--Button PEPSI-->
-                                <Button
-
+                            
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <!--Button PEPSI-->
+                                    <Button
+                                    Width="140"
+                                        Uid="0"
+                                    Click="Button_Click"
                                      HorizontalAlignment="Left"
-                                    Margin="20 10 20 10"
+                                    
+                                    Background="Transparent"
+                                    BorderBrush="Transparent"
                                      Content="PEPSI">
+                                    
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding BtnPepsicoCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
 
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction Command="{Binding BtnPepsicoCommand}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-
-                                </Button>
-                                <!--Button COCA-->
-                                <Button
+                                    </Button>
+                                    <!--Button COCA-->
+                                    <Button
+                                    Width="140"
+                                        Uid="1"
+                                    Click="Button_Click"
                                      HorizontalAlignment="Left"
-                                    Margin="20 10 20 10"
+                                    
+                                        Background="Transparent"
+                                    BorderBrush="Transparent"
                                      Content="COCACOLA">
 
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction Command="{Binding BtnCocaColaCommand}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>
-                                <!--Button INTERFOOD-->
-                                <Button
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding BtnCocaColaCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                    <!--Button INTERFOOD-->
+                                    <Button
+                                    Width="140"
+                                        Uid="2"
+                                    Click="Button_Click"
                                      HorizontalAlignment="Left"
-                                    Margin="20 10 20 10"
+                                    
+                                        Background="Transparent"
+                                    BorderBrush="Transparent"
                                      Content="INTERFOOD">
 
 
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction Command="{Binding BtnInterFoodCommand}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>
-                                <!--Button REDBULL-->
-                                <Button
-
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding BtnInterFoodCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                    <!--Button REDBULL-->
+                                    <Button
+                                    Width="140"
+                                        Uid="3"
+                                    Click="Button_Click"
                                      HorizontalAlignment="Left"
-                                    Margin="20 10 20 10"
+                                    
+                                        Background="Transparent"
+                                    BorderBrush="Transparent"
                                      Content="REDBULL">
 
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction Command="{Binding BtnRedBullCommand}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding BtnRedBullCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
 
-                                </Button>
-                                <!--Button TANHIEPPHAT-->
-                                <Button
-
+                                    </Button>
+                                    <!--Button TANHIEPPHAT-->
+                                    <Button
+                                    Width="140"
+                                        Uid="4"
+                                    Click="Button_Click"
                                      HorizontalAlignment="Left"
-                                    Margin="20 10 20 10"
+                                   
+                                        Background="Transparent"
+                                    BorderBrush="Transparent"
                                      Content="TANHIEPPHAT">
 
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction Command="{Binding BtnTanHiepPhatCommand}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding BtnTanHiepPhatCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
 
-                                </Button>
-                                <!--Button UniversalRobina-->
-                                <Button
-
+                                    </Button>
+                                    <!--Button UniversalRobina-->
+                                    <Button
+                                    Width="140"
+                                        Uid="5"
+                                    Click="Button_Click"
                                      HorizontalAlignment="Left"
-                                    Margin="20 10 20 10"
+                                    
+                                        Background="Transparent"
+                                    BorderBrush="Transparent"
                                      Content="UniversalRobina">
 
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction Command="{Binding BtnUniversalRobinaCommand}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding BtnUniversalRobinaCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
 
-                                </Button>
-                                <!--Button KINHDO-->
-                                <Button
-
+                                    </Button>
+                                    <!--Button KINHDO-->
+                                    <Button
+                                     Width="140"
+                                        Uid="6"
+                                        
+                                    Click="Button_Click"
                                      HorizontalAlignment="Left"
-                                    Margin="20 10 20 10"
+                                    
+                                        Background="Transparent"
+                                    BorderBrush="Transparent"
                                      Content="KINHDO">
 
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction Command="{Binding BtnKinhDoCommand}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding BtnKinhDoCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
 
-                                </Button>
-                               
-                            </StackPanel>
+                                    </Button>
+
+                                </StackPanel>
+
+                            <Grid  x:Name="GridCursor" Width="140" Height="5" Background="white" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="49 40 0 0">
                             </Grid>
+
                             
                             
-                                
                         </Grid>
                         <!--NỘI DUNG NHẬP HÀNG-->
                         <Grid Grid.Row="1" Background="PaleGoldenrod" x:Name="nhaphang_noidung">
                             <Grid x:Name="PEPSI">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"></RowDefinition>
-
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition Height="auto"></RowDefinition>
                                 </Grid.RowDefinitions>
@@ -1592,342 +1622,3 @@
         </Grid>
     </Grid>
 </Window>
-<!--<Grid.Style>
-    <Style TargetType="{x:Type Grid}">
-        <Setter Property="Visibility" Value="Hidden"/>
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding ChucNang}" Value="4">
-                <Setter Property="Visibility" Value="Visible"/>
-            </DataTrigger>
-        </Style.Triggers>
-    </Style>
-</Grid.Style>
-<Grid>
-    <Grid.RowDefinitions>
-        <RowDefinition Height="auto"></RowDefinition>
-        <RowDefinition></RowDefinition>
-    </Grid.RowDefinitions>
-    <Grid Grid.Row="0" Background="DarkGoldenrod">
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        --><!--NÚT NHÀ CC--><!--
-        <Grid Grid.Row="0">
-            <StackPanel>
-                --><!--Button Pepsico--><!--
-                <Button                                                                                                         
-                                Width="130"
-                                 Margin="10 10 900 10"
-                                Content="Pepsico"
-                                ToolTip="Resource name: MaterialDesignRaisedButton">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding BtnPepsicoCommand}">
-                            </i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </Button>
-                --><!--Button CocaCola--><!--
-                <Button
-                                Width="130"
-                                 Margin="10 10 600 10"
-                                Content="CocaCola"
-                                ToolTip="Resource name: MaterialDesignRaisedButton">
-
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding BtnCocaColaCommand}">
-                            </i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </Button>
-                --><!--Button InterFood--><!--
-                <Button
-                                Width="130"
-                                Margin="10 10 300 10"
-                                Content="InterFood"
-                                ToolTip="Resource name: MaterialDesignRaisedButton">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding BtnInterFoodCommand}">
-                            </i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </Button>
-                --><!--Button Red bull--><!--
-                <Button
-                                Width="130"
-                                Margin="10"
-                                Content="Red bull"
-                                ToolTip="Resource name: MaterialDesignRaisedButton">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding BtnRedBullCommand}">
-                            </i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </Button>
-                --><!--Button TanHiepPhat--><!--
-                <Button
-                                Width="130"
-                                 Margin="10 10 -300 10"
-                                Content="TanHiepPhat"
-                                ToolTip="Resource name: MaterialDesignRaisedButton">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding BtnTanHiepPhatCommand}">
-                            </i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </Button>
-                --><!--Button UniversalRobina--><!--
-                <Button
-                                Width="150"
-                                 Margin="10 10 -600 10"
-                                Content="UniversalRobina"
-                                ToolTip="Resource name: MaterialDesignRaisedButton">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding BtnUniversalRobinaCommand}">
-                            </i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </Button>
-                --><!--Button KinhDo--><!--
-                <Button
-                                Width="100"
-                                 Margin="10 10 -900 10"
-                                Content="Kinh đô"
-                                ToolTip="Resource name: MaterialDesignRaisedButton">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding BtnKinhDoCommand}">
-                            </i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </Button>
-            </StackPanel>
-        </Grid>
-        --><!--NÚT NHẬP SỐ LƯỢNG--><!--
-        <Grid Grid.Row="1" HorizontalAlignment="Right">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="30 0 0 0" Text="Số lượng: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" />
-                <TextBox x:Name="SOLUONGSP" FontSize="20" Width="200" Height="30" Text="{Binding themsoluongsp}" Background="White">
-                </TextBox>
-                --><!--NÚT NHẬP SỐ LƯỢNG--><!--
-                <Button Content="Nhập" Background="#ff6f00" BorderBrush="Transparent" Margin="10 0 0 0" Width="120" Height="30" Command="{Binding editsoluongnhap}" CommandParameter="{Binding ElementName=SOLUONG}">
-                </Button>
-            </StackPanel>
-        </Grid>
-    </Grid>
-    --><!--NỘI DUNG NHẬP HÀNG--><!--
-    <Grid Grid.Row="1"  Background="PaleGoldenrod">
-        <Grid x:Name="nhaphang_pepsico">
-            <Grid.Style>
-                <Style TargetType="{x:Type Grid}">
-                    <Setter Property="Visibility" Value="Hidden"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ChucNangNhapHang}" Value="0">
-                            <Setter Property="Visibility" Value="Visible"></Setter>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Loaded">
-                    <i:InvokeCommandAction Command="{Binding BtnPepsicoCommand}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-            <ListView ItemsSource="{Binding sanphamlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
-                --><!--ĐỊNH DẠNG NỘI DUNG--><!--
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        <Setter Property="FontSize" Value="15"/>
-                    </Style>
-                </ListView.ItemContainerStyle>
-                <ListView.View>
-                    <GridView>
-                        --><!--ĐỊNH DẠNG HEADER--><!--
-                        <GridView.ColumnHeaderContainerStyle>
-                            <Style TargetType="GridViewColumnHeader">
-                                <Setter Property="FontSize" Value="20"/>
-                                <Setter Property="FontWeight" Value="Bold"/>
-                                <Setter Property="Margin" Value="10"/>
-                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                <Setter Property="IsEnabled" Value="True"/>
-                                <Setter Property="Width" Value="auto"/>
-                                <Setter Property="Background" Value="#ff8f00"/>
-                            </Style>
-                        </GridView.ColumnHeaderContainerStyle>
-                        <GridViewColumn Width="250" Header="barcode" DisplayMemberBinding="{Binding IdSanpham }"/>
-                        <GridViewColumn Width="250" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSanpham }"/>
-                        <GridViewColumn Width="150" Header="Đơn giá" DisplayMemberBinding="{Binding Gia }"/>
-                        <GridViewColumn Width="110" Header="Bán chạy">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsEnabled="False"  IsChecked="{Binding SanphamHot}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Width="110" Header="Sản phẩm mới">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsEnabled="False"  IsChecked="{Binding SanphamMoi}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </Grid>
-
-        <Grid x:Name="nhaphang_cocacola">
-            <Grid.Style>
-                <Style TargetType="{x:Type Grid}">
-                    <Setter Property="Visibility" Value="Hidden"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ChucNangNhapHang}" Value="1">
-                            <Setter Property="Visibility" Value="Visible"></Setter>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Loaded">
-                    <i:InvokeCommandAction Command="{Binding BtnCocaColaCommand}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-            <ListView ItemsSource="{Binding sanphamlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
-                --><!--ĐỊNH DẠNG NỘI DUNG--><!--
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        <Setter Property="FontSize" Value="15"/>
-                    </Style>
-                </ListView.ItemContainerStyle>
-                <ListView.View>
-                    <GridView>
-                        --><!--ĐỊNH DẠNG HEADER--><!--
-                        <GridView.ColumnHeaderContainerStyle>
-                            <Style TargetType="GridViewColumnHeader">
-                                <Setter Property="FontSize" Value="20"/>
-                                <Setter Property="FontWeight" Value="Bold"/>
-                                <Setter Property="Margin" Value="10"/>
-                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                <Setter Property="IsEnabled" Value="True"/>
-                                <Setter Property="Width" Value="auto"/>
-                                <Setter Property="Background" Value="Transparent"/>
-                            </Style>
-                        </GridView.ColumnHeaderContainerStyle>
-                        <GridViewColumn Width="250" Header="barcode" DisplayMemberBinding="{Binding IdSanpham }"/>
-                        <GridViewColumn Width="250" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSanpham }"/>
-                        <GridViewColumn Width="150" Header="Đơn giá" DisplayMemberBinding="{Binding Gia }"/>
-                        <GridViewColumn Width="150" Header="Số lượng" DisplayMemberBinding="{Binding Soluong}"/>
-                        <GridViewColumn Width="150" Header="Bán chạy">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsEnabled="False"  IsChecked="{Binding SanphamHot}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Width="110" Header="Sản phẩm mới">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsEnabled="False"  IsChecked="{Binding SanphamMoi}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </Grid>
-        <Grid x:Name="nhaphang_interfood">
-            <Grid.Style>
-                <Style TargetType="{x:Type Grid}">
-                    <Setter Property="Visibility" Value="Hidden"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ChucNangNhapHang}" Value="2">
-                            <Setter Property="Visibility" Value="Visible"></Setter>
-
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Loaded">
-                    <i:InvokeCommandAction Command="{Binding BtnInterFoodCommand}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Grid>
-        <Grid x:Name="nhaphang_redpull">
-            <Grid.Style>
-                <Style TargetType="{x:Type Grid}">
-                    <Setter Property="Visibility" Value="Hidden"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ChucNangNhapHang}" Value="3">
-                            <Setter Property="Visibility" Value="Visible"></Setter>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Loaded">
-                    <i:InvokeCommandAction Command="{Binding BtnRedBullCommand}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Grid>
-        <Grid x:Name="nhaphang_tanhiepphat">
-            <Grid.Style>
-                <Style TargetType="{x:Type Grid}">
-                    <Setter Property="Visibility" Value="Hidden"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ChucNangNhapHang}" Value="4">
-                            <Setter Property="Visibility" Value="Visible"></Setter>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Loaded">
-                    <i:InvokeCommandAction Command="{Binding BtnTanHiepPhatCommand}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Grid>
-        <Grid x:Name="nhaphang_universalrobina">
-            <Grid.Style>
-                <Style TargetType="{x:Type Grid}">
-                    <Setter Property="Visibility" Value="Hidden"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ChucNangNhapHang}" Value="5">
-                            <Setter Property="Visibility" Value="Visible"></Setter>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Loaded">
-                    <i:InvokeCommandAction Command="{Binding BtnUniversalRobinaCommand}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Grid>
-        <Grid x:Name="nhaphang_kinhdo">
-            <Grid.Style>
-                <Style TargetType="{x:Type Grid}">
-                    <Setter Property="Visibility" Value="Hidden"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ChucNangNhapHang}" Value="6">
-                            <Setter Property="Visibility" Value="Visible"></Setter>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Loaded">
-                    <i:InvokeCommandAction Command="{Binding BtnKinhDoCommand}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Grid>
-    </Grid>
-</Grid>-->
