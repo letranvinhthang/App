@@ -10,9 +10,9 @@
         x:Name="window"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{StaticResource lsdh}"
-        Title="Invoice" Height="470" Width="550" ResizeMode="NoResize" WindowStyle="None" FontFamily="Roboto" WindowStartupLocation="CenterScreen">
+        Title="Hóa đơn" Height="auto" Width="550" ResizeMode="NoResize" WindowStyle="None" FontFamily="Roboto" WindowStartupLocation="CenterScreen">
 
-        <Grid>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Loaded">
                     <i:InvokeCommandAction Command="{Binding loadcscommannd}"/>
@@ -21,11 +21,11 @@
             <Button HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top" Command="{Binding exitcommand}" CommandParameter="{Binding ElementName=window}">
                 <materialDesign:PackIcon Kind="Close"/>
             </Button>
-            <Grid x:Name="print" Width="550">
+            <Grid x:Name="print" Height="auto">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="200"/>
                 </Grid.RowDefinitions>
 
                 <StackPanel Orientation="Horizontal" Margin="30" Grid.Row="0">
@@ -33,14 +33,12 @@
                     <TextBlock Text="Hóa đơn" VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="#FFFBE188"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" Margin="20">
-                    <Grid HorizontalAlignment="Stretch">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0" Margin="10">
-                            <!--TÊN NHÂN VIÊN-->
-                            <TextBlock Text="{Binding ten }" FontSize="20" Margin="5"/>
+                <Grid HorizontalAlignment="Stretch">
+                    <StackPanel Margin="10" Width="auto">
+                           <!--ĐỊA CHỈ-->
+                        <TextBlock Text="{Binding diachicuahang}" FontSize="15" Margin="5" Width="auto" />
+                        <!--TÊN NHÂN VIÊN-->
+                            <TextBlock Text="{Binding ten }" FontSize="12" Margin="5"/>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Ngày tạo" FontSize="12" Margin="5"/>
                                 <!--NGÀY TẠO-->
@@ -85,8 +83,14 @@
                                         <Setter Property="FontSize" Value="15"/>
                                     </Style>
                                 </GridView.ColumnHeaderContainerStyle>
-                                
-                                <GridViewColumn Width="180" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSanpham }"/>
+
+                            <GridViewColumn Width="180" Header="Tên sản phẩm">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding TenSanpham}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                                 <GridViewColumn Width="100" Header="Đơn giá" DisplayMemberBinding="{Binding GiaTheoQuan, StringFormat=C, ConverterCulture=vi}"/>
                                 <GridViewColumn Width="95" Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
                                 <GridViewColumn Width="120" Header="Thành Tiền" DisplayMemberBinding="{Binding ThanhTien, StringFormat=C, ConverterCulture=vi }"/>

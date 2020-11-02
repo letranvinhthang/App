@@ -254,7 +254,7 @@
                             CommandParameter="{Binding ElementName=window}"
                             Style="{StaticResource MaterialDesignRaisedButton}"
                             Background="Red"
-                            ToolTip="THOÁT CHƯƠNG TRÌNH" Content="Exit">
+                            ToolTip="THOÁT CHƯƠNG TRÌNH" Content="Thoát">
                     </Button>
                     
                 </StackPanel>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using System.Text;
 
 namespace WPF_BanHang.Models
@@ -14,5 +15,6 @@ namespace WPF_BanHang.Models
         public string trangthai { get; set; }
         public string TenNhanvien { get; set; }
         public string TenChuongtrinh { get; set; }
+        public string DiaChiCuaHang { get; set; }
     }
 }

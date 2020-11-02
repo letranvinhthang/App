@@ -27,6 +27,7 @@ namespace WPF_BanHang.Viewmodel
                     ngaytao = SelectedItem.NgayTao;
                     ten = SelectedItem.TenNhanvien;
                     tongtien = SelectedItem.ThanhTien;
+                    diachicuahang = SelectedItem.DiaChiCuaHang;
                 }
             }
         }
@@ -48,6 +49,8 @@ namespace WPF_BanHang.Viewmodel
 
         public double tongtien { get => _tongtien; set { _tongtien = value; OnPropertyChanged(); } }
 
+        private string _diachiacuahang;
+        public string diachicuahang { get => _diachiacuahang; set { _diachiacuahang = value; OnPropertyChanged(); } }
         public ICommand loadcommannd { get; set; }
         public ICommand loadcscommannd { get; set; }
         public ICommand xemhdcommand { get; set; }
@@ -57,7 +60,10 @@ namespace WPF_BanHang.Viewmodel
             loadcommannd = new RelayCommand<Object>((k) => { return true; }, (k) => {
                 Loadhoadon();
             });
-            xemhdcommand = new RelayCommand<Object>((k) => { return true; }, (k) => {
+            xemhdcommand = new RelayCommand<Object>((k) => {
+                if (SelectedItem == null)
+                    return false;
+                return true; }, (k) => {
                 cshd();
             });
             exitcommand = new RelayCommand<Window>((k) => { return true; }, (k) => {

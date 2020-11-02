@@ -9,5 +9,6 @@ namespace WPF_BanHang.Models
         public int IdNhaCC { get; set; }
         public string TenSP { get; set; }
         public int SoLuong { get; set; }
+        public long barcode { get; set; }
     }
 }

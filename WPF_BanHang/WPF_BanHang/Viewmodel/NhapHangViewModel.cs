@@ -14,11 +14,24 @@ namespace WPF_BanHang.Viewmodel
     {
         public enum ChucNangQL
         {
-            Pepsico, CocaCola, InterFood, RedBull, TanHiepPhat, UniversaUniversalRobina, KinhDo
+            Pepsico, CocaCola, InterFood, RedBull, TanHiepPhat, UniversaUniversalRobina, KinhDo 
         };
 
         private int _ChucNangNhapHang;
         public int ChucNangNhapHang { get => _ChucNangNhapHang; set { _ChucNangNhapHang = value; OnPropertyChanged(); } }
+        public SanPham_NhaCungCap _SelectedItem;
+        public SanPham_NhaCungCap SelectedItem
+        {
+            get => _SelectedItem;
+            set
+            {
+                _SelectedItem = value; OnPropertyChanged();
+                if (SelectedItem != null)
+                {
+                    soluongsp = SelectedItem.SoLuong;
+                }
+            }
+        }
 
         private ObservableCollection<SanPham_NhaCungCap> _pepsilist;
         public ObservableCollection<SanPham_NhaCungCap> pepsilist { get => _pepsilist; set { _pepsilist = value; OnPropertyChanged(); } }
@@ -38,6 +51,10 @@ namespace WPF_BanHang.Viewmodel
         private ObservableCollection<SanPham_NhaCungCap> _URlist;
         public ObservableCollection<SanPham_NhaCungCap> URlist { get => _URlist; set { _URlist = value; OnPropertyChanged(); } }
 
+        private int _soluongsp;
+        public int soluongsp { get => _soluongsp; set { _soluongsp = value; OnPropertyChanged(); } }
+
+
         private ObservableCollection<SanPham_NhaCungCap> _kinhdolist;
         public ObservableCollection<SanPham_NhaCungCap> kinhdolist { get => _kinhdolist; set { _kinhdolist = value; OnPropertyChanged(); } }
 
@@ -48,13 +65,21 @@ namespace WPF_BanHang.Viewmodel
         public ICommand BtnTanHiepPhatCommand { get; set; }
         public ICommand BtnUniversalRobinaCommand { get; set; }
         public ICommand BtnKinhDoCommand { get; set; }
-        public ICommand loadpepsi { get; set; }
-        public ICommand loadcoca { get; set; }
-        public ICommand loadinterfood { get; set; }
-        public ICommand loadredbull { get; set; }
-        public ICommand loadtanhiepphat { get; set; }
-        public ICommand loadUR { get; set; }
-        public ICommand loadkinhdo { get; set; }
+        public ICommand nhapUR { get; set; }
+        public ICommand nhapKinhDo { get; set; }
+        public ICommand nhapTanHiepPhat { get; set; }
+        public ICommand nhapRedBull { get; set; }
+        public ICommand nhapInter { get; set; }
+        public ICommand nhapCoca { get; set; }
+        public ICommand nhapPepsi { get; set; }
+        public ICommand editsoluongpes { get; set; }
+        public ICommand editsoluongcoca { get; set; }
+        public ICommand editsoluonginter { get; set; }
+        public ICommand editsoluongredbull { get; set; }
+        public ICommand editsoluongthp { get; set; }
+        public ICommand editsoluongur { get; set; }
+        public ICommand editsoluongkinhdo { get; set; }
+        public ICommand load { get; set; }
 
         public NhapHangViewModel()
         {
@@ -93,35 +118,207 @@ namespace WPF_BanHang.Viewmodel
             {
                 ChucNangNhapHang = (int)ChucNangQL.KinhDo;
             });
-            loadpepsi = new RelayCommand<Grid>((p) => { return true; }, (p) =>
+         
+            load= new RelayCommand<Grid>((p) => { return true; }, (p) =>
             {
+
                 LoadPepsi();
-            });
-            loadcoca = new RelayCommand<Grid>((p) => { return true; }, (p) =>
-            {
                 LoadCoca();
-            });
-            loadinterfood = new RelayCommand<Grid>((p) => { return true; }, (p) =>
-            {
+                LoadKinhdo();
                 LoadInterfood();
-            });
-            loadredbull = new RelayCommand<Grid>((p) => { return true; }, (p) =>
-            {
                 LoadRedbull();
-            });
-            loadtanhiepphat = new RelayCommand<Grid>((p) => { return true; }, (p) =>
-            {
                 LoadTanhiepphat();
-            });
-            loadUR = new RelayCommand<Grid>((p) => { return true; }, (p) =>
-            {
                 LoadUR();
             });
-            loadkinhdo = new RelayCommand<Grid>((p) => { return true; }, (p) =>
+            editsoluongpes = new RelayCommand<TextBox>((p) => {
+                if (SelectedItem == null)
+                    return false;
+                return true;
+                
+            }, (p) =>
             {
-                LoadKinhdo();
-            });
+                try
+                {
+                    foreach (var od in pepsilist)
+                    {
+                        if (SelectedItem.barcode== od.barcode)
+                        {
+                           
+                            od.SoLuong = soluongsp;    
+                            pepsilist.Remove(od);
+                            pepsilist.Add(od);
+                            p.Text = null;
+                            soluongsp = 0;
+                            return;
+                        }
+                    }
+                }
+                catch { }
 
+
+            });
+            editsoluongcoca = new RelayCommand<TextBox>((p) => {
+                if (SelectedItem == null)
+                    return false;
+                return true;
+
+            }, (p) =>
+            {
+                try
+                {
+                    foreach (var od in cocalist)
+                    {
+                        if (SelectedItem.barcode == od.barcode)
+                        {
+
+                            od.SoLuong = soluongsp;
+                            cocalist.Remove(od);
+                            cocalist.Add(od);
+                            p.Text = null;
+                            soluongsp = 0;
+                            return;
+                        }
+                    }
+                }
+                catch { }
+
+
+            });
+            editsoluonginter = new RelayCommand<TextBox>((p) => {
+                if (SelectedItem == null)
+                    return false;
+                return true;
+
+            }, (p) =>
+            {
+                try
+                {       
+                    foreach (var od in interfoodlist)
+                    {
+                        if (SelectedItem.barcode == od.barcode)
+                        {
+
+                            od.SoLuong = soluongsp;
+                            interfoodlist.Remove(od);
+                            interfoodlist.Add(od);
+                            p.Text = null;
+                            soluongsp = 0;
+                            return;
+                        }
+                    }
+                }
+                catch { }
+
+
+            });
+            editsoluongredbull = new RelayCommand<TextBox>((p) => {
+                if (SelectedItem == null)
+                    return false;
+                return true;
+
+            }, (p) =>
+            {
+                try
+                {
+                    foreach (var od in redbulllist)
+                    {
+                        if (SelectedItem.barcode == od.barcode)
+                        {
+
+                            od.SoLuong = soluongsp;
+                            redbulllist.Remove(od);
+                            redbulllist.Add(od);
+                            p.Text = null;
+                            soluongsp = 0;
+                            return;
+                        }
+                    }
+                }
+                catch { }
+
+
+            });
+            editsoluongthp = new RelayCommand<TextBox>((p) => {
+                if (SelectedItem == null)
+                    return false;
+                return true;
+
+            }, (p) =>
+            {
+                try
+                {
+                    foreach (var od in tanhiepphatlist)
+                    {
+                        if (SelectedItem.barcode == od.barcode)
+                        {
+
+                            od.SoLuong = soluongsp;
+                            tanhiepphatlist.Remove(od);
+                            tanhiepphatlist.Add(od);
+                            p.Text = null;
+                            soluongsp = 0;
+                            return;
+                        }
+                    }
+                }
+                catch { }
+
+
+            });
+            editsoluongur = new RelayCommand<TextBox>((p) => {
+                if (SelectedItem == null)
+                    return false;
+                return true;
+
+            }, (p) =>
+            {
+                try
+                {
+                    foreach (var od in URlist)
+                    {
+                        if (SelectedItem.barcode == od.barcode)
+                        {
+
+                            od.SoLuong = soluongsp;
+                            URlist.Remove(od);
+                            URlist.Add(od);
+                            p.Text = null;
+                            soluongsp = 0;
+                            return;
+                        }
+                    }
+                }
+                catch { }
+
+
+            });
+            editsoluongkinhdo = new RelayCommand<TextBox>((p) => {
+                if (SelectedItem == null)
+                    return false;
+                return true;
+
+            }, (p) =>
+            {
+                try
+                {
+                    foreach (var od in kinhdolist)
+                    {
+                        if (SelectedItem.barcode == od.barcode)
+                        {
+
+                            od.SoLuong = soluongsp;
+                            kinhdolist.Remove(od);
+                            kinhdolist.Add(od);
+                            p.Text = null;
+                            soluongsp = 0;
+                            return;
+                        }
+                    }
+                }
+                catch { }
+
+
+            });
             void LoadPepsi()
             {
                 var db = new qlbhContext();
@@ -136,6 +333,7 @@ namespace WPF_BanHang.Viewmodel
 
                         sanpham.IdNhaCC = item.IdNhacc;
                         sanpham.TenSP = item.TenSanpham;
+                        sanpham.barcode = item.IdSanpham;
                         sanpham.SoLuong = 0;
                         pepsilist.Add(sanpham);
                     }
@@ -155,6 +353,7 @@ namespace WPF_BanHang.Viewmodel
 
                         sanpham.IdNhaCC = item.IdNhacc;
                         sanpham.TenSP = item.TenSanpham;
+                        sanpham.barcode = item.IdSanpham;
                         sanpham.SoLuong = 0;
                         cocalist.Add(sanpham);
                     }
@@ -174,6 +373,7 @@ namespace WPF_BanHang.Viewmodel
 
                         sanpham.IdNhaCC = item.IdNhacc;
                         sanpham.TenSP = item.TenSanpham;
+                        sanpham.barcode = item.IdSanpham;
                         sanpham.SoLuong = 0;
                         interfoodlist.Add(sanpham);
                     }
@@ -193,6 +393,7 @@ namespace WPF_BanHang.Viewmodel
 
                         sanpham.IdNhaCC = item.IdNhacc;
                         sanpham.TenSP = item.TenSanpham;
+                        sanpham.barcode = item.IdSanpham;
                         sanpham.SoLuong = 0;
                         redbulllist.Add(sanpham);
                     }
@@ -212,6 +413,7 @@ namespace WPF_BanHang.Viewmodel
 
                         sanpham.IdNhaCC = item.IdNhacc;
                         sanpham.TenSP = item.TenSanpham;
+                        sanpham.barcode = item.IdSanpham;
                         sanpham.SoLuong = 0;
                         tanhiepphatlist.Add(sanpham);
                     }
@@ -231,6 +433,7 @@ namespace WPF_BanHang.Viewmodel
 
                         sanpham.IdNhaCC = item.IdNhacc;
                         sanpham.TenSP = item.TenSanpham;
+                        sanpham.barcode = item.IdSanpham;
                         sanpham.SoLuong = 0;
                         URlist.Add(sanpham);
                     }
@@ -250,6 +453,7 @@ namespace WPF_BanHang.Viewmodel
 
                         sanpham.IdNhaCC = item.IdNhacc;
                         sanpham.TenSP = item.TenSanpham;
+                        sanpham.barcode = item.IdSanpham;
                         sanpham.SoLuong = 0;
                         kinhdolist.Add(sanpham);
                     }
