@@ -943,14 +943,7 @@
                                
                             </StackPanel>
                             </Grid>
-                            <Grid Grid.Row="1">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                    <TextBlock Margin="10" Text="Số lượng: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" />
-                                    <TextBox  Margin="10" FontSize="20" Width="200" Height="30" Text="{Binding themsoluong}" Background="White"/>
-                                    <Button  Margin="10" Content="Thêm" Width="120" Height="auto" />
-                                </StackPanel>
-                                
-                            </Grid>
+                            
                             
                                 
                         </Grid>
@@ -958,6 +951,8 @@
                         <Grid Grid.Row="1" Background="PaleGoldenrod" x:Name="nhaphang_noidung">
                             <Grid x:Name="PEPSI">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition Height="auto"></RowDefinition>
                                 </Grid.RowDefinitions>
@@ -979,7 +974,14 @@
                                 </i:Interaction.Triggers>
 
                             <!--NỘI DUNG NHẬP HÀNG-->
-                                <Grid Grid.Row="0">
+                                <Grid Grid.Row="0" HorizontalAlignment="Right">
+                                    <StackPanel Orientation="Horizontal">
+                                    <TextBlock Margin="10" Text="Số lượng: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Foreground="Black" />
+                                    <TextBox  Margin="10" FontSize="20" Width="200" Height="30" Text="{Binding themsoluongpepsi}" Background="White"/>
+                                    <Button  Margin="10" Content="Thêm" Width="120" Height="auto" />
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Row="1">
                                     <ListView ItemsSource="{Binding pepsilist}">
                                         <ListView.View>
                                             <GridView>
@@ -1003,7 +1005,7 @@
                                         </ListView.View>
                                     </ListView>
                                 </Grid>
-                                <Grid VerticalAlignment="Bottom" Grid.Row="1">
+                                <Grid VerticalAlignment="Bottom" Grid.Row="2">
                                     <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapPepsi}"/>
                                 </Grid>
 
@@ -1066,6 +1068,7 @@
                             </Grid>
                             <Grid x:Name="COCA">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition Height="auto"></RowDefinition>
                                 </Grid.RowDefinitions>
@@ -1081,13 +1084,22 @@
                                 </Grid.Style>
                                 <!--THÔNG TIN THỐNG KÊ-->
 
-                                <Grid DataContext="{StaticResource nhVM}">
+                                
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Loaded">
                                             <i:InvokeCommandAction Command="{Binding loadcoca}"/>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
-                                    <Grid Grid.Row="0">
+
+                                    <!--NỘI DUNG NHẬP HÀNG-->
+                                    <Grid Grid.Row="0" HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Margin="10" Text="Số lượng: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Foreground="Black" />
+                                            <TextBox  Margin="10" FontSize="20" Width="200" Height="30" Text="{Binding themsoluongcoca}" Background="White"/>
+                                            <Button  Margin="10" Content="Thêm" Width="120" Height="auto" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Row="1">
                                         <ListView ItemsSource="{Binding cocalist}">
                                             <ListView.View>
                                                 <GridView>
@@ -1111,13 +1123,17 @@
                                             </ListView.View>
                                         </ListView>
                                     </Grid>
-                                    <Grid VerticalAlignment="Bottom" Grid.Row="1">
+                                    <Grid VerticalAlignment="Bottom" Grid.Row="2">
                                         <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapCoca}"/>
                                     </Grid>
-                                </Grid>
+                                
                             </Grid>
                             <Grid x:Name="INTERFOOD">
-
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                </Grid.RowDefinitions>
                                 <Grid.Style>
                                     <Style TargetType="{x:Type Grid}">
                                         <Setter Property="Visibility" Value="Hidden"/>
@@ -1128,18 +1144,28 @@
                                         </Style.Triggers>
                                     </Style>
                                 </Grid.Style>
-                                <Grid DataContext="{StaticResource nhVM}">
+                                
 
 
                                     <!--THÔNG TIN THỐNG KÊ-->
-                            
-                                    <Grid Grid.Row="0">
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Loaded">
-                                                <i:InvokeCommandAction Command="{Binding loadinterfood}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-                                        <Grid>
+                                
+                                    <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Loaded">
+                                            <i:InvokeCommandAction Command="{Binding loadinterfood}"/>
+                                    </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    
+
+                                        <!--NỘI DUNG NHẬP HÀNG-->
+                                    <Grid Grid.Row="0" HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Margin="10" Text="Số lượng: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Foreground="Black" />
+                                            <TextBox  Margin="10" FontSize="20" Width="200" Height="30" Text="{Binding themsoluonginter}" Background="White"/>
+                                            <Button  Margin="10" Content="Thêm" Width="120" Height="auto" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        
                                             <ListView ItemsSource="{Binding interfoodlist}">
                                                 <ListView.View>
                                                     <GridView>
@@ -1163,14 +1189,16 @@
                                                 </ListView.View>
                                             </ListView>
                                         </Grid>
-                                    </Grid>
-                                    <Grid VerticalAlignment="Bottom" Grid.Row="1">
-                                        <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapInter}"/>
-                                    </Grid>
-                                </Grid>
+                                        <Grid VerticalAlignment="Bottom" Grid.Row="2">
+                                            <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapInter}"/>
+                                        </Grid>
+                                 
+                                    
+                                
                             </Grid>
                             <Grid x:Name="REDBULL">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition Height="auto"></RowDefinition>
                                 </Grid.RowDefinitions>
@@ -1192,7 +1220,16 @@
                                 </i:Interaction.Triggers>
 
                                 <!--NỘI DUNG NHẬP HÀNG-->
-                                <Grid Grid.Row="0">
+
+                                <Grid Grid.Row="0" HorizontalAlignment="Right">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Margin="10" Text="Số lượng: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Foreground="Black" />
+                                        <TextBox  Margin="10" FontSize="20" Width="200" Height="30" Text="{Binding themsoluongred}" Background="White"/>
+                                        <Button  Margin="10" Content="Thêm" Width="120" Height="auto" />
+                                    </StackPanel>
+                                </Grid>
+                                
+                                <Grid Grid.Row="1">
                                     <ListView ItemsSource="{Binding redbulllist}">
                                         <ListView.View>
                                             <GridView>
@@ -1216,12 +1253,16 @@
                                         </ListView.View>
                                     </ListView>
                                 </Grid>
-                                <Grid VerticalAlignment="Bottom" Grid.Row="1">
+                                <Grid VerticalAlignment="Bottom" Grid.Row="2">
                                     <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapRedBull}"/>
                                 </Grid>
                             </Grid>
+
+
                             <Grid x:Name="TANHIEPPHAT">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition Height="auto"></RowDefinition>
                                 </Grid.RowDefinitions>
@@ -1243,7 +1284,15 @@
                                 </i:Interaction.Triggers>
 
                                 <!--NỘI DUNG NHẬP HÀNG-->
-                                <Grid Grid.Row="0">
+
+                                <Grid Grid.Row="0" HorizontalAlignment="Right">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Margin="10" Text="Số lượng: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Foreground="Black" />
+                                        <TextBox  Margin="10" FontSize="20" Width="200" Height="30" Text="{Binding themsoluongtanhiepphat}" Background="White"/>
+                                        <Button  Margin="10" Content="Thêm" Width="120" Height="auto" />
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Row="1">
                                     <ListView ItemsSource="{Binding tanhiepphatlist}">
                                         <ListView.View>
                                             <GridView>
@@ -1267,12 +1316,15 @@
                                         </ListView.View>
                                     </ListView>
                                 </Grid>
-                                <Grid VerticalAlignment="Bottom" Grid.Row="1">
+                                <Grid VerticalAlignment="Bottom" Grid.Row="2">
                                     <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapTanHiepPhat}"/>
                                 </Grid>
                             </Grid>
+
+
                             <Grid x:Name="UniversaUniversalRobina">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition Height="auto"></RowDefinition>
                                 </Grid.RowDefinitions>
@@ -1294,7 +1346,16 @@
                                 </i:Interaction.Triggers>
 
                                 <!--NỘI DUNG NHẬP HÀNG-->
-                                <Grid Grid.Row="0">
+
+                                <Grid Grid.Row="0" HorizontalAlignment="Right">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Margin="10" Text="Số lượng: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Foreground="Black" />
+                                        <TextBox  Margin="10" FontSize="20" Width="200" Height="30" Text="{Binding themsoluonguniver}" Background="White"/>
+                                        <Button  Margin="10" Content="Thêm" Width="120" Height="auto" />
+                                    </StackPanel>
+                                </Grid>
+
+                                <Grid Grid.Row="1">
                                     <ListView ItemsSource="{Binding URlist}">
                                         <ListView.View>
                                             <GridView>
@@ -1318,12 +1379,16 @@
                                         </ListView.View>
                                     </ListView>
                                 </Grid>
-                                <Grid VerticalAlignment="Bottom" Grid.Row="1">
+                                <Grid VerticalAlignment="Bottom" Grid.Row="2">
                                     <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapUniver}"/>
                                 </Grid>
                             </Grid>
+                            
+                            
+                            
                             <Grid x:Name="KinhDo">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition Height="auto"></RowDefinition>
                                 </Grid.RowDefinitions>
@@ -1345,7 +1410,16 @@
                                 </i:Interaction.Triggers>
 
                                 <!--NỘI DUNG NHẬP HÀNG-->
-                                <Grid Grid.Row="0">
+
+                                <Grid Grid.Row="0" HorizontalAlignment="Right">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Margin="10" Text="Số lượng: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Foreground="Black" />
+                                        <TextBox  Margin="10" FontSize="20" Width="200" Height="30" Text="{Binding themsoluongkinhdo}" Background="White"/>
+                                        <Button  Margin="10" Content="Thêm" Width="120" Height="auto" />
+                                    </StackPanel>
+                                </Grid>
+                                
+                                <Grid Grid.Row="1">
                                     <ListView ItemsSource="{Binding kinhdolist}">
                                         <ListView.View>
                                             <GridView>
@@ -1369,7 +1443,7 @@
                                         </ListView.View>
                                     </ListView>
                                 </Grid>
-                                <Grid VerticalAlignment="Bottom" Grid.Row="1">
+                                <Grid VerticalAlignment="Bottom" Grid.Row="2">
                                     <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapKinhDo}"/>
                                 </Grid>
                             </Grid>
