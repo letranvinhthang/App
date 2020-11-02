@@ -34,6 +34,15 @@ namespace WPF_BanHang
             dongho1.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm tt");
             
         }
-       
+
+        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            int index = Int32.Parse(((Button)e.Source).Uid);
+
+            GridCursor.Margin = new Thickness(44 + (140 * index), 40, 0, 0);
+
+            
+        }
+
     }
 }
