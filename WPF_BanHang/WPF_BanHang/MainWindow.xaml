@@ -927,7 +927,7 @@
                             <!--CHỨC NĂNG THÔNG KÊ-->
 
 
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <!--Button PEPSI-->
                                 <Button
                                     Width="140"
@@ -1072,7 +1072,7 @@
 
                             </StackPanel>
 
-                            <Grid  x:Name="GridCursor" Width="140" Height="5" Background="white" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44 40 0 0">
+                            <Grid  x:Name="GridCursor" Width="140" Height="5" Background="white" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 40 0 0">
                             </Grid>
 
 
