@@ -65,7 +65,20 @@ namespace WPF_BanHang.Viewmodel
         public ICommand BtnTanHiepPhatCommand { get; set; }
         public ICommand BtnUniversalRobinaCommand { get; set; }
         public ICommand BtnKinhDoCommand { get; set; }
-        public ICommand editsoluong { get; set; }
+        public ICommand nhapUR { get; set; }
+        public ICommand nhapKinhDo { get; set; }
+        public ICommand nhapTanHiepPhat { get; set; }
+        public ICommand nhapRedBull { get; set; }
+        public ICommand nhapInter { get; set; }
+        public ICommand nhapCoca { get; set; }
+        public ICommand nhapPepsi { get; set; }
+        public ICommand editsoluongpes { get; set; }
+        public ICommand editsoluongcoca { get; set; }
+        public ICommand editsoluonginter { get; set; }
+        public ICommand editsoluongredbull { get; set; }
+        public ICommand editsoluongthp { get; set; }
+        public ICommand editsoluongur { get; set; }
+        public ICommand editsoluongkinhdo { get; set; }
         public ICommand load { get; set; }
 
         public NhapHangViewModel()
@@ -117,27 +130,187 @@ namespace WPF_BanHang.Viewmodel
                 LoadTanhiepphat();
                 LoadUR();
             });
-            editsoluong = new RelayCommand<TextBox>((p) => { return p == null ? false : true; }, (p) =>
+            editsoluongpes = new RelayCommand<TextBox>((p) => {
+                if (SelectedItem == null)
+                    return false;
+                return true;
+                
+            }, (p) =>
             {
                 try
                 {
-
-                    var order = db.SanPham.Where(x => x.IdSanpham == SelectedItem.barcode);
-                    var dssp = order.FirstOrDefault();
-                    foreach (var od in orderlist)
+                    foreach (var od in pepsilist)
                     {
-                        if (od.barcode == dssp.IdSanpham)
+                        if (SelectedItem.barcode== od.barcode)
                         {
-                            total = 0;
-                            od.soluong = soluongsp;
-                            od.tongtien = od.soluong * od.dongia;
-                            orderlist.Remove(od);
-                            orderlist.Add(od);
+                           
+                            od.SoLuong = soluongsp;    
+                            pepsilist.Remove(od);
+                            pepsilist.Add(od);
                             p.Text = null;
-                            foreach (var odl in orderlist)
-                            {
-                                total += odl.tongtien;
-                            }
+                            soluongsp = 0;
+                            return;
+                        }
+                    }
+                }
+                catch { }
+
+
+            });
+            editsoluongcoca = new RelayCommand<TextBox>((p) => {
+                if (SelectedItem == null)
+                    return false;
+                return true;
+
+            }, (p) =>
+            {
+                try
+                {
+                    foreach (var od in cocalist)
+                    {
+                        if (SelectedItem.barcode == od.barcode)
+                        {
+
+                            od.SoLuong = soluongsp;
+                            cocalist.Remove(od);
+                            cocalist.Add(od);
+                            p.Text = null;
+                            soluongsp = 0;
+                            return;
+                        }
+                    }
+                }
+                catch { }
+
+
+            });
+            editsoluonginter = new RelayCommand<TextBox>((p) => {
+                if (SelectedItem == null)
+                    return false;
+                return true;
+
+            }, (p) =>
+            {
+                try
+                {       
+                    foreach (var od in interfoodlist)
+                    {
+                        if (SelectedItem.barcode == od.barcode)
+                        {
+
+                            od.SoLuong = soluongsp;
+                            interfoodlist.Remove(od);
+                            interfoodlist.Add(od);
+                            p.Text = null;
+                            soluongsp = 0;
+                            return;
+                        }
+                    }
+                }
+                catch { }
+
+
+            });
+            editsoluongredbull = new RelayCommand<TextBox>((p) => {
+                if (SelectedItem == null)
+                    return false;
+                return true;
+
+            }, (p) =>
+            {
+                try
+                {
+                    foreach (var od in redbulllist)
+                    {
+                        if (SelectedItem.barcode == od.barcode)
+                        {
+
+                            od.SoLuong = soluongsp;
+                            redbulllist.Remove(od);
+                            redbulllist.Add(od);
+                            p.Text = null;
+                            soluongsp = 0;
+                            return;
+                        }
+                    }
+                }
+                catch { }
+
+
+            });
+            editsoluongthp = new RelayCommand<TextBox>((p) => {
+                if (SelectedItem == null)
+                    return false;
+                return true;
+
+            }, (p) =>
+            {
+                try
+                {
+                    foreach (var od in tanhiepphatlist)
+                    {
+                        if (SelectedItem.barcode == od.barcode)
+                        {
+
+                            od.SoLuong = soluongsp;
+                            tanhiepphatlist.Remove(od);
+                            tanhiepphatlist.Add(od);
+                            p.Text = null;
+                            soluongsp = 0;
+                            return;
+                        }
+                    }
+                }
+                catch { }
+
+
+            });
+            editsoluongur = new RelayCommand<TextBox>((p) => {
+                if (SelectedItem == null)
+                    return false;
+                return true;
+
+            }, (p) =>
+            {
+                try
+                {
+                    foreach (var od in URlist)
+                    {
+                        if (SelectedItem.barcode == od.barcode)
+                        {
+
+                            od.SoLuong = soluongsp;
+                            URlist.Remove(od);
+                            URlist.Add(od);
+                            p.Text = null;
+                            soluongsp = 0;
+                            return;
+                        }
+                    }
+                }
+                catch { }
+
+
+            });
+            editsoluongkinhdo = new RelayCommand<TextBox>((p) => {
+                if (SelectedItem == null)
+                    return false;
+                return true;
+
+            }, (p) =>
+            {
+                try
+                {
+                    foreach (var od in kinhdolist)
+                    {
+                        if (SelectedItem.barcode == od.barcode)
+                        {
+
+                            od.SoLuong = soluongsp;
+                            kinhdolist.Remove(od);
+                            kinhdolist.Add(od);
+                            p.Text = null;
+                            soluongsp = 0;
                             return;
                         }
                     }
