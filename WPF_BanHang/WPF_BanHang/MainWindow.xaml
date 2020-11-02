@@ -483,38 +483,32 @@
 
 
 
-                                <lvc:CartesianChart Series="{Binding DoanhThu}">
+                                <!--<lvc:CartesianChart Series="{Binding DoanhThu}">
                                     <lvc:CartesianChart.AxisX>
-                                        <lvc:Axis Title="Ngày" FontSize="20" Foreground="Black" Labels="{Binding Ngay}">
-                                            <lvc:Axis.Separator>
-                                                <lvc:Separator Step="1" IsEnabled="True"/>
-                                            </lvc:Axis.Separator>
-                                        </lvc:Axis>
+                                        <lvc:Axis Title="Ngày" FontSize="20" Foreground="Black" Labels="{Binding Ngay}"/>
                                     </lvc:CartesianChart.AxisX>
                                     <lvc:CartesianChart.AxisY>
                                         <lvc:Axis Title="Doanh thu" FontSize="20" Foreground="Black"/>
                                     </lvc:CartesianChart.AxisY>
-                                </lvc:CartesianChart>
+                                </lvc:CartesianChart>-->
 
 
                                 <!--THÔNG TIN THỐNG KÊ-->
-                                <!--<Grid>
+                                <Grid>
                                     <lvc:CartesianChart x:Name="chartdoanhthu">
                                         <lvc:CartesianChart.Series>
-                                            <lvc:ColumnSeries Title="Doanh thu" Values="{Binding TongDoanhThu}"/>
+                                            <lvc:ColumnSeries Title="Doanh thu" Values="{Binding DoanhThu}"/>
                                         </lvc:CartesianChart.Series>
                                         <lvc:CartesianChart.AxisX>
-                                            <lvc:Axis Title="Ngày" Labels="{Binding Path=NgayTao,StringFormat=dd-MM-yyyy}">
-                                                <lvc:Axis.Separator>
-                                                    <lvc:Separator Step="1"/>
-                                                </lvc:Axis.Separator>
+                                            <lvc:Axis Title="Ngày" Labels="{Binding Ngay}">
+     
                                             </lvc:Axis>
                                         </lvc:CartesianChart.AxisX>
                                         <lvc:CartesianChart.AxisY>
-                                            <lvc:Axis Title="Case Count"/>
+                                            <lvc:Axis Title="Doanh thu"/>
                                         </lvc:CartesianChart.AxisY>
                                     </lvc:CartesianChart>
-                                </Grid>-->
+                                </Grid>
                                 <!--<ListView ItemsSource="{Binding doanhthulist}">
                                     -->
                                 <!--ĐỊNH DẠNG NỘI DUNG-->
