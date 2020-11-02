@@ -796,7 +796,7 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-                                        <GridViewColumn Width="110" Header="Sản phẩm mới">
+                                        <GridViewColumn Width="auto" Header="Sản phẩm mới">
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <CheckBox IsEnabled="False"  IsChecked="{Binding SanphamMoi}"/>
@@ -1325,7 +1325,7 @@
                                     </ListView>
                                 </Grid>
                                 <Grid VerticalAlignment="Bottom" Grid.Row="2">
-                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapUniver}"/>
+                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapUR}"/>
                                 </Grid>
                             </Grid>
                             <!--NHẬP KINHDO-->

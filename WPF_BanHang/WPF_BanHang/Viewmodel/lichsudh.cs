@@ -27,6 +27,7 @@ namespace WPF_BanHang.Viewmodel
                     ngaytao = SelectedItem.NgayTao;
                     ten = SelectedItem.TenNhanvien;
                     tongtien = SelectedItem.ThanhTien;
+                    diachicuahang = SelectedItem.DiaChiCuaHang;
                 }
             }
         }
@@ -48,6 +49,8 @@ namespace WPF_BanHang.Viewmodel
 
         public double tongtien { get => _tongtien; set { _tongtien = value; OnPropertyChanged(); } }
 
+        private string _diachiacuahang;
+        public string diachicuahang { get => _diachiacuahang; set { _diachiacuahang = value; OnPropertyChanged(); } }
         public ICommand loadcommannd { get; set; }
         public ICommand loadcscommannd { get; set; }
         public ICommand xemhdcommand { get; set; }
@@ -80,7 +83,6 @@ namespace WPF_BanHang.Viewmodel
             var ncc = db.NhaCungcap;
             var sp = db.SanPham;
             var chsp = db.CuahangSanpham;
-            var ch = db.CuaHang;
             int? idch = MainViewModel.TaiKhoan.Idcuahang;
      
                 //MessageBox.Show("nuull" + SelectedItem.IdHoadon ) ;
@@ -89,7 +91,6 @@ namespace WPF_BanHang.Viewmodel
                 cthdxl hoadonxulys = new cthdxl();
                 var tensp = sp.Where(p => p.IdSanpham == item.IdSanpham).FirstOrDefault();
                 var gia = chsp.Where(p => p.IdSanpham == item.IdSanpham && p.IdCuahang == idch).FirstOrDefault();
-                //var tench= ch.Where(p=> p.IdCuahang)
                 hoadonxulys.TenSanpham = tensp.TenSanpham;
                 hoadonxulys.soluong = item.SoLuong;
                 hoadonxulys.GiaTheoQuan = gia.GiaTheoQuan;
@@ -123,7 +124,7 @@ namespace WPF_BanHang.Viewmodel
                 hoadonxuly.MaHoadon = item.MaHoadon;
 
                 hoadonxuly.NgayTao = item.NgayTao;
-               hoadonxuly.ThanhTien = item.ThanhTien;
+                hoadonxuly.ThanhTien = item.ThanhTien;
                 hoadonxuly.TenNhanvien = nvhd.TenNhanvien;
                 if (item.IdKhachhang == null)
                 {

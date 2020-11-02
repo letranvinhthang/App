@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         
-                 Height="470" Width="550" ResizeMode="NoResize" WindowStyle="None" FontFamily="Roboto" WindowStartupLocation="CenterScreen"
+                 Height="auto" Width="550" ResizeMode="NoResize" WindowStyle="None" FontFamily="Roboto" WindowStartupLocation="CenterScreen"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{StaticResource orderVM}"
         x:Name="window"
     Title="XacNhanHoaDonWindow">
-    <Grid>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Loaded">
@@ -20,7 +20,7 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
       
-            <Grid x:Name="print" Width="550">
+            <Grid x:Name="print">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="auto"/>
@@ -88,8 +88,14 @@
                                     </Style>
                                 </GridView.ColumnHeaderContainerStyle>
 
-                                <GridViewColumn Width="180" Header="Tên sản phẩm" DisplayMemberBinding="{Binding tensp }"/>
-                                <GridViewColumn Width="100" Header="Đơn giá" DisplayMemberBinding="{Binding dongia, StringFormat=C, ConverterCulture=vi}"/>
+                            <GridViewColumn Width="180" Header="Tên sản phẩm">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding tensp}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="100" Header="Đơn giá" DisplayMemberBinding="{Binding dongia, StringFormat=C, ConverterCulture=vi}"/>
                                 <GridViewColumn Width="95" Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
                                 <GridViewColumn Width="120" Header="Thành Tiền" DisplayMemberBinding="{Binding tongtien, StringFormat=C, ConverterCulture=vi }"/>
                             </GridView>

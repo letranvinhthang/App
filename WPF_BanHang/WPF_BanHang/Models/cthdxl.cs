@@ -11,5 +11,6 @@ namespace WPF_BanHang.Models
         public double GiaTheoQuan { get; set; }
         public double ThanhTien { get; set; }
         public string TenChuongtrinh { get; set; }
+        public string DiaChiCuaHang { get; set; }
     }
 }
