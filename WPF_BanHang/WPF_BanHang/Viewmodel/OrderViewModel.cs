@@ -128,7 +128,7 @@ namespace WPF_BanHang.Viewmodel
                         });
                         db.SaveChanges();
                     }
-                    MessageBox.Show("thanh toan thanh cong");
+                    MessageBox.Show("Thanh toán thành công!");
                     orderlist.Clear();
                     Orderxl odl = new Orderxl();
                     odl = null;
@@ -164,7 +164,7 @@ namespace WPF_BanHang.Viewmodel
                         });
                         db.SaveChanges();
                     }
-                    MessageBox.Show("thanh toan thanh cong 1 " );
+                    MessageBox.Show("Thanh toán thành công" );
                     orderlist.Clear();
                     Orderxl odl = new Orderxl();
                     odl = null;
