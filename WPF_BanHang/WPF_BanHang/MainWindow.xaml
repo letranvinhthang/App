@@ -839,10 +839,14 @@
                             
                             <!--CHỨC NĂNG THÔNG KÊ-->
 
+<<<<<<< HEAD
                             
+=======
+
+>>>>>>> 7d8b70de523322adb56c0290e23ff1dd0c51f0e0
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <!--Button PEPSI-->
-                                    <Button
+                                <!--Button PEPSI-->
+                                <Button
                                     Width="140"
                                         Uid="0"
                                     Click="Button_Click"
@@ -852,17 +856,23 @@
                                     Background="Transparent"
                                     BorderBrush="Transparent"
                                      Content="PEPSI">
-                                    
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Click">
-                                                <i:InvokeCommandAction Command="{Binding BtnPepsicoCommand}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
 
+<<<<<<< HEAD
 
                                     </Button>
                                     <!--Button COCA-->
                                     <Button
+=======
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction Command="{Binding BtnPepsicoCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+                                </Button>
+                                <!--Button COCA-->
+                                <Button
+>>>>>>> 7d8b70de523322adb56c0290e23ff1dd0c51f0e0
                                     Width="140"
                                         Uid="1"
                                     Click="Button_Click"
@@ -873,6 +883,7 @@
                                     BorderBrush="Transparent"
                                      Content="COCACOLA">
 
+<<<<<<< HEAD
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Click">
                                                 <i:InvokeCommandAction Command="{Binding BtnCocaColaCommand}"/>
@@ -881,11 +892,24 @@
                                     </Button>
                                     <!--Button INTERFOOD-->
                                     <Button
+=======
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction Command="{Binding BtnCocaColaCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                                <!--Button INTERFOOD-->
+                                <Button
+>>>>>>> 7d8b70de523322adb56c0290e23ff1dd0c51f0e0
 
                                     Width="140"
                                         Uid="2"
                                     Click="Button_Click"
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d8b70de523322adb56c0290e23ff1dd0c51f0e0
                                      HorizontalAlignment="Left"
                                     
                                         Background="Transparent"
@@ -893,6 +917,7 @@
                                      Content="INTERFOOD">
 
 
+<<<<<<< HEAD
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Click">
                                                 <i:InvokeCommandAction Command="{Binding BtnInterFoodCommand}"/>
@@ -901,17 +926,31 @@
                                     </Button>
                                     <!--Button REDBULL-->
                                     <Button
+=======
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction Command="{Binding BtnInterFoodCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                                <!--Button REDBULL-->
+                                <Button
+>>>>>>> 7d8b70de523322adb56c0290e23ff1dd0c51f0e0
 
                                     Width="140"
                                         Uid="3"
                                     Click="Button_Click"
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d8b70de523322adb56c0290e23ff1dd0c51f0e0
                                      HorizontalAlignment="Left"
                                     
                                         Background="Transparent"
                                     BorderBrush="Transparent"
                                      Content="REDBULL">
 
+<<<<<<< HEAD
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Click">
                                                 <i:InvokeCommandAction Command="{Binding BtnRedBullCommand}"/>
@@ -923,6 +962,17 @@
                                    
                                     <!--Button TANHIEPPHAT-->
                                     <Button
+=======
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction Command="{Binding BtnRedBullCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+                                </Button>
+                                <!--Button TANHIEPPHAT-->
+                                <Button
+>>>>>>> 7d8b70de523322adb56c0290e23ff1dd0c51f0e0
                                     Width="140"
                                         Uid="4"
                                     Click="Button_Click"
@@ -932,6 +982,7 @@
                                     BorderBrush="Transparent"
                                      Content="TANHIEPPHAT">
 
+<<<<<<< HEAD
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Click">
                                                 <i:InvokeCommandAction Command="{Binding BtnTanHiepPhatCommand}"/>
@@ -943,6 +994,16 @@
                                    
                                     <!--Button UniversalRobina-->
                                     <Button
+=======
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction Command="{Binding BtnTanHiepPhatCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                                <!--Button UniversalRobina-->
+                                <Button
+>>>>>>> 7d8b70de523322adb56c0290e23ff1dd0c51f0e0
                                     Width="140"
                                         Uid="5"
                                     Click="Button_Click"
@@ -952,6 +1013,7 @@
                                     BorderBrush="Transparent"
                                      Content="UniversalRobina">
 
+<<<<<<< HEAD
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Click">
                                                 <i:InvokeCommandAction Command="{Binding BtnUniversalRobinaCommand}"/>
@@ -963,6 +1025,16 @@
                                     
                                     <!--Button KINHDO-->
                                     <Button
+=======
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction Command="{Binding BtnUniversalRobinaCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                                <!--Button KINHDO-->
+                                <Button
+>>>>>>> 7d8b70de523322adb56c0290e23ff1dd0c51f0e0
                                      Width="140"
                                         Uid="6"
                                         
@@ -973,14 +1045,15 @@
                                     BorderBrush="Transparent"
                                      Content="KINHDO">
 
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Click">
-                                                <i:InvokeCommandAction Command="{Binding BtnKinhDoCommand}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction Command="{Binding BtnKinhDoCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
 
-                                    </Button>
+                                </Button>
 
+<<<<<<< HEAD
                                 </StackPanel>
 
 
@@ -990,6 +1063,13 @@
                             
                             
 
+=======
+                            </StackPanel>
+
+                            <Grid  x:Name="GridCursor" Width="140" Height="5" Background="white" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44 40 0 0">
+                            </Grid>
+
+>>>>>>> 7d8b70de523322adb56c0290e23ff1dd0c51f0e0
                         </Grid>
                         <!--NỘI DUNG NHẬP HÀNG-->
                         <Grid Grid.Row="1" Background="PaleGoldenrod" x:Name="nhaphang_noidung">

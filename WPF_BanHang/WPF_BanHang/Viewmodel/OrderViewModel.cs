@@ -69,7 +69,7 @@ namespace WPF_BanHang.Viewmodel
             var db = new qlbhContext();
             unloadcommand = new RelayCommand<Object>((p) => { return true; }, (p) =>
             {
-                orderlist.Clear();    
+                orderlist.Clear();
                 Orderxl od = new Orderxl();
                 od = null;
                 total = 0;
@@ -81,7 +81,7 @@ namespace WPF_BanHang.Viewmodel
             }, (p) =>
             {
                 int? idch = MainViewModel.TaiKhoan.Idcuahang;
- 
+
                 ten = MainViewModel.TaiKhoan.TenNhanvien;
                 ngaytao = DateTime.Now;
 
@@ -90,47 +90,88 @@ namespace WPF_BanHang.Viewmodel
 
 
             });
-            thanhtoan = new RelayCommand<Window>((p) => 
-            {  
-                if(orderlist == null)
-                return false;
+            thanhtoan = new RelayCommand<Window>((p) =>
+            {
+                if (orderlist == null)
+                    return false;
                 return true;
             }, (p) =>
             {
-                int? idch = MainViewModel.TaiKhoan.Idcuahang;
-                int idnv = MainViewModel.TaiKhoan.IdNhanvien;
-                long mahdl = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
+            int? idch = MainViewModel.TaiKhoan.Idcuahang;
+            int idnv = MainViewModel.TaiKhoan.IdNhanvien;
+            var xchd = db.HoaDon.Where(p => p.IdCuahang == idch).FirstOrDefault();
+
+            if ( xchd == null)
+            {
                 db.HoaDon.Add(new HoaDon
                 {
-                    MaHoadon = mahdl+1,
+                    MaHoadon = 1,
                     NgayTao = ngaytao,
                     ThanhTien = total,
-                    IdNhanvien=idnv,
+                    IdNhanvien = idnv,
                     IdKhachhang = 1,
-                    IdCuahang=Int32.Parse(idch.ToString())
-                    
+                    IdCuahang = Int32.Parse(idch.ToString())
+
                 });
                 db.SaveChanges();
-                long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
-                var h = db.HoaDon.Where(p => p.MaHoadon == mahdln).FirstOrDefault();
-                foreach ( var od in orderlist)
-                {
-                    db.HoaDonChitiet.Add(new HoaDonChitiet
+                    long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
+                    var h = db.HoaDon.Where(p => p.MaHoadon == mahdln).FirstOrDefault();
+                    foreach (var od in orderlist)
                     {
-                        IdHoadon = h.IdHoadon,
-                        IdSanpham = od.barcode,
-                        SoLuong=od.soluong,
-                        GiaTien=od.dongia,
-                        IdKhachhang=1
-                    }) ;
-                    db.SaveChanges();
+                        db.HoaDonChitiet.Add(new HoaDonChitiet
+                        {
+                            IdHoadon = h.IdHoadon,
+                            IdSanpham = od.barcode,
+                            SoLuong = od.soluong,
+                            GiaTien = od.dongia,
+                            IdKhachhang = 1
+                        });
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("Thanh toán thành công!");
+                    orderlist.Clear();
+                    Orderxl odl = new Orderxl();
+                    odl = null;
+                    total = 0;
+                    p.Close();
+                    return;
                 }
-                MessageBox.Show("thanh toan thanh cong");
-                orderlist.Clear();
-                Orderxl odl = new Orderxl();
-                odl = null;
-                total = 0;
-                p.Close();
+            else 
+               {
+                long mahdl = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
+            db.HoaDon.Add(new HoaDon
+            {
+                MaHoadon = long.Parse((mahdl + 1).ToString()),
+                NgayTao = ngaytao,
+                ThanhTien = total,
+                IdNhanvien = idnv,
+                IdKhachhang = 1,
+                IdCuahang = Int32.Parse(idch.ToString())
+
+            });
+            db.SaveChanges();
+                    long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
+                    var h = db.HoaDon.Where(p => p.MaHoadon == mahdln).FirstOrDefault();
+                    foreach (var od in orderlist)
+                    {
+                        db.HoaDonChitiet.Add(new HoaDonChitiet
+                        {
+                            IdHoadon = h.IdHoadon,
+                            IdSanpham = od.barcode,
+                            SoLuong = od.soluong,
+                            GiaTien = od.dongia,
+                            IdKhachhang = 1
+                        });
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("Thanh toán thành công" );
+                    orderlist.Clear();
+                    Orderxl odl = new Orderxl();
+                    odl = null;
+                    total = 0;
+                    p.Close();
+                }
+               
             });
             orderlist = new ObservableCollection<Orderxl>();
             BarcodeChangedcommand = new RelayCommand<TextBox>((p) => {  return p == null? false: true; }, (p) =>

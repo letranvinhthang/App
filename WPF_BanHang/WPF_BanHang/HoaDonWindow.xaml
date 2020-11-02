@@ -10,7 +10,8 @@
         x:Name="window"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{StaticResource lsdh}"
-        Title="Hóa đơn" Height="auto" Width="550" ResizeMode="NoResize" WindowStyle="None" FontFamily="Roboto" WindowStartupLocation="CenterScreen">
+        SizeToContent="Height"
+        Title="Hóa đơn" Width="500" ResizeMode="NoResize" WindowStyle="None" FontFamily="Roboto" WindowStartupLocation="CenterScreen">
 
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <i:Interaction.Triggers>
@@ -25,16 +26,16 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="100"/>
                 </Grid.RowDefinitions>
 
                 <StackPanel Orientation="Horizontal" Margin="30" Grid.Row="0">
                     <!--<Image Source="Assets/pinterest_board_photo.png" Width="100" Height="100" VerticalAlignment="Center"/>-->
                     <TextBlock Text="Hóa đơn" VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="#FFFBE188"/>
                 </StackPanel>
-                <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" Margin="20">
-                <Grid HorizontalAlignment="Stretch">
-                    <StackPanel Margin="10" Width="auto">
+                <StackPanel Grid.Row="1" HorizontalAlignment="Stretch">
+                <Grid HorizontalAlignment="Stretch" Margin="20">
+                    <StackPanel Width="auto">
                            <!--ĐỊA CHỈ-->
                         <TextBlock Text="{Binding diachicuahang}" FontSize="15" Margin="5" Width="auto" />
                         <!--TÊN NHÂN VIÊN-->
@@ -57,49 +58,45 @@
                         </StackPanel>-->
                     </Grid>
                     
-                    <Rectangle Fill="Black" Height="1" Margin="5 2" Opacity="0.5"/>
-
-                    <ListView ItemsSource="{Binding cthdxlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                    <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10" Width="auto" ItemsSource="{Binding cthdxlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Visibility="Visible">
                         <!--ĐỊNH DẠNG NỘI DUNG-->
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                 <Setter Property="FontSize" Value="15"/>
-                            </Style>
+                            <Setter Property="BorderThickness" Value="0"/>
+                                
+                        </Style>
                         </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView>
                                 <!--ĐỊNH DẠNG HEADER-->
                                 <GridView.ColumnHeaderContainerStyle>
                                     <Style TargetType="GridViewColumnHeader">
-                                        <Setter Property="FontSize" Value="20"/>
-                                        <Setter Property="FontWeight" Value="Normal"/>
-                                        <Setter Property="Margin" Value="5"/>
-                                        <Setter Property="VerticalAlignment" Value="Center"/>
-                                        <Setter Property="IsEnabled" Value="True"/>
-                                        <Setter Property="Width" Value="auto"/>
-                                        <Setter Property="Background" Value="Transparent"/>
-                                        <Setter Property="BorderBrush" Value="Transparent"/>
                                         <Setter Property="FontSize" Value="15"/>
-                                    </Style>
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                </Style>
                                 </GridView.ColumnHeaderContainerStyle>
 
-                            <GridViewColumn Width="180" Header="Tên sản phẩm">
+                            <GridViewColumn Width="150" Header="Tên sản phẩm">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock TextWrapping="Wrap" Text="{Binding TenSanpham}"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                                <GridViewColumn Width="100" Header="Đơn giá" DisplayMemberBinding="{Binding GiaTheoQuan, StringFormat=C, ConverterCulture=vi}"/>
-                                <GridViewColumn Width="95" Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
-                                <GridViewColumn Width="120" Header="Thành Tiền" DisplayMemberBinding="{Binding ThanhTien, StringFormat=C, ConverterCulture=vi }"/>
+                                <GridViewColumn Width="120" Header="Đơn giá" DisplayMemberBinding="{Binding GiaTheoQuan, StringFormat=C, ConverterCulture=vi}"/>
+                                <GridViewColumn Width="80" Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
+                                <GridViewColumn Width="130" Header="Thành Tiền" DisplayMemberBinding="{Binding ThanhTien, StringFormat=C, ConverterCulture=vi }"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
                 </StackPanel>
 
-                <StackPanel Grid.Row="2" VerticalAlignment="Bottom">
+                <StackPanel Grid.Row="2" Height="100" VerticalAlignment="Bottom">
                     <Grid Margin="10 20 10 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -109,7 +106,7 @@
                         <!--THANH TOÁN BẰNG-->
                         <!--<TextBlock Text="BANK INFO" Grid.Column="0" FontSize="12" FontWeight="ExtraLight"/>
                         <TextBlock Text="DUE BY" Grid.Column="1" FontSize="12" FontWeight="ExtraLight" HorizontalAlignment="Left"/>-->
-                        <TextBlock Text="TOTAL DUE" Grid.Column="3" FontSize="12" FontWeight="ExtraLight" HorizontalAlignment="Right"/>
+                        <TextBlock Text="TỔNG THÀNH TIỀN" Grid.Column="3" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right"/>
                     </Grid>
                     <Rectangle Fill="Black" Height="1" Margin="5" Opacity="0.5"/>
                     <Grid Margin="10">
@@ -136,21 +133,22 @@
                             <TextBlock Text="{Binding tongtien, StringFormat=C, ConverterCulture=vi }" FontSize="25" Margin="5" HorizontalAlignment="Right" Foreground="#FF62013C" FontWeight="Bold"/>
                         </StackPanel>
                     </Grid>
-                    <Rectangle Fill="Black" Height="1" Margin="5" Opacity="0.5"/>
-
-                    <Grid Margin="0 20" HorizontalAlignment="Stretch">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Heart" Foreground="#FF62013C" Width="20" Height="20" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Thank you!" VerticalAlignment="Center" FontSize="20" Margin="5" FontWeight="Light"/>
-                        </StackPanel>
-                        <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <Rectangle Fill="Black" Height="1" Margin="5" Opacity="0.5"/>
+                    
+            </StackPanel>
+            
+        </Grid>
+        <Grid Margin="0 20" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Heart" Foreground="#FF62013C" Width="20" Height="20" Margin="5" VerticalAlignment="Center"/>
+                <TextBlock Text="Thank you!" VerticalAlignment="Center" FontSize="20" Margin="5" FontWeight="Light"/>
+            </StackPanel>
+            <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                             <TextBlock Text="name@email.com" VerticalAlignment="Center" FontSize="8" Margin="5" FontWeight="Light"/>
                             <TextBlock Text="99 9999-9999" VerticalAlignment="Center" FontSize="8" Margin="5" FontWeight="Light"/>
                             <TextBlock Text="website.com" VerticalAlignment="Center" FontSize="8" Margin="5" FontWeight="Light"/>
                         </StackPanel>-->
-                    </Grid>
-                </StackPanel>
-            </Grid>
         </Grid>
+    </Grid>
  
 </Window>
