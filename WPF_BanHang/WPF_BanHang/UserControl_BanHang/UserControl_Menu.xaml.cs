@@ -25,7 +25,7 @@ namespace WPF_BanHang.UserControl_BanHang
         {
             int index = Int32.Parse(((Button)e.Source).Uid);
 
-            GridCursor.Margin = new Thickness(10 + (150 * index),0,0,0);
+            GridCursor.Margin = new Thickness(10 + (150 * index),45,0,0);
 
             switch (index)
             {
