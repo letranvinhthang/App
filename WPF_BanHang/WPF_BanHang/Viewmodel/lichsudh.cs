@@ -27,7 +27,6 @@ namespace WPF_BanHang.Viewmodel
                     ngaytao = SelectedItem.NgayTao;
                     ten = SelectedItem.TenNhanvien;
                     tongtien = SelectedItem.ThanhTien;
-                    diachicuahang = SelectedItem.DiaChiCuaHang;
                 }
             }
         }
@@ -111,6 +110,7 @@ namespace WPF_BanHang.Viewmodel
             var nv = db.NhanVien;
             var qc = db.QuangCao;
             int? idch = MainViewModel.TaiKhoan.Idcuahang;
+            diachicuahang = db.CuaHang.Where(p => p.IdCuahang == idch).FirstOrDefault().DiachiCuahang;
             foreach (var item in hd.Where(p => p.IdCuahang == idch).ToList())
             {
                 var bennhan = "";
