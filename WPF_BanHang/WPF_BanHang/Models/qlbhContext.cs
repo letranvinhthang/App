@@ -239,10 +239,6 @@ namespace WPF_BanHang.Models
 
                 entity.Property(e => e.GiaTien).HasColumnName("Gia_tien");
 
-                entity.Property(e => e.IdCuaHang)
-                    .HasColumnName("ID_CuaHang")
-                    .HasColumnType("int(11)");
-
                 entity.Property(e => e.IdHoadon)
                     .HasColumnName("ID_hoadon")
                     .HasColumnType("int(11)");

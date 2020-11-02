@@ -838,71 +838,52 @@
                         <Grid Grid.Row="0" Background="DarkGoldenrod" x:Name="chucnangnhaphang">
                             
                             <!--CHỨC NĂNG THÔNG KÊ-->
-<<<<<<< HEAD
-                            <Grid Grid.Row="0">
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
-                                    <!--Button PEPSI-->
-                                    <Button
 
-=======
-                            
+
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <!--Button PEPSI-->
-                                    <Button
+                                <!--Button PEPSI-->
+                                <Button
                                     Width="140"
                                         Uid="0"
                                     Click="Button_Click"
->>>>>>> origin/thinh
+
                                      HorizontalAlignment="Left"
                                     
                                     Background="Transparent"
                                     BorderBrush="Transparent"
                                      Content="PEPSI">
-                                    
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Click">
-                                                <i:InvokeCommandAction Command="{Binding BtnPepsicoCommand}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
 
-<<<<<<< HEAD
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Click">
-                                                <i:InvokeCommandAction Command="{Binding BtnPepsicoCommand}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction Command="{Binding BtnPepsicoCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
 
-                                    </Button>
-                                    <!--Button COCA-->
-                                    <Button
-=======
-                                    </Button>
-                                    <!--Button COCA-->
-                                    <Button
+                                </Button>
+                                <!--Button COCA-->
+                                <Button
                                     Width="140"
                                         Uid="1"
                                     Click="Button_Click"
->>>>>>> origin/thinh
+
                                      HorizontalAlignment="Left"
                                     
                                         Background="Transparent"
                                     BorderBrush="Transparent"
                                      Content="COCACOLA">
 
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Click">
-                                                <i:InvokeCommandAction Command="{Binding BtnCocaColaCommand}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-                                    </Button>
-                                    <!--Button INTERFOOD-->
-                                    <Button
-<<<<<<< HEAD
-=======
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction Command="{Binding BtnCocaColaCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                                <!--Button INTERFOOD-->
+                                <Button
+
                                     Width="140"
                                         Uid="2"
                                     Click="Button_Click"
->>>>>>> origin/thinh
                                      HorizontalAlignment="Left"
                                     
                                         Background="Transparent"
@@ -910,43 +891,33 @@
                                      Content="INTERFOOD">
 
 
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Click">
-                                                <i:InvokeCommandAction Command="{Binding BtnInterFoodCommand}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-                                    </Button>
-                                    <!--Button REDBULL-->
-                                    <Button
-<<<<<<< HEAD
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction Command="{Binding BtnInterFoodCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                                <!--Button REDBULL-->
+                                <Button
 
-=======
                                     Width="140"
                                         Uid="3"
                                     Click="Button_Click"
->>>>>>> origin/thinh
                                      HorizontalAlignment="Left"
                                     
                                         Background="Transparent"
                                     BorderBrush="Transparent"
                                      Content="REDBULL">
 
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Click">
-                                                <i:InvokeCommandAction Command="{Binding BtnRedBullCommand}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-<<<<<<< HEAD
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction Command="{Binding BtnRedBullCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
 
-                                    </Button>
-                                    <!--Button TANHIEPPHAT-->
-                                    <Button
-=======
->>>>>>> origin/thinh
-
-                                    </Button>
-                                    <!--Button TANHIEPPHAT-->
-                                    <Button
+                                </Button>
+                                <!--Button TANHIEPPHAT-->
+                                <Button
                                     Width="140"
                                         Uid="4"
                                     Click="Button_Click"
@@ -956,22 +927,14 @@
                                     BorderBrush="Transparent"
                                      Content="TANHIEPPHAT">
 
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Click">
-                                                <i:InvokeCommandAction Command="{Binding BtnTanHiepPhatCommand}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-<<<<<<< HEAD
-
-                                    </Button>
-                                    <!--Button UniversalRobina-->
-                                    <Button
-=======
->>>>>>> origin/thinh
-
-                                    </Button>
-                                    <!--Button UniversalRobina-->
-                                    <Button
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction Command="{Binding BtnTanHiepPhatCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                                <!--Button UniversalRobina-->
+                                <Button
                                     Width="140"
                                         Uid="5"
                                     Click="Button_Click"
@@ -981,22 +944,14 @@
                                     BorderBrush="Transparent"
                                      Content="UniversalRobina">
 
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Click">
-                                                <i:InvokeCommandAction Command="{Binding BtnUniversalRobinaCommand}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-<<<<<<< HEAD
-
-                                    </Button>
-                                    <!--Button KINHDO-->
-                                    <Button
-=======
->>>>>>> origin/thinh
-
-                                    </Button>
-                                    <!--Button KINHDO-->
-                                    <Button
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction Command="{Binding BtnUniversalRobinaCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                                <!--Button KINHDO-->
+                                <Button
                                      Width="140"
                                         Uid="6"
                                         
@@ -1007,25 +962,19 @@
                                     BorderBrush="Transparent"
                                      Content="KINHDO">
 
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Click">
-                                                <i:InvokeCommandAction Command="{Binding BtnKinhDoCommand}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction Command="{Binding BtnKinhDoCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
 
-                                    </Button>
+                                </Button>
 
-                                </StackPanel>
-<<<<<<< HEAD
-                            </Grid>
-=======
+                            </StackPanel>
 
-                            <Grid  x:Name="GridCursor" Width="140" Height="5" Background="white" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="49 40 0 0">
+                            <Grid  x:Name="GridCursor" Width="140" Height="5" Background="white" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44 40 0 0">
                             </Grid>
 
-                            
-                            
->>>>>>> origin/thinh
                         </Grid>
                         <!--NỘI DUNG NHẬP HÀNG-->
                         <Grid Grid.Row="1" Background="PaleGoldenrod" x:Name="nhaphang_noidung">
