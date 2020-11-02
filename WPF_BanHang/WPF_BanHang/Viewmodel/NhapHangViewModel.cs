@@ -14,11 +14,24 @@ namespace WPF_BanHang.Viewmodel
     {
         public enum ChucNangQL
         {
-            Pepsico, CocaCola, InterFood, RedBull, TanHiepPhat, UniversaUniversalRobina, KinhDo
+            Pepsico, CocaCola, InterFood, RedBull, TanHiepPhat, UniversaUniversalRobina, KinhDo 
         };
 
         private int _ChucNangNhapHang;
         public int ChucNangNhapHang { get => _ChucNangNhapHang; set { _ChucNangNhapHang = value; OnPropertyChanged(); } }
+        public SanPham_NhaCungCap _SelectedItem;
+        public SanPham_NhaCungCap SelectedItem
+        {
+            get => _SelectedItem;
+            set
+            {
+                _SelectedItem = value; OnPropertyChanged();
+                if (SelectedItem != null)
+                {
+                    soluongsp = SelectedItem.SoLuong;
+                }
+            }
+        }
 
         private ObservableCollection<SanPham_NhaCungCap> _pepsilist;
         public ObservableCollection<SanPham_NhaCungCap> pepsilist { get => _pepsilist; set { _pepsilist = value; OnPropertyChanged(); } }
@@ -38,6 +51,10 @@ namespace WPF_BanHang.Viewmodel
         private ObservableCollection<SanPham_NhaCungCap> _URlist;
         public ObservableCollection<SanPham_NhaCungCap> URlist { get => _URlist; set { _URlist = value; OnPropertyChanged(); } }
 
+        private int _soluongsp;
+        public int soluongsp { get => _soluongsp; set { _soluongsp = value; OnPropertyChanged(); } }
+
+
         private ObservableCollection<SanPham_NhaCungCap> _kinhdolist;
         public ObservableCollection<SanPham_NhaCungCap> kinhdolist { get => _kinhdolist; set { _kinhdolist = value; OnPropertyChanged(); } }
 
@@ -48,13 +65,8 @@ namespace WPF_BanHang.Viewmodel
         public ICommand BtnTanHiepPhatCommand { get; set; }
         public ICommand BtnUniversalRobinaCommand { get; set; }
         public ICommand BtnKinhDoCommand { get; set; }
-        public ICommand loadpepsi { get; set; }
-        public ICommand loadcoca { get; set; }
-        public ICommand loadinterfood { get; set; }
-        public ICommand loadredbull { get; set; }
-        public ICommand loadtanhiepphat { get; set; }
-        public ICommand loadUR { get; set; }
-        public ICommand loadkinhdo { get; set; }
+        public ICommand editsoluong { get; set; }
+        public ICommand load { get; set; }
 
         public NhapHangViewModel()
         {
@@ -93,35 +105,47 @@ namespace WPF_BanHang.Viewmodel
             {
                 ChucNangNhapHang = (int)ChucNangQL.KinhDo;
             });
-            loadpepsi = new RelayCommand<Grid>((p) => { return true; }, (p) =>
+         
+            load= new RelayCommand<Grid>((p) => { return true; }, (p) =>
             {
+
                 LoadPepsi();
-            });
-            loadcoca = new RelayCommand<Grid>((p) => { return true; }, (p) =>
-            {
                 LoadCoca();
-            });
-            loadinterfood = new RelayCommand<Grid>((p) => { return true; }, (p) =>
-            {
+                LoadKinhdo();
                 LoadInterfood();
-            });
-            loadredbull = new RelayCommand<Grid>((p) => { return true; }, (p) =>
-            {
                 LoadRedbull();
-            });
-            loadtanhiepphat = new RelayCommand<Grid>((p) => { return true; }, (p) =>
-            {
                 LoadTanhiepphat();
-            });
-            loadUR = new RelayCommand<Grid>((p) => { return true; }, (p) =>
-            {
                 LoadUR();
             });
-            loadkinhdo = new RelayCommand<Grid>((p) => { return true; }, (p) =>
+            editsoluong = new RelayCommand<TextBox>((p) => { return p == null ? false : true; }, (p) =>
             {
-                LoadKinhdo();
-            });
+                try
+                {
 
+                    var order = db.SanPham.Where(x => x.IdSanpham == SelectedItem.barcode);
+                    var dssp = order.FirstOrDefault();
+                    foreach (var od in orderlist)
+                    {
+                        if (od.barcode == dssp.IdSanpham)
+                        {
+                            total = 0;
+                            od.soluong = soluongsp;
+                            od.tongtien = od.soluong * od.dongia;
+                            orderlist.Remove(od);
+                            orderlist.Add(od);
+                            p.Text = null;
+                            foreach (var odl in orderlist)
+                            {
+                                total += odl.tongtien;
+                            }
+                            return;
+                        }
+                    }
+                }
+                catch { }
+
+
+            });
             void LoadPepsi()
             {
                 var db = new qlbhContext();
@@ -136,6 +160,7 @@ namespace WPF_BanHang.Viewmodel
 
                         sanpham.IdNhaCC = item.IdNhacc;
                         sanpham.TenSP = item.TenSanpham;
+                        sanpham.barcode = item.IdSanpham;
                         sanpham.SoLuong = 0;
                         pepsilist.Add(sanpham);
                     }
@@ -155,6 +180,7 @@ namespace WPF_BanHang.Viewmodel
 
                         sanpham.IdNhaCC = item.IdNhacc;
                         sanpham.TenSP = item.TenSanpham;
+                        sanpham.barcode = item.IdSanpham;
                         sanpham.SoLuong = 0;
                         cocalist.Add(sanpham);
                     }
@@ -174,6 +200,7 @@ namespace WPF_BanHang.Viewmodel
 
                         sanpham.IdNhaCC = item.IdNhacc;
                         sanpham.TenSP = item.TenSanpham;
+                        sanpham.barcode = item.IdSanpham;
                         sanpham.SoLuong = 0;
                         interfoodlist.Add(sanpham);
                     }
@@ -193,6 +220,7 @@ namespace WPF_BanHang.Viewmodel
 
                         sanpham.IdNhaCC = item.IdNhacc;
                         sanpham.TenSP = item.TenSanpham;
+                        sanpham.barcode = item.IdSanpham;
                         sanpham.SoLuong = 0;
                         redbulllist.Add(sanpham);
                     }
@@ -212,6 +240,7 @@ namespace WPF_BanHang.Viewmodel
 
                         sanpham.IdNhaCC = item.IdNhacc;
                         sanpham.TenSP = item.TenSanpham;
+                        sanpham.barcode = item.IdSanpham;
                         sanpham.SoLuong = 0;
                         tanhiepphatlist.Add(sanpham);
                     }
@@ -231,6 +260,7 @@ namespace WPF_BanHang.Viewmodel
 
                         sanpham.IdNhaCC = item.IdNhacc;
                         sanpham.TenSP = item.TenSanpham;
+                        sanpham.barcode = item.IdSanpham;
                         sanpham.SoLuong = 0;
                         URlist.Add(sanpham);
                     }
@@ -250,6 +280,7 @@ namespace WPF_BanHang.Viewmodel
 
                         sanpham.IdNhaCC = item.IdNhacc;
                         sanpham.TenSP = item.TenSanpham;
+                        sanpham.barcode = item.IdSanpham;
                         sanpham.SoLuong = 0;
                         kinhdolist.Add(sanpham);
                     }

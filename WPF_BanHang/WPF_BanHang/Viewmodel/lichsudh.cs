@@ -80,6 +80,7 @@ namespace WPF_BanHang.Viewmodel
             var ncc = db.NhaCungcap;
             var sp = db.SanPham;
             var chsp = db.CuahangSanpham;
+            var ch = db.CuaHang;
             int? idch = MainViewModel.TaiKhoan.Idcuahang;
      
                 //MessageBox.Show("nuull" + SelectedItem.IdHoadon ) ;
@@ -88,6 +89,7 @@ namespace WPF_BanHang.Viewmodel
                 cthdxl hoadonxulys = new cthdxl();
                 var tensp = sp.Where(p => p.IdSanpham == item.IdSanpham).FirstOrDefault();
                 var gia = chsp.Where(p => p.IdSanpham == item.IdSanpham && p.IdCuahang == idch).FirstOrDefault();
+                //var tench= ch.Where(p=> p.IdCuahang)
                 hoadonxulys.TenSanpham = tensp.TenSanpham;
                 hoadonxulys.soluong = item.SoLuong;
                 hoadonxulys.GiaTheoQuan = gia.GiaTheoQuan;

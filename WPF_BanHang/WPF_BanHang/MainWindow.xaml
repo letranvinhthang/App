@@ -322,13 +322,8 @@
                             </StackPanel>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--NÚT THÊM ORDER-->
-<<<<<<< HEAD
                                 <Button Background="#ff6f00" BorderBrush="Transparent" Content="Thanh toán" Margin="10 10 50 10" HorizontalAlignment="Right" Width="120" Height="40" Command="{Binding xacnhancommand}">
-=======
-
-                                <Button Background="#ff6f00" BorderBrush="Transparent" Content="Thanh toán" Margin="10 10 300 10" Width="120" Height="40" Command="{Binding xacnhancommand}">
->>>>>>> origin/hao1
-                                </Button>
+                                    </Button>
                                 <!--NÚT XÓA-->
                                 <Button Background="#ff6f00" BorderBrush="Transparent" Content="Xóa" Margin="10 10 100 10" Width="120" Height="40" Command="{Binding xoasanpham}">
                                 </Button>
@@ -831,7 +826,11 @@
                             <RowDefinition/>
                             
                         </Grid.RowDefinitions>
-
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding load}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                         <Grid Grid.Row="0" Background="DarkGoldenrod" x:Name="chucnangnhaphang">
                             <Grid.RowDefinitions>
                                 <RowDefinition ></RowDefinition>
@@ -942,7 +941,7 @@
                             <Grid Grid.Row="1">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                     <TextBlock Margin="10" Text="Số lượng: " FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" />
-                                    <TextBox  Margin="10" FontSize="20" Width="200" Height="30" Text="{Binding themsoluong}" Background="White"/>
+                                    <TextBox  Margin="10" FontSize="20" Width="200" Height="30" Text="{Binding soluongsp}" Background="White"/>
                                     <Button  Margin="10" Content="Thêm" Width="120" Height="auto" />
                                 </StackPanel>
                                 
@@ -967,16 +966,9 @@
                                         </Style.Triggers>
                                     </Style>
                                 </Grid.Style>
-
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Loaded">
-                                        <i:InvokeCommandAction Command="{Binding loadpepsi}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-
-                            <!--NỘI DUNG NHẬP HÀNG-->
+                                <!--NHẬP PEPSI-->
                                 <Grid Grid.Row="0">
-                                    <ListView ItemsSource="{Binding pepsilist}">
+                                    <ListView ItemsSource="{Binding pepsilist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                                         <ListView.View>
                                             <GridView>
 
@@ -1059,6 +1051,8 @@
                                     </ListView.View>-->
                                 <!--
                                 </ListView>-->
+                                
+                                <!--NHẬP COCA-->
                             </Grid>
                             <Grid x:Name="COCA">
                                 <Grid.RowDefinitions>
@@ -1076,15 +1070,51 @@
                                     </Style>
                                 </Grid.Style>
                                 <!--THÔNG TIN THỐNG KÊ-->
+                                <Grid Grid.Row="0">
+                                    <ListView ItemsSource="{Binding cocalist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                                        <ListView.View>
+                                            <GridView>
 
-                                <Grid DataContext="{StaticResource nhVM}">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Loaded">
-                                            <i:InvokeCommandAction Command="{Binding loadcoca}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                    <Grid Grid.Row="0">
-                                        <ListView ItemsSource="{Binding cocalist}">
+                                                <GridView.ColumnHeaderContainerStyle>
+                                                    <Style TargetType="GridViewColumnHeader">
+                                                        <Setter Property="FontSize" Value="20"/>
+                                                        <Setter Property="FontWeight" Value="Bold"/>
+                                                        <Setter Property="Margin" Value="10"/>
+                                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                        <Setter Property="Width" Value="auto"/>
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                    </Style>
+                                                </GridView.ColumnHeaderContainerStyle>
+                                                <!--<GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>-->
+                                                <GridViewColumn Width="250" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSP }"/>
+                                                <GridViewColumn Width="auto" Header="Số lượng" DisplayMemberBinding="{Binding SoLuong}"/>
+
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </Grid>
+                                <Grid VerticalAlignment="Bottom" Grid.Row="1">
+                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapCoca}"/>
+                                </Grid>
+                            </Grid>
+                            <!--NHẬP INTERFOOD-->
+                            <Grid x:Name="INTERFOOD">
+                                <Grid.Style>
+                                    <Style TargetType="{x:Type Grid}">
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ChucNangNhapHang}" Value="2">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                                <!--THÔNG TIN THỐNG KÊ-->
+
+                                <Grid Grid.Row="0">
+                                    <Grid>
+                                        <ListView ItemsSource="{Binding interfoodlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                                             <ListView.View>
                                                 <GridView>
 
@@ -1107,64 +1137,12 @@
                                             </ListView.View>
                                         </ListView>
                                     </Grid>
-                                    <Grid VerticalAlignment="Bottom" Grid.Row="1">
-                                        <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapCoca}"/>
-                                    </Grid>
+                                </Grid>
+                                <Grid VerticalAlignment="Bottom" Grid.Row="1">
+                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapInter}"/>
                                 </Grid>
                             </Grid>
-                            <Grid x:Name="INTERFOOD">
-
-                                <Grid.Style>
-                                    <Style TargetType="{x:Type Grid}">
-                                        <Setter Property="Visibility" Value="Hidden"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding ChucNangNhapHang}" Value="2">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Grid.Style>
-                                <Grid DataContext="{StaticResource nhVM}">
-
-
-                                    <!--THÔNG TIN THỐNG KÊ-->
-                            
-                                    <Grid Grid.Row="0">
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Loaded">
-                                                <i:InvokeCommandAction Command="{Binding loadinterfood}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-                                        <Grid>
-                                            <ListView ItemsSource="{Binding interfoodlist}">
-                                                <ListView.View>
-                                                    <GridView>
-
-                                                        <GridView.ColumnHeaderContainerStyle>
-                                                            <Style TargetType="GridViewColumnHeader">
-                                                                <Setter Property="FontSize" Value="20"/>
-                                                                <Setter Property="FontWeight" Value="Bold"/>
-                                                                <Setter Property="Margin" Value="10"/>
-                                                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                                                <Setter Property="IsEnabled" Value="True"/>
-                                                                <Setter Property="Width" Value="auto"/>
-                                                                <Setter Property="Background" Value="Transparent"/>
-                                                            </Style>
-                                                        </GridView.ColumnHeaderContainerStyle>
-                                                        <!--<GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>-->
-                                                        <GridViewColumn Width="250" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSP }"/>
-                                                        <GridViewColumn Width="auto" Header="Số lượng" DisplayMemberBinding="{Binding SoLuong}"/>
-
-                                                    </GridView>
-                                                </ListView.View>
-                                            </ListView>
-                                        </Grid>
-                                    </Grid>
-                                    <Grid VerticalAlignment="Bottom" Grid.Row="1">
-                                        <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapInter}"/>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
+                            <!--NHẬP REDBULL-->
                             <Grid x:Name="REDBULL">
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -1180,16 +1158,9 @@
                                         </Style.Triggers>
                                     </Style>
                                 </Grid.Style>
-
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Loaded">
-                                        <i:InvokeCommandAction Command="{Binding loadredbull}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-
                                 <!--NỘI DUNG NHẬP HÀNG-->
                                 <Grid Grid.Row="0">
-                                    <ListView ItemsSource="{Binding redbulllist}">
+                                    <ListView ItemsSource="{Binding redbulllist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                                         <ListView.View>
                                             <GridView>
 
@@ -1216,6 +1187,7 @@
                                     <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapRedBull}"/>
                                 </Grid>
                             </Grid>
+                            <!--NHẬP TANHIEPPHAT-->
                             <Grid x:Name="TANHIEPPHAT">
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -1231,16 +1203,9 @@
                                         </Style.Triggers>
                                     </Style>
                                 </Grid.Style>
-
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Loaded">
-                                        <i:InvokeCommandAction Command="{Binding loadtanhiepphat}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-
                                 <!--NỘI DUNG NHẬP HÀNG-->
                                 <Grid Grid.Row="0">
-                                    <ListView ItemsSource="{Binding tanhiepphatlist}">
+                                    <ListView ItemsSource="{Binding tanhiepphatlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                                         <ListView.View>
                                             <GridView>
 
@@ -1267,6 +1232,7 @@
                                     <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapTanHiepPhat}"/>
                                 </Grid>
                             </Grid>
+                            <!--NHẬP UR-->
                             <Grid x:Name="UniversaUniversalRobina">
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -1282,16 +1248,9 @@
                                         </Style.Triggers>
                                     </Style>
                                 </Grid.Style>
-
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Loaded">
-                                        <i:InvokeCommandAction Command="{Binding loadUR}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-
                                 <!--NỘI DUNG NHẬP HÀNG-->
                                 <Grid Grid.Row="0">
-                                    <ListView ItemsSource="{Binding URlist}">
+                                    <ListView ItemsSource="{Binding URlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                                         <ListView.View>
                                             <GridView>
 
@@ -1318,6 +1277,7 @@
                                     <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapUniver}"/>
                                 </Grid>
                             </Grid>
+                            <!--NHẬP KINHDO-->
                             <Grid x:Name="KinhDo">
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -1333,16 +1293,9 @@
                                         </Style.Triggers>
                                     </Style>
                                 </Grid.Style>
-
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Loaded">
-                                        <i:InvokeCommandAction Command="{Binding loadkinhdo}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-
                                 <!--NỘI DUNG NHẬP HÀNG-->
                                 <Grid Grid.Row="0">
-                                    <ListView ItemsSource="{Binding kinhdolist}">
+                                    <ListView ItemsSource="{Binding kinhdolist , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                                         <ListView.View>
                                             <GridView>
 
@@ -1370,7 +1323,6 @@
                                 </Grid>
                             </Grid>
                         </Grid>
-                        
                     </Grid>
                 </Grid>
                 <Grid x:Name="nhanvien">
