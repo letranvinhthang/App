@@ -39,7 +39,7 @@ namespace WPF_BanHang
         {
             int index = Int32.Parse(((Button)e.Source).Uid);
 
-            GridCursor.Margin = new Thickness(49 + (140 * index), 40, 0, 0);
+            GridCursor.Margin = new Thickness(44 + (140 * index), 40, 0, 0);
 
             
         }
