@@ -50,7 +50,7 @@ namespace WPF_BanHang.Viewmodel
                 foreach (var item in sp.ToList())
                 {
                     var nhap = from p in cthd join b in hd on p.IdHoadon equals b.IdHoadon where (p.IdSanpham == item.IdSanpham && p.IdNhacc != null && b.IdCuahang == idch) select p;
-                    var xuat = from p in cthd join b in hd on p.IdHoadon equals b.IdHoadon where (p.IdSanpham == item.IdSanpham && p.IdNhacc == null && b.IdCuahang == idch) select p;
+                    var xuat = from p in cthd join b in hd on p.IdHoadon equals b.IdHoadon where (p.IdSanpham == item.IdSanpham && p.IdKhachhang != null && b.IdCuahang == idch) select p;
                     int sumnhap = 0;
                     int sumxuat = 0;
                     if (nhap != null)

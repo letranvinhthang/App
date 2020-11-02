@@ -35,7 +35,7 @@ namespace WPF_BanHang.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("server=192.168.10.228;user=root;database=qlbh", x => x.ServerVersion("10.4.14-mariadb"));
+                optionsBuilder.UseMySql("server=192.168.10.228;database=qlbh;user=root", x => x.ServerVersion("10.4.14-mariadb"));
             }
         }
 
@@ -238,10 +238,6 @@ namespace WPF_BanHang.Models
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.GiaTien).HasColumnName("Gia_tien");
-
-                entity.Property(e => e.IdCuaHang)
-                    .HasColumnName("ID_CuaHang")
-                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.IdHoadon)
                     .HasColumnName("ID_hoadon")
