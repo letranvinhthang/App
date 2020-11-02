@@ -643,14 +643,10 @@ namespace WPF_BanHang.Models
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.NgayTao)
-                    .HasColumnName("Ngay_tao")
-                    .HasColumnType("datetime");
+                    .HasColumnName("Ngay_Tao")
+                    .HasColumnType("date");
 
-                entity.Property(e => e.SoLuongHoaDon)
-                    .HasColumnName("SO_LUONG_HOA_DON")
-                    .HasColumnType("bigint(21)");
-
-                entity.Property(e => e.TongDoanhThu).HasColumnName("TONG_DOANH_THU");
+                entity.Property(e => e.SoLuongHoaDon).HasColumnType("bigint(21)");
             });
 
             OnModelCreatingPartial(modelBuilder);
