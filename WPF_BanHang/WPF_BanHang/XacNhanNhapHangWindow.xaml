@@ -9,6 +9,7 @@
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          x:Name="window"
         DataContext="{StaticResource nhVM}"
+                SizeToContent="Height"
         Title="XacNhanNhapHangWindow">
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
@@ -65,12 +66,13 @@
 
                 <Rectangle Fill="Black" Height="1" Margin="5 2" Opacity="0.5"/>
 
-                <ListView ItemsSource="{Binding nhaplist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10" Width="auto" ItemsSource="{Binding nhaplist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                     <!--ĐỊNH DẠNG NỘI DUNG-->
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Center"/>
                             <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="BorderThickness" Value="0"/>
                         </Style>
                     </ListView.ItemContainerStyle>
                     <ListView.View>
@@ -78,15 +80,11 @@
                             <!--ĐỊNH DẠNG HEADER-->
                             <GridView.ColumnHeaderContainerStyle>
                                 <Style TargetType="GridViewColumnHeader">
-                                    <Setter Property="FontSize" Value="20"/>
-                                    <Setter Property="FontWeight" Value="Normal"/>
-                                    <Setter Property="Margin" Value="5"/>
-                                    <Setter Property="VerticalAlignment" Value="Center"/>
-                                    <Setter Property="IsEnabled" Value="True"/>
-                                    <Setter Property="Width" Value="auto"/>
-                                    <Setter Property="Background" Value="Transparent"/>
-                                    <Setter Property="BorderBrush" Value="Transparent"/>
                                     <Setter Property="FontSize" Value="15"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
                                 </Style>
                             </GridView.ColumnHeaderContainerStyle>
 
@@ -97,15 +95,10 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-<<<<<<< HEAD
                             <GridViewColumn Width="100" Header="Đơn giá" DisplayMemberBinding="{Binding dongia, StringFormat={}{0:n0}}"/>
                             <GridViewColumn Width="95" Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
                             <GridViewColumn Width="120" Header="Thành Tiền" DisplayMemberBinding="{Binding tongtien, StringFormat={}{0:n0}}"/>
-=======
-                            <GridViewColumn Width="100" Header="Đơn giá" DisplayMemberBinding="{Binding GiaNhap, StringFormat=C, ConverterCulture=vi}"/>
-                            <GridViewColumn Width="95" Header="Số lượng" DisplayMemberBinding="{Binding SoLuong}"/>
-                            <GridViewColumn Width="120" Header="Thành Tiền" DisplayMemberBinding="{Binding tongtien, StringFormat=C, ConverterCulture=vi }"/>
->>>>>>> origin/hao1
+
                         </GridView>
                     </ListView.View>
                 </ListView>
