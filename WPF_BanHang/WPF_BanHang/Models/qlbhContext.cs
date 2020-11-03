@@ -34,10 +34,15 @@ namespace WPF_BanHang.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
+<<<<<<< HEAD
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
 
                 optionsBuilder.UseMySql("server=192.168.10.155;user=Admin;database=qlbh", x => x.ServerVersion("10.4.14-mariadb"));
 
+=======
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySql("server=192.168.10.155;user=Admin;database=qlbh", x => x.ServerVersion("10.4.14-mariadb"));
+>>>>>>> origin/hao1
             }
         }
 

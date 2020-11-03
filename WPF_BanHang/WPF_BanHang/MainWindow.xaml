@@ -1124,7 +1124,7 @@
                                     </ListView>
                                 </Grid>
                                 <Grid VerticalAlignment="Bottom" Grid.Row="2">
-                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapPepsi}"/>
+                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding xacnhancommand}"/>
                                 </Grid>
 
 
@@ -1236,7 +1236,7 @@
                                     </ListView>
                                 </Grid>
                                 <Grid VerticalAlignment="Bottom" Grid.Row="2">
-                                        <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapCoca}"/>
+                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding xacnhancommand}"/>
                                     </Grid>
                                 
                             </Grid>
@@ -1294,7 +1294,7 @@
                                             </ListView>
                                         </Grid>
                                         <Grid VerticalAlignment="Bottom" Grid.Row="2">
-                                            <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapInter}"/>
+                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding xacnhancommand}"/>
                                         </Grid>
                                  
                                     </Grid>
@@ -1349,7 +1349,7 @@
                                     </ListView>
                                 </Grid>
                                 <Grid VerticalAlignment="Bottom" Grid.Row="2">
-                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapRedBull}"/>
+                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding xacnhancommand}"/>
                                 </Grid>
                             </Grid>
 
@@ -1403,7 +1403,7 @@
                                     </ListView>
                                 </Grid>
                                 <Grid VerticalAlignment="Bottom" Grid.Row="2">
-                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapTanHiepPhat}"/>
+                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding xacnhancommand}"/>
                                 </Grid>
                             </Grid>
                             <!--NHẬP UR-->
@@ -1456,7 +1456,7 @@
                                     </ListView>
                                 </Grid>
                                 <Grid VerticalAlignment="Bottom" Grid.Row="2">
-                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapUR}"/>
+                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding xacnhancommand}"/>
                                 </Grid>
                             </Grid>
                             <!--NHẬP KINHDO-->
@@ -1510,7 +1510,7 @@
                                     </ListView>
                                 </Grid>
                                 <Grid VerticalAlignment="Bottom" Grid.Row="2">
-                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding nhapKinhDo}"/>
+                                    <Button Content="Nhập" Width="120" Margin="60" Command="{Binding xacnhancommand}"/>
                                 </Grid>
                             </Grid>
                         </Grid>
