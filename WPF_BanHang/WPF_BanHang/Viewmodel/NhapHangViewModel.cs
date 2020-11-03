@@ -64,7 +64,8 @@ namespace WPF_BanHang.Viewmodel
         public double total { get => _total; set { _total = value; OnPropertyChanged(); } }
         private DateTime _ngaytao;
         public DateTime ngaytao { get => _ngaytao; set { _ngaytao = value; OnPropertyChanged(); } }
-
+        private int? _idncc;
+        public int? idncc { get => _idncc; set { _idncc = value; OnPropertyChanged(); } }
 
         public ICommand BtnPepsicoCommand { get; set; }
         public ICommand BtnCocaColaCommand { get; set; }
@@ -87,8 +88,9 @@ namespace WPF_BanHang.Viewmodel
         public ICommand editsoluongthp { get; set; }
         public ICommand editsoluongur { get; set; }
         public ICommand editsoluongkinhdo { get; set; }
-        public ICommand thanhtoanpes { get; set; }
+        public ICommand thanhtoan { get; set; }
         public ICommand xacnhancommand { get; set; }
+        public ICommand exitcommand { get; set; }
         public ICommand load { get; set; }
 
         public NhapHangViewModel()
@@ -140,6 +142,12 @@ namespace WPF_BanHang.Viewmodel
                 LoadTanhiepphat();
                 LoadUR();
             });
+            exitcommand = new RelayCommand<Window>((p) =>
+            { return true; }, (p) =>
+            {
+                p.Close();
+                total = 0;
+            });
             xacnhancommand = new RelayCommand<Object>((p) => {
                 if (total == 0)
                     return false;
@@ -158,6 +166,7 @@ namespace WPF_BanHang.Viewmodel
                     {
                         nhaplist.Add(od);
                         total += od.tongtien;
+                        idncc = od.IdNhaCC;
                     }
                 }
                else if (ChucNangNhapHang == (int)ChucNangQL.CocaCola)
@@ -168,6 +177,7 @@ namespace WPF_BanHang.Viewmodel
                     {
                         nhaplist.Add(od);
                         total += od.tongtien;
+                        idncc = od.IdNhaCC;
                     }
                 }
                else if (ChucNangNhapHang == (int)ChucNangQL.InterFood)
@@ -178,6 +188,7 @@ namespace WPF_BanHang.Viewmodel
                     {
                         nhaplist.Add(od);
                         total += od.tongtien;
+                        idncc = od.IdNhaCC;
                     }
                 }
                 else if (ChucNangNhapHang == (int)ChucNangQL.TanHiepPhat)
@@ -198,6 +209,7 @@ namespace WPF_BanHang.Viewmodel
                     {
                         nhaplist.Add(od);
                         total += od.tongtien;
+                        idncc = od.IdNhaCC;
                     }
                 }
                 else if (ChucNangNhapHang == (int)ChucNangQL.UniversaUniversalRobina)
@@ -208,16 +220,19 @@ namespace WPF_BanHang.Viewmodel
                     {
                         nhaplist.Add(od);
                         total += od.tongtien;
+                        idncc = od.IdNhaCC;
                     }
                 }
                 else if (ChucNangNhapHang == (int)ChucNangQL.KinhDo)
                 {
                     total = 0;
                     nhaplist = new ObservableCollection<SanPham_NhaCungCap>();
-                    foreach (var od in kinhdolist.Where(p => p.SoLuong != 0))
+                    foreach (var od in kinhdolist
+                    .Where(p => p.SoLuong != 0))
                     {
                         nhaplist.Add(od);
                         total += od.tongtien;
+                        idncc = od.IdNhaCC;
                     }
                 }
                 XacNhanNhapHangWindow xn = new XacNhanNhapHangWindow();
@@ -454,10 +469,8 @@ namespace WPF_BanHang.Viewmodel
 
 
             });
-            thanhtoanpes = new RelayCommand<Window>((p) =>
+            thanhtoan = new RelayCommand<Window>((p) =>
             {
-                if (pepsilist == null)
-                    return false;
                 return true;
             }, (p) =>
             {
@@ -472,34 +485,13 @@ namespace WPF_BanHang.Viewmodel
                     {
                         MaHoadon = 1,
                         NgayTao = ngaytao,
-                        ThanhTien = total, 
+                        ThanhTien = total,
                         IdNhanvien = idnv,
-                        IdNhacc = 1,
+                        IdNhacc = idncc,
                         IdCuahang = Int32.Parse(idch.ToString())
 
                     });
                     db.SaveChanges();
-                    long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch && p.IdKhachhang == null).Max(p => p.MaHoadon);
-                    var h = db.HoaDon.Where(p => p.MaHoadon == mahdln).FirstOrDefault();
-                    foreach (var od in pepsilist)
-                    {
-                        db.HoaDonChitiet.Add(new HoaDonChitiet
-                        {
-                            IdHoadon = h.IdHoadon,
-                            IdSanpham = od.barcode,
-                            SoLuong = od.SoLuong,
-                            GiaTien = od.GiaNhap,
-                            IdNhacc = 1
-                        });
-                        db.SaveChanges();
-                    }
-                    MessageBox.Show("thanh toan thanh cong");
-                    pepsilist.Clear();
-                    SanPham_NhaCungCap odl = new SanPham_NhaCungCap();
-                    odl = null;
-                    total = 0;
-                    p.Close();
-                    return;
                 }
                 else
                 {
@@ -510,13 +502,16 @@ namespace WPF_BanHang.Viewmodel
                         NgayTao = DateTime.Now,
                         ThanhTien = total,
                         IdNhanvien = idnv,
-                        IdNhacc = 1,
+                        IdNhacc = idncc,
                         IdCuahang = Int32.Parse(idch.ToString())
 
                     });
                     db.SaveChanges();
-                    long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch && p.IdKhachhang == null).Max(p => p.MaHoadon);
+                }
+                long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch && p.IdKhachhang == null).Max(p => p.MaHoadon);
                     var h = db.HoaDon.Where(p => p.MaHoadon == mahdln).FirstOrDefault();
+                if (ChucNangNhapHang == (int)ChucNangQL.Pepsico)
+                {
                     foreach (var od in pepsilist)
                     {
                         db.HoaDonChitiet.Add(new HoaDonChitiet
@@ -525,18 +520,150 @@ namespace WPF_BanHang.Viewmodel
                             IdSanpham = od.barcode,
                             SoLuong = od.SoLuong,
                             GiaTien = od.GiaNhap,
-                            IdKhachhang = 1
+                            IdNhacc = idncc
                         });
                         db.SaveChanges();
                     }
-                    MessageBox.Show("thanh toan thanh cong 1 ");
-                    pepsilist.Clear();
+                    MessageBox.Show("thanh toan thanh cong");
+                    LoadPepsi();
                     SanPham_NhaCungCap odl = new SanPham_NhaCungCap();
                     odl = null;
                     total = 0;
                     p.Close();
+                    return;
                 }
-
+                else if (ChucNangNhapHang == (int)ChucNangQL.CocaCola)
+                {
+                    foreach (var od in cocalist)
+                    {
+                        db.HoaDonChitiet.Add(new HoaDonChitiet
+                        {
+                            IdHoadon = h.IdHoadon,
+                            IdSanpham = od.barcode,
+                            SoLuong = od.SoLuong,
+                            GiaTien = od.GiaNhap,
+                            IdNhacc = idncc
+                        });
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("thanh toan thanh cong");
+                    LoadCoca();
+                    SanPham_NhaCungCap odl = new SanPham_NhaCungCap();
+                    odl = null;
+                    total = 0;
+                    p.Close();
+                    return;
+                }
+                else if (ChucNangNhapHang == (int)ChucNangQL.InterFood)
+                {
+                    foreach (var od in interfoodlist)
+                    {
+                        db.HoaDonChitiet.Add(new HoaDonChitiet
+                        {
+                            IdHoadon = h.IdHoadon,
+                            IdSanpham = od.barcode,
+                            SoLuong = od.SoLuong,
+                            GiaTien = od.GiaNhap,
+                            IdNhacc = idncc
+                        });
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("thanh toan thanh cong");
+                    LoadInterfood();
+                    SanPham_NhaCungCap odl = new SanPham_NhaCungCap();
+                    odl = null;
+                    total = 0;
+                    p.Close();
+                    return;
+                }
+                else if (ChucNangNhapHang == (int)ChucNangQL.RedBull)
+                {
+                    foreach (var od in redbulllist)
+                    {
+                        db.HoaDonChitiet.Add(new HoaDonChitiet
+                        {
+                            IdHoadon = h.IdHoadon,
+                            IdSanpham = od.barcode,
+                            SoLuong = od.SoLuong,
+                            GiaTien = od.GiaNhap,
+                            IdNhacc = idncc
+                        });
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("thanh toan thanh cong");
+                    LoadRedbull();
+                    SanPham_NhaCungCap odl = new SanPham_NhaCungCap();
+                    odl = null;
+                    total = 0;
+                    p.Close();
+                    return;
+                }
+                else if (ChucNangNhapHang == (int)ChucNangQL.TanHiepPhat)
+                {
+                    foreach (var od in tanhiepphatlist)
+                    {
+                        db.HoaDonChitiet.Add(new HoaDonChitiet
+                        {
+                            IdHoadon = h.IdHoadon,
+                            IdSanpham = od.barcode,
+                            SoLuong = od.SoLuong,
+                            GiaTien = od.GiaNhap,
+                            IdNhacc = idncc
+                        });
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("thanh toan thanh cong");
+                    LoadTanhiepphat();
+                    SanPham_NhaCungCap odl = new SanPham_NhaCungCap();
+                    odl = null;
+                    total = 0;
+                    p.Close();
+                    return;
+                }
+                else if (ChucNangNhapHang == (int)ChucNangQL.UniversaUniversalRobina)
+                {
+                    foreach (var od in URlist)
+                    {
+                        db.HoaDonChitiet.Add(new HoaDonChitiet
+                        {
+                            IdHoadon = h.IdHoadon,
+                            IdSanpham = od.barcode,
+                            SoLuong = od.SoLuong,
+                            GiaTien = od.GiaNhap,
+                            IdNhacc = idncc
+                        });
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("thanh toan thanh cong");
+                    LoadUR();
+                    SanPham_NhaCungCap odl = new SanPham_NhaCungCap();
+                    odl = null;
+                    total = 0;
+                    p.Close();
+                    return;
+                }
+                else if (ChucNangNhapHang == (int)ChucNangQL.KinhDo)
+                {
+                    foreach (var od in kinhdolist)
+                    {
+                        db.HoaDonChitiet.Add(new HoaDonChitiet
+                        {
+                            IdHoadon = h.IdHoadon,
+                            IdSanpham = od.barcode,
+                            SoLuong = od.SoLuong,
+                            GiaTien = od.GiaNhap,
+                            IdNhacc = idncc
+                        });
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("thanh toan thanh cong");
+                    LoadKinhdo();
+                    SanPham_NhaCungCap odl = new SanPham_NhaCungCap();
+                    odl = null;
+                    total = 0;
+                    p.Close();
+                    return;
+                }
             });
             void LoadPepsi()
             {
