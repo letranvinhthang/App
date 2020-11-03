@@ -716,8 +716,8 @@
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="TextChanged">
                                                     <i:InvokeCommandAction 
-                                                    Command="{Binding BarcodeChangedcommand}" 
-                                                    CommandParameter="{Binding ElementName=BARCODE}"/>
+                                                    Command="{Binding IDhoadonchangedcommand}" 
+                                                    CommandParameter="{Binding ElementName=MAHOADON}"/>
                                                 </i:EventTrigger>
                                             </i:Interaction.Triggers>
                                         </TextBox>
@@ -730,7 +730,7 @@
                                                 <i:InvokeCommandAction Command="{Binding loadcommannd}"/>
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
-                                        <ListView ItemsSource="{Binding hoadonlist , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                                        <ListView ItemsSource="{Binding ketquatimkiem , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                                             <!--ĐỊNH DẠNG NỘI DUNG-->
                                             <ListView.ItemContainerStyle>
                                                 <Style TargetType="{x:Type ListViewItem}">

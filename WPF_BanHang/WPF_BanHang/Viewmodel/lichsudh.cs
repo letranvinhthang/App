@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using WPF_BanHang.Models;
 namespace WPF_BanHang.Viewmodel
@@ -10,8 +11,10 @@ namespace WPF_BanHang.Viewmodel
     {
         public ObservableCollection<hdxl> _hoadonlist;
         public ObservableCollection<hdxl> hoadonlist { get => _hoadonlist; set { _hoadonlist = value; OnPropertyChanged(); } }
+
         public ObservableCollection<cthdxl> _cthdxlist;
         public ObservableCollection<cthdxl> cthdxlist { get => _cthdxlist;  set { _cthdxlist = value; OnPropertyChanged(); } }
+
         public hdxl _SelectedItem;
         public hdxl SelectedItem
         {
@@ -23,9 +26,9 @@ namespace WPF_BanHang.Viewmodel
                 {
                     idhoadon = SelectedItem.IdHoadon;
                     mahoadon = SelectedItem.MaHoadon;
-                    tenkh = SelectedItem.bennhan;
+                    tenkhachhang = SelectedItem.bennhan;
                     ngaytao = SelectedItem.NgayTao;
-                    ten = SelectedItem.TenNhanvien;
+                    tennhanvien = SelectedItem.TenNhanvien;
                     tongtien = SelectedItem.ThanhTien;
                 }
             }
@@ -35,28 +38,68 @@ namespace WPF_BanHang.Viewmodel
 
         private long _mahoadon;
         public long mahoadon { get => _mahoadon; set { _mahoadon = value; OnPropertyChanged(); } }
-        private string _ten;
+       
+        private string _tennhanvien;
+        public string tennhanvien { get => _tennhanvien; set { _tennhanvien = value; OnPropertyChanged(); } }
 
-        public string ten { get => _ten; set { _ten = value; OnPropertyChanged(); } }
-        private string _tenkh;
-
-        public string tenkh { get => _tenkh; set { _tenkh = value; OnPropertyChanged(); } }
+        private string _tenkhachhang;
+        public string tenkhachhang { get => _tenkhachhang; set { _tenkhachhang = value; OnPropertyChanged(); } }
+        
         private DateTime _ngaytao;
-
         public DateTime ngaytao { get => _ngaytao; set { _ngaytao = value; OnPropertyChanged(); } }
-        private double _tongtien;
 
+        private double _tongtien;
         public double tongtien { get => _tongtien; set { _tongtien = value; OnPropertyChanged(); } }
+
+        private string _thongtintimkiem;
+        public string thongtintimkiem { get => _thongtintimkiem; set { _thongtintimkiem = value; OnPropertyChanged(); } }
 
         private string _diachiacuahang;
         public string diachicuahang { get => _diachiacuahang; set { _diachiacuahang = value; OnPropertyChanged(); } }
+
+
+        private ObservableCollection<hdxl> _ketuqatimkiem;
+        public ObservableCollection<hdxl> ketquatimkiem { get => _ketuqatimkiem; set { _ketuqatimkiem = value; OnPropertyChanged(); } }
+
+        public ICommand IDhoadonchangedcommand { get; set; }
         public ICommand loadcommannd { get; set; }
         public ICommand loadcscommannd { get; set; }
         public ICommand xemhdcommand { get; set; }
         public ICommand exitcommand { get; set; }
+
+        
         public lichsudh()
         {
-            loadcommannd = new RelayCommand<Object>((k) => { return true; }, (k) => {
+            var db = new qlbhContext();
+            ketquatimkiem = new ObservableCollection<hdxl>();
+            IDhoadonchangedcommand = new RelayCommand<TextBox>((p) => { return p == null ? false : true; }, (p) =>
+            {
+                try
+                {
+                    if (p.Text != null)
+                    {
+                        thongtintimkiem = p.Text;
+                        if (MainViewModel.TaiKhoan != null)
+                        {
+                            hdxl list = new hdxl();
+                            //var ketqua = from a in db.HoaDon where a.IdHoadon=int.Parse(thongtintimkiem)
+
+                            ketquatimkiem.Remove(list);
+                            ketquatimkiem.Add(ketqua);
+                        }
+                    }
+                    else
+                    {
+                        Loadhoadon();
+                    }
+                }
+                catch
+                {
+
+                }
+            });
+
+            loadcommannd = new RelayCommand<TextBox>((p) => { return true; }, (p) => {
                 Loadhoadon();
             });
             xemhdcommand = new RelayCommand<Object>((k) => {
@@ -103,7 +146,7 @@ namespace WPF_BanHang.Viewmodel
         void Loadhoadon()
         {
             var db = new qlbhContext();
-            hoadonlist = new ObservableCollection<hdxl>();
+            ketquatimkiem = new ObservableCollection<hdxl>();
             var hd = db.HoaDon;
             var kh = db.KhachHang;
             var ncc = db.NhaCungcap;
@@ -118,41 +161,43 @@ namespace WPF_BanHang.Viewmodel
                 var kmhd = qc.Where(p => p.IdChuongtrinh == item.IdChuongtrinh).FirstOrDefault();
                 var khhd = kh.Where(p => p.IdKhachhang == item.IdKhachhang).FirstOrDefault();
                 var ncchd = ncc.Where(p => p.IdNhacc == item.IdNhacc).FirstOrDefault();
-                hdxl hoadonxuly = new hdxl();
+                hdxl list = new hdxl();
 
-                hoadonxuly.IdHoadon = item.IdHoadon;
-                hoadonxuly.MaHoadon = item.MaHoadon;
+                list.IdHoadon = item.IdHoadon;
+                list.MaHoadon = item.MaHoadon;
 
-                hoadonxuly.NgayTao = item.NgayTao;
-                hoadonxuly.ThanhTien = item.ThanhTien;
-                hoadonxuly.TenNhanvien = nvhd.TenNhanvien;
+                list.NgayTao = item.NgayTao;
+                list.ThanhTien = item.ThanhTien;
+                list.TenNhanvien = nvhd.TenNhanvien;
                 if (item.IdKhachhang == null)
                 {
-                    hoadonxuly.bennhan = ncchd.TenNhacc;
+                    list.bennhan = ncchd.TenNhacc;
                 }
                 else
                 {
-                    hoadonxuly.bennhan = khhd.TenKhachhang;
+                    list.bennhan = khhd.TenKhachhang;
                 }
                 if (item.IdChuongtrinh == null)
                 {
-                    hoadonxuly.TenChuongtrinh = "Không";
+                    list.TenChuongtrinh = "Không";
                 }
                 else
                 {
-                    hoadonxuly.TenChuongtrinh = kmhd.TenChuongtrinh;
+                    list.TenChuongtrinh = kmhd.TenChuongtrinh;
                 }
 
                 if (item.HuyHoaDon == true)
                 {
-                    hoadonxuly.trangthai = "Hủy";
+                    list.trangthai = "Hủy";
                 }
 
-                hoadonxuly.trangthai = "Hoàn thành";
+                list.trangthai = "Hoàn thành";
 
-                hoadonlist.Add(hoadonxuly);
-            }
+                ketquatimkiem.Add(list);
             }
         }
+
+
+    }
 
 }
