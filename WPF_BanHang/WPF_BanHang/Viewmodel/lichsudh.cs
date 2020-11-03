@@ -84,8 +84,8 @@ namespace WPF_BanHang.Viewmodel
                             hdxl list = new hdxl();
                             //var ketqua = from a in db.HoaDon where a.IdHoadon=int.Parse(thongtintimkiem)
 
-                            ketquatimkiem.Remove(list);
-                            ketquatimkiem.Add(ketqua);
+                            //ketquatimkiem.Remove(list);
+                            //ketquatimkiem.Add(ketqua);
                         }
                     }
                     else
