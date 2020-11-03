@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2020 at 11:04 AM
+-- Generation Time: Nov 03, 2020 at 11:07 AM
 -- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -530,7 +530,7 @@ CREATE TABLE `view_thongke` (
 --
 DROP TABLE IF EXISTS `view_thongke`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_thongke`  AS  select sum(`hoa_don`.`Thanh_tien`) AS `TongDoanhThu`,count(`hoa_don`.`ma_hoadon`) AS `SoLuongHoaDon`,`hoa_don`.`ID_cuahang` AS `ID_cuahang`,cast(`hoa_don`.`Ngay_tao` as date) AS `Ngay_Tao` from `hoa_don` group by cast(`hoa_don`.`Ngay_tao` as date),`hoa_don`.`ID_cuahang` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_thongke`  AS SELECT sum(`hoa_don`.`Thanh_tien`) AS `TongDoanhThu`, count(`hoa_don`.`ma_hoadon`) AS `SoLuongHoaDon`, `hoa_don`.`ID_cuahang` AS `ID_cuahang`, cast(`hoa_don`.`Ngay_tao` as date) AS `Ngay_Tao` FROM `hoa_don` GROUP BY cast(`hoa_don`.`Ngay_tao` as date), `hoa_don`.`ID_cuahang` ;
 
 --
 -- Indexes for dumped tables
