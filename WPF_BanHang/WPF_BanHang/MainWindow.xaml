@@ -373,6 +373,7 @@
                                         <!--ĐỊNH DẠNG HEADER-->
                                         <GridView.ColumnHeaderContainerStyle>
                                             <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                
                                                 <Setter Property="FontSize" Value="20"/>
                                                 <Setter Property="FontWeight" Value="Bold"/>
                                                 <Setter Property="Margin" Value="10"/>
@@ -391,9 +392,9 @@
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>-->
                                         <GridViewColumn Header="Tên sản phẩm" DisplayMemberBinding="{Binding tensp}"/>
-                                        <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding dongia, StringFormat=C, ConverterCulture=vi }"/>
+                                        <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding dongia, StringFormat={}{0:n0}}"/>
                                         <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
-                                        <GridViewColumn Header="Tổng tiền" DisplayMemberBinding="{Binding tongtien, StringFormat=C, ConverterCulture=vi }"/>
+                                        <GridViewColumn Header="Tổng tiền" DisplayMemberBinding="{Binding tongtien, StringFormat={}{0:n0}}"/>
                                         
                                             
                                         
@@ -407,7 +408,7 @@
                             <!--TỔNG HÓA ĐƠN-->
                             <TextBlock Text="Tổng tiền: "  FontSize="30" Margin="50 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White"/>
 
-                                <TextBlock Text="{Binding total, StringFormat=C, ConverterCulture=vi }" FontSize="30" Margin="50 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White"/>
+                                <TextBlock Text="{Binding total, StringFormat={}{0:n0} VND}" FontSize="30" Margin="50 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White"/>
                             </StackPanel>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <!--NÚT THÊM ORDER-->

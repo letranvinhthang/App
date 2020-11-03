@@ -81,7 +81,7 @@ namespace WPF_BanHang.Viewmodel
                         ThongKeXL thongke = new ThongKeXL();
 
                         thongke.SoLuongHoaDon = item.SoLuongHoaDon;
-                      //  thongke.NgayTao = item.NgayTao;
+                     //   thongke.NgayTao = item.NgayTao;
                         thongke.TongDoanhThu = item.TongDoanhThu;
                         _doanhthu.Add(double.Parse(item.TongDoanhThu.ToString()));
                         _soluongdon.Add(item.SoLuongHoaDon);
