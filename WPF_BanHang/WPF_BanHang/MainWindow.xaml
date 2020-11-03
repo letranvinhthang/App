@@ -315,6 +315,7 @@
                             </Style.Triggers>
                         </Style>
                     </Grid.Style>
+                    
                     <Grid DataContext="{StaticResource orderVM}">
                   
                         <Grid.RowDefinitions>
