@@ -10,5 +10,7 @@ namespace WPF_BanHang.Models
         public string TenSP { get; set; }
         public int SoLuong { get; set; }
         public long barcode { get; set; }
+        public double GiaNhap { get; set; }
+        public double tongtien { get; set; }
     }
 }

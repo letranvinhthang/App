@@ -89,12 +89,8 @@ namespace WPF_BanHang.Viewmodel
                       //  thongke.NgayTao = item.NgayTao;
                         thongke.TongDoanhThu = item.TongDoanhThu;
                         _doanhthu.Add(double.Parse(item.TongDoanhThu.ToString()));
-<<<<<<< HEAD
-                        Ngay.Add(item.NgayTao);
-=======
-                        _soluongdon.Add(item.SoLuongHoaDon);
+                        //_soluongdon.Add(item.SoLuongHoaDon);
                     //    _Ngay.Add(double.Parse(item.NgayTao.ToString("dd")));
->>>>>>> 5e87d8c371dc6bb5880446ae7e89eba54c20d8e7
                         doanhthulist.Add(thongke);
                     }
                 }

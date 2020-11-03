@@ -8,7 +8,7 @@
         Height="auto" Width="550" ResizeMode="NoResize" WindowStyle="None" FontFamily="Roboto" WindowStartupLocation="CenterScreen"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          x:Name="window"
-   
+        DataContext="{StaticResource nhVM}"
         Title="XacNhanNhapHangWindow">
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
@@ -65,7 +65,7 @@
 
                 <Rectangle Fill="Black" Height="1" Margin="5 2" Opacity="0.5"/>
 
-                <ListView ItemsSource="{Binding orderlist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                <ListView ItemsSource="{Binding nhaplist, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                     <!--ĐỊNH DẠNG NỘI DUNG-->
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
@@ -93,12 +93,12 @@
                             <GridViewColumn Width="180" Header="Tên sản phẩm">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock TextWrapping="Wrap" Text="{Binding tensp}"/>
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding TenSP}"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Width="100" Header="Đơn giá" DisplayMemberBinding="{Binding dongia, StringFormat=C, ConverterCulture=vi}"/>
-                            <GridViewColumn Width="95" Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
+                            <GridViewColumn Width="100" Header="Đơn giá" DisplayMemberBinding="{Binding GiaNhap, StringFormat=C, ConverterCulture=vi}"/>
+                            <GridViewColumn Width="95" Header="Số lượng" DisplayMemberBinding="{Binding SoLuong}"/>
                             <GridViewColumn Width="120" Header="Thành Tiền" DisplayMemberBinding="{Binding tongtien, StringFormat=C, ConverterCulture=vi }"/>
                         </GridView>
                     </ListView.View>
