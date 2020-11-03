@@ -21,11 +21,83 @@
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStyle="None"
-        WindowState="Normal"
+        WindowState="Maximized"
         WindowStartupLocation="CenterScreen"
         
         ResizeMode="CanResize"
         DataContext="{StaticResource mainVM}">
+
+    <Window.Resources>
+        <Storyboard x:Key="Move0">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ellipse">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="Move1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ellipse">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="65">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="Move2">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ellipse">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="130">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="Move3">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ellipse">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="195">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="Move4">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ellipse">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="260">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Button.Click" SourceName="item0">
+            <BeginStoryboard x:Name="Move0_BeginStoryboard" Storyboard="{StaticResource Move0}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Button.Click" SourceName="item1">
+            <BeginStoryboard x:Name="Move1_BeginStoryboard" Storyboard="{StaticResource Move1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Button.Click" SourceName="item2">
+            <BeginStoryboard x:Name="Move2_BeginStoryboard" Storyboard="{StaticResource Move2}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Button.Click" SourceName="item3">
+            <BeginStoryboard x:Name="Move3_BeginStoryboard" Storyboard="{StaticResource Move3}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Button.Click" SourceName="item4">
+            <BeginStoryboard x:Name="Move4_BeginStoryboard" Storyboard="{StaticResource Move4}"/>
+        </EventTrigger>
+    </Window.Triggers>
+
+
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding SetupQuyenCommand}"/>
@@ -55,6 +127,7 @@
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
+                
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
@@ -71,7 +144,7 @@
 
 
                         <!--NÚT ORDER-->
-                        <Button Height="50"  Margin="0 15 0 0" BorderBrush="Transparent" Background="Transparent">
+                        <Button x:Name="item0" Height="50"  Margin="0 15 0 0" BorderBrush="Transparent" Background="Transparent">
 
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedButton}">
@@ -97,7 +170,7 @@
                         </Button>
                         
                         <!--NÚT THỐNG KÊ-->
-                        <Button Height="50"  Margin="0 15 0 0" BorderBrush="Transparent" Background="Transparent">
+                        <Button Height="50" x:Name="item1"  Margin="0 15 0 0" BorderBrush="Transparent" Background="Transparent">
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                     <Style.Triggers>
@@ -118,7 +191,7 @@
                             </DockPanel>
                         </Button>
                         <!--NÚT SẢN PHẨM-->
-                        <Button Height="50"  Margin="0 15 0 0" BorderBrush="Transparent" Background="Transparent">
+                        <Button Height="50" x:Name="item2" Margin="0 15 0 0" BorderBrush="Transparent" Background="Transparent">
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                     <Style.Triggers>
@@ -139,7 +212,7 @@
                             </DockPanel>
                         </Button>
                         <!--NÚT NHẬP HÀNG-->
-                        <Button Height="50"  Margin="0 15 0 0" BorderBrush="Transparent" Background="Transparent">
+                        <Button Height="50" x:Name="item3" Margin="0 15 0 0" BorderBrush="Transparent" Background="Transparent">
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                     <Style.Triggers>
@@ -160,7 +233,7 @@
                             </DockPanel>
                         </Button>
                         <!--NÚT NHÂN VIÊN-->
-                        <Button  Height="50"  Margin="0 15 0 0" BorderBrush="Transparent" Background="Transparent">
+                        <Button  Height="50" x:Name="item4" Margin="0 15 0 0" BorderBrush="Transparent" Background="Transparent">
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                     <Style.Triggers>
@@ -214,6 +287,20 @@
 
                     </Button>
                 </Grid>
+            </Grid>
+            <Grid Grid.ColumnSpan="2" Width="5" Margin="195 0" HorizontalAlignment="Left">
+                <Rectangle Fill="{StaticResource SecondaryAccentBrush}" Width="2" HorizontalAlignment="Right"/>
+                <Ellipse x:Name="ellipse" Width="10" Height="10" VerticalAlignment="Top" Fill="{StaticResource SecondaryAccentBrush}" Margin="0 35" 
+                 RenderTransformOrigin="0.5, 0.5">
+                    <Ellipse.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
             </Grid>
             <Grid Grid.Column="1">
                 <!--CONTENT-->
@@ -834,7 +921,7 @@
                             <!--CHỨC NĂNG THÔNG KÊ-->
 
 
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <!--Button PEPSI-->
                                 <Button
                                     Width="140"
@@ -847,6 +934,7 @@
                                     BorderBrush="Transparent"
                                      Content="PEPSI">
 
+
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
                                             <i:InvokeCommandAction Command="{Binding BtnPepsicoCommand}"/>
@@ -856,6 +944,7 @@
                                 </Button>
                                 <!--Button COCA-->
                                 <Button
+
                                     Width="140"
                                         Uid="1"
                                     Click="Button_Click"
@@ -873,16 +962,18 @@
                                     </i:Interaction.Triggers>
                                 </Button>
                                 <!--Button INTERFOOD-->
-                                <Button
 
+                                <Button
                                     Width="140"
                                         Uid="2"
                                     Click="Button_Click"
+
                                      HorizontalAlignment="Left"
                                     
                                         Background="Transparent"
                                     BorderBrush="Transparent"
                                      Content="INTERFOOD">
+
 
 
                                     <i:Interaction.Triggers>
@@ -894,14 +985,17 @@
                                 <!--Button REDBULL-->
                                 <Button
 
+
                                     Width="140"
                                         Uid="3"
                                     Click="Button_Click"
+
                                      HorizontalAlignment="Left"
                                     
                                         Background="Transparent"
                                     BorderBrush="Transparent"
                                      Content="REDBULL">
+
 
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
@@ -912,6 +1006,7 @@
                                 </Button>
                                 <!--Button TANHIEPPHAT-->
                                 <Button
+
                                     Width="140"
                                         Uid="4"
                                     Click="Button_Click"
@@ -921,6 +1016,7 @@
                                     BorderBrush="Transparent"
                                      Content="TANHIEPPHAT">
 
+
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
                                             <i:InvokeCommandAction Command="{Binding BtnTanHiepPhatCommand}"/>
@@ -929,6 +1025,7 @@
                                 </Button>
                                 <!--Button UniversalRobina-->
                                 <Button
+
                                     Width="140"
                                         Uid="5"
                                     Click="Button_Click"
@@ -938,6 +1035,7 @@
                                     BorderBrush="Transparent"
                                      Content="UniversalRobina">
 
+
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
                                             <i:InvokeCommandAction Command="{Binding BtnUniversalRobinaCommand}"/>
@@ -946,6 +1044,7 @@
                                 </Button>
                                 <!--Button KINHDO-->
                                 <Button
+
                                      Width="140"
                                         Uid="6"
                                         
@@ -964,10 +1063,12 @@
 
                                 </Button>
 
+
                             </StackPanel>
 
-                            <Grid  x:Name="GridCursor" Width="140" Height="5" Background="white" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44 40 0 0">
+                            <Grid  x:Name="GridCursor" Width="140" Height="5" Background="white" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 40 0 0">
                             </Grid>
+
 
                         </Grid>
                         <!--NỘI DUNG NHẬP HÀNG-->
