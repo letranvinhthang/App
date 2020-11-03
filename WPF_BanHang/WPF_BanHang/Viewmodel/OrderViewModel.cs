@@ -99,7 +99,7 @@ namespace WPF_BanHang.Viewmodel
             {
             int? idch = MainViewModel.TaiKhoan.Idcuahang;
             int idnv = MainViewModel.TaiKhoan.IdNhanvien;
-            var xchd = db.HoaDon.Where(p => p.IdCuahang == idch).FirstOrDefault();
+            var xchd = db.HoaDon.Where(p => p.IdCuahang == idch && p.IdNhacc == null).FirstOrDefault();
 
             if ( xchd == null)
             {
@@ -114,7 +114,7 @@ namespace WPF_BanHang.Viewmodel
 
                 });
                 db.SaveChanges();
-                    long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
+                    long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch && p.IdNhacc == null).Max(p => p.MaHoadon);
                     var h = db.HoaDon.Where(p => p.MaHoadon == mahdln).FirstOrDefault();
                     foreach (var od in orderlist)
                     {
@@ -138,7 +138,7 @@ namespace WPF_BanHang.Viewmodel
                 }
             else 
                {
-                long mahdl = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
+                long mahdl = db.HoaDon.Where(p => p.IdCuahang == idch && p.IdNhacc == null).Max(p => p.MaHoadon);
             db.HoaDon.Add(new HoaDon
             {
                 MaHoadon = long.Parse((mahdl + 1).ToString()),
@@ -150,7 +150,7 @@ namespace WPF_BanHang.Viewmodel
 
             });
             db.SaveChanges();
-                    long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
+                    long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch && p.IdNhacc == null).Max(p => p.MaHoadon);
                     var h = db.HoaDon.Where(p => p.MaHoadon == mahdln).FirstOrDefault();
                     foreach (var od in orderlist)
                     {
