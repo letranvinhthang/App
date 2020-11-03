@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.RightsManagement;
 using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WPF_BanHang.Models;
@@ -319,6 +320,90 @@ namespace WPF_BanHang.Viewmodel
 
 
             });
+           /* thanhtoanpes = new RelayCommand<Window>((p) =>
+            {
+                if ( pepsilist == null)
+                    return false;
+                return true;
+            }, (p) =>
+            {
+                var db = new qlbhContext();
+                int? idch = MainViewModel.TaiKhoan.Idcuahang;
+                int idnv = MainViewModel.TaiKhoan.IdNhanvien;
+                var xchd = db.HoaDon.Where(p => p.IdCuahang == idch && p.IdKhachhang == null).FirstOrDefault();
+
+                if (xchd == null)
+                {
+                    db.HoaDon.Add(new HoaDon
+                    {
+                        MaHoadon = 1,
+                        NgayTao = DateTime.Now,
+                        ThanhTien = ,
+                        IdNhanvien = idnv,
+                        IdKhachhang = 1,
+                        IdCuahang = Int32.Parse(idch.ToString())
+
+                    });
+                    db.SaveChanges();
+                    long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
+                    var h = db.HoaDon.Where(p => p.MaHoadon == mahdln).FirstOrDefault();
+                    foreach (var od in orderlist)
+                    {
+                        db.HoaDonChitiet.Add(new HoaDonChitiet
+                        {
+                            IdHoadon = h.IdHoadon,
+                            IdSanpham = od.barcode,
+                            SoLuong = od.soluong,
+                            GiaTien = od.dongia,
+                            IdKhachhang = 1
+                        });
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("thanh toan thanh cong");
+                    orderlist.Clear();
+                    Orderxl odl = new Orderxl();
+                    odl = null;
+                    total = 0;
+                    p.Close();
+                    return;
+                }
+                else
+                {
+                    long mahdl = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
+                    db.HoaDon.Add(new HoaDon
+                    {
+                        MaHoadon = long.Parse((mahdl + 1).ToString()),
+                        NgayTao = ngaytao,
+                        ThanhTien = total,
+                        IdNhanvien = idnv,
+                        IdKhachhang = 1,
+                        IdCuahang = Int32.Parse(idch.ToString())
+
+                    });
+                    db.SaveChanges();
+                    long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch).Max(p => p.MaHoadon);
+                    var h = db.HoaDon.Where(p => p.MaHoadon == mahdln).FirstOrDefault();
+                    foreach (var od in orderlist)
+                    {
+                        db.HoaDonChitiet.Add(new HoaDonChitiet
+                        {
+                            IdHoadon = h.IdHoadon,
+                            IdSanpham = od.barcode,
+                            SoLuong = od.soluong,
+                            GiaTien = od.dongia,
+                            IdKhachhang = 1
+                        });
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("thanh toan thanh cong 1 ");
+                    orderlist.Clear();
+                    Orderxl odl = new Orderxl();
+                    odl = null;
+                    total = 0;
+                    p.Close();
+                }
+
+            });*/
             void LoadPepsi()
             {
                 var db = new qlbhContext();

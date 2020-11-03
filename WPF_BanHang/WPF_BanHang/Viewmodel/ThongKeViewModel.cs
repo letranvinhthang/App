@@ -86,10 +86,15 @@ namespace WPF_BanHang.Viewmodel
                         ViewThongke thongke = new ViewThongke();
 
                         thongke.SoLuongHoaDon = item.SoLuongHoaDon;
-                        thongke.NgayTao = item.NgayTao;
+                      //  thongke.NgayTao = item.NgayTao;
                         thongke.TongDoanhThu = item.TongDoanhThu;
                         _doanhthu.Add(double.Parse(item.TongDoanhThu.ToString()));
+<<<<<<< HEAD
                         Ngay.Add(item.NgayTao);
+=======
+                        _soluongdon.Add(item.SoLuongHoaDon);
+                    //    _Ngay.Add(double.Parse(item.NgayTao.ToString("dd")));
+>>>>>>> origin/thinh
                         doanhthulist.Add(thongke);
                     }
                 }
