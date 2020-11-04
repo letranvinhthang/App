@@ -886,10 +886,19 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
+                                        
                                         <GridViewColumn Width="auto" Header="Sản phẩm mới">
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <CheckBox IsEnabled="False"  IsChecked="{Binding SanphamMoi}"/>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        
+                                        <GridViewColumn Width="auto" Header="Ngừng kinh doanh">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <CheckBox IsEnabled="False"  IsChecked="{Binding SanphamTrangThai}"/>
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>

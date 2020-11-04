@@ -46,26 +46,34 @@
                     <CheckBox
                         Style="{StaticResource MaterialDesignFilterChipCheckBox}"
                         IsChecked="{Binding spmoi}"
+                        Margin="5"
                         Content="Sản phẩm mới">
                     </CheckBox>
                     <CheckBox
                         Style="{StaticResource MaterialDesignFilterChipCheckBox}"
                         IsChecked="{Binding sphot}"
+                        Margin="5"
                         Content="Sản phẩm hot">
+                    </CheckBox>
+                    <CheckBox
+                        Style="{StaticResource MaterialDesignFilterChipCheckBox}"
+                        IsChecked="{Binding sptt}"
+                        Margin="5"
+                        Content="Ngừng kinh doanh">
                     </CheckBox>
 
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
                     <Button
                             Command="{Binding editcommand}"
-                            Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="20" 
+                            Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="20 10 20 20" 
                             Width="120" Height="40"
                             ToolTip="ARE YOU SURE?">
                         XÁC NHẬN
                     </Button>
                     <Button Command="{Binding exitcommand}"
                             CommandParameter="{Binding ElementName=window}"
-                            Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="20"
+                            Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="20 10 20 20"
                             Width="120" Height="40"
                             ToolTip="Resource name: MaterialDesignRaisedLightButton">
                         HỦY
