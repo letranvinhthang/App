@@ -164,7 +164,7 @@
 
                             <DockPanel>
                                 <Image  Width="40" Height="40" Source="UserControl_BanHang/Icons/icon-order.png" RenderTransformOrigin="-0.19,0.542"/>
-                                <TextBlock VerticalAlignment="Center" FontSize="20" Margin="0 7 0 0" Text="ORDER"/>
+                                <TextBlock VerticalAlignment="Center" Foreground="White" FontSize="20" Margin="0 7 0 0" Text="ORDER"/>
                             </DockPanel>
 
                         </Button>
@@ -187,7 +187,7 @@
                             </i:Interaction.Triggers>
                             <DockPanel>
                                 <Image Width="40" Height="40" Source="UserControl_BanHang/Icons/Thongke.png"/>
-                                <TextBlock VerticalAlignment="Center" FontSize="20" Margin="0 7 0 0"><Run Text="THỐNG KÊ"/></TextBlock>
+                                <TextBlock VerticalAlignment="Center" FontSize="20" Foreground="White" Margin="0 7 0 0"><Run Text="THỐNG KÊ"/></TextBlock>
                             </DockPanel>
                         </Button>
                         <!--NÚT SẢN PHẨM-->
@@ -208,7 +208,7 @@
                             </i:Interaction.Triggers>
                             <DockPanel>
                                 <Image Width="40" Height="40" Source="UserControl_BanHang/Icons/Kho.png"/>
-                                <TextBlock VerticalAlignment="Center" FontSize="20" Margin="0 7 0 0" Text="SẢN PHẨM"/>
+                                <TextBlock VerticalAlignment="Center" FontSize="20" Foreground="White" Margin="0 7 0 0" Text="SẢN PHẨM"/>
                             </DockPanel>
                         </Button>
                         <!--NÚT NHẬP HÀNG-->
@@ -229,7 +229,7 @@
                             </i:Interaction.Triggers>
                             <DockPanel>
                                 <Image Width="40" Height="40" Source="UserControl_BanHang/Icons/ThemSP.png"/>
-                                <TextBlock VerticalAlignment="Center" FontSize="20" Margin="0 7 0 0" Text="NHẬP HÀNG"/>
+                                <TextBlock VerticalAlignment="Center" FontSize="20" Foreground="White" Margin="0 7 0 0" Text="NHẬP HÀNG"/>
                             </DockPanel>
                         </Button>
                         <!--NÚT NHÂN VIÊN-->
@@ -251,7 +251,7 @@
 
                             <DockPanel>
                                 <Image Width="40" Height="40" Source="Hinh/Nhanvien.png"/>
-                                <TextBlock VerticalAlignment="Center" FontSize="20" Margin="0 7 0 0"><Run Text="NHÂN VIÊN"/></TextBlock>
+                                <TextBlock VerticalAlignment="Center" FontSize="20" Foreground="White" Margin="0 7 0 0"><Run Text="NHÂN VIÊN"/></TextBlock>
                             </DockPanel>
 
                         </Button>
@@ -377,10 +377,10 @@
                                                 <Setter Property="FontWeight" Value="Bold"/>
                                                 <Setter Property="Margin" Value="10"/>
                                                 <Setter Property="VerticalAlignment" Value="Center"/>
-                                                <Setter Property="IsEnabled" Value="True"/>
+                                                
                                                 <Setter Property="Width" Value="auto"/>
                                                 <Setter Property="Background" Value="Transparent"/>
-                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Setter Property="IsEnabled" Value="True"/>
                                                 <Setter Property="BorderBrush" Value="Transparent"/>
                                             </Style>
                                         </GridView.ColumnHeaderContainerStyle>
@@ -1118,6 +1118,7 @@
                                                         <Setter Property="IsEnabled" Value="True"/>
                                                         <Setter Property="Width" Value="auto"/>
                                                         <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
                                                     </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
                                                 <!--<GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>-->
@@ -1131,65 +1132,7 @@
                                 <Grid VerticalAlignment="Bottom" Grid.Row="2">
                                     <Button Content="Nhập" Width="120" Margin="60" Command="{Binding xacnhancommand}"/>
                                 </Grid>
-
-
-
-                                <!--THÔNG TIN THỐNG KÊ-->
-                                <!--<Grid>
-                                    <lvc:CartesianChart x:Name="chartdoanhthu">
-                                        <lvc:CartesianChart.Series>
-                                            <lvc:ColumnSeries Title="Doanh thu" Values="{Binding TongDoanhThu}"/>
-                                        </lvc:CartesianChart.Series>
-                                        <lvc:CartesianChart.AxisX>
-                                            <lvc:Axis Title="Ngày" Labels="{Binding Path=NgayTao,StringFormat=dd-MM-yyyy}">
-                                                <lvc:Axis.Separator>
-                                                    <lvc:Separator Step="1"/>
-                                                </lvc:Axis.Separator>
-                                            </lvc:Axis>
-                                        </lvc:CartesianChart.AxisX>
-                                        <lvc:CartesianChart.AxisY>
-                                            <lvc:Axis Title="Case Count"/>
-                                        </lvc:CartesianChart.AxisY>
-                                    </lvc:CartesianChart>
-                                </Grid>-->
-                                <!--<ListView ItemsSource="{Binding doanhthulist}">
-                                    -->
-                                <!--ĐỊNH DẠNG NỘI DUNG-->
-                                <!--
-                                    <ListView.ItemContainerStyle>
-                                        <Style TargetType="ListViewItem">
-                                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                            <Setter Property="FontSize" Value="15"/>
-                                        </Style>
-                                    </ListView.ItemContainerStyle>
-                                    
-                                    -->
-                                <!--<ListView.View>
-                                        <GridView>
-                                            -->
-                                <!--ĐỊNH DẠNG HEADER-->
-                                <!--
-                                            <GridView.ColumnHeaderContainerStyle>
-                                                <Style TargetType="GridViewColumnHeader">
-                                                    <Setter Property="FontSize" Value="20"/>
-                                                    <Setter Property="FontWeight" Value="Bold"/>
-                                                    <Setter Property="Margin" Value="10"/>
-                                                    <Setter Property="VerticalAlignment" Value="Center"/>
-                                                    <Setter Property="IsEnabled" Value="True"/>
-                                                    <Setter Property="Width" Value="auto"/>
-                                                    <Setter Property="Background" Value="#ff8f00"/>
-                                                </Style>
-                                            </GridView.ColumnHeaderContainerStyle>
-                                            <GridViewColumn Width="150" Header="Ngày" DisplayMemberBinding="{Binding Path=NgayTao,StringFormat=dd-MM-yyyy}"/>
-                                            <GridViewColumn Width="auto" Header="Số lượng hóa đơn" DisplayMemberBinding="{Binding SoLuongHoaDon }"/>
-                                            <GridViewColumn Width="auto" Header="Tổng tiền" DisplayMemberBinding="{Binding TongDoanhThu}"/>
-
-                                        </GridView>
-                                    </ListView.View>-->
-                                <!--
-                                </ListView>-->
-                                
-                                <!--NHẬP COCA-->
+                             
                             </Grid>
                             <Grid x:Name="COCA">
                                 <Grid.RowDefinitions>
@@ -1227,9 +1170,11 @@
                                                         <Setter Property="FontWeight" Value="Bold"/>
                                                         <Setter Property="Margin" Value="10"/>
                                                         <Setter Property="VerticalAlignment" Value="Center"/>
-                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+
                                                         <Setter Property="Width" Value="auto"/>
                                                         <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
                                                     </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
                                                 <!--<GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>-->
@@ -1287,7 +1232,8 @@
                                                                 <Setter Property="VerticalAlignment" Value="Center"/>
                                                                 <Setter Property="IsEnabled" Value="True"/>
                                                                 <Setter Property="Width" Value="auto"/>
-                                                                <Setter Property="Background" Value="Transparent"/>
+                                                                <Setter Property="BorderBrush" Value="Transparent"/>
+                                                                 <Setter Property="Background" Value="Transparent"/>
                                                             </Style>
                                                         </GridView.ColumnHeaderContainerStyle>
                                                         <!--<GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>-->
@@ -1343,6 +1289,7 @@
                                                         <Setter Property="IsEnabled" Value="True"/>
                                                         <Setter Property="Width" Value="auto"/>
                                                         <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
                                                     </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
                                                 <!--<GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>-->
@@ -1397,6 +1344,7 @@
                                                         <Setter Property="IsEnabled" Value="True"/>
                                                         <Setter Property="Width" Value="auto"/>
                                                         <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
                                                     </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
                                                 <!--<GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>-->
@@ -1450,6 +1398,7 @@
                                                         <Setter Property="IsEnabled" Value="True"/>
                                                         <Setter Property="Width" Value="auto"/>
                                                         <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
                                                     </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
                                                 <!--<GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>-->
@@ -1504,6 +1453,7 @@
                                                         <Setter Property="IsEnabled" Value="True"/>
                                                         <Setter Property="Width" Value="auto"/>
                                                         <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
                                                     </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
                                                 <!--<GridViewColumn Width="150" Header="ID đối tác" DisplayMemberBinding="{Binding IdNhaCC}"/>-->
@@ -1636,6 +1586,7 @@
                                                     <Setter Property="IsEnabled" Value="True"/>
                                                     <Setter Property="Width" Value="auto"/>
                                                     <Setter Property="Background" Value="Transparent"/>
+                                                    <Setter Property="BorderBrush" Value="Transparent"/>
                                                 </Style>
                                             </GridView.ColumnHeaderContainerStyle>
                                             <!--<GridViewColumn Width="200" Header="Hình ảnh">
