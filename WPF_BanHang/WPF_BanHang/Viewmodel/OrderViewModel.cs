@@ -56,6 +56,10 @@ namespace WPF_BanHang.Viewmodel
 
         private string _tongtien;
         public string tongtien { get => _tongtien; set { _tongtien = value; OnPropertyChanged(); } }
+
+        private string _diachi;
+        public string diachi { get => _diachi; set { _diachi = value; OnPropertyChanged(); } } 
+
         private double _total;
         public double total { get => _total; set { _total = value; OnPropertyChanged(); } }
 
@@ -89,10 +93,9 @@ namespace WPF_BanHang.Viewmodel
             }, (p) =>
             {
                 int? idch = MainViewModel.TaiKhoan.Idcuahang;
-
                 ten = MainViewModel.TaiKhoan.TenNhanvien;
                 ngaytao = DateTime.Now;
-
+                diachi = db.CuaHang.Where(p => p.IdCuahang == idch).FirstOrDefault().DiachiCuahang;
                 XacNhanHoaDonWindow xn = new XacNhanHoaDonWindow();
                 xn.ShowDialog();
 
@@ -112,10 +115,10 @@ namespace WPF_BanHang.Viewmodel
 
                 if (xchd == null)
                 {
+                    mahd = 1;
                     db.HoaDon.Add(new HoaDon
-<<<<<<< HEAD
                     {
-                        MaHoadon = 1,
+                        MaHoadon = mahd,
                         NgayTao = ngaytao,
                         ThanhTien = total,
                         IdNhanvien = idnv,
@@ -124,48 +127,14 @@ namespace WPF_BanHang.Viewmodel
 
                     });
                     db.SaveChanges();
-                    long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch && p.IdNhacc == null).Max(p => p.MaHoadon);
-                    var h = db.HoaDon.Where(p => p.MaHoadon == mahdln).FirstOrDefault();
-                    foreach (var od in orderlist)
-                    {
-                        db.HoaDonChitiet.Add(new HoaDonChitiet
-                        {
-                            IdHoadon = h.IdHoadon,
-                            IdSanpham = od.barcode,
-                            SoLuong = od.soluong,
-                            GiaTien = od.dongia,
-                            IdKhachhang = 1
-                        });
-                        db.SaveChanges();
-                    }
-
-
-                    MessageBox.Show("Thanh toán thành công!");
-                    orderlist.Clear();
-                    Orderxl odl = new Orderxl();
-                    odl = null;
-                    total = 0;
-                    p.Close();
-                    return;
-=======
-                    {
-                        MaHoadon = 1,
-                        NgayTao = ngaytao,
-                        ThanhTien = total,
-                        IdNhanvien = idnv,
-                        IdKhachhang = 1,
-                        IdCuahang = Int32.Parse(idch.ToString())
-
-                    });
-                    db.SaveChanges();
->>>>>>> origin/hao1
                 }
                 else
                 {
                     long mahdl = db.HoaDon.Where(p => p.IdCuahang == idch && p.IdNhacc == null).Max(p => p.MaHoadon);
+                    mahd = long.Parse((mahdl + 1).ToString());
                     db.HoaDon.Add(new HoaDon
                     {
-                        MaHoadon = long.Parse((mahdl + 1).ToString()),
+                        MaHoadon = mahd ,
                         NgayTao = ngaytao,
                         ThanhTien = total,
                         IdNhanvien = idnv,
@@ -174,7 +143,6 @@ namespace WPF_BanHang.Viewmodel
 
                     });
                     db.SaveChanges();
-<<<<<<< HEAD
                     long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch && p.IdNhacc == null).Max(p => p.MaHoadon);
                     var h = db.HoaDon.Where(p => p.MaHoadon == mahdln).FirstOrDefault();
                     foreach (var od in orderlist)
@@ -188,12 +156,12 @@ namespace WPF_BanHang.Viewmodel
                             IdKhachhang = 1
                         });
                         db.SaveChanges();
-                        HoaDonWindow hoaDonWindow = new HoaDonWindow();
-                        hoaDonWindow.Show();
+                        HoaDonInRa hoaDonInRa = new HoaDonInRa();
+                        hoaDonInRa.Show();
                         PrintDialog pd = new PrintDialog();
                         pd.PrintQueue = new PrintQueue(new PrintServer(), "Microsoft Print to PDF");
-                        pd.PrintVisual(hoaDonWindow, "Print");
-                        hoaDonWindow.Close();
+                        pd.PrintVisual(hoaDonInRa, "Print");
+                        hoaDonInRa.Close();
                     }
 
 
@@ -204,32 +172,6 @@ namespace WPF_BanHang.Viewmodel
                     total = 0;
                     p.Close();
                 }
-
-=======
-                }
-                long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch && p.IdNhacc == null).Max(p => p.MaHoadon);
-                var h = db.HoaDon.Where(p => p.MaHoadon == mahdln).FirstOrDefault();
-                foreach (var od in orderlist)
-                {
-                    db.HoaDonChitiet.Add(new HoaDonChitiet
-                    {
-                        IdHoadon = h.IdHoadon,
-                        IdSanpham = od.barcode,
-                        SoLuong = od.soluong,
-                        GiaTien = od.dongia,
-                        IdKhachhang = 1
-                    });
-                    db.SaveChanges();
-                }
-                MessageBox.Show("Thanh toán thành công!");
-                orderlist.Clear();
-                Orderxl odl = new Orderxl();
-                odl = null;
-                total = 0;
-                p.Close();
-                return;
-                  
->>>>>>> origin/hao1
             });
 
 

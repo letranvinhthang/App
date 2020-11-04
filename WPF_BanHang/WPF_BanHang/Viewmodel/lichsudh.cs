@@ -98,7 +98,9 @@ namespace WPF_BanHang.Viewmodel
 
                 }
             });
-
+            loadcscommannd = new RelayCommand<Object>((p) => { return true; }, (p) => {
+                
+            });
             loadcommannd = new RelayCommand<TextBox>((p) => { return true; }, (p) => {
                 Loadhoadon();
             });
@@ -115,6 +117,33 @@ namespace WPF_BanHang.Viewmodel
         void exithoadon(Window k)
         {
             k.Close();
+        }
+        void cshd_In()
+        {
+            cthdxlist = new ObservableCollection<cthdxl>();
+
+            var db = new qlbhContext();
+            var hdct = db.HoaDonChitiet;
+            var ncc = db.NhaCungcap;
+            var sp = db.SanPham;
+            var chsp = db.CuahangSanpham;
+            int? idch = MainViewModel.TaiKhoan.Idcuahang;
+
+            //MessageBox.Show("nuull" + SelectedItem.IdHoadon ) ;
+            foreach (var item in hdct.Where(p => p.IdHoadon == SelectedItem.IdHoadon).ToList())
+            {
+                cthdxl hoadonxulys = new cthdxl();
+                var tensp = sp.Where(p => p.IdSanpham == item.IdSanpham).FirstOrDefault();
+                var gia = chsp.Where(p => p.IdSanpham == item.IdSanpham && p.IdCuahang == idch).FirstOrDefault();
+                hoadonxulys.TenSanpham = tensp.TenSanpham;
+                hoadonxulys.soluong = item.SoLuong;
+                hoadonxulys.GiaTheoQuan = gia.GiaTheoQuan;
+                hoadonxulys.ThanhTien = item.SoLuong * gia.GiaTheoQuan;
+                cthdxlist.Add(hoadonxulys);
+            }
+
+            HoaDonWindow window = new HoaDonWindow();
+            window.ShowDialog();
         }
         void cshd()
         {
