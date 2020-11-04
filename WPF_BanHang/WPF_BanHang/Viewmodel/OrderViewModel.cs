@@ -176,6 +176,7 @@ namespace WPF_BanHang.Viewmodel
 
 
             orderlist = new ObservableCollection<Orderxl>();
+<<<<<<< HEAD
             BarcodeChangedcommand = new RelayCommand<TextBox>((p) => { return p == null ? false : true; }, (p) =>
              {
                  try
@@ -231,6 +232,65 @@ namespace WPF_BanHang.Viewmodel
                                      total += od.tongtien;
                                  }
                                  p.Text = null;
+=======
+            BarcodeChangedcommand = new RelayCommand<TextBox>((p) => {  return p == null? false: true; }, (p) =>
+            {
+                try
+                {
+                    if (p.Text != null)
+                    {
+                        barcode = long.Parse(p.Text);
+                        if (MainViewModel.TaiKhoan != null)
+                        {
+                            total = 0;
+                            int ? idch = MainViewModel.TaiKhoan.Idcuahang;
+                            var order = db.SanPham.Where(x => x.IdSanpham == barcode);
+                            var chsp = db.CuahangSanpham.Where(x => x.IdSanpham == barcode && x.IdCuahang == idch).FirstOrDefault();
+                       
+                            if (order.Count() > 0)
+                            {
+                                if (order.FirstOrDefault().XoaSanPham == true)
+                                {
+                                    MessageBox.Show("san pham da ngung ban");
+                                    return;
+                            }
+                                var dssp = order.FirstOrDefault();
+                                    Orderxl orderl = new Orderxl();
+                                foreach (var od in orderlist)
+                                {
+                                  
+                                    if (od.barcode == dssp.IdSanpham)
+                                    {
+                                        total = 0;
+                                        soluongsp = od.soluong +1;
+                                        od.soluong = soluongsp;
+                                        od.tongtien = od.soluong * od.dongia;
+                                        OnPropertyChanged("orderlist");
+                                        soluongsp = 0;
+                                        p.Text = null;
+                                        foreach (var odl in orderlist)
+                                        {
+                                            total += odl.tongtien;
+                                        }
+                                        return;
+
+
+                                    }
+
+                                }
+                                    //orderl.hinhsp = dssp.HinhSanpham;
+                                    orderl.barcode = dssp.IdSanpham;
+                                    orderl.tensp = dssp.TenSanpham;
+                                    orderl.dongia = chsp.GiaTheoQuan;
+                                    orderl.soluong = 1;
+                                    orderl.tongtien = orderl.dongia * orderl.soluong;
+                                    orderlist.Add(orderl);
+                                foreach (var od in orderlist)
+                                {
+                                    total += od.tongtien;
+                                }
+                                p.Text = null;
+>>>>>>> origin/hao1
                              }
                          }
                      }
@@ -254,8 +314,7 @@ namespace WPF_BanHang.Viewmodel
                              total = 0;
                              od.soluong = soluongsp;
                              od.tongtien = od.soluong * od.dongia;
-                             orderlist.Remove(od);
-                             orderlist.Add(od);
+                             OnPropertyChanged("orderlist");
                              p.Text = null;
                              foreach (var odl in orderlist)
                              {
@@ -263,6 +322,7 @@ namespace WPF_BanHang.Viewmodel
                              }
                              return;
                          }
+                 
                      }
                  }
                  catch { }
