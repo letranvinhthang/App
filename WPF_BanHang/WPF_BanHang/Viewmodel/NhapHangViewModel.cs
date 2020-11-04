@@ -99,36 +99,65 @@ namespace WPF_BanHang.Viewmodel
             { return true; }, (p) =>
             {
                 ChucNangNhapHang = (int)ChucNangQL.Pepsico;
+                foreach (var od in pepsilist)
+                {
+                    total += od.tongtien;
+                }
+
             });
             BtnCocaColaCommand = new RelayCommand<Grid>((p) =>
             { return true; }, (p) =>
             {
                 ChucNangNhapHang = (int)ChucNangQL.CocaCola;
+                foreach (var od in cocalist)
+                {
+                    total += od.tongtien;
+                }
             });
             BtnInterFoodCommand = new RelayCommand<Grid>((p) =>
             { return true; }, (p) =>
             {
                 ChucNangNhapHang = (int)ChucNangQL.InterFood;
+                foreach (var od in interfoodlist)
+                {
+                    total += od.tongtien;
+                }
             });
             BtnRedBullCommand = new RelayCommand<Grid>((p) =>
             { return true; }, (p) =>
             {
                 ChucNangNhapHang = (int)ChucNangQL.RedBull;
+                foreach (var od in redbulllist)
+                {
+                    total += od.tongtien;
+                }
             });
             BtnTanHiepPhatCommand = new RelayCommand<Grid>((p) =>
             { return true; }, (p) =>
             {
                 ChucNangNhapHang = (int)ChucNangQL.TanHiepPhat;
+                foreach (var od in tanhiepphatlist)
+                {
+                    total += od.tongtien;
+                }
             });
             BtnUniversalRobinaCommand = new RelayCommand<Grid>((p) =>
             { return true; }, (p) =>
             {
                 ChucNangNhapHang = (int)ChucNangQL.UniversaUniversalRobina;
+                foreach (var od in URlist)
+                {
+                    total += od.tongtien;
+                }
             });
             BtnKinhDoCommand = new RelayCommand<Grid>((p) =>
             { return true; }, (p) =>
             {
                 ChucNangNhapHang = (int)ChucNangQL.KinhDo;
+                foreach (var od in kinhdolist)
+                {
+                    total += od.tongtien;
+                }
             });
          
             load= new RelayCommand<Grid>((p) => { return true; }, (p) =>
@@ -145,7 +174,6 @@ namespace WPF_BanHang.Viewmodel
             { return true; }, (p) =>
             {
                 p.Close();
-                total = 0;
             });
             xacnhancommand = new RelayCommand<Object>((p) => {
                 if (total == 0)

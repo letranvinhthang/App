@@ -113,6 +113,7 @@ namespace WPF_BanHang.Viewmodel
                 if (xchd == null)
                 {
                     db.HoaDon.Add(new HoaDon
+<<<<<<< HEAD
                     {
                         MaHoadon = 1,
                         NgayTao = ngaytao,
@@ -146,6 +147,18 @@ namespace WPF_BanHang.Viewmodel
                     total = 0;
                     p.Close();
                     return;
+=======
+                    {
+                        MaHoadon = 1,
+                        NgayTao = ngaytao,
+                        ThanhTien = total,
+                        IdNhanvien = idnv,
+                        IdKhachhang = 1,
+                        IdCuahang = Int32.Parse(idch.ToString())
+
+                    });
+                    db.SaveChanges();
+>>>>>>> origin/hao1
                 }
                 else
                 {
@@ -161,6 +174,7 @@ namespace WPF_BanHang.Viewmodel
 
                     });
                     db.SaveChanges();
+<<<<<<< HEAD
                     long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch && p.IdNhacc == null).Max(p => p.MaHoadon);
                     var h = db.HoaDon.Where(p => p.MaHoadon == mahdln).FirstOrDefault();
                     foreach (var od in orderlist)
@@ -191,6 +205,31 @@ namespace WPF_BanHang.Viewmodel
                     p.Close();
                 }
 
+=======
+                }
+                long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch && p.IdNhacc == null).Max(p => p.MaHoadon);
+                var h = db.HoaDon.Where(p => p.MaHoadon == mahdln).FirstOrDefault();
+                foreach (var od in orderlist)
+                {
+                    db.HoaDonChitiet.Add(new HoaDonChitiet
+                    {
+                        IdHoadon = h.IdHoadon,
+                        IdSanpham = od.barcode,
+                        SoLuong = od.soluong,
+                        GiaTien = od.dongia,
+                        IdKhachhang = 1
+                    });
+                    db.SaveChanges();
+                }
+                MessageBox.Show("Thanh toán thành công!");
+                orderlist.Clear();
+                Orderxl odl = new Orderxl();
+                odl = null;
+                total = 0;
+                p.Close();
+                return;
+                  
+>>>>>>> origin/hao1
             });
 
 
