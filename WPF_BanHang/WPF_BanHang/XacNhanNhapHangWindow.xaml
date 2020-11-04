@@ -95,8 +95,8 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Width="100" Header="Đơn giá" DisplayMemberBinding="{Binding dongia, StringFormat={}{0:n0}}"/>
-                            <GridViewColumn Width="95" Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
+                            <GridViewColumn Width="100" Header="Đơn giá" DisplayMemberBinding="{Binding GiaNhap, StringFormat={}{0:n0}}"/>
+                            <GridViewColumn Width="95" Header="Số lượng" DisplayMemberBinding="{Binding SoLuong}"/>
                             <GridViewColumn Width="120" Header="Thành Tiền" DisplayMemberBinding="{Binding tongtien, StringFormat={}{0:n0}}"/>
 
                         </GridView>
