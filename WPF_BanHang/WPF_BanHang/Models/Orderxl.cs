@@ -8,14 +8,7 @@ namespace WPF_BanHang.Models
  public   class Orderxl : BaseViewModel
     {
         public byte[] hinhsp { get; set; }
-<<<<<<< HEAD
-        public long barcode { get; set; }
-        public string tensp { get; set; }
-        public double dongia { get; set; }
-        public int soluong { get; set; }
-        public double tongtien {get; set; }
-        public long mahoadon { get; set; }
-=======
+
         private long _barcode;
         public long barcode { get => _barcode; set { _barcode = value; OnPropertyChanged(); } }
         private string _tensp;
@@ -26,7 +19,6 @@ namespace WPF_BanHang.Models
         public int soluong { get => _soluong; set { _soluong = value; OnPropertyChanged(); } }
         private double _tongtien;
         public double tongtien { get => _tongtien; set { _tongtien = value; OnPropertyChanged(); } }
->>>>>>> origin/hao1
 
     }
 }

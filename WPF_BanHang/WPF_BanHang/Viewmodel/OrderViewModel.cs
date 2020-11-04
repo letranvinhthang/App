@@ -27,7 +27,7 @@ namespace WPF_BanHang.Viewmodel
                 _SelectedItem = value; OnPropertyChanged();
                 if (SelectedItem != null)
                 {
-                    mahd = SelectedItem.mahoadon;
+                   
                     soluongsp = SelectedItem.soluong;
                 }
             }
@@ -176,63 +176,7 @@ namespace WPF_BanHang.Viewmodel
 
 
             orderlist = new ObservableCollection<Orderxl>();
-<<<<<<< HEAD
-            BarcodeChangedcommand = new RelayCommand<TextBox>((p) => { return p == null ? false : true; }, (p) =>
-             {
-                 try
-                 {
-                     if (p.Text != null)
-                     {
-                         barcode = long.Parse(p.Text);
-                         if (MainViewModel.TaiKhoan != null)
-                         {
-                             total = 0;
-                             int? idch = MainViewModel.TaiKhoan.Idcuahang;
-                             var order = db.SanPham.Where(x => x.IdSanpham == barcode);
-                             var chsp = db.CuahangSanpham.Where(x => x.IdSanpham == barcode && x.IdCuahang == idch).FirstOrDefault();
-                             if (order.Count() > 0)
-                             {
 
-                                 var dssp = order.FirstOrDefault();
-                                 Orderxl orderl = new Orderxl();
-                                 foreach (var od in orderlist)
-                                 {
-
-                                     if (od.barcode == dssp.IdSanpham)
-                                     {
-                                         total = 0;
-                                         soluongsp = od.soluong + 1;
-                                         od.soluong = soluongsp;
-                                         od.tongtien = od.soluong * od.dongia;
-
-                                         orderlist.Remove(od);
-                                         orderlist.Add(od);
-
-                                         soluongsp = 0;
-                                         p.Text = null;
-                                         foreach (var odl in orderlist)
-                                         {
-                                             total += odl.tongtien;
-                                         }
-                                         return;
-
-
-                                     }
-
-                                 }
-                                //orderl.hinhsp = dssp.HinhSanpham;
-                                orderl.barcode = dssp.IdSanpham;
-                                 orderl.tensp = dssp.TenSanpham;
-                                 orderl.dongia = chsp.GiaTheoQuan;
-                                 orderl.soluong = 1;
-                                 orderl.tongtien = orderl.dongia * orderl.soluong;
-                                 orderlist.Add(orderl);
-                                 foreach (var od in orderlist)
-                                 {
-                                     total += od.tongtien;
-                                 }
-                                 p.Text = null;
-=======
             BarcodeChangedcommand = new RelayCommand<TextBox>((p) => {  return p == null? false: true; }, (p) =>
             {
                 try
@@ -290,7 +234,6 @@ namespace WPF_BanHang.Viewmodel
                                     total += od.tongtien;
                                 }
                                 p.Text = null;
->>>>>>> origin/hao1
                              }
                          }
                      }
@@ -367,31 +310,6 @@ namespace WPF_BanHang.Viewmodel
         {
             orderlist = null;
         }
-        void cshd()
-        {
-            cthdxlist = new ObservableCollection<cthdxl>();
-
-            var db = new qlbhContext();
-            var hdct = db.HoaDonChitiet;
-            var ncc = db.NhaCungcap;
-            var sp = db.SanPham;
-            var chsp = db.CuahangSanpham;
-            int? idch = MainViewModel.TaiKhoan.Idcuahang;
-
-            //MessageBox.Show("nuull" + SelectedItem.IdHoadon ) ;
-            foreach (var item in hdct.Where(p => p.IdHoaDonChitiet == SelectedItem.mahoadon).ToList())
-            {
-                cthdxl hoadonxulys = new cthdxl();
-                var tensp = sp.Where(p => p.IdSanpham == item.IdSanpham).FirstOrDefault();
-                var gia = chsp.Where(p => p.IdSanpham == item.IdSanpham && p.IdCuahang == idch).FirstOrDefault();
-                hoadonxulys.TenSanpham = tensp.TenSanpham;
-                hoadonxulys.soluong = item.SoLuong;
-                hoadonxulys.GiaTheoQuan = gia.GiaTheoQuan;
-                hoadonxulys.ThanhTien = item.SoLuong * gia.GiaTheoQuan;
-                cthdxlist.Add(hoadonxulys);
-            }
-
-
-        }
+       
     }
 }
