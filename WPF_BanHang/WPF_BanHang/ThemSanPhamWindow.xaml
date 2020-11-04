@@ -12,7 +12,7 @@
         DataContext="{StaticResource addspVM}"
         Title="ThemSanPhamWindow" Height
         
-        ="450" Width="800" WindowStartupLocation="CenterScreen">
+        ="450" Width="650" WindowStartupLocation="CenterScreen">
     <Grid >
         <Border Margin="15" CornerRadius="15" Background="Wheat">
             <StackPanel >

@@ -373,7 +373,6 @@
                                         <!--ĐỊNH DẠNG HEADER-->
                                         <GridView.ColumnHeaderContainerStyle>
                                             <Style TargetType="{x:Type GridViewColumnHeader}">
-                                                
                                                 <Setter Property="FontSize" Value="20"/>
                                                 <Setter Property="FontWeight" Value="Bold"/>
                                                 <Setter Property="Margin" Value="10"/>
@@ -381,7 +380,8 @@
                                                 <Setter Property="IsEnabled" Value="True"/>
                                                 <Setter Property="Width" Value="auto"/>
                                                 <Setter Property="Background" Value="Transparent"/>
-                                                <Setter Property="BorderThickness" Value="5"/>
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Setter Property="BorderBrush" Value="Transparent"/>
                                             </Style>
                                         </GridView.ColumnHeaderContainerStyle>
                                         <!--<GridViewColumn Header="Hình ảnh">
@@ -675,12 +675,14 @@
                                                         <Setter Property="IsEnabled" Value="True"/>
                                                         <Setter Property="Width" Value="auto"/>
                                                         <Setter Property="Background" Value="Transparent"/>
+                                                        
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
                                                     </Style>
                                                 </GridView.ColumnHeaderContainerStyle>
                                                 <GridViewColumn Width="200" Header="Mã sản phẩm" DisplayMemberBinding="{Binding IdSanpham}"/>
                                                 <GridViewColumn Width="430" Header="Tên sản phẩm" DisplayMemberBinding="{Binding ten }"/>
                                                 <GridViewColumn Width="110" Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
-                                                <GridViewColumn Width="120" Header="Giá" DisplayMemberBinding="{Binding gia}"/>
+                                                <GridViewColumn Width="120" Header="Giá" DisplayMemberBinding="{Binding gia, StringFormat={}{0:n0}}"/>
                                                 <GridViewColumn Width="150" Header="Tổng tiền" DisplayMemberBinding="{Binding chucvu}"/>
                                             </GridView>
                                         </ListView.View>
@@ -754,11 +756,13 @@
                                                             <Setter Property="IsEnabled" Value="False"/>
                                                             <Setter Property="Width" Value="auto"/>
                                                             <Setter Property="Background" Value="Transparent"/>
+                                                            
+                                                            <Setter Property="BorderBrush" Value="Transparent"/>
                                                         </Style>
                                                     </GridView.ColumnHeaderContainerStyle>
                                                     <GridViewColumn Width="120" Header="Mã" DisplayMemberBinding="{Binding MaHoadon}"/>
                                                     <GridViewColumn Width="230" Header="Thời gian" DisplayMemberBinding="{Binding NgayTao}"/>
-                                                    <GridViewColumn Width="200" Header="Tổng tiền" DisplayMemberBinding="{Binding ThanhTien}"/>
+                                                    <GridViewColumn Width="200" Header="Tổng tiền" DisplayMemberBinding="{Binding ThanhTien, StringFormat={}{0:n0}}"/>
                                                     <GridViewColumn Width="150" Header="Khách hàng" DisplayMemberBinding="{Binding bennhan}"/>
                                                     <GridViewColumn Width="150" Header="Tên nhân viên" DisplayMemberBinding="{Binding TenNhanvien}"/>
                                                     <GridViewColumn Width="150" Header="Khuyến mãi" DisplayMemberBinding="{Binding TenChuongtrinh}"/>
@@ -869,11 +873,12 @@
                                                 <Setter Property="IsEnabled" Value="True"/>
                                                 <Setter Property="Width" Value="auto"/>
                                                 <Setter Property="Background" Value="Transparent"/>
+                                                <Setter Property="BorderBrush" Value="Transparent"/>
                                             </Style>
                                         </GridView.ColumnHeaderContainerStyle>
                                         <GridViewColumn Width="250" Header="barcode" DisplayMemberBinding="{Binding IdSanpham}"/>
                                         <GridViewColumn Width="250" Header="Tên sản phẩm" DisplayMemberBinding="{Binding TenSanpham}"/>
-                                        <GridViewColumn Width="150" Header="Đơn giá" DisplayMemberBinding="{Binding Gia}"/>
+                                        <GridViewColumn Width="150" Header="Đơn giá" DisplayMemberBinding="{Binding Gia, StringFormat={}{0:n0}}"/>
                                         <GridViewColumn Width="110" Header="Bán chạy">
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>

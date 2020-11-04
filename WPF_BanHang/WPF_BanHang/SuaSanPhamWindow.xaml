@@ -10,7 +10,7 @@
         WindowStyle="None"
         x:Name="window"
         DataContext="{StaticResource spVM}"
-        Title="SuaSanPhamWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="SuaSanPhamWindow" Height="450" Width="650" WindowStartupLocation="CenterScreen">
     <Grid>
         <Border Margin="15" CornerRadius="15" Background="Wheat">
             <StackPanel Margin="15">
@@ -23,12 +23,14 @@
                 <TextBox                    
                     Text="{Binding barcode}"
                     materialDesign:HintAssist.Hint="Barcode" Width="400"
+                    FontSize="15"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                     VerticalAlignment="Center" />
                 <TextBox                    
                     Text="{Binding dongia}"
-                    materialDesign:HintAssist.Hint="Barcode" Width="400"
+                    materialDesign:HintAssist.Hint="Giá bán" Width="400"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    FontSize="15"
                     VerticalAlignment="Center" />
                 <ComboBox ItemsSource="{Binding lsplist}" 
                           DisplayMemberPath="TenLoai" 
