@@ -133,7 +133,6 @@ namespace WPF_BanHang.Viewmodel
          
             load= new RelayCommand<Grid>((p) => { return true; }, (p) =>
             {
-
                 LoadPepsi();
                 LoadCoca();
                 LoadKinhdo();

@@ -142,11 +142,11 @@
                 <Rectangle Fill="Black" Height="1" Margin="5" Opacity="0.5"/>
                 <Grid >
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Button Width="120" Content="XÁC NHẬN" Margin="100 20 30 0"
+                        <Button Width="120" Content="XÁC NHẬN" Margin="100 20 30 15"
                             Command="{Binding thanhtoan}" CommandParameter="{Binding ElementName=window}">
 
                         </Button>
-                        <Button Width="120" Background="Red" Content="HỦY"  Margin="30 20 100 0"
+                        <Button Width="120" Background="Red" Content="HỦY"  Margin="30 20 100 15"
                                 Command="{Binding exitcommand}" CommandParameter="{Binding ElementName=window}">
                         </Button>
                     </StackPanel>
