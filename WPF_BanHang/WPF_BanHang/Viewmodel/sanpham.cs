@@ -71,7 +71,12 @@ namespace WPF_BanHang.Viewmodel
         public sanpham()
         {
             var db = new qlbhContext();
-            xoacommand = new RelayCommand<object>((a) => { return true; }, (a) =>
+            xoacommand = new RelayCommand<object>((a) => {
+                if (SelectedItem == null)
+                {
+                    return false;
+                }
+                return true; }, (a) =>
             {
                 var dis = db.SanPham.Where(x => x.IdSanpham == SelectedItem.IdSanpham).SingleOrDefault();
                 dis.XoaSanPham = true;

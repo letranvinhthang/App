@@ -113,7 +113,12 @@ namespace WPF_BanHang.Viewmodel
             themnhanviencommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) => {
                 themnhanvien(a); });
                  loadednvcommand = new RelayCommand<ThemNhanVienWindow>((a) => { return true; }, (a) => { loadnhanvien(); });
-            xoacommand = new RelayCommand<object>((a) => { return true; }, (a) => {
+            xoacommand = new RelayCommand<object>((a) => {
+                if (SelectedItem == null)
+                {
+                    return false;
+                }
+                return true; }, (a) => {
 
             MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
@@ -224,7 +229,6 @@ namespace WPF_BanHang.Viewmodel
             {
                 SuaNhanVienWindow window2 = new SuaNhanVienWindow();
                 window2.ShowDialog();
-                loadnhanvien();
             }
             //mã hóa base 64
 
