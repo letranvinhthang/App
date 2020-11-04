@@ -71,7 +71,8 @@
                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                 <Setter Property="FontSize" Value="15"/>
                                 <Setter Property="BorderThickness" Value="0"/>
-                            </Style>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                        </Style>
                         </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView>
@@ -83,6 +84,7 @@
                                     <Setter Property="VerticalAlignment" Value="Center"/>
                                     <Setter Property="IsEnabled" Value="False"/>
                                     <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="BorderBrush" Value="Transparent"/>
                                 </Style>
                             </GridView.ColumnHeaderContainerStyle>
 

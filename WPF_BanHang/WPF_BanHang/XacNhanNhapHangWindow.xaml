@@ -72,7 +72,7 @@
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Center"/>
                             <Setter Property="FontSize" Value="15"/>
-                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
                         </Style>
                     </ListView.ItemContainerStyle>
                     <ListView.View>
@@ -84,7 +84,7 @@
                                     <Setter Property="FontWeight" Value="Bold"/>
                                     <Setter Property="VerticalAlignment" Value="Center"/>
                                     <Setter Property="IsEnabled" Value="False"/>
-                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="BorderBrush" Value="Transparent"/>
                                 </Style>
                             </GridView.ColumnHeaderContainerStyle>
 
@@ -95,8 +95,8 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Width="100" Header="Đơn giá" DisplayMemberBinding="{Binding dongia, StringFormat={}{0:n0}}"/>
-                            <GridViewColumn Width="95" Header="Số lượng" DisplayMemberBinding="{Binding soluong}"/>
+                            <GridViewColumn Width="100" Header="Đơn giá" DisplayMemberBinding="{Binding GiaNhap, StringFormat={}{0:n0}}"/>
+                            <GridViewColumn Width="95" Header="Số lượng" DisplayMemberBinding="{Binding SoLuong}"/>
                             <GridViewColumn Width="120" Header="Thành Tiền" DisplayMemberBinding="{Binding tongtien, StringFormat={}{0:n0}}"/>
 
                         </GridView>
