@@ -12,6 +12,7 @@ namespace WPF_BanHang.Models
         public double dongia { get; set; }
         public int soluong { get; set; }
         public double tongtien {get; set; }
+        public long mahoadon { get; set; }
 
     }
 }
