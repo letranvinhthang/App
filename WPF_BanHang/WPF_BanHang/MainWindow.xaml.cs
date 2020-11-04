@@ -31,7 +31,7 @@ namespace WPF_BanHang
         private void tickevent(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            dongho1.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm tt");
+            dongho1.Text = DateTime.Now.ToString( "ddd dd/MM/yyyy HH:mm");
             
         }
 
