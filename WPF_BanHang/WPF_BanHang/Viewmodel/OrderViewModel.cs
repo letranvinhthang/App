@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 using WPF_BanHang.Models;
 
@@ -90,6 +91,7 @@ namespace WPF_BanHang.Viewmodel
 
 
             });
+
             thanhtoan = new RelayCommand<Window>((p) =>
             {
                 if (orderlist == null)
@@ -128,6 +130,8 @@ namespace WPF_BanHang.Viewmodel
                         });
                         db.SaveChanges();
                     }
+                    
+
                     MessageBox.Show("Thanh toán thành công!");
                     orderlist.Clear();
                     Orderxl odl = new Orderxl();
@@ -164,6 +168,13 @@ namespace WPF_BanHang.Viewmodel
                         });
                         db.SaveChanges();
                     }
+
+                    PrintDialog printDlg = new PrintDialog();
+                    if (printDlg.ShowDialog() == true)
+                    {
+                        printDlg.PrintVisual(p, "Hóa đơn Printing.");
+                    }
+
                     MessageBox.Show("Thanh toán thành công" );
                     orderlist.Clear();
                     Orderxl odl = new Orderxl();
@@ -173,6 +184,8 @@ namespace WPF_BanHang.Viewmodel
                 }
                
             });
+
+
             orderlist = new ObservableCollection<Orderxl>();
             BarcodeChangedcommand = new RelayCommand<TextBox>((p) => {  return p == null? false: true; }, (p) =>
             {
@@ -300,7 +313,6 @@ namespace WPF_BanHang.Viewmodel
             });
             exitcommand = new RelayCommand<Window>((e) => { return true; }, (e) => { e.Close(); });
         }
-
         public void loadorder()
         {
             orderlist = null;
