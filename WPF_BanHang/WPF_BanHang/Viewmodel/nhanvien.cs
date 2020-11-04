@@ -193,6 +193,7 @@ namespace WPF_BanHang.Viewmodel
                             SelectedItem.sdt = sdt;
                             SelectedItem.diachi = diachi;
                             SelectedItem.IdChucvu = chuvuseleted + 2;
+                            OnPropertyChanged("nhanvienlist");
                         }
                         else
                         {
@@ -208,6 +209,7 @@ namespace WPF_BanHang.Viewmodel
                             SelectedItem.sdt = sdt;
                             SelectedItem.diachi = diachi;
                             SelectedItem.IdChucvu = chuvuseleted + 2;
+                            OnPropertyChanged("nhanvienlist");
                         }
                     });
             void themnhanvien(ThemNhanVienWindow a)

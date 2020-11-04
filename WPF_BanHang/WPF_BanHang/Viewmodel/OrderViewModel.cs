@@ -167,9 +167,14 @@ namespace WPF_BanHang.Viewmodel
                             int ? idch = MainViewModel.TaiKhoan.Idcuahang;
                             var order = db.SanPham.Where(x => x.IdSanpham == barcode);
                             var chsp = db.CuahangSanpham.Where(x => x.IdSanpham == barcode && x.IdCuahang == idch).FirstOrDefault();
+                       
                             if (order.Count() > 0)
                             {
-                               
+                                if (order.FirstOrDefault().XoaSanPham == true)
+                                {
+                                    MessageBox.Show("san pham da ngung ban");
+                                    return;
+                            }
                                 var dssp = order.FirstOrDefault();
                                     Orderxl orderl = new Orderxl();
                                 foreach (var od in orderlist)
@@ -181,10 +186,7 @@ namespace WPF_BanHang.Viewmodel
                                         soluongsp = od.soluong +1;
                                         od.soluong = soluongsp;
                                         od.tongtien = od.soluong * od.dongia;
-                                        
-                                        orderlist.Remove(od);
-                                        orderlist.Add(od);
-                           
+                                        OnPropertyChanged("orderlist");
                                         soluongsp = 0;
                                         p.Text = null;
                                         foreach (var odl in orderlist)
@@ -232,8 +234,7 @@ namespace WPF_BanHang.Viewmodel
                              total = 0;
                              od.soluong = soluongsp;
                              od.tongtien = od.soluong * od.dongia;
-                             orderlist.Remove(od);
-                             orderlist.Add(od);
+                             OnPropertyChanged("orderlist");
                              p.Text = null;
                              foreach (var odl in orderlist)
                              {
@@ -241,6 +242,7 @@ namespace WPF_BanHang.Viewmodel
                              }
                              return;
                          }
+                 
                      }
                  }
                  catch { }

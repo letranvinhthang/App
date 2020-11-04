@@ -135,6 +135,7 @@ namespace WPF_BanHang.Viewmodel
             var db = new qlbhContext();
             sanphamlist = new ObservableCollection<spxl>();
             lsplist = new ObservableCollection<DanhmucSanpham>(db.DanhmucSanpham);
+
             var sp = db.SanPham;
             var lsp = db.DanhmucSanpham;
 

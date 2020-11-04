@@ -99,65 +99,36 @@ namespace WPF_BanHang.Viewmodel
             { return true; }, (p) =>
             {
                 ChucNangNhapHang = (int)ChucNangQL.Pepsico;
-                foreach (var od in pepsilist)
-                {
-                    total += od.tongtien;
-                }
-
             });
             BtnCocaColaCommand = new RelayCommand<Grid>((p) =>
             { return true; }, (p) =>
             {
                 ChucNangNhapHang = (int)ChucNangQL.CocaCola;
-                foreach (var od in cocalist)
-                {
-                    total += od.tongtien;
-                }
             });
             BtnInterFoodCommand = new RelayCommand<Grid>((p) =>
             { return true; }, (p) =>
             {
                 ChucNangNhapHang = (int)ChucNangQL.InterFood;
-                foreach (var od in interfoodlist)
-                {
-                    total += od.tongtien;
-                }
             });
             BtnRedBullCommand = new RelayCommand<Grid>((p) =>
             { return true; }, (p) =>
             {
                 ChucNangNhapHang = (int)ChucNangQL.RedBull;
-                foreach (var od in redbulllist)
-                {
-                    total += od.tongtien;
-                }
             });
             BtnTanHiepPhatCommand = new RelayCommand<Grid>((p) =>
             { return true; }, (p) =>
             {
                 ChucNangNhapHang = (int)ChucNangQL.TanHiepPhat;
-                foreach (var od in tanhiepphatlist)
-                {
-                    total += od.tongtien;
-                }
             });
             BtnUniversalRobinaCommand = new RelayCommand<Grid>((p) =>
             { return true; }, (p) =>
             {
                 ChucNangNhapHang = (int)ChucNangQL.UniversaUniversalRobina;
-                foreach (var od in URlist)
-                {
-                    total += od.tongtien;
-                }
             });
             BtnKinhDoCommand = new RelayCommand<Grid>((p) =>
             { return true; }, (p) =>
             {
                 ChucNangNhapHang = (int)ChucNangQL.KinhDo;
-                foreach (var od in kinhdolist)
-                {
-                    total += od.tongtien;
-                }
             });
          
             load= new RelayCommand<Grid>((p) => { return true; }, (p) =>
@@ -177,8 +148,6 @@ namespace WPF_BanHang.Viewmodel
                 p.Close();
             });
             xacnhancommand = new RelayCommand<Object>((p) => {
-                if (total == 0)
-                    return false;
                 return true;
             }, (p) =>
             {
@@ -196,6 +165,10 @@ namespace WPF_BanHang.Viewmodel
                         total += od.tongtien;
                         idncc = od.IdNhaCC;
                     }
+                if (nhaplist == null)
+                    {
+                        MessageBox.Show("vui long nhap so luong nhap");
+                    }
                 }
                else if (ChucNangNhapHang == (int)ChucNangQL.CocaCola)
                 {
@@ -206,6 +179,10 @@ namespace WPF_BanHang.Viewmodel
                         nhaplist.Add(od);
                         total += od.tongtien;
                         idncc = od.IdNhaCC;
+                    }
+                    if (nhaplist == null)
+                    {
+                        MessageBox.Show("vui long nhap so luong nhap");
                     }
                 }
                else if (ChucNangNhapHang == (int)ChucNangQL.InterFood)
@@ -218,6 +195,10 @@ namespace WPF_BanHang.Viewmodel
                         total += od.tongtien;
                         idncc = od.IdNhaCC;
                     }
+                    if (nhaplist == null)
+                    {
+                        MessageBox.Show("vui long nhap so luong nhap");
+                    }
                 }
                 else if (ChucNangNhapHang == (int)ChucNangQL.TanHiepPhat)
                 {
@@ -227,6 +208,10 @@ namespace WPF_BanHang.Viewmodel
                     {
                         nhaplist.Add(od);
                         total += od.tongtien;
+                    }
+                    if (nhaplist == null)
+                    {
+                        MessageBox.Show("vui long nhap so luong nhap");
                     }
                 }
                 else if (ChucNangNhapHang == (int)ChucNangQL.RedBull)
@@ -239,6 +224,10 @@ namespace WPF_BanHang.Viewmodel
                         total += od.tongtien;
                         idncc = od.IdNhaCC;
                     }
+                    if (nhaplist == null)
+                    {
+                        MessageBox.Show("vui long nhap so luong nhap");
+                    }
                 }
                 else if (ChucNangNhapHang == (int)ChucNangQL.UniversaUniversalRobina)
                 {
@@ -249,6 +238,10 @@ namespace WPF_BanHang.Viewmodel
                         nhaplist.Add(od);
                         total += od.tongtien;
                         idncc = od.IdNhaCC;
+                    }
+                    if (nhaplist == null)
+                    {
+                        MessageBox.Show("vui long nhap so luong nhap");
                     }
                 }
                 else if (ChucNangNhapHang == (int)ChucNangQL.KinhDo)
@@ -262,7 +255,9 @@ namespace WPF_BanHang.Viewmodel
                         total += od.tongtien;
                         idncc = od.IdNhaCC;
                     }
+                   
                 }
+
                 XacNhanNhapHangWindow xn = new XacNhanNhapHangWindow();
                 xn.ShowDialog();
 
@@ -284,8 +279,7 @@ namespace WPF_BanHang.Viewmodel
                             total = 0;
                             od.SoLuong = soluongsp;
                             od.tongtien = od.SoLuong * od.GiaNhap;
-                            pepsilist.Remove(od);
-                            pepsilist.Add(od);
+                            OnPropertyChanged("pepsilist");
                             p.Text = null;
                             soluongsp = 0;
                             foreach (var odl in pepsilist)
@@ -318,8 +312,7 @@ namespace WPF_BanHang.Viewmodel
                             total = 0;
                             od.SoLuong = soluongsp;
                             od.tongtien = od.SoLuong * od.GiaNhap;
-                            cocalist.Remove(od);
-                            cocalist.Add(od);
+                            OnPropertyChanged("cocalist");
                             p.Text = null;
                             soluongsp = 0;
                             foreach (var odl in cocalist)
@@ -353,8 +346,7 @@ namespace WPF_BanHang.Viewmodel
                             total = 0;
                             od.SoLuong = soluongsp;
                             od.tongtien = od.SoLuong * od.GiaNhap;
-                            interfoodlist.Remove(od);
-                            interfoodlist.Add(od);
+                            OnPropertyChanged("interfoodlist");
                             p.Text = null;
                             soluongsp = 0;
                             foreach (var odl in interfoodlist)
@@ -385,8 +377,7 @@ namespace WPF_BanHang.Viewmodel
                             total = 0;
                             od.SoLuong = soluongsp;
                             od.tongtien = od.SoLuong * od.GiaNhap;
-                            redbulllist.Remove(od);
-                            redbulllist.Add(od);
+                            OnPropertyChanged("redbulllist");
                             p.Text = null;
                             soluongsp = 0;
                             foreach (var odl in redbulllist)
@@ -417,8 +408,7 @@ namespace WPF_BanHang.Viewmodel
                             total = 0;
                             od.SoLuong = soluongsp;
                             od.tongtien = od.SoLuong * od.GiaNhap;
-                            tanhiepphatlist.Remove(od);
-                            tanhiepphatlist.Add(od);
+                            OnPropertyChanged("tanhiepphatlist");
                             p.Text = null;
                             soluongsp = 0;
                             foreach (var odl in tanhiepphatlist)
@@ -449,8 +439,7 @@ namespace WPF_BanHang.Viewmodel
                             total = 0;
                             od.SoLuong = soluongsp;
                             od.tongtien = od.SoLuong * od.GiaNhap;
-                            URlist.Remove(od);
-                            URlist.Add(od);
+                            OnPropertyChanged("URlist");
                             p.Text = null;
                             soluongsp = 0;
                             foreach (var odl in URlist)
@@ -481,8 +470,7 @@ namespace WPF_BanHang.Viewmodel
                             total = 0;
                             od.SoLuong = soluongsp;
                             od.tongtien = od.SoLuong * od.GiaNhap;
-                            kinhdolist.Remove(od);
-                            kinhdolist.Add(od);
+                            OnPropertyChanged("kinhdolist");
                             p.Text = null;
                             soluongsp = 0;
                             foreach (var odl in kinhdolist)
@@ -701,7 +689,7 @@ namespace WPF_BanHang.Viewmodel
                 {
                     var sp = db.SanPham;
 
-                    foreach (var item in sp.Where(p => p.IdNhacc == 1).ToList())
+                    foreach (var item in sp.Where(p => p.IdNhacc == 1 && p.XoaSanPham != true).ToList())
                     {
                         SanPham_NhaCungCap sanpham = new SanPham_NhaCungCap();
 
@@ -722,7 +710,7 @@ namespace WPF_BanHang.Viewmodel
                 {
                     var sp = db.SanPham;
 
-                    foreach (var item in sp.Where(p => p.IdNhacc == 2).ToList())
+                    foreach (var item in sp.Where(p => p.IdNhacc == 2 && p.XoaSanPham != true).ToList())
                     {
                         SanPham_NhaCungCap sanpham = new SanPham_NhaCungCap();
 
@@ -744,7 +732,7 @@ namespace WPF_BanHang.Viewmodel
                 {
                     var sp = db.SanPham;
 
-                    foreach (var item in sp.Where(p => p.IdNhacc == 3).ToList())
+                    foreach (var item in sp.Where(p => p.IdNhacc == 3 && p.XoaSanPham != true).ToList())
                     {
                         SanPham_NhaCungCap sanpham = new SanPham_NhaCungCap();
 
@@ -765,7 +753,7 @@ namespace WPF_BanHang.Viewmodel
                 {
                     var sp = db.SanPham;
 
-                    foreach (var item in sp.Where(p => p.IdNhacc == 4).ToList())
+                    foreach (var item in sp.Where(p => p.IdNhacc == 4 && p.XoaSanPham != true).ToList())
                     {
                         SanPham_NhaCungCap sanpham = new SanPham_NhaCungCap();
 
@@ -786,7 +774,7 @@ namespace WPF_BanHang.Viewmodel
                 {
                     var sp = db.SanPham;
 
-                    foreach (var item in sp.Where(p => p.IdNhacc == 5).ToList())
+                    foreach (var item in sp.Where(p => p.IdNhacc == 5 && p.XoaSanPham != true).ToList())
                     {
                         SanPham_NhaCungCap sanpham = new SanPham_NhaCungCap();
 
@@ -807,7 +795,7 @@ namespace WPF_BanHang.Viewmodel
                 {
                     var sp = db.SanPham;
 
-                    foreach (var item in sp.Where(p => p.IdNhacc == 6).ToList())
+                    foreach (var item in sp.Where(p => p.IdNhacc == 6 && p.XoaSanPham != true).ToList())
                     {
                         SanPham_NhaCungCap sanpham = new SanPham_NhaCungCap();
 
@@ -828,7 +816,7 @@ namespace WPF_BanHang.Viewmodel
                 {
                     var sp = db.SanPham;
 
-                    foreach (var item in sp.Where(p => p.IdNhacc == 7).ToList())
+                    foreach (var item in sp.Where(p => p.IdNhacc == 7 && p.XoaSanPham != true).ToList())
                     {
                         SanPham_NhaCungCap sanpham = new SanPham_NhaCungCap();
 
