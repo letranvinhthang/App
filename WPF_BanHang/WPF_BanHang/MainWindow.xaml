@@ -290,6 +290,7 @@
             </Grid>
             <Grid Grid.ColumnSpan="2" Width="5" Margin="195 0" HorizontalAlignment="Left">
                 <Rectangle Fill="{StaticResource SecondaryAccentBrush}" StrokeThickness="10" Width="2" HorizontalAlignment="Right"/>
+
                 <Ellipse x:Name="ellipse" Width="10" Height="10" VerticalAlignment="Top" Fill="{StaticResource SecondaryAccentBrush}" Margin="0 35" 
                  RenderTransformOrigin="0.5, 0.5">
                     <Ellipse.RenderTransform>

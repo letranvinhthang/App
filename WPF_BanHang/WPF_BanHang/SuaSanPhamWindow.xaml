@@ -13,8 +13,8 @@
         Title="SuaSanPhamWindow" Height="450" Width="650" WindowStartupLocation="CenterScreen">
     <Grid>
         <Border Margin="15" CornerRadius="15" Background="Wheat">
-            <StackPanel Margin="15">
-                <TextBlock  FontSize="25" HorizontalAlignment="Center"  Margin="10" Text="Sửa sản phẩm "/>
+            <StackPanel Margin="10">
+                <TextBlock  FontSize="25" HorizontalAlignment="Center"  Margin="10" Text="SỬA SẢN PHẨM"/>
                 <TextBox                
                     Text="{Binding ten}"
                     materialDesign:HintAssist.Hint="Tên sản phẩm" Width="400"
