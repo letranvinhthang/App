@@ -11,18 +11,6 @@ namespace WPF_BanHang.Viewmodel
     public class NhapkhoViewModel : BaseViewModel
 
     {
-        private string _ten;
-        public string ten { get => _ten; set { _ten = value; OnPropertyChanged(); } }
-
-        private int _STT;
-        public int STT { get => _STT; set { _STT = value; OnPropertyChanged(); } }
-
-        private int _barcode;
-
-        public int barcode { get => _barcode; set { _barcode = value; OnPropertyChanged(); } }
-        private int _soluong;
-
-        public int soluong { get => _soluong; set { _soluong = value; OnPropertyChanged(); } }
         private ObservableCollection<tonkhoxl> _tonkhoxlist;
         public ObservableCollection<tonkhoxl> tonkhoxlist { get => _tonkhoxlist; set { _tonkhoxlist = value; OnPropertyChanged(); } }
         public ICommand loadcommand { get; set; }

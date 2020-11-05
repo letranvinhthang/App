@@ -27,7 +27,7 @@ namespace WPF_BanHang.Viewmodel
                 _SelectedItem = value; OnPropertyChanged();
                 if (SelectedItem != null)
                 {
-                    mahd = SelectedItem.mahoadon;
+                   
                     soluongsp = SelectedItem.soluong;
                 }
             }
@@ -56,6 +56,10 @@ namespace WPF_BanHang.Viewmodel
 
         private string _tongtien;
         public string tongtien { get => _tongtien; set { _tongtien = value; OnPropertyChanged(); } }
+
+        private string _diachi;
+        public string diachi { get => _diachi; set { _diachi = value; OnPropertyChanged(); } } 
+
         private double _total;
         public double total { get => _total; set { _total = value; OnPropertyChanged(); } }
 
@@ -89,10 +93,9 @@ namespace WPF_BanHang.Viewmodel
             }, (p) =>
             {
                 int? idch = MainViewModel.TaiKhoan.Idcuahang;
-
                 ten = MainViewModel.TaiKhoan.TenNhanvien;
                 ngaytao = DateTime.Now;
-
+                diachi = db.CuaHang.Where(p => p.IdCuahang == idch).FirstOrDefault().DiachiCuahang;
                 XacNhanHoaDonWindow xn = new XacNhanHoaDonWindow();
                 xn.ShowDialog();
 
@@ -112,9 +115,10 @@ namespace WPF_BanHang.Viewmodel
 
                 if (xchd == null)
                 {
+                    mahd = 1;
                     db.HoaDon.Add(new HoaDon
                     {
-                        MaHoadon = 1,
+                        MaHoadon = mahd,
                         NgayTao = ngaytao,
                         ThanhTien = total,
                         IdNhanvien = idnv,
@@ -123,36 +127,14 @@ namespace WPF_BanHang.Viewmodel
 
                     });
                     db.SaveChanges();
-                    long mahdln = db.HoaDon.Where(p => p.IdCuahang == idch && p.IdNhacc == null).Max(p => p.MaHoadon);
-                    var h = db.HoaDon.Where(p => p.MaHoadon == mahdln).FirstOrDefault();
-                    foreach (var od in orderlist)
-                    {
-                        db.HoaDonChitiet.Add(new HoaDonChitiet
-                        {
-                            IdHoadon = h.IdHoadon,
-                            IdSanpham = od.barcode,
-                            SoLuong = od.soluong,
-                            GiaTien = od.dongia,
-                            IdKhachhang = 1
-                        });
-                        db.SaveChanges();
-                    }
-
-
-                    MessageBox.Show("Thanh toán thành công!");
-                    orderlist.Clear();
-                    Orderxl odl = new Orderxl();
-                    odl = null;
-                    total = 0;
-                    p.Close();
-                    return;
                 }
                 else
                 {
                     long mahdl = db.HoaDon.Where(p => p.IdCuahang == idch && p.IdNhacc == null).Max(p => p.MaHoadon);
+                    mahd = long.Parse((mahdl + 1).ToString());
                     db.HoaDon.Add(new HoaDon
                     {
-                        MaHoadon = long.Parse((mahdl + 1).ToString()),
+                        MaHoadon = mahd ,
                         NgayTao = ngaytao,
                         ThanhTien = total,
                         IdNhanvien = idnv,
@@ -174,12 +156,12 @@ namespace WPF_BanHang.Viewmodel
                             IdKhachhang = 1
                         });
                         db.SaveChanges();
-                        HoaDonWindow hoaDonWindow = new HoaDonWindow();
-                        hoaDonWindow.Show();
+                        HoaDonInRa hoaDonInRa = new HoaDonInRa();
+                        hoaDonInRa.Show();
                         PrintDialog pd = new PrintDialog();
                         pd.PrintQueue = new PrintQueue(new PrintServer(), "Microsoft Print to PDF");
-                        pd.PrintVisual(hoaDonWindow, "Print");
-                        hoaDonWindow.Close();
+                        pd.PrintVisual(hoaDonInRa, "Print");
+                        hoaDonInRa.Close();
                     }
 
 
@@ -190,66 +172,68 @@ namespace WPF_BanHang.Viewmodel
                     total = 0;
                     p.Close();
                 }
-
             });
 
 
             orderlist = new ObservableCollection<Orderxl>();
-            BarcodeChangedcommand = new RelayCommand<TextBox>((p) => { return p == null ? false : true; }, (p) =>
-             {
-                 try
-                 {
-                     if (p.Text != null)
-                     {
-                         barcode = long.Parse(p.Text);
-                         if (MainViewModel.TaiKhoan != null)
-                         {
-                             total = 0;
-                             int? idch = MainViewModel.TaiKhoan.Idcuahang;
-                             var order = db.SanPham.Where(x => x.IdSanpham == barcode);
-                             var chsp = db.CuahangSanpham.Where(x => x.IdSanpham == barcode && x.IdCuahang == idch).FirstOrDefault();
-                             if (order.Count() > 0)
-                             {
 
-                                 var dssp = order.FirstOrDefault();
-                                 Orderxl orderl = new Orderxl();
-                                 foreach (var od in orderlist)
-                                 {
+            BarcodeChangedcommand = new RelayCommand<TextBox>((p) => {  return p == null? false: true; }, (p) =>
+            {
+                try
+                {
+                    if (p.Text != null)
+                    {
+                        barcode = long.Parse(p.Text);
+                        if (MainViewModel.TaiKhoan != null)
+                        {
+                            total = 0;
+                            int ? idch = MainViewModel.TaiKhoan.Idcuahang;
+                            var order = db.SanPham.Where(x => x.IdSanpham == barcode);
+                            var chsp = db.CuahangSanpham.Where(x => x.IdSanpham == barcode && x.IdCuahang == idch).FirstOrDefault();
+                       
+                            if (order.Count() > 0)
+                            {
+                                if (order.FirstOrDefault().XoaSanPham == true)
+                                {
+                                    MessageBox.Show("san pham da ngung ban");
+                                    return;
+                            }
+                                var dssp = order.FirstOrDefault();
+                                    Orderxl orderl = new Orderxl();
+                                foreach (var od in orderlist)
+                                {
+                                  
+                                    if (od.barcode == dssp.IdSanpham)
+                                    {
+                                        total = 0;
+                                        soluongsp = od.soluong +1;
+                                        od.soluong = soluongsp;
+                                        od.tongtien = od.soluong * od.dongia;
+                                        OnPropertyChanged("orderlist");
+                                        soluongsp = 0;
+                                        p.Text = null;
+                                        foreach (var odl in orderlist)
+                                        {
+                                            total += odl.tongtien;
+                                        }
+                                        return;
 
-                                     if (od.barcode == dssp.IdSanpham)
-                                     {
-                                         total = 0;
-                                         soluongsp = od.soluong + 1;
-                                         od.soluong = soluongsp;
-                                         od.tongtien = od.soluong * od.dongia;
 
-                                         orderlist.Remove(od);
-                                         orderlist.Add(od);
+                                    }
 
-                                         soluongsp = 0;
-                                         p.Text = null;
-                                         foreach (var odl in orderlist)
-                                         {
-                                             total += odl.tongtien;
-                                         }
-                                         return;
-
-
-                                     }
-
-                                 }
-                                //orderl.hinhsp = dssp.HinhSanpham;
-                                orderl.barcode = dssp.IdSanpham;
-                                 orderl.tensp = dssp.TenSanpham;
-                                 orderl.dongia = chsp.GiaTheoQuan;
-                                 orderl.soluong = 1;
-                                 orderl.tongtien = orderl.dongia * orderl.soluong;
-                                 orderlist.Add(orderl);
-                                 foreach (var od in orderlist)
-                                 {
-                                     total += od.tongtien;
-                                 }
-                                 p.Text = null;
+                                }
+                                    //orderl.hinhsp = dssp.HinhSanpham;
+                                    orderl.barcode = dssp.IdSanpham;
+                                    orderl.tensp = dssp.TenSanpham;
+                                    orderl.dongia = chsp.GiaTheoQuan;
+                                    orderl.soluong = 1;
+                                    orderl.tongtien = orderl.dongia * orderl.soluong;
+                                    orderlist.Add(orderl);
+                                foreach (var od in orderlist)
+                                {
+                                    total += od.tongtien;
+                                }
+                                p.Text = null;
                              }
                          }
                      }
@@ -273,8 +257,7 @@ namespace WPF_BanHang.Viewmodel
                              total = 0;
                              od.soluong = soluongsp;
                              od.tongtien = od.soluong * od.dongia;
-                             orderlist.Remove(od);
-                             orderlist.Add(od);
+                             OnPropertyChanged("orderlist");
                              p.Text = null;
                              foreach (var odl in orderlist)
                              {
@@ -282,6 +265,7 @@ namespace WPF_BanHang.Viewmodel
                              }
                              return;
                          }
+                 
                      }
                  }
                  catch { }
@@ -326,31 +310,6 @@ namespace WPF_BanHang.Viewmodel
         {
             orderlist = null;
         }
-        void cshd()
-        {
-            cthdxlist = new ObservableCollection<cthdxl>();
-
-            var db = new qlbhContext();
-            var hdct = db.HoaDonChitiet;
-            var ncc = db.NhaCungcap;
-            var sp = db.SanPham;
-            var chsp = db.CuahangSanpham;
-            int? idch = MainViewModel.TaiKhoan.Idcuahang;
-
-            //MessageBox.Show("nuull" + SelectedItem.IdHoadon ) ;
-            foreach (var item in hdct.Where(p => p.IdHoaDonChitiet == SelectedItem.mahoadon).ToList())
-            {
-                cthdxl hoadonxulys = new cthdxl();
-                var tensp = sp.Where(p => p.IdSanpham == item.IdSanpham).FirstOrDefault();
-                var gia = chsp.Where(p => p.IdSanpham == item.IdSanpham && p.IdCuahang == idch).FirstOrDefault();
-                hoadonxulys.TenSanpham = tensp.TenSanpham;
-                hoadonxulys.soluong = item.SoLuong;
-                hoadonxulys.GiaTheoQuan = gia.GiaTheoQuan;
-                hoadonxulys.ThanhTien = item.SoLuong * gia.GiaTheoQuan;
-                cthdxlist.Add(hoadonxulys);
-            }
-
-
-        }
+       
     }
 }

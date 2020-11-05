@@ -101,10 +101,6 @@ namespace WPF_BanHang.Viewmodel
                             }); ;
                             db.SaveChanges();
                         MessageBox.Show("them thanh cong");
-                            ten = "";
-
-                            diachi = "";
-                            sdt = "";
                         
                  
                     });
